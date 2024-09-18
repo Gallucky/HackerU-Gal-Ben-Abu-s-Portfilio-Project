@@ -1,18 +1,11 @@
-image: node:16-slim
-
-stages:
-    - publish
-
 pages:
-    stage: publish
+    stage: deploy
     script:
-        - mkdir -p public/
-        - cp ./website/main_page.html public
+        - mkdir .public
+        - cp -r * .public
+        - mv .public public
     artifacts:
         paths:
             - public
-    rules:
-        - if: $CI_COMMIT_BRANCH == 'main'
-    environment:
-        name: production/${CI_PROJECT_NAME}/${CI_COMMIT_REF_NAME}
-        url: https://${CI_PROJECT_NAMESPACE}.gitlab.io/${CI_PROJECT_NAME}
+    only:
+        - main
