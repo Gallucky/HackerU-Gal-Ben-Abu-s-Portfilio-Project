@@ -1,0 +1,42 @@
+/* Defining global properties / variables for the mainly used colors.
+Primary Color: Charcoal
+Secondary Color: Teal
+Accent Color: Cyan / Aqua
+*/
+:root {
+    --primary-color: #36454f;
+    --secondary-color: #008080;
+    --accent-color: #ffa500;
+}
+
+/* Remove any existing elements margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--primary-color);
+    font-family: "Rubik";
+    overflow: hidden;
+}
+
+/* | Class Description |
+    This class will make the desired element's text be with a outline
+    Element with small text the outline may look incomplete / fragmented,
+    for this there is a class called: --outline-thickness of the value 0.4px
+    should resolve this issue.
+ */
+.outline-text {
+    --outline-thickness: 1px;
+    text-shadow: var(--outline-thickness) var(--outline-thickness) 0 black,
+        calc(-1 * var(--outline-thickness)) calc(-1 * var(--outline-thickness))
+            0 black,
+        var(--outline-thickness) calc(-1 * var(--outline-thickness)) 0 black,
+        calc(-1 * var(--outline-thickness)) var(--outline-thickness) 0 black,
+        0 var(--outline-thickness) 0 black,
+        0 calc(-1 * var(--outline-thickness)) 0 black,
+        var(--outline-thickness) 0 0 black,
+        calc(-1 * var(--outline-thickness)) 0 0 black;
+}
