@@ -33,8 +33,7 @@ body {
 .outline-text {
     --outline-thickness: 1px;
     text-shadow: var(--outline-thickness) var(--outline-thickness) 0 black,
-        calc(-1 * var(--outline-thickness)) calc(-1 * var(--outline-thickness))
-            0 black,
+        calc(-1 * var(--outline-thickness)) calc(-1 * var(--outline-thickness)) 0 black,
         var(--outline-thickness) calc(-1 * var(--outline-thickness)) 0 black,
         calc(-1 * var(--outline-thickness)) var(--outline-thickness) 0 black,
         0 var(--outline-thickness) 0 black,
@@ -142,7 +141,7 @@ body {
 }
 
 /* Each link in the links class */
-.links > a {
+.links>a {
     width: max-content;
     position: relative;
     text-decoration: none;
@@ -154,24 +153,22 @@ body {
 }
 
 /* When the element is hovered... */
-.links > a:hover {
+.links>a:hover {
     transform: scale(1.2);
 }
 
 /* This defines the same element but for for the underline gradient */
-.links > a::before {
+.links>a::before {
     content: "";
     background: var(--primary-color);
 
-    background: linear-gradient(
-        to right,
-        #0d1b2a,
-        #1e2a78,
-        #3a1c71,
-        #6a1b9a,
-        #2c3e50,
-        #00bcd4
-    );
+    background: linear-gradient(to right,
+            #0d1b2a,
+            #1e2a78,
+            #3a1c71,
+            #6a1b9a,
+            #2c3e50,
+            #00bcd4);
 
     border-radius: 2px;
     height: 2px;
@@ -182,14 +179,12 @@ body {
 }
 
 /* White gradient color effect when hovered - for the underline */
-.links > a:hover::before {
-    background: linear-gradient(
-        to left,
-        rgba(255, 255, 255, 1),
-        rgba(255, 255, 255, 0.9),
-        rgba(255, 255, 255, 0.8),
-        rgba(255, 255, 255, 0.7)
-    );
+.links>a:hover::before {
+    background: linear-gradient(to left,
+            rgba(255, 255, 255, 1),
+            rgba(255, 255, 255, 0.9),
+            rgba(255, 255, 255, 0.8),
+            rgba(255, 255, 255, 0.7));
 
     transform: scale(1.1);
 }
@@ -323,7 +318,8 @@ body {
     grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 3fr;
     grid-template-rows: 1fr 1fr 1fr;
     margin-top: -2vh;
-
+    border: 1px solid black;
+    padding: 0.5vh 0;
     background-color: var(--secondary-color);
     transition: height 0.5s ease-in-out;
 
@@ -339,9 +335,9 @@ body {
     width: 3em;
     height: 3em;
 
-    margin: 10px;
-
-    transition: all 0.5s ease;
+    margin: 0 10px;
+    border: 1px dotted blue;
+    transition: transform 0.5s ease;
 
     background-position: center center;
     background-size: cover;
@@ -356,6 +352,14 @@ body {
     grid-column-start: 2;
 }
 
+.language-card:hover#html~.curr-lang-logo {
+    background-image: url("../images/languages_logos/html.png");
+}
+
+.language-card:hover#html~h2::after {
+    content: 'HTML';
+}
+
 /* #endregion */
 
 /* #region → CSS ← */
@@ -363,11 +367,27 @@ body {
     background-image: url("../images/languages_logos/css.png");
 }
 
+.language-card:hover#css~.curr-lang-logo {
+    background-image: url("../images/languages_logos/css.png");
+}
+
+.language-card:hover#css~h2::after {
+    content: 'CSS';
+}
+
 /* #endregion */
 
 /* #region → JavaScript ← */
 .language-card#js {
     background-image: url("../images/languages_logos/javascript.png");
+}
+
+.language-card:hover#js~.curr-lang-logo {
+    background-image: url("../images/languages_logos/javascript.png");
+}
+
+.language-card:hover#js~h2::after {
+    content: 'JavaScript';
 }
 
 /* #endregion */
@@ -378,11 +398,28 @@ body {
     filter: brightness(1.5);
 }
 
+.language-card:hover#java~.curr-lang-logo {
+    background-image: url("../images/languages_logos/java.png");
+    filter: brightness(1.5);
+}
+
+.language-card:hover#java~h2::after {
+    content: 'Java';
+}
+
 /* #endregion */
 
 /* #region → Python ← */
 .language-card#python {
     background-image: url("../images/languages_logos/python.png");
+}
+
+.language-card:hover#python~.curr-lang-logo {
+    background-image: url("../images/languages_logos/python.png");
+}
+
+.language-card:hover#python~h2::after {
+    content: 'Python';
 }
 
 /* #endregion */
@@ -392,11 +429,27 @@ body {
     background-image: url("../images/languages_logos/powershell.png");
 }
 
+.language-card:hover#powershell~.curr-lang-logo {
+    background-image: url("../images/languages_logos/powershell.png");
+}
+
+.language-card:hover#powershell~h2::after {
+    content: 'Powershell';
+}
+
 /* #endregion */
 
 /* #region → C# ← */
 .language-card#csharp {
     background-image: url("../images/languages_logos/csharp.png");
+}
+
+.language-card:hover#csharp~.curr-lang-logo {
+    background-image: url("../images/languages_logos/csharp.png");
+}
+
+.language-card:hover#csharp~h2::after {
+    content: 'C Sharp (C#)';
 }
 
 /* #endregion */
@@ -406,11 +459,27 @@ body {
     background-image: url("../images/languages_logos/c++.png");
 }
 
+.language-card:hover#cpp~.curr-lang-logo {
+    background-image: url("../images/languages_logos/c++.png");
+}
+
+.language-card:hover#cpp~h2::after {
+    content: 'C Plus Plus (C++)';
+}
+
 /* #endregion */
 
 /* #region → C ← */
 .language-card#c {
     background-image: url("../images/languages_logos/c.png");
+}
+
+.language-card:hover#c~.curr-lang-logo {
+    background-image: url("../images/languages_logos/c.png");
+}
+
+.language-card:hover#c~h2::after {
+    content: 'C';
 }
 
 /* #endregion */
@@ -420,11 +489,27 @@ body {
     background-image: url("../images/languages_logos/batch.png");
 }
 
+.language-card:hover#batch~.curr-lang-logo {
+    background-image: url("../images/languages_logos/batch.png");
+}
+
+.language-card:hover#batch~h2::after {
+    content: 'Batch';
+}
+
 /* #endregion */
 
 /* #region → Assembly ← */
 .language-card#assembly {
     background-image: url("../images/languages_logos/assembly.png");
+}
+
+.language-card:hover#assembly~.curr-lang-logo {
+    background-image: url("../images/languages_logos/assembly.png");
+}
+
+.language-card:hover#assembly~h2::after {
+    content: 'Assembly';
 }
 
 /* #endregion */
@@ -457,8 +542,8 @@ body {
     transition: height 1s ease-in-out;
 }
 
-.language-card:hover ~ #dropdown-area {
-    height: 400%;
+.language-card:hover~#dropdown-area {
+    height: 350%;
 }
 
 .curr-lang-logo {
@@ -467,9 +552,8 @@ body {
     height: 0%;
 
     grid-area: 2 / 4 / 3 / 4;
-    margin: 30% -10%;
+    margin: 20% -20%;
 
-    border: 1px solid black;
 
     background-position: center center;
     background-size: cover;
@@ -479,7 +563,7 @@ body {
     transition: height 1s ease-in-out, width 1s ease-in-out;
 }
 
-.language-card:hover ~ .curr-lang-logo {
+.language-card:hover~.curr-lang-logo {
     opacity: 1;
     height: 100%;
     width: 100%;
@@ -491,18 +575,15 @@ body {
 .programming-languages-and-more-area h2 {
     height: 0;
     font-size: 0px;
-    border: 1px solid black;
     color: var(--accent-color);
 
     grid-area: 2 / 5 / 2 / 11;
 
     margin: 5% 0;
-    opacity: 0;
-
     transition: font-size 1s ease-in-out;
 }
 
-.language-card:hover ~ h2 {
+.language-card:hover~h2 {
     opacity: 1;
     height: fit-content;
     font-size: 30px;
@@ -511,102 +592,48 @@ body {
 
 .programming-languages-and-more-area p {
     height: fit-content;
-    border: 1px solid blue;
     color: white;
     font-size: 0;
 
     grid-area: 3 / 5 / 3 / 11;
 
-    opacity: 0;
     transition: font-size 1s ease-in-out;
 }
 
-.language-card:hover ~ p {
-    opacity: 1;
+.language-card:hover~p {
     font-size: 20px;
+    margin-top: -4.5%;
     transition: font-size 1s 0.3s ease-in-out;
 }
 
-/* Setting the approprite language logo when that language logo is hovered */
 
-.language-card:hover#html ~ .curr-lang-logo {
-    background-image: url("../images/languages_logos/html.png");
-}
-
-.language-card:hover#css ~ .curr-lang-logo {
-    background-image: url("../images/languages_logos/css.png");
-}
-
-.language-card:hover#js ~ .curr-lang-logo {
-    background-image: url("../images/languages_logos/javascript.png");
-}
-
-.language-card:hover#java ~ .curr-lang-logo {
-    background-image: url("../images/languages_logos/java.png");
-    filter: brightness(1.5);
-}
-
-.language-card:hover#python ~ .curr-lang-logo {
-    background-image: url("../images/languages_logos/python.png");
-}
-
-.language-card:hover#powershell ~ .curr-lang-logo {
-    background-image: url("../images/languages_logos/powershell.png");
-}
-
-.language-card:hover#csharp ~ .curr-lang-logo {
-    background-image: url("../images/languages_logos/csharp.png");
-}
-
-.language-card:hover#cpp ~ .curr-lang-logo {
-    background-image: url("../images/languages_logos/c++.png");
-}
-
-.language-card:hover#c ~ .curr-lang-logo {
-    background-image: url("../images/languages_logos/c.png");
-}
-
-.language-card:hover#batch ~ .curr-lang-logo {
-    background-image: url("../images/languages_logos/batch.png");
-}
-
-.language-card:hover#assembly ~ .curr-lang-logo {
-    background-image: url("../images/languages_logos/assembly.png");
-}
-
-/* #endregion */
 
 /* #region ============ Separator Area ============ */
 
-.separator {
-}
+.separator {}
 
 /* #endregion */
 
 /* #region ============ About Section ============ */
 
-.about-section {
-}
+.about-section {}
 
 /* #endregion */
 
 /* #region ============ Services and Projects Area ============ */
 
-.services-projects {
-}
+.services-projects {}
 
 /* #endregion */
 
 /* #region ============ Contact Area ============ */
 
-.contact-section {
-}
+.contact-section {}
 
 /* #endregion */
 
 /* #region ============ License Area ============ */
 
-.license-footer-bar {
-}
+.license-footer-bar {}
 
 /* #endregion */
