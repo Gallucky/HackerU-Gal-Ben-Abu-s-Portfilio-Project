@@ -1,4 +1,4 @@
-/* #region ============ Programming Languages Area ============ */
+/* ============ Programming Languages Area ============ */
 
 .programming-languages-and-more-area {
     width: 100%;
@@ -21,11 +21,74 @@
     height: 5vh;
 
     margin: 0 10px;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s 0.3s ease, filter 0.5s ease;
 
     background-position: center center;
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+/* The hovered language card */
+.programming-languages-and-more-area .language-card:hover {
+    transform: scale(1.25);
+}
+
+/* #region | Unfocus non-hovered language cards | */
+/* by lowering their brightness and scaling them down a bit */
+
+/* Any remaining cards next to the hovered language on the rig
+ht. */
+.programming-languages-and-more-area .language-card:hover~.language-card,
+/* The card next to the hovered language on the left. */
+.programming-languages-and-more-area .language-card:has(~ .language-card:hover) {
+    transform: scale(0.9);
+    filter: brightness(0.5) !important;
+}
+
+/* #endregion */
+
+/* | Dropdown Area | */
+#dropdown-area {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+
+    background-color: var(--secondary-color);
+
+    z-index: -1;
+
+    transition: height 1s ease-in-out;
+}
+
+.language-card:hover ~ #dropdown-area {
+    height: 350%;
+}
+
+/* | Current Language Logo Image/Icon - Default Styling | */
+.curr-lang-logo {
+    width: 0%;
+    /* height: 5em; */
+    height: 0%;
+
+    grid-area: 2 / 4 / 3 / 4;
+    margin: 20% -20%;
+
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    opacity: 0;
+    transition: height 1s ease-in-out, width 1s ease-in-out;
+}
+
+.language-card:hover ~ .curr-lang-logo {
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+
+    /* background-size: cover; */
+    transition: height 1s 0.3s ease-in-out;
 }
 
 /* #region | Setting the images of the languages as background | */
@@ -200,60 +263,7 @@
 
 /* #endregion */
 
-/* The hovered language card */
-.programming-languages-and-more-area .language-card:hover {
-    transform: scale(1.25);
-}
-
-/* Any remaining cards next to the hovered language on the right. */
-.programming-languages-and-more-area .language-card:hover~.language-card,
-/* The card next to the hovered language on the left. */
-.programming-languages-and-more-area .language-card:has(~ .language-card:hover) {
-    transform: scale(0.9);
-    filter: brightness(0.5) !important;
-}
-
-#dropdown-area {
-    width: 100%;
-    height: 100%;
-
-    position: absolute;
-
-    background-color: var(--secondary-color);
-
-    z-index: -1;
-
-    transition: height 1s ease-in-out;
-}
-
-.language-card:hover ~ #dropdown-area {
-    height: 350%;
-}
-
-.curr-lang-logo {
-    width: 0%;
-    /* height: 5em; */
-    height: 0%;
-
-    grid-area: 2 / 4 / 3 / 4;
-    margin: 20% -20%;
-
-    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    opacity: 0;
-    transition: height 1s ease-in-out, width 1s ease-in-out;
-}
-
-.language-card:hover ~ .curr-lang-logo {
-    opacity: 1;
-    height: 100%;
-    width: 100%;
-
-    /* background-size: cover; */
-    transition: height 1s 0.3s ease-in-out;
-}
+/* | Current Language Name - Default Styling | */
 
 .programming-languages-and-more-area h2 {
     height: 0;
@@ -273,6 +283,7 @@
     transition: font-size 1s 0.3s ease-in-out;
 }
 
+/* | Current Language Info - Default Styling | */
 .programming-languages-and-more-area p {
     height: fit-content;
     color: white;
@@ -288,4 +299,3 @@
     margin-top: -4.5%;
     transition: font-size 1s 0.3s ease-in-out;
 }
-/* #endregion */
