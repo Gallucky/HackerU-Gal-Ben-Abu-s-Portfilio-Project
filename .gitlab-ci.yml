@@ -1,9 +1,18 @@
-stages:          # List of stages for jobs, and their order of execution
-  - deploy
+image: node:16-slim
 
-deploy-job:      # This job runs in the deploy stage.
-  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
-  environment: main
-  script:
-    - echo "Deploying application..."
-    - echo "Application successfully deployed."
+stages:
+    - publish
+
+pages:
+    stage: publish
+    script:
+        - mkdir -p public/
+        - cp ./website/main_page.html public
+    artifacts:
+        paths:
+            - public
+    rules:
+        - if $CI_COMMIT_BRANCH == 'main'
+    environment:
+        name: production/${CI_PROJECT_NAME}/${CI_COMMIT_REF_NAME}
+        url: https://${CI_PROJECT_NAMESPACE}.gitlab.io/${CI_PROJECT_NAME}
