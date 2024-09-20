@@ -1,36 +1,38 @@
 /* ============ Programming Languages Area ============ */
 
 .programming-languages-and-more-area {
-    width: 100%;
-    height: 7vh;
+	width: 100%;
+	height: 7vh;
 
-    display: grid;
-    grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 3fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    margin-top: -2vh;
-    border: 1px solid black;
-    padding: 1vh 0;
-    background-color: var(--secondary-color);
-    transition: height 0.5s ease-in-out;
+	display: grid;
+	grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 3fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr;
+	margin-top: -2vh;
+	border: 1px solid black;
+	padding: 1vh 0;
+	background-color: var(--secondary-color);
+	transition: height 0.5s ease-in-out;
 
-    position: relative;
+	position: relative;
 }
 
+/* Todo: To figure out a way to make a title and then a star experience rating of the programming languages. Maybe even a info button that when it is hovered then it will show a text with more information about it... */
+
 .language-card {
-    width: 5vh;
-    height: 5vh;
+	width: 5vh;
+	height: 5vh;
 
-    margin: 0 10px;
-    transition: transform 0.5s 0.3s ease, filter 0.5s ease;
+	margin: 0 10px;
+	transition: transform 0.5s 0.3s ease, filter 0.5s ease;
 
-    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 /* The hovered language card */
 .programming-languages-and-more-area .language-card:hover {
-    transform: scale(1.25);
+	transform: scale(1.25);
 }
 
 /* #region | Unfocus non-hovered language cards | */
@@ -41,222 +43,286 @@ ht. */
 .programming-languages-and-more-area .language-card:hover~.language-card,
 /* The card next to the hovered language on the left. */
 .programming-languages-and-more-area .language-card:has(~ .language-card:hover) {
-    transform: scale(0.9);
-    filter: brightness(0.5) !important;
+	transform: scale(0.9);
+	filter: brightness(0.5) !important;
 }
 
 /* #endregion */
 
 /* | Dropdown Area | */
 #dropdown-area {
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 
-    position: absolute;
+	position: absolute;
 
-    background-color: var(--secondary-color);
+	background-color: var(--secondary-color);
 
-    z-index: -1;
+	z-index: -1;
 
-    transition: height 1s ease-in-out;
+	transition: height 1s ease-in-out;
 }
 
 .language-card:hover ~ #dropdown-area {
-    height: 350%;
+	height: 350%;
 }
 
 /* | Current Language Logo Image/Icon - Default Styling | */
 .curr-lang-logo {
-    width: 0%;
-    /* height: 5em; */
-    height: 0%;
+	width: 0%;
+	/* height: 5em; */
+	height: 0%;
 
-    grid-area: 2 / 4 / 3 / 4;
-    margin: 20% -20%;
+	grid-area: 2 / 4 / 3 / 4;
+	margin: 20% -20%;
 
-    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+	background-repeat: no-repeat;
 
-    opacity: 0;
-    transition: height 1s ease-in-out, width 1s ease-in-out;
+	opacity: 0;
+	transition: height 1s ease-in-out, width 1s ease-in-out;
 }
 
 .language-card:hover ~ .curr-lang-logo {
-    opacity: 1;
-    height: 100%;
-    width: 100%;
+	opacity: 1;
+	height: 100%;
+	width: 100%;
 
-    /* background-size: cover; */
-    transition: height 1s 0.3s ease-in-out;
+	/* background-size: cover; */
+	transition: height 1s 0.3s ease-in-out;
 }
 
 /* #region | Setting the images of the languages as background | */
 
 /* #region → HTML ← */
 .language-card#html {
-    background-image: url("../../images/languages_logos/html.png");
-    grid-column-start: 2;
+	background-image: url("../../images/languages_logos/html.png");
+	grid-column-start: 2;
 }
 
 .language-card:hover#html ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/html.png");
+	background-image: url("../../images/languages_logos/html.png");
 }
 
 .language-card:hover#html ~ h2::after {
-    content: "HTML";
+	content: "HTML";
+}
+
+.language-card:hover#html ~ p::after {
+	content: "Hyper Text Markup Language (HTML) is \A a tag based language that is used to structure a website.";
+	white-space: pre;
 }
 
 /* #endregion */
 
 /* #region → CSS ← */
 .language-card#css {
-    background-image: url("../../images/languages_logos/css.png");
+	background-image: url("../../images/languages_logos/css.png");
 }
 
 .language-card:hover#css ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/css.png");
+	background-image: url("../../images/languages_logos/css.png");
 }
 
 .language-card:hover#css ~ h2::after {
-    content: "CSS";
+	content: "CSS";
+}
+
+.language-card:hover#css ~ p::after {
+	content: "Cascading Style Sheets also known as CSS is a styling language that is used to control \A the layout and appearance of webpages written in a markup language like HTML.";
+	white-space: pre;
 }
 
 /* #endregion */
 
 /* #region → JavaScript ← */
 .language-card#js {
-    background-image: url("../../images/languages_logos/javascript.png");
+	background-image: url("../../images/languages_logos/javascript.png");
 }
 
 .language-card:hover#js ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/javascript.png");
+	background-image: url("../../images/languages_logos/javascript.png");
 }
 
 .language-card:hover#js ~ h2::after {
-    content: "JavaScript";
+	content: "JavaScript";
+}
+
+.language-card:hover#js ~ p::after {
+	content: "Is a high-level, dynamic, and interpreted programming language \A that is used to add interactive functionality (mainly client-side) to webpages.";
+	white-space: pre;
 }
 
 /* #endregion */
 
 /* #region → Java ← */
 .language-card#java {
-    background-image: url("../../images/languages_logos/java.png");
-    filter: brightness(1.5);
+	background-image: url("../../images/languages_logos/java.png");
+	filter: brightness(1.5);
 }
 
 .language-card:hover#java ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/java.png");
-    filter: brightness(1.5);
+	background-image: url("../../images/languages_logos/java.png");
+	filter: brightness(1.5);
 }
 
 .language-card:hover#java ~ h2::after {
-    content: "Java";
+	content: "Java";
+}
+
+.language-card:hover#java ~ p::after {
+	content: "Is a multiplatform, object-oriented programming language that \A runs on billions of devices worldwide.";
+	white-space: pre;
 }
 
 /* #endregion */
 
 /* #region → Python ← */
 .language-card#python {
-    background-image: url("../../images/languages_logos/python.png");
+	background-image: url("../../images/languages_logos/python.png");
 }
 
 .language-card:hover#python ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/python.png");
+	background-image: url("../../images/languages_logos/python.png");
 }
 
 .language-card:hover#python ~ h2::after {
-    content: "Python";
+	content: "Python";
+}
+
+.language-card:hover#python ~ p::after {
+	content: "Is an interpreted, object-oriented, high-level programming language \A with dynamic semantics developed by Guido van Rossum.";
+	white-space: pre;
 }
 
 /* #endregion */
 
 /* #region → Powershell ← */
 .language-card#powershell {
-    background-image: url("../../images/languages_logos/powershell.png");
+	background-image: url("../../images/languages_logos/powershell.png");
 }
 
 .language-card:hover#powershell ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/powershell.png");
+	background-image: url("../../images/languages_logos/powershell.png");
 }
 
 .language-card:hover#powershell ~ h2::after {
-    content: "Powershell";
+	content: "Powershell";
+}
+
+.language-card:hover#powershell ~ p::after {
+	content: "Created by microsoft, is a cross-platform task automation solution made up of \A a command-line shell, a scripting language, and a configuration management framework.";
+	white-space: pre;
 }
 
 /* #endregion */
 
 /* #region → C# ← */
 .language-card#csharp {
-    background-image: url("../../images/languages_logos/csharp.png");
+	background-image: url("../../images/languages_logos/csharp.png");
 }
 
 .language-card:hover#csharp ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/csharp.png");
+	background-image: url("../../images/languages_logos/csharp.png");
 }
 
 .language-card:hover#csharp ~ h2::after {
-    content: "C Sharp (C#)";
+	content: 'C# (pronounced "C-Sharp")';
+}
+
+.language-card:hover#csharp ~ p::after {
+	content: "Is an object-oriented programming language created \A by Microsoft that runs on the .NET Framework.";
+	white-space: pre;
 }
 
 /* #endregion */
 
 /* #region → C Plus Plus ← */
 .language-card#cpp {
-    background-image: url("../../images/languages_logos/c++.png");
+	background-image: url("../../images/languages_logos/c++.png");
 }
 
 .language-card:hover#cpp ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/c++.png");
+	background-image: url("../../images/languages_logos/c++.png");
+}
+
+/*
+	Overriding the 350% dropdown area height
+	to 400% in order to fit the relatively
+	longer text properly.
+*/
+.language-card:hover#cpp ~ #dropdown-area {
+	height: 400%;
 }
 
 .language-card:hover#cpp ~ h2::after {
-    content: "C Plus Plus (C++)";
+	content: "C Plus Plus (C++)";
+}
+
+.language-card:hover#cpp ~ p::after {
+	content: "Is a high-performance programming language known for its efficiency, reliability, and speed. \A As an extension of C, it adds features like object-oriented programming, templates, \A and exception handling. It's widely used for developing operating systems, games, \A web browsers, and other applications that require complex computations and high performance.";
+	white-space: pre;
 }
 
 /* #endregion */
 
 /* #region → C ← */
 .language-card#c {
-    background-image: url("../../images/languages_logos/c.png");
+	background-image: url("../../images/languages_logos/c.png");
 }
 
 .language-card:hover#c ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/c.png");
+	background-image: url("../../images/languages_logos/c.png");
 }
 
 .language-card:hover#c ~ h2::after {
-    content: "C";
+	content: "C";
+}
+
+.language-card:hover#c ~ p::after {
+	content: "Is a procedural language that provides no support for objects and classes, \A but supports built-in data types.";
+	white-space: pre;
 }
 
 /* #endregion */
 
 /* #region → Batch ← */
 .language-card#batch {
-    background-image: url("../../images/languages_logos/batch.png");
+	background-image: url("../../images/languages_logos/batch.png");
 }
 
 .language-card:hover#batch ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/batch.png");
+	background-image: url("../../images/languages_logos/batch.png");
 }
 
 .language-card:hover#batch ~ h2::after {
-    content: "Batch";
+	content: "Batch";
+}
+
+.language-card:hover#batch ~ p::after {
+	content: "Is a scripting language for automating tasks at the OS level through the command line. \A It processes commands sequentially but is not designed to build full applications, \A relying on system-specific syntax.";
+	white-space: pre;
 }
 
 /* #endregion */
 
 /* #region → Assembly ← */
 .language-card#assembly {
-    background-image: url("../../images/languages_logos/assembly.png");
+	background-image: url("../../images/languages_logos/assembly.png");
 }
 
 .language-card:hover#assembly ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/assembly.png");
+	background-image: url("../../images/languages_logos/assembly.png");
 }
 
 .language-card:hover#assembly ~ h2::after {
-    content: "Assembly";
+	content: "Assembly";
+}
+
+.language-card:hover#assembly ~ p::after {
+	content: "Assembly language is a low-level programming language that represents a computer's \A machine language with symbolic equivalents. Each manufacturer has a unique assembly \A language tailored to its specific machine instructions.";
+	white-space: pre;
 }
 
 /* #endregion */
@@ -264,38 +330,37 @@ ht. */
 /* #endregion */
 
 /* | Current Language Name - Default Styling | */
-
 .programming-languages-and-more-area h2 {
-    height: 0;
-    font-size: 0px;
-    color: var(--accent-color);
+	height: fit-content;
+	font-size: 0;
+	color: var(--accent-color);
 
-    grid-area: 2 / 5 / 2 / 11;
+	grid-area: 2 / 5 / 2 / 11;
 
-    margin: 5% 0;
-    transition: font-size 1s ease-in-out;
+	margin: 5% 0;
+	transition: font-size 1s ease-in-out;
 }
 
 .language-card:hover ~ h2 {
-    opacity: 1;
-    height: fit-content;
-    font-size: 30px;
-    transition: font-size 1s 0.3s ease-in-out;
+	/* opacity: 1; */
+	font-size: 30px;
+	transition: font-size 1s 0.3s ease-in-out;
 }
 
 /* | Current Language Info - Default Styling | */
 .programming-languages-and-more-area p {
-    height: fit-content;
-    color: white;
-    font-size: 0;
+	height: fit-content;
 
-    grid-area: 3 / 5 / 3 / 11;
+	color: white;
+	font-size: 0;
 
-    transition: font-size 1s ease-in-out;
+	grid-area: 3 / 5 / 3 / 11;
+
+	transition: font-size 1s ease-in-out;
 }
 
 .language-card:hover ~ p {
-    font-size: 20px;
-    margin-top: -4.5%;
-    transition: font-size 1s 0.3s ease-in-out;
+	font-size: 20px;
+	margin-top: -4.5%;
+	transition: font-size 1s 0.3s ease-in-out;
 }
