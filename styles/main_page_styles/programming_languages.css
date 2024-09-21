@@ -1,14 +1,40 @@
 /* ============ Programming Languages Area ============ */
 
+.programming-languages-title {
+	width: 100%;
+	height: 10vh;
+
+	background-color: var(--secondary-color);
+	margin-top: -2vh;
+	margin-bottom: 2vh;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+
+	border-top: 1px solid black;
+}
+
+.programming-languages-title > h2 {
+	width: 60%;
+	height: fit-content;
+
+	margin: 10% 0;
+
+	font-size: 1rem;
+	color: var(--accent-color);
+}
+
 .programming-languages-and-more-area {
 	width: 100%;
-	height: 7vh;
+	height: 8vh;
 
 	display: grid;
 	grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 3fr;
-	grid-template-rows: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
 	margin-top: -2vh;
-	border: 1px solid black;
+	border-bottom: 1px solid black;
 	padding: 1vh 0;
 	background-color: var(--secondary-color);
 	transition: height 0.5s ease-in-out;
@@ -54,18 +80,141 @@ ht. */
 	width: 100%;
 	height: 100%;
 
+	border: 1px solid black;
+	border-radius: 25%;
+
 	position: absolute;
-
 	background-color: var(--secondary-color);
-
 	z-index: -1;
 
 	transition: height 1s ease-in-out;
 }
 
 .language-card:hover ~ #dropdown-area {
-	height: 350%;
+	height: 450%;
 }
+
+/* #region | Current Hovered Programming Language Difficulty Rating - Default Styling | */
+
+.difficulty-rating-title {
+	width: fit-content;
+	height: fit-content;
+	font-size: 0;
+
+	position: absolute;
+	left: 5%;
+	top: 165%;
+
+	color: red;
+
+	opacity: 0;
+	transition: font-size 1s ease-in-out;
+}
+
+.language-card:hover ~ .difficulty-rating-title {
+	/* 18.72px = to the default font-size of h3 tag. */
+	font-size: 18.72px;
+
+	opacity: 1;
+	transition: font-size 1s 0.3s ease-in-out;
+}
+
+.programming-language-difficulty-rating {
+	width: 0%;
+	height: 0%;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	grid-area: 3 / 2 / 3 / 3;
+	margin: 40% -80% 0% -80%;
+	padding: 5%;
+
+	opacity: 0;
+	transition: height 1s ease-in-out, width 1s ease-in-out;
+}
+
+.difficulty-rating-star {
+	width: 100%;
+	height: 100%;
+
+	background-image: url(../../images/empty_star.png);
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.language-card:hover ~ .programming-language-difficulty-rating {
+	opacity: 1;
+	width: 250%;
+	height: 50%;
+
+	transition: height 1s 0.3s ease-in-out;
+}
+
+/* #endregion */
+
+/* #region | Current Hovered Programming Language Experience Rating - Default Styling | */
+
+.experience-title {
+	width: fit-content;
+	height: fit-content;
+	font-size: 0;
+
+	position: absolute;
+	left: 5%;
+	top: 265%;
+
+	color: green;
+
+	opacity: 0;
+	transition: font-size 1s ease-in-out;
+}
+
+.language-card:hover ~ .experience-title {
+	/* 18.72px = to the default font-size of h3 tag. */
+	font-size: 18.72px;
+
+	opacity: 1;
+	transition: font-size 1s 0.3s ease-in-out;
+}
+
+.programming-language-experience {
+	width: 0%;
+	height: 0%;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	grid-area: 3 / 2 / 3 / 3;
+	margin: 100% -80% 0% -80%;
+	padding: 5%;
+
+	opacity: 0;
+	transition: height 1s ease-in-out, width 1s ease-in-out;
+}
+
+.experience-star {
+	width: 100%;
+	height: 100%;
+
+	background-image: url(../../images/empty_star.png);
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.language-card:hover ~ .programming-language-experience {
+	opacity: 1;
+	width: 250%;
+	height: 50%;
+
+	transition: height 1s 0.3s ease-in-out;
+}
+
+/* #endregion */
 
 /* | Current Language Logo Image/Icon - Default Styling | */
 .curr-lang-logo {
@@ -73,8 +222,8 @@ ht. */
 	/* height: 5em; */
 	height: 0%;
 
-	grid-area: 2 / 4 / 3 / 4;
-	margin: 20% -20%;
+	grid-area: 3 / 4 / 4 / 4;
+	margin: 30% -20%;
 
 	background-position: center center;
 	background-size: contain;
@@ -98,7 +247,8 @@ ht. */
 /* #region → HTML ← */
 .language-card#html {
 	background-image: url("../../images/languages_logos/html.png");
-	grid-column-start: 2;
+	/* row-start / col-start / row-end / col-end */
+	grid-area: 2 / 2 / 2 / 2;
 }
 
 .language-card:hover#html ~ .curr-lang-logo {
@@ -114,11 +264,35 @@ ht. */
 	white-space: pre;
 }
 
+/* | Selector Explanation: |
+	If the hovered element has a 'language-card' class,
+	and has an id of 'html',
+	is followed by elements with 'difficulty-rating-star' class,
+	that are the first child of their parent element that has 'programming-language-difficulty-rating' class.
+
+	1) Element with id="html" class="language-card" that is hovered.
+	2) The element mentioned above is followed by element with class="difficulty-rating-star".
+	3) The element with the class="difficulty-rating-star" is the first child element of it's parent.
+	4) The parent has a class="programming-language-difficulty-rating".
+*/
+.language-card:hover#html ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(1) {
+	background-image: url("../../images/full_star.png");
+}
+
+.language-card:hover#html ~ .programming-language-experience .experience-star:nth-child(1),
+.language-card:hover#html ~ .programming-language-experience .experience-star:nth-child(2),
+.language-card:hover#html ~ .programming-language-experience .experience-star:nth-child(3),
+.language-card:hover#html ~ .programming-language-experience .experience-star:nth-child(4) {
+	background-image: url("../../images/full_star.png");
+}
+
 /* #endregion */
 
 /* #region → CSS ← */
 .language-card#css {
 	background-image: url("../../images/languages_logos/css.png");
+	/* row-start / col-start / row-end / col-end */
+	grid-area: 2 / 3 / 2 / 3;
 }
 
 .language-card:hover#css ~ .curr-lang-logo {
@@ -139,6 +313,8 @@ ht. */
 /* #region → JavaScript ← */
 .language-card#js {
 	background-image: url("../../images/languages_logos/javascript.png");
+	/* row-start / col-start / row-end / col-end */
+	grid-area: 2 / 4 / 2 / 4;
 }
 
 .language-card:hover#js ~ .curr-lang-logo {
@@ -159,7 +335,9 @@ ht. */
 /* #region → Java ← */
 .language-card#java {
 	background-image: url("../../images/languages_logos/java.png");
-	filter: brightness(1.5);
+	filter: brightness(1.75);
+	/* row-start / col-start / row-end / col-end */
+	grid-area: 2 / 5 / 2 / 5;
 }
 
 .language-card:hover#java ~ .curr-lang-logo {
@@ -181,6 +359,8 @@ ht. */
 /* #region → Python ← */
 .language-card#python {
 	background-image: url("../../images/languages_logos/python.png");
+	/* row-start / col-start / row-end / col-end */
+	grid-area: 2 / 6 / 2 / 6;
 }
 
 .language-card:hover#python ~ .curr-lang-logo {
@@ -201,6 +381,8 @@ ht. */
 /* #region → Powershell ← */
 .language-card#powershell {
 	background-image: url("../../images/languages_logos/powershell.png");
+	/* row-start / col-start / row-end / col-end */
+	grid-area: 2 / 7 / 2 / 7;
 }
 
 .language-card:hover#powershell ~ .curr-lang-logo {
@@ -221,6 +403,8 @@ ht. */
 /* #region → C# ← */
 .language-card#csharp {
 	background-image: url("../../images/languages_logos/csharp.png");
+	/* row-start / col-start / row-end / col-end */
+	grid-area: 2 / 8 / 2 / 8;
 }
 
 .language-card:hover#csharp ~ .curr-lang-logo {
@@ -241,6 +425,8 @@ ht. */
 /* #region → C Plus Plus ← */
 .language-card#cpp {
 	background-image: url("../../images/languages_logos/c++.png");
+	/* row-start / col-start / row-end / col-end */
+	grid-area: 2 / 9 / 2 / 9;
 }
 
 .language-card:hover#cpp ~ .curr-lang-logo {
@@ -252,16 +438,16 @@ ht. */
 	to 400% in order to fit the relatively
 	longer text properly.
 */
-.language-card:hover#cpp ~ #dropdown-area {
+/* .language-card:hover#cpp ~ #dropdown-area {
 	height: 400%;
-}
+} */
 
 .language-card:hover#cpp ~ h2::after {
 	content: "C Plus Plus (C++)";
 }
 
 .language-card:hover#cpp ~ p::after {
-	content: "Is a high-performance programming language known for its efficiency, reliability, and speed. \A As an extension of C, it adds features like object-oriented programming, templates, \A and exception handling. It's widely used for developing operating systems, games, \A web browsers, and other applications that require complex computations and high performance.";
+	content: "C++ (cpp / c plus plus) is a cross-platform language which extends \A the C language, it can be used to create high-performance applications. \A C++ gives programmers a high level of control over system resources and memory.";
 	white-space: pre;
 }
 
@@ -270,6 +456,8 @@ ht. */
 /* #region → C ← */
 .language-card#c {
 	background-image: url("../../images/languages_logos/c.png");
+	/* row-start / col-start / row-end / col-end */
+	grid-area: 2 / 10 / 2 / 10;
 }
 
 .language-card:hover#c ~ .curr-lang-logo {
@@ -290,6 +478,8 @@ ht. */
 /* #region → Batch ← */
 .language-card#batch {
 	background-image: url("../../images/languages_logos/batch.png");
+	/* row-start / col-start / row-end / col-end */
+	grid-area: 2 / 11 / 2 / 11;
 }
 
 .language-card:hover#batch ~ .curr-lang-logo {
@@ -310,6 +500,8 @@ ht. */
 /* #region → Assembly ← */
 .language-card#assembly {
 	background-image: url("../../images/languages_logos/assembly.png");
+	/* row-start / col-start / row-end / col-end */
+	grid-area: 2 / 12 / 2 / 12;
 }
 
 .language-card:hover#assembly ~ .curr-lang-logo {
@@ -335,7 +527,7 @@ ht. */
 	font-size: 0;
 	color: var(--accent-color);
 
-	grid-area: 2 / 5 / 2 / 11;
+	grid-area: 3 / 5 / 3 / 11;
 
 	margin: 5% 0;
 	transition: font-size 1s ease-in-out;
@@ -354,7 +546,7 @@ ht. */
 	color: white;
 	font-size: 0;
 
-	grid-area: 3 / 5 / 3 / 11;
+	grid-area: 4 / 5 / 4 / 11;
 
 	transition: font-size 1s ease-in-out;
 }
