@@ -285,10 +285,10 @@ ht. */
 	"Projects\Gal Ben Abu's Portfolio Project\images\advance_css_area_help+source
 		\Rating Stars Selector Improvement - Less Repeating Answer From ChatGPT Model 4o"
 */
-.language-card:hover[language="CSS"] ~ .programming-language-experience .experience-star:nth-child(-n + 4),
-.language-card:hover[language="Java"] ~ .programming-language-experience .experience-star:nth-child(-n + 5),
-.language-card:hover[language="C++"] ~ .programming-language-experience .experience-star:nth-child(-n + 4),
-.language-card:hover[language="Batch"] ~ .programming-language-experience .experience-star:nth-child(-n + 4) {
+.language-card:hover[language="CSS"] ~ .programming-language-experience .experience-star:nth-child(4),
+.language-card:hover[language="Java"] ~ .programming-language-experience .experience-star:nth-child(5),
+.language-card:hover[language="C++"] ~ .programming-language-experience .experience-star:nth-child(4),
+.language-card:hover[language="Batch"] ~ .programming-language-experience .experience-star:nth-child(4) {
     background-image: url("../../images/half_star.png");
 }
 
