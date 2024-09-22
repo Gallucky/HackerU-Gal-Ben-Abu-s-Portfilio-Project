@@ -264,6 +264,7 @@ ht. */
 	white-space: pre;
 }
 
+/* Difficulty Rating */
 /* | Selector Explanation: |
 	If the hovered element has a 'language-card' class,
 	and has an id of 'html',
@@ -279,10 +280,12 @@ ht. */
 	background-image: url("../../images/full_star.png");
 }
 
+/* Experience Rating */
 .language-card:hover#html ~ .programming-language-experience .experience-star:nth-child(1),
 .language-card:hover#html ~ .programming-language-experience .experience-star:nth-child(2),
 .language-card:hover#html ~ .programming-language-experience .experience-star:nth-child(3),
-.language-card:hover#html ~ .programming-language-experience .experience-star:nth-child(4) {
+.language-card:hover#html ~ .programming-language-experience .experience-star:nth-child(4),
+.language-card:hover#html ~ .programming-language-experience .experience-star:nth-child(5) {
 	background-image: url("../../images/full_star.png");
 }
 
@@ -308,6 +311,35 @@ ht. */
 	white-space: pre;
 }
 
+/* Difficulty Rating */
+/* | Selector Explanation: |
+	If the hovered element has a 'language-card' class,
+	and has an id of 'html',
+	is followed by elements with 'difficulty-rating-star' class,
+	that are the first child of their parent element that has 'programming-language-difficulty-rating' class.
+
+	1) Element with id="html" class="language-card" that is hovered.
+	2) The element mentioned above is followed by element with class="difficulty-rating-star".
+	3) The element with the class="difficulty-rating-star" is the first child element of it's parent.
+	4) The parent has a class="programming-language-difficulty-rating".
+*/
+.language-card:hover#css ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(1),
+.language-card:hover#css ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(2),
+.language-card:hover#css ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(3) {
+	background-image: url("../../images/full_star.png");
+}
+
+/* Experience Rating */
+.language-card:hover#css ~ .programming-language-experience .experience-star:nth-child(1),
+.language-card:hover#css ~ .programming-language-experience .experience-star:nth-child(2),
+.language-card:hover#css ~ .programming-language-experience .experience-star:nth-child(3) {
+	background-image: url("../../images/full_star.png");
+}
+
+.language-card:hover#css ~ .programming-language-experience .experience-star:nth-child(4) {
+	background-image: url("../../images/half_star.png");
+}
+
 /* #endregion */
 
 /* #region → JavaScript ← */
@@ -328,6 +360,35 @@ ht. */
 .language-card:hover#js ~ p::after {
 	content: "Is a high-level, dynamic, and interpreted programming language \A that is used to add interactive functionality (mainly client-side) to webpages.";
 	white-space: pre;
+}
+
+/* Difficulty Rating */
+/* | Selector Explanation: |
+	If the hovered element has a 'language-card' class,
+	and has an id of 'html',
+	is followed by elements with 'difficulty-rating-star' class,
+	that are the first child of their parent element that has 'programming-language-difficulty-rating' class.
+
+	1) Element with id="html" class="language-card" that is hovered.
+	2) The element mentioned above is followed by element with class="difficulty-rating-star".
+	3) The element with the class="difficulty-rating-star" is the first child element of it's parent.
+	4) The parent has a class="programming-language-difficulty-rating".
+*/
+.language-card:hover#js ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(1),
+.language-card:hover#js ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(2),
+.language-card:hover#js ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(3) {
+	background-image: url("../../images/full_star.png");
+}
+.language-card:hover#js ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(4) {
+	background-image: url("../../images/half_star.png");
+}
+
+/* Experience Rating */
+.language-card:hover#js ~ .programming-language-experience .experience-star:nth-child(1),
+.language-card:hover#js ~ .programming-language-experience .experience-star:nth-child(2),
+.language-card:hover#js ~ .programming-language-experience .experience-star:nth-child(3),
+.language-card:hover#js ~ .programming-language-experience .experience-star:nth-child(4) {
+	background-image: url("../../images/full_star.png");
 }
 
 /* #endregion */
@@ -354,6 +415,35 @@ ht. */
 	white-space: pre;
 }
 
+/* Difficulty Rating */
+/* | Selector Explanation: |
+	If the hovered element has a 'language-card' class,
+	and has an id of 'html',
+	is followed by elements with 'difficulty-rating-star' class,
+	that are the first child of their parent element that has 'programming-language-difficulty-rating' class.
+
+	1) Element with id="html" class="language-card" that is hovered.
+	2) The element mentioned above is followed by element with class="difficulty-rating-star".
+	3) The element with the class="difficulty-rating-star" is the first child element of it's parent.
+	4) The parent has a class="programming-language-difficulty-rating".
+*/
+.language-card:hover#java ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(1),
+.language-card:hover#java ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(2),
+.language-card:hover#java ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(3) {
+	background-image: url("../../images/full_star.png");
+}
+
+/* Experience Rating */
+.language-card:hover#java ~ .programming-language-experience .experience-star:nth-child(1),
+.language-card:hover#java ~ .programming-language-experience .experience-star:nth-child(2),
+.language-card:hover#java ~ .programming-language-experience .experience-star:nth-child(3),
+.language-card:hover#java ~ .programming-language-experience .experience-star:nth-child(4) {
+	background-image: url("../../images/full_star.png");
+}
+.language-card:hover#java ~ .programming-language-experience .experience-star:nth-child(5) {
+	background-image: url("../../images/half_star.png");
+}
+
 /* #endregion */
 
 /* #region → Python ← */
@@ -374,6 +464,34 @@ ht. */
 .language-card:hover#python ~ p::after {
 	content: "Is an interpreted, object-oriented, high-level programming language \A with dynamic semantics developed by Guido van Rossum.";
 	white-space: pre;
+}
+
+/* Difficulty Rating */
+/* | Selector Explanation: |
+	If the hovered element has a 'language-card' class,
+	and has an id of 'html',
+	is followed by elements with 'difficulty-rating-star' class,
+	that are the first child of their parent element that has 'programming-language-difficulty-rating' class.
+
+	1) Element with id="html" class="language-card" that is hovered.
+	2) The element mentioned above is followed by element with class="difficulty-rating-star".
+	3) The element with the class="difficulty-rating-star" is the first child element of it's parent.
+	4) The parent has a class="programming-language-difficulty-rating".
+*/
+.language-card:hover#python ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(1),
+.language-card:hover#python ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(2) {
+	background-image: url("../../images/full_star.png");
+}
+.language-card:hover#python ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(3) {
+	background-image: url("../../images/half_star.png");
+}
+
+/* Experience Rating */
+.language-card:hover#python ~ .programming-language-experience .experience-star:nth-child(1),
+.language-card:hover#python ~ .programming-language-experience .experience-star:nth-child(2),
+.language-card:hover#python ~ .programming-language-experience .experience-star:nth-child(3),
+.language-card:hover#python ~ .programming-language-experience .experience-star:nth-child(4) {
+	background-image: url("../../images/full_star.png");
 }
 
 /* #endregion */
@@ -398,6 +516,35 @@ ht. */
 	white-space: pre;
 }
 
+/* Difficulty Rating */
+/* | Selector Explanation: |
+	If the hovered element has a 'language-card' class,
+	and has an id of 'html',
+	is followed by elements with 'difficulty-rating-star' class,
+	that are the first child of their parent element that has 'programming-language-difficulty-rating' class.
+
+	1) Element with id="html" class="language-card" that is hovered.
+	2) The element mentioned above is followed by element with class="difficulty-rating-star".
+	3) The element with the class="difficulty-rating-star" is the first child element of it's parent.
+	4) The parent has a class="programming-language-difficulty-rating".
+*/
+.language-card:hover#powershell ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(1),
+.language-card:hover#powershell ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(2),
+.language-card:hover#powershell ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(3) {
+	background-image: url("../../images/full_star.png");
+}
+.language-card:hover#powershell ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(4) {
+	background-image: url("../../images/half_star.png");
+}
+
+/* Experience Rating */
+.language-card:hover#powershell ~ .programming-language-experience .experience-star:nth-child(1),
+.language-card:hover#powershell ~ .programming-language-experience .experience-star:nth-child(2),
+.language-card:hover#powershell ~ .programming-language-experience .experience-star:nth-child(3),
+.language-card:hover#powershell ~ .programming-language-experience .experience-star:nth-child(4) {
+	background-image: url("../../images/full_star.png");
+}
+
 /* #endregion */
 
 /* #region → C# ← */
@@ -418,6 +565,32 @@ ht. */
 .language-card:hover#csharp ~ p::after {
 	content: "Is an object-oriented programming language created \A by Microsoft that runs on the .NET Framework.";
 	white-space: pre;
+}
+
+/* Difficulty Rating */
+/* | Selector Explanation: |
+	If the hovered element has a 'language-card' class,
+	and has an id of 'html',
+	is followed by elements with 'difficulty-rating-star' class,
+	that are the first child of their parent element that has 'programming-language-difficulty-rating' class.
+
+	1) Element with id="html" class="language-card" that is hovered.
+	2) The element mentioned above is followed by element with class="difficulty-rating-star".
+	3) The element with the class="difficulty-rating-star" is the first child element of it's parent.
+	4) The parent has a class="programming-language-difficulty-rating".
+*/
+.language-card:hover#csharp ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(1),
+.language-card:hover#csharp ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(2),
+.language-card:hover#csharp ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(3) {
+	background-image: url("../../images/full_star.png");
+}
+
+/* Experience Rating */
+.language-card:hover#csharp ~ .programming-language-experience .experience-star:nth-child(1),
+.language-card:hover#csharp ~ .programming-language-experience .experience-star:nth-child(2),
+.language-card:hover#csharp ~ .programming-language-experience .experience-star:nth-child(3),
+.language-card:hover#csharp ~ .programming-language-experience .experience-star:nth-child(4) {
+	background-image: url("../../images/full_star.png");
 }
 
 /* #endregion */
@@ -451,6 +624,34 @@ ht. */
 	white-space: pre;
 }
 
+/* Difficulty Rating */
+/* | Selector Explanation: |
+	If the hovered element has a 'language-card' class,
+	and has an id of 'html',
+	is followed by elements with 'difficulty-rating-star' class,
+	that are the first child of their parent element that has 'programming-language-difficulty-rating' class.
+
+	1) Element with id="html" class="language-card" that is hovered.
+	2) The element mentioned above is followed by element with class="difficulty-rating-star".
+	3) The element with the class="difficulty-rating-star" is the first child element of it's parent.
+	4) The parent has a class="programming-language-difficulty-rating".
+*/
+.language-card:hover#cpp ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(1),
+.language-card:hover#cpp ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(2),
+.language-card:hover#cpp ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(3) {
+	background-image: url("../../images/full_star.png");
+}
+.language-card:hover#cpp ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(4) {
+	background-image: url("../../images/half_star.png");
+}
+
+/* Experience Rating */
+.language-card:hover#cpp ~ .programming-language-experience .experience-star:nth-child(1),
+.language-card:hover#cpp ~ .programming-language-experience .experience-star:nth-child(2),
+.language-card:hover#cpp ~ .programming-language-experience .experience-star:nth-child(3) {
+	background-image: url("../../images/full_star.png");
+}
+
 /* #endregion */
 
 /* #region → C ← */
@@ -471,6 +672,35 @@ ht. */
 .language-card:hover#c ~ p::after {
 	content: "Is a procedural language that provides no support for objects and classes, \A but supports built-in data types.";
 	white-space: pre;
+}
+
+/* Difficulty Rating */
+/* | Selector Explanation: |
+	If the hovered element has a 'language-card' class,
+	and has an id of 'html',
+	is followed by elements with 'difficulty-rating-star' class,
+	that are the first child of their parent element that has 'programming-language-difficulty-rating' class.
+
+	1) Element with id="html" class="language-card" that is hovered.
+	2) The element mentioned above is followed by element with class="difficulty-rating-star".
+	3) The element with the class="difficulty-rating-star" is the first child element of it's parent.
+	4) The parent has a class="programming-language-difficulty-rating".
+*/
+.language-card:hover#c ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(1),
+.language-card:hover#c ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(2),
+.language-card:hover#c ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(3),
+.language-card:hover#c ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(4) {
+	background-image: url("../../images/full_star.png");
+}
+
+/* Experience Rating */
+.language-card:hover#c ~ .programming-language-experience .experience-star:nth-child(1),
+.language-card:hover#c ~ .programming-language-experience .experience-star:nth-child(2),
+.language-card:hover#c ~ .programming-language-experience .experience-star:nth-child(3) {
+	background-image: url("../../images/full_star.png");
+}
+.language-card:hover#c ~ .programming-language-experience .experience-star:nth-child(4) {
+	background-image: url("../../images/half_star.png");
 }
 
 /* #endregion */
@@ -495,6 +725,35 @@ ht. */
 	white-space: pre;
 }
 
+/* Difficulty Rating */
+/* | Selector Explanation: |
+	If the hovered element has a 'language-card' class,
+	and has an id of 'html',
+	is followed by elements with 'difficulty-rating-star' class,
+	that are the first child of their parent element that has 'programming-language-difficulty-rating' class.
+
+	1) Element with id="html" class="language-card" that is hovered.
+	2) The element mentioned above is followed by element with class="difficulty-rating-star".
+	3) The element with the class="difficulty-rating-star" is the first child element of it's parent.
+	4) The parent has a class="programming-language-difficulty-rating".
+*/
+.language-card:hover#batch ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(1),
+.language-card:hover#batch ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(2),
+.language-card:hover#batch ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(3),
+.language-card:hover#batch ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(4) {
+	background-image: url("../../images/full_star.png");
+}
+
+/* Experience Rating */
+.language-card:hover#batch ~ .programming-language-experience .experience-star:nth-child(1),
+.language-card:hover#batch ~ .programming-language-experience .experience-star:nth-child(2),
+.language-card:hover#batch ~ .programming-language-experience .experience-star:nth-child(3) {
+	background-image: url("../../images/full_star.png");
+}
+.language-card:hover#batch ~ .programming-language-experience .experience-star:nth-child(4) {
+	background-image: url("../../images/half_star.png");
+}
+
 /* #endregion */
 
 /* #region → Assembly ← */
@@ -515,6 +774,31 @@ ht. */
 .language-card:hover#assembly ~ p::after {
 	content: "Assembly language is a low-level programming language that represents a computer's \A machine language with symbolic equivalents. Each manufacturer has a unique assembly \A language tailored to its specific machine instructions.";
 	white-space: pre;
+}
+
+/* Difficulty Rating */
+/* | Selector Explanation: |
+	If the hovered element has a 'language-card' class,
+	and has an id of 'html',
+	is followed by elements with 'difficulty-rating-star' class,
+	that are the first child of their parent element that has 'programming-language-difficulty-rating' class.
+
+	1) Element with id="html" class="language-card" that is hovered.
+	2) The element mentioned above is followed by element with class="difficulty-rating-star".
+	3) The element with the class="difficulty-rating-star" is the first child element of it's parent.
+	4) The parent has a class="programming-language-difficulty-rating".
+*/
+.language-card:hover#assembly ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(1),
+.language-card:hover#assembly ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(2),
+.language-card:hover#assembly ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(3),
+.language-card:hover#assembly ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(4),
+.language-card:hover#assembly ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(5) {
+	background-image: url("../../images/full_star.png");
+}
+
+/* Experience Rating */
+.language-card:hover#assembly ~ .programming-language-experience .experience-star:nth-child(1) {
+	background-image: url("../../images/full_star.png");
 }
 
 /* #endregion */
