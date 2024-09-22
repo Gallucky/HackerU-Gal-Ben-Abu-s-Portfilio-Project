@@ -4,7 +4,7 @@
     width: 100%;
     height: 7vh;
 
-    background-color: var(--secondary-color);
+    background-color: var(--color-palette-complementary);
     margin-top: -2vh;
     margin-bottom: 2vh;
 
@@ -23,7 +23,7 @@
     margin: 10% 0;
 
     font-size: 1.25rem;
-    color: var(--accent-color);
+    color: var(--color-palette-accent);
 }
 
 .programming-languages-and-more-area {
@@ -34,9 +34,9 @@
     grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 3fr;
     grid-template-rows: 1fr 1fr 1fr;
     margin-top: -2vh;
-    border-bottom: 1px solid black;
+    
     padding: 1vh 0;
-    background-color: var(--secondary-color);
+    background-color: var(--color-palette-complementary);
     transition: height 0.5s ease-in-out;
 
     position: relative;
@@ -84,7 +84,7 @@ ht. */
     border-radius: 25%;
 
     position: absolute;
-    background-color: var(--secondary-color);
+    background-color: var(--color-palette-complementary);
     z-index: -1;
 
     transition: height 1s ease-in-out;
@@ -299,10 +299,9 @@ ht. */
 /* | Current Language Logo Image/Icon - Default Styling | */
 .curr-lang-logo {
     width: 0%;
-    /* height: 5em; */
     height: 0%;
 
-    grid-area: 3 / 4 / 4 / 4;
+    grid-area: 3 / 5 / 4 / 5;
     margin: 30% -20%;
 
     background-position: center center;
@@ -583,9 +582,9 @@ ht. */
 .programming-languages-and-more-area h2 {
     height: fit-content;
     font-size: 0;
-    color: var(--accent-color);
+    color: var(--color-palette-additional-accent);
 
-    grid-area: 3 / 5 / 3 / 11;
+    grid-area: 3 / 6 / 3 / 12;
 
     margin: 7% 0 5% 0;
     transition: font-size 1s ease-in-out;
@@ -601,9 +600,16 @@ ht. */
 .programming-languages-and-more-area p {
     height: fit-content;
 
-    color: white;
+    /*
+        TODO:
+        Need to check how to wrap the text contents to fit
+        into the width of the grid-area selected for the element...
+    */
+    border: 1px solid black;
+
+    color: var(--color-palette-light-neutral);
     font-size: 0;
-    grid-area: 4 / 5 / 4 / 11;
+    grid-area: 4 / 6 / 4 / 12;
 
     transition: font-size 1s ease-in-out;
 }

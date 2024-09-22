@@ -10,7 +10,7 @@
     /* Making sure this area is top most layer. */
     z-index: 9999;
 
-    background-color: var(--secondary-color);
+    background-color: var(--color-palette-complementary);
     border: 1px solid black;
 
     display: flex;
@@ -103,7 +103,7 @@
     text-decoration: none;
 
     font-family: "Rubik";
-    color: var(--accent-color);
+    color: var(--color-palette-accent);
 
     transition: all 1s ease-in-out;
 }
@@ -116,7 +116,7 @@
 /* This defines the same element but for for the underline gradient */
 .links > a::before {
     content: "";
-    background: var(--primary-color);
+    background: var(--color-palette-dominant);
 
     background: linear-gradient(
         to right,

@@ -1,3 +1,26 @@
+### Me:
+in my code there is a part of code that repeats itself multiple times how can i group the common repeation but still get the same result in html and css.
+The mentioned part of code is:
+```css
+.language-card:hover#powershell ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(1),
+.language-card:hover#powershell ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(2),
+.language-card:hover#powershell ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(3) {
+	background-image: url("../../images/full_star.png");
+}
+.language-card:hover#powershell ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(4) {
+	background-image: url("../../images/half_star.png");
+}
+
+/* Experience Rating */
+.language-card:hover#powershell ~ .programming-language-experience .experience-star:nth-child(1),
+.language-card:hover#powershell ~ .programming-language-experience .experience-star:nth-child(2),
+.language-card:hover#powershell ~ .programming-language-experience .experience-star:nth-child(3),
+.language-card:hover#powershell ~ .programming-language-experience .experience-star:nth-child(4) {
+	background-image: url("../../images/full_star.png");
+}
+```
+
+### ChatGPT:
 If you have 11 blocks of similar code like the one you provided, you can use CSS variables or create reusable classes to reduce the repetition and manage it more efficiently. However, because you're targeting specific elements with IDs like `#powershell` or `#c`, a direct reuse is limited without JavaScript. But, you can still optimize it to minimize repetition using `data-attributes` or mixins if you're using a CSS preprocessor like SASS/LESS.
 
 Here’s how you can refactor it for a cleaner approach, assuming you want to stick with plain CSS:

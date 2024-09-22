@@ -96,7 +96,7 @@
     text-align: center;
 
     margin-bottom: 1vh;
-    color: var(--accent-color);
+    color: var(--color-palette-accent);
     font-size: 60px;
     /* font-family: ; */
 }
