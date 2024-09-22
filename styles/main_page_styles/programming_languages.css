@@ -289,7 +289,7 @@ ht. */
 .language-card:hover[language="Java"] ~ .programming-language-experience .experience-star:nth-child(-n + 5),
 .language-card:hover[language="C++"] ~ .programming-language-experience .experience-star:nth-child(-n + 4),
 .language-card:hover[language="Batch"] ~ .programming-language-experience .experience-star:nth-child(-n + 4) {
-    background-image: url("../../images/full_star.png");
+    background-image: url("../../images/half_star.png");
 }
 
 /* #endregion */
