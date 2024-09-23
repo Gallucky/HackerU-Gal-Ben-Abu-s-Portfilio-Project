@@ -4,7 +4,8 @@
 	width: 100%;
 	height: 100px;
 
-	background-color: var(--color-palette-light-neutral);
+	background-color: white;
+	opacity: 0.5;
 }
 
 /* #endregion */
