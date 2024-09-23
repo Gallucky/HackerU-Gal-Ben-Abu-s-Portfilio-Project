@@ -2,10 +2,30 @@
 
 .about-section {
 	width: 100%;
-	height: 100px;
+	height: 50vh;
 
-	background-color: white;
-	opacity: 0.5;
+	background-color: var(--color-palette-light-neutral);
+	opacity: 0.75;
+	filter: saturate(2);
+}
+
+.about-content-wrapper {
+	width: 50%;
+	height: fit-content;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	border: 1px solid black;
+}
+
+#about-profile-picture {
+	width: 128px;
+	height: 128px;
+
+	border-radius: 50%;
 }
 
 /* #endregion */
