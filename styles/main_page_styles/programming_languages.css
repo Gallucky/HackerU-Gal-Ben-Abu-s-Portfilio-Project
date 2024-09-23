@@ -85,7 +85,7 @@ ht. */
 	border-radius: 25%;
 
 	position: absolute;
-	background-color: var(--color-palette-complementary);
+	background-color: #2e6b77;
 	z-index: -1;
 
 	transition: height 1s ease-in-out;
