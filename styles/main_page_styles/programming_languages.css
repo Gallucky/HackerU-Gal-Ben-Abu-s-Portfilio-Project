@@ -37,8 +37,9 @@
 
 	padding: 1vh 0;
 	background-color: var(--color-palette-complementary);
-	transition: height 0.5s ease-in-out;
+	transition: height 0.5s ease-in-out, margin-bottom 1s ease-in-out;
 
+	border-bottom: 1px solid black;
 	position: relative;
 }
 
@@ -91,7 +92,12 @@ ht. */
 }
 
 .language-card:hover ~ #dropdown-area {
-	height: 450%;
+	height: 400%;
+}
+
+.programming-languages-and-more-area:has(.language-card:hover) {
+	margin-bottom: 11.125%;
+	transition: margin-bottom 1s ease-in-out;
 }
 
 /* #region | Difficulty Level Rating | */
