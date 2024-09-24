@@ -40,5 +40,14 @@ body {
  */
 .outline-text {
     --outline-thickness: 1px;
-    text-shadow: var(--outline-thickness) var(--outline-thickness) 0 black, calc(-1 * var(--outline-thickness)) calc(-1 * var(--outline-thickness)) 0 black, var(--outline-thickness) calc(-1 * var(--outline-thickness)) 0 black, calc(-1 * var(--outline-thickness)) var(--outline-thickness) 0 black, 0 var(--outline-thickness) 0 black, 0 calc(-1 * var(--outline-thickness)) 0 black, var(--outline-thickness) 0 0 black, calc(-1 * var(--outline-thickness)) 0 0 black;
+    --outline-color: black;
+
+    text-shadow: var(--outline-thickness) var(--outline-thickness) 0 var(--outline-color),
+        calc(-1 * var(--outline-thickness)) calc(-1 * var(--outline-thickness)) 0 var(--outline-color),
+        var(--outline-thickness) calc(-1 * var(--outline-thickness)) 0 var(--outline-color),
+        calc(-1 * var(--outline-thickness)) var(--outline-thickness) 0 var(--outline-color),
+        0 var(--outline-thickness) 0 var(--outline-color),
+        0 calc(-1 * var(--outline-thickness)) 0 var(--outline-color),
+        var(--outline-thickness) 0 0 var(--outline-color),
+        calc(-1 * var(--outline-thickness)) 0 0 var(--outline-color);
 }
