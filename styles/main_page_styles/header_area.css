@@ -26,64 +26,54 @@
     background-image: url("../../images/tech-background.jpg");
     background-repeat: no-repeat;
     background-size: 200% 200%;
+    background-position: center center;
     filter: hue-rotate(0deg);
 
-    animation: header-area-bg-anim 60s linear infinite alternate;
+    animation: header-area-bg-anim 60s ease infinite alternate;
 }
 
 @keyframes header-area-bg-anim {
     0% {
-        background-position: 0% 0%;
         filter: hue-rotate(0deg);
     }
 
     10% {
-        background-position: 10% 0%;
         filter: hue-rotate(36deg);
     }
 
     20% {
-        background-position: 20% 0%;
         filter: hue-rotate(72deg);
     }
 
     30% {
-        background-position: 30% 0%;
         filter: hue-rotate(108deg);
     }
 
     40% {
-        background-position: 40% 0%;
         filter: hue-rotate(144deg);
     }
 
     50% {
-        background-position: 50% 0%;
         filter: hue-rotate(180deg);
     }
 
     60% {
-        background-position: 60% 0%;
         filter: hue-rotate(216deg);
     }
 
     70% {
-        background-position: 70% 0%;
         filter: hue-rotate(252deg);
     }
 
     80% {
-        background-position: 80% 0%;
         filter: hue-rotate(288deg);
     }
 
     90% {
-        background-position: 90% 0%;
         filter: hue-rotate(324deg);
     }
 
     100% {
-        background-position: 100% 0%;
         filter: hue-rotate(360deg);
     }
 }
@@ -97,7 +87,6 @@
     margin-bottom: 1vh;
     color: var(--color-palette-accent);
     font-size: 60px;
-    /* font-family: ; */
 }
 
 .header-area p {
