@@ -1,0 +1,17 @@
+<div class="project-card">
+    <img
+        src="https://picsum.photos/200"
+        alt="The project image"
+        class="project-image" />
+    <h3
+        class="project-name outline-text"
+        style="
+            color: blue;
+            --outline-thickness: 1px;
+            --outline-color: rgba(0, 183, 255, 0.127);
+        ">
+        Project Name
+    </h3>
+    <p class="short-project-description">Short project description</p>
+    <a href="#" class="link-to-landing-page">« לעמוד הפרויקט</a>
+</div>

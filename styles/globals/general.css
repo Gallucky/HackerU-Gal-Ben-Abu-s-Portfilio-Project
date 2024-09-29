@@ -43,7 +43,8 @@ body {
     --outline-color: black;
 
     text-shadow: var(--outline-thickness) var(--outline-thickness) 0 var(--outline-color),
-        calc(-1 * var(--outline-thickness)) calc(-1 * var(--outline-thickness)) 0 var(--outline-color),
+        calc(-1 * var(--outline-thickness)) calc(-1 * var(--outline-thickness)) 0
+            var(--outline-color),
         var(--outline-thickness) calc(-1 * var(--outline-thickness)) 0 var(--outline-color),
         calc(-1 * var(--outline-thickness)) var(--outline-thickness) 0 var(--outline-color),
         0 var(--outline-thickness) 0 var(--outline-color),
