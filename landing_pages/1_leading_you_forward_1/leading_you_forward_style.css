@@ -15,7 +15,7 @@ body {
     width: 100%;
     height: 64.3vh;
 
-    background-image: url(".\\images\\leading-you-forward-background-image.png");
+    background-image: url("./images/leading-you-forward-background-image.png");
     background-size: cover;
     background-position: center 0%;
     background-repeat: no-repeat;
@@ -27,6 +27,13 @@ body {
     /* To make the background-image div and the content div independent and ignore each others location */
     position: fixed;
     top: 1px;
+
+    /* Mobile Support */
+    @media (max-width: 768px) {
+        height: 30vh !important;
+        background-position: 70% 70% !important;
+        top: 0px !important;
+    }
 }
 
 .content {
@@ -40,6 +47,12 @@ body {
     top: 17.5%;
     right: 15.25%;
     padding: 2.86vw;
+
+    /* Mobile Support */
+    @media (max-width: 768px) {
+        top: 15% !important;
+        right: 7.5% !important;
+    }
 }
 
 .content-wrapper {
@@ -59,6 +72,11 @@ body {
     color: #ffffff;
 
     margin: 20px;
+
+    /* Mobile Support */
+    @media (max-width: 768px) {
+        font: normal normal 900 25px/30px Heebo !important;
+    }
 }
 
 .content-wrapper p {
@@ -71,6 +89,12 @@ body {
 
     padding-inline: 5%;
     margin-bottom: 7%;
+
+    /* Mobile Support */
+    @media (max-width: 768px) {
+        text-align: center !important;
+        font: normal normal normal 15px/22px Heebo !important;
+    }
 }
 
 #info-form {
@@ -82,6 +106,11 @@ body {
     align-items: flex-end;
 
     padding-inline: 5%;
+
+    /* Mobile Support */
+    @media (max-width: 768px) {
+        padding-inline: 10% !important;
+    }
 }
 
 #info-form label {
@@ -93,6 +122,11 @@ body {
     color: #ffffff;
 
     margin-top: 3%;
+
+    /* Mobile Support */
+    @media (max-width: 768px) {
+        font: normal normal bold 14px/21px Heebo !important;
+    }
 }
 
 #full-name {
@@ -102,6 +136,11 @@ body {
     background: #ffffff 0% 0% no-repeat padding-box;
     border: 1px solid #d31c75;
     margin-bottom: 1%;
+
+    /* Mobile Support */
+    @media (max-width: 768px) {
+        height: 28px !important;
+    }
 }
 
 #email {
@@ -110,6 +149,11 @@ body {
 
     border: 1px solid #d31c75;
     background: #ffffff 0% 0% no-repeat padding-box;
+
+    /* Mobile Support */
+    @media (max-width: 768px) {
+        height: 28px !important;
+    }
 }
 
 #submit-btn {
@@ -127,55 +171,9 @@ body {
     letter-spacing: 0.33px;
     font: normal normal bold 22px/30px Heebo;
     background: #d31c75 0% 0% no-repeat padding-box;
-}
 
-/* Mobile Support */
-@media (max-width: 768px) {
-    /* The background image */
-    .bg-img {
-        height: 30vh;
-        background-position: 70% 70% !important;
-        top: 0px;
-    }
-
-    .content {
-        position: fixed;
-        top: 15%;
-        right: 7.5%;
-    }
-
-    .content-wrapper h1 {
-        text-align: center;
-        font: normal normal 900 25px/30px Heebo;
-    }
-
-    .content-wrapper p {
-        text-align: center;
-        font: normal normal normal 15px/22px Heebo;
-    }
-
-    #info-form {
-        padding-inline: 10%;
-    }
-
-    #info-form label {
-        width: auto;
-        height: auto;
-
-        font: normal normal bold 14px/21px Heebo;
-    }
-
-    #full-name {
-        width: 100%;
-        height: 28px;
-    }
-
-    #email {
-        width: 100%;
-        height: 28px;
-    }
-
-    #submit-btn {
+    /* Mobile Support */
+    @media (max-width: 768px) {
         width: 76px !important;
         height: 33px !important;
 
