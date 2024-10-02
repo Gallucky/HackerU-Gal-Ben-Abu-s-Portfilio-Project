@@ -1,0 +1,21 @@
+.background-image {
+    background-image: url("./images/2x_envelope.png");
+    background-size: cover;
+
+    z-index: -1;
+}
+
+.title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#let-us-lead-you-forward-fullname {
+    font: normal normal bold 16px/21px Assistant !important;
+    color: #011560 !important;
+}
+
+.text-rtl {
+    text-align: right !important;
+}
