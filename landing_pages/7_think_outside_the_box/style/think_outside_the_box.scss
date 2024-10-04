@@ -53,6 +53,11 @@ body {
 
     gap: 10vw;
 
+    @media (max-width: 768px) {
+        @include flex-col-reverse-center;
+        height: 55vh;
+    }
+
     .text-content {
         @include flex-col-start;
 
@@ -63,16 +68,29 @@ body {
         margin-right: -2vh;
         gap: 1vh;
 
+        @media (max-width: 768px) {
+            width: 75%;
+            margin-right: 38px;
+        }
+
         h1 {
             color: $black;
             text-align: right;
             font: normal normal 900 66px/97px Heebo;
+
+            @media (max-width: 768px) {
+                font: normal normal 900 33px/49px Heebo !important;
+            }
         }
 
         p {
             color: $black;
             text-align: right;
             font: normal normal normal 20px/29px Heebo;
+
+            @media (max-width: 768px) {
+                font: normal normal normal 15px/22px Heebo !important;
+            }
         }
     }
 
@@ -81,6 +99,12 @@ body {
         height: 267px;
 
         margin-right: -16vw;
+
+        @media (max-width: 768px) {
+            width: 78.85px;
+            height: 64.91px;
+            margin-left: 35vw;
+        }
     }
 }
 
@@ -94,9 +118,14 @@ body {
     border-radius: 50%;
     background-color: $white;
 
+    display: flex;
     position: fixed;
     top: 7.5vh;
     left: 7.5vh;
+
+    @media (max-width: 768px) {
+        display: none;
+    }
 
     img {
         width: $floating-whatsapp-size;
@@ -115,6 +144,14 @@ body {
     gap: 23px;
     padding: 2.5%;
 
+    @media (max-width: 768px) {
+        @include flex-col-reverse-center;
+        padding: 3%;
+        gap: 20px;
+
+        padding-bottom: 6vh;
+    }
+
     .section-card {
         @include flex-col-center;
         width: 40vw;
@@ -124,10 +161,18 @@ body {
 
         background-color: $section-card-bg-color;
 
+        @media (max-width: 768px) {
+            width: $full;
+        }
+
         h2 {
             color: $accent-color;
             text-align: right;
             font: normal normal 900 30px/44px Heebo !important;
+
+            @media (max-width: 768px) {
+                font: normal normal 900 22px/32px Heebo;
+            }
         }
 
         p {
@@ -151,17 +196,30 @@ body {
     width: $full;
     height: fit-content;
 
+    @media (max-width: 768px) {
+        @include flex-col-center;
+    }
+
     form {
         @include flex-col-center;
 
         width: 43%;
-        height: 100%;
+        height: $full;
 
         background-color: #f0ffff;
         padding-block: 6% 9.9%;
 
+        @media (max-width: 768px) {
+            width: 100%;
+            height: fit-content;
+        }
+
         .form-header {
             margin-bottom: 3vh;
+
+            @media (max-width: 768px) {
+            }
+
             h2 {
                 width: 90%;
                 margin-left: 7.5%;
@@ -169,15 +227,25 @@ body {
                 color: #090909;
                 text-align: right;
                 font: normal normal 900 46px/67px Heebo;
+
+                @media (max-width: 768px) {
+                    width: 80%;
+                    margin-left: 10%;
+                    font: normal normal 900 32px/47px Heebo;
+                }
             }
 
             p {
                 width: 90%;
-                margin-left: 7.5%;
+                margin-left: 10%;
 
                 color: $black;
                 text-align: right;
                 font: normal normal normal 15px/22px Heebo;
+
+                @media (max-width: 768px) {
+                    width: 80%;
+                }
             }
         }
 
@@ -185,9 +253,13 @@ body {
             @include flex-col-center;
 
             width: fit-content;
-            height: 100%;
+            height: $full;
 
             margin: auto;
+
+            @media (max-width: 768px) {
+                width: 80%;
+            }
 
             label {
                 width: fit-content;
@@ -198,6 +270,10 @@ body {
                 color: $form-text-color;
                 text-align: right;
                 font: normal normal bold 13px/19px Heebo;
+
+                @media (max-width: 768px) {
+                    font: normal normal bold 12px/18px Heebo;
+                }
             }
 
             input {
@@ -211,6 +287,13 @@ body {
                 font: normal normal normal 15px/22px Heebo;
 
                 background: $form-input-color 0% 0% no-repeat padding-box;
+
+                @media (max-width: 768px) {
+                    width: $form-input-mobile-width;
+                    height: $form-input-mobile-height;
+
+                    background: $white 0% 0% no-repeat padding-box;
+                }
             }
 
             .input-underline {
@@ -221,6 +304,10 @@ body {
                 z-index: 3;
 
                 background: $accent-color 0% 0% no-repeat padding-box;
+
+                @media (max-width: 768px) {
+                    width: 307px;
+                }
             }
 
             textarea {
@@ -266,6 +353,13 @@ body {
                 font: normal normal normal 15px/22px Heebo;
 
                 background: $form-input-color 0% 0% no-repeat padding-box;
+
+                @media (max-width: 768px) {
+                    width: $form-input-mobile-width;
+                    height: 105px;
+
+                    background: $white 0% 0% no-repeat padding-box;
+                }
             }
         }
 
@@ -283,6 +377,11 @@ body {
             text-align: center;
             letter-spacing: 0.3px;
             font: normal normal bold 20px/28px Heebo;
+
+            @media (max-width: 768px) {
+                width: $form-input-mobile-width + 1;
+                height: $form-input-mobile-height;
+            }
         }
     }
 
@@ -296,11 +395,21 @@ body {
 
         padding: 2.5%;
 
+        @media (max-width: 768px) {
+            width: $full;
+            padding: 8% 7.5% 10% 7.5%;
+        }
+
         iframe {
             width: 943px;
             height: 768px;
 
             border: 0;
+
+            @media (max-width: 768px) {
+                width: $full;
+                height: 300px;
+            }
         }
     }
 }
@@ -316,6 +425,10 @@ body {
 
     background-color: $white;
 
+    @media (max-width: 768px) {
+        margin-bottom: 10.24px;
+    }
+
     div {
         @include flex-center;
 
@@ -327,30 +440,19 @@ body {
         border-radius: 50%;
         margin-block: 2.5%;
 
-        a {
-            img {
-                width: $contact-option-size / 3;
-                height: $contact-option-size / 3;
-            }
+        @media (max-width: 768px) {
+            width: $contact-option-mobile-size;
+            height: $contact-option-mobile-size;
+        }
 
-            #facebook {
-                width: 19.28px;
-                height: 36px;
-            }
+        a img {
+            width: $contact-option-size / 3;
+            height: $contact-option-size / 3;
 
-            #instagram {
-                width: 31.52px;
-                height: 31.51px;
-            }
-
-            #linkedin {
-                width: 31.5px;
-                height: 31.5px;
-            }
-
-            #phone {
-                width: 27px;
-                height: 27px;
+            @media (max-width: 768px) {
+                @include flex-center;
+                width: $contact-option-mobile-size / 3;
+                height: $contact-option-mobile-size / 3;
             }
         }
     }
