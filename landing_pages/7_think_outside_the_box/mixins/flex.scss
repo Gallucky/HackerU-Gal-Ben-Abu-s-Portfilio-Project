@@ -1,0 +1,38 @@
+// flex mixin
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-reverse-center {
+    @include flex-center;
+    flex-direction: row-reverse;
+}
+
+@mixin flex-col-center {
+    @include flex-center;
+    flex-direction: column;
+}
+
+@mixin flex-col {
+    display: flex;
+    flex-direction: column;
+}
+@mixin flex-col-end {
+    @include flex-col;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+@mixin flex-col-start {
+    @include flex-col;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+@mixin flex-col-reverse-center {
+    @include flex-center;
+    flex-direction: column-reverse;
+}

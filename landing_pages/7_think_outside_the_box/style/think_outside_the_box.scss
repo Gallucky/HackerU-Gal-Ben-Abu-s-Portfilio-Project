@@ -1,0 +1,357 @@
+@use "../colors/colors" as *;
+@use "../mixins/flex" as *;
+@use "../mixins/border" as *;
+@use "../variables/vars" as *;
+@use "../mixins/position" as *;
+@use "../mixins/margins_paddings" as *;
+
+* {
+    @include reset-element;
+}
+
+body {
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: none;
+    background-color: $accent-color;
+
+    /* 
+        Styling the main Y Scrollbar
+        Helping website:
+        https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp
+    */
+    &::-webkit-scrollbar {
+        width: 10px;
+        background-color: #303030;
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #adadad;
+        border-radius: 10px;
+        height: 50px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: radial-gradient(lightgray, darkgray, gray);
+        border-radius: 10px;
+        height: 50px;
+        cursor: crosshair;
+    }
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 7.5px white;
+        border-radius: 10px;
+    }
+    &::-webkit-resizer {
+        border-radius: 10px;
+    }
+}
+
+.header-area {
+    @include flex-center;
+
+    width: $full;
+    height: 69vh;
+
+    gap: 10vw;
+
+    .text-content {
+        @include flex-col-start;
+
+        width: 42.5%;
+        height: fit-content;
+
+        direction: rtl;
+        margin-right: -2vh;
+        gap: 1vh;
+
+        h1 {
+            color: $black;
+            text-align: right;
+            font: normal normal 900 66px/97px Heebo;
+        }
+
+        p {
+            color: $black;
+            text-align: right;
+            font: normal normal normal 20px/29px Heebo;
+        }
+    }
+
+    img {
+        width: 325px;
+        height: 267px;
+
+        margin-right: -16vw;
+    }
+}
+
+.floating-whatsapp-icon {
+    @include flex-center;
+    @include always-appear-on-top;
+
+    width: $floating-whatsapp-bg-size;
+    height: $floating-whatsapp-bg-size;
+
+    border-radius: 50%;
+    background-color: $white;
+
+    position: fixed;
+    top: 7.5vh;
+    left: 7.5vh;
+
+    img {
+        width: $floating-whatsapp-size;
+        height: $floating-whatsapp-size;
+    }
+}
+
+.section-titles {
+    @include flex-center;
+
+    width: $full;
+    height: fit-content;
+
+    background-color: $white;
+
+    gap: 23px;
+    padding: 2.5%;
+
+    .section-card {
+        @include flex-col-center;
+        width: 40vw;
+        height: 35vh;
+
+        gap: 2vh;
+
+        background-color: $section-card-bg-color;
+
+        h2 {
+            color: $accent-color;
+            text-align: right;
+            font: normal normal 900 30px/44px Heebo !important;
+        }
+
+        p {
+            width: 60%;
+            margin-top: -3%;
+            color: $black;
+            text-align: center;
+            font: normal normal normal 15px/22px Heebo;
+        }
+
+        img {
+            width: $section-card-img-size;
+            height: $section-card-img-size;
+        }
+    }
+}
+
+.form-map-wrapper {
+    @include flex-center;
+
+    width: $full;
+    height: fit-content;
+
+    form {
+        @include flex-col-center;
+
+        width: 43%;
+        height: 100%;
+
+        background-color: #f0ffff;
+        padding-block: 6% 9.9%;
+
+        .form-header {
+            margin-bottom: 3vh;
+            h2 {
+                width: 90%;
+                margin-left: 7.5%;
+
+                color: #090909;
+                text-align: right;
+                font: normal normal 900 46px/67px Heebo;
+            }
+
+            p {
+                width: 90%;
+                margin-left: 7.5%;
+
+                color: $black;
+                text-align: right;
+                font: normal normal normal 15px/22px Heebo;
+            }
+        }
+
+        .input-section-wrapper {
+            @include flex-col-center;
+
+            width: fit-content;
+            height: 100%;
+
+            margin: auto;
+
+            label {
+                width: fit-content;
+                align-self: flex-end;
+
+                margin-top: $form-top-spacing;
+
+                color: $form-text-color;
+                text-align: right;
+                font: normal normal bold 13px/19px Heebo;
+            }
+
+            input {
+                width: $form-input-width;
+                height: $form-input-height;
+
+                border: 0;
+                margin-top: 5px;
+
+                text-align: right;
+                font: normal normal normal 15px/22px Heebo;
+
+                background: $form-input-color 0% 0% no-repeat padding-box;
+            }
+
+            .input-underline {
+                width: $form-input-width;
+                height: 2px;
+
+                margin-top: -2px;
+                z-index: 3;
+
+                background: $accent-color 0% 0% no-repeat padding-box;
+            }
+
+            textarea {
+                width: $form-input-width;
+                height: 145px;
+
+                resize: none;
+                direction: rtl;
+
+                /*
+                    WebKit scrollbar styling inside textarea block
+                    Helping website:
+                    https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp
+                */
+                &::-webkit-scrollbar {
+                    width: 10px;
+                    background-color: #02e4e4b9;
+                    border-radius: 10px;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background-color: #008080;
+                    border-radius: 10px;
+                    height: 50px;
+                }
+                &::-webkit-scrollbar-thumb:hover {
+                    background-color: #015555;
+                    border-radius: 10px;
+                    height: 50px;
+                    cursor: crosshair;
+                }
+                &::-webkit-scrollbar-track {
+                    box-shadow: inset 0 0 5px grey;
+                    border-radius: 10px;
+                }
+                &::-webkit-resizer {
+                    border-radius: 10px;
+                }
+
+                border: 0;
+                margin-top: 5px;
+
+                text-align: right;
+                font: normal normal normal 15px/22px Heebo;
+
+                background: $form-input-color 0% 0% no-repeat padding-box;
+            }
+        }
+
+        .submit-btn {
+            width: $form-input-width + 1;
+            height: $form-input-height;
+
+            background: none;
+            border: 0;
+
+            background-color: $accent-color;
+            margin-top: $form-top-spacing;
+
+            color: $black;
+            text-align: center;
+            letter-spacing: 0.3px;
+            font: normal normal bold 20px/28px Heebo;
+        }
+    }
+
+    .google-map-responsive {
+        @include flex-center;
+
+        width: 57%;
+        height: fit-content;
+
+        background-color: $accent-color;
+
+        padding: 2.5%;
+
+        iframe {
+            width: 943px;
+            height: 768px;
+
+            border: 0;
+        }
+    }
+}
+
+.contact-options {
+    @include flex-center;
+
+    width: $full;
+    height: fit-content;
+
+    gap: 38px;
+    margin-bottom: 18.53px;
+
+    background-color: $white;
+
+    div {
+        @include flex-center;
+
+        width: $contact-option-size;
+        height: $contact-option-size;
+
+        background-color: $accent-color;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 50%;
+        margin-block: 2.5%;
+
+        a {
+            img {
+                width: $contact-option-size / 3;
+                height: $contact-option-size / 3;
+            }
+
+            #facebook {
+                width: 19.28px;
+                height: 36px;
+            }
+
+            #instagram {
+                width: 31.52px;
+                height: 31.51px;
+            }
+
+            #linkedin {
+                width: 31.5px;
+                height: 31.5px;
+            }
+
+            #phone {
+                width: 27px;
+                height: 27px;
+            }
+        }
+    }
+}

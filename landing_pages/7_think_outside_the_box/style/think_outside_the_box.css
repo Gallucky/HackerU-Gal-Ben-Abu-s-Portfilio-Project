@@ -1,0 +1,312 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  overflow-y: scroll;
+  overflow-x: none;
+  background-color: #0ee1e1;
+  /* 
+      Styling the main Y Scrollbar
+      Helping website:
+      https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp
+  */
+}
+body::-webkit-scrollbar {
+  width: 10px;
+  background-color: #303030;
+  border-radius: 10px;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #adadad;
+  border-radius: 10px;
+  height: 50px;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: radial-gradient(lightgray, darkgray, gray);
+  border-radius: 10px;
+  height: 50px;
+  cursor: crosshair;
+}
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 7.5px white;
+  border-radius: 10px;
+}
+body::-webkit-resizer {
+  border-radius: 10px;
+}
+
+.header-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 69vh;
+  gap: 10vw;
+}
+.header-area .text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 42.5%;
+  height: -moz-fit-content;
+  height: fit-content;
+  direction: rtl;
+  margin-right: -2vh;
+  gap: 1vh;
+}
+.header-area .text-content h1 {
+  color: #000000;
+  text-align: right;
+  font: normal normal 900 66px/97px Heebo;
+}
+.header-area .text-content p {
+  color: #000000;
+  text-align: right;
+  font: normal normal normal 20px/29px Heebo;
+}
+.header-area img {
+  width: 325px;
+  height: 267px;
+  margin-right: -16vw;
+}
+
+.floating-whatsapp-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999 !important;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  position: fixed;
+  top: 7.5vh;
+  left: 7.5vh;
+}
+.floating-whatsapp-icon img {
+  width: 53.98px;
+  height: 53.98px;
+}
+
+.section-titles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: #ffffff;
+  gap: 23px;
+  padding: 2.5%;
+}
+.section-titles .section-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 40vw;
+  height: 35vh;
+  gap: 2vh;
+  background-color: #f8f8f8;
+}
+.section-titles .section-card h2 {
+  color: #0ee1e1;
+  text-align: right;
+  font: normal normal 900 30px/44px Heebo !important;
+}
+.section-titles .section-card p {
+  width: 60%;
+  margin-top: -3%;
+  color: #000000;
+  text-align: center;
+  font: normal normal normal 15px/22px Heebo;
+}
+.section-titles .section-card img {
+  width: 64px;
+  height: 64px;
+}
+
+.form-map-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.form-map-wrapper form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 43%;
+  height: 100%;
+  background-color: #f0ffff;
+  padding-block: 6% 9.9%;
+}
+.form-map-wrapper form .form-header {
+  margin-bottom: 3vh;
+}
+.form-map-wrapper form .form-header h2 {
+  width: 90%;
+  margin-left: 7.5%;
+  color: #090909;
+  text-align: right;
+  font: normal normal 900 46px/67px Heebo;
+}
+.form-map-wrapper form .form-header p {
+  width: 90%;
+  margin-left: 7.5%;
+  color: #000000;
+  text-align: right;
+  font: normal normal normal 15px/22px Heebo;
+}
+.form-map-wrapper form .input-section-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 100%;
+  margin: auto;
+}
+.form-map-wrapper form .input-section-wrapper label {
+  width: -moz-fit-content;
+  width: fit-content;
+  align-self: flex-end;
+  margin-top: 21.4px;
+  color: #2c2c2c;
+  text-align: right;
+  font: normal normal bold 13px/19px Heebo;
+}
+.form-map-wrapper form .input-section-wrapper input {
+  width: 426px;
+  height: 51px;
+  border: 0;
+  margin-top: 5px;
+  text-align: right;
+  font: normal normal normal 15px/22px Heebo;
+  background: #e5eeff 0% 0% no-repeat padding-box;
+}
+.form-map-wrapper form .input-section-wrapper .input-underline {
+  width: 426px;
+  height: 2px;
+  margin-top: -2px;
+  z-index: 3;
+  background: #0ee1e1 0% 0% no-repeat padding-box;
+}
+.form-map-wrapper form .input-section-wrapper textarea {
+  width: 426px;
+  height: 145px;
+  resize: none;
+  direction: rtl;
+  /*
+      WebKit scrollbar styling inside textarea block
+      Helping website:
+      https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp
+  */
+  border: 0;
+  margin-top: 5px;
+  text-align: right;
+  font: normal normal normal 15px/22px Heebo;
+  background: #e5eeff 0% 0% no-repeat padding-box;
+}
+.form-map-wrapper form .input-section-wrapper textarea::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgba(2, 228, 228, 0.7254901961);
+  border-radius: 10px;
+}
+.form-map-wrapper form .input-section-wrapper textarea::-webkit-scrollbar-thumb {
+  background-color: #008080;
+  border-radius: 10px;
+  height: 50px;
+}
+.form-map-wrapper form .input-section-wrapper textarea::-webkit-scrollbar-thumb:hover {
+  background-color: #015555;
+  border-radius: 10px;
+  height: 50px;
+  cursor: crosshair;
+}
+.form-map-wrapper form .input-section-wrapper textarea::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+.form-map-wrapper form .input-section-wrapper textarea::-webkit-resizer {
+  border-radius: 10px;
+}
+.form-map-wrapper form .submit-btn {
+  width: 427px;
+  height: 51px;
+  background: none;
+  border: 0;
+  background-color: #0ee1e1;
+  margin-top: 21.4px;
+  color: #000000;
+  text-align: center;
+  letter-spacing: 0.3px;
+  font: normal normal bold 20px/28px Heebo;
+}
+.form-map-wrapper .google-map-responsive {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 57%;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: #0ee1e1;
+  padding: 2.5%;
+}
+.form-map-wrapper .google-map-responsive iframe {
+  width: 943px;
+  height: 768px;
+  border: 0;
+}
+
+.contact-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  gap: 38px;
+  margin-bottom: 18.53px;
+  background-color: #ffffff;
+}
+.contact-options div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95px;
+  height: 95px;
+  background-color: #0ee1e1;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1607843137);
+  border-radius: 50%;
+  margin-block: 2.5%;
+}
+.contact-options div a img {
+  width: 31.6666666667px;
+  height: 31.6666666667px;
+}
+.contact-options div a #facebook {
+  width: 19.28px;
+  height: 36px;
+}
+.contact-options div a #instagram {
+  width: 31.52px;
+  height: 31.51px;
+}
+.contact-options div a #linkedin {
+  width: 31.5px;
+  height: 31.5px;
+}
+.contact-options div a #phone {
+  width: 27px;
+  height: 27px;
+}/*# sourceMappingURL=think_outside_the_box.css.map */

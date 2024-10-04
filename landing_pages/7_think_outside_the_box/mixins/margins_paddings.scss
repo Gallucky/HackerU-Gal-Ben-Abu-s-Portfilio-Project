@@ -1,0 +1,12 @@
+// Margins, Paddings and more - Mixins //
+
+@mixin reset-element {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@mixin fit-contents {
+    width: fit-content;
+    height: fit-content;
+}
