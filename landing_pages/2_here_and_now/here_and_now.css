@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(#281eff, #2dff8c);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-block: auto;
+    margin-inline: auto;
+
+    gap: 10px;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+
+    h1 {
+        color: #ffffff;
+        text-align: left;
+        text-shadow: 0px 0px 36px #00000087;
+        font: normal normal normal 160px/231px Satisfy;
+
+        @media (max-width: 768px) {
+            text-align: center;
+            font: normal normal normal 60px/86px Satisfy;
+        }
+    }
+
+    h2 {
+        color: #ffffff;
+        text-align: right;
+        font: normal normal normal 32px/38px Varela Round;
+
+        margin-top: -50px;
+
+        @media (max-width: 768px) {
+            width: fit-content;
+            height: fit-content;
+
+            text-align: center;
+            font: normal normal normal 18px/22px Varela Round;
+
+            margin-block: 20px;
+        }
+    }
+
+    p {
+        color: #f9f9f9;
+        text-align: center;
+        font: normal normal normal 16px/20px Varela Round;
+
+        margin-bottom: 10px;
+
+        @media (max-width: 768px) {
+            width: 85%;
+            margin-bottom: 50px;
+        }
+    }
+
+    form {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: center;
+
+        gap: 20.59px;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+        }
+
+        .form-area {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            justify-content: center;
+
+            label {
+                color: #f9f9f9;
+                text-align: center;
+                font: normal normal normal 16px/20px Varela Round;
+
+                @media (max-width: 768px) {
+                    font: normal normal normal 11px/13px Varela Round;
+                }
+            }
+
+            input {
+                width: 418px;
+                height: 50px;
+
+                background: #f6f6f624 0% 0% no-repeat padding-box;
+                border: 2px solid #ffffff;
+
+                @media (max-width: 768px) {
+                    width: 302px;
+                    height: 36px;
+                }
+            }
+
+            #email-label,
+            #email {
+                margin-right: 37.5px;
+
+                @media (max-width: 768px) {
+                    margin-right: 0;
+                }
+            }
+        }
+
+        #submit-btn {
+            width: 206px;
+            height: 50px;
+
+            margin-top: 3vh;
+
+            border: 0;
+            background: #ffffff 0% 0% no-repeat padding-box;
+
+            color: #1c1c1c;
+            text-align: center;
+            font: normal normal normal 16px/20px Varela Round;
+
+            @media (max-width: 768px) {
+                width: 300px;
+                height: 33px;
+
+                color: #2823fd;
+                font: normal normal normal 11px/13px Varela Round;
+            }
+        }
+    }
+}
