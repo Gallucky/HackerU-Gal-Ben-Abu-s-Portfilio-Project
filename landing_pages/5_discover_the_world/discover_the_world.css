@@ -274,7 +274,9 @@ body {
         #image-12,
         #image-13,
         #bottom-right-image-14 {
-            margin-top: 25%;
+            @media (max-width: 768px) {
+                margin-top: 25%;
+            }
         }
 
         #image-5 {
