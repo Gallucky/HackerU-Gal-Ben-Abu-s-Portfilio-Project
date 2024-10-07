@@ -28,99 +28,112 @@
     padding: 1vh;
 
     background-color: #a9a9a9;
-}
 
-.projects-area-content > h2 {
-    width: fit-content;
-    height: fit-content;
+    h2 {
+        width: fit-content;
+        height: fit-content;
 
-    color: var(--color-palette-accent);
-    font-size: 40px;
-}
+        color: var(--color-palette-accent);
+        font-size: 40px;
+    }
 
-.projects-area-content > p {
-    width: 50%;
-    color: var(--color-palette-dark-neutral);
-    font-weight: 500;
-}
+    p {
+        width: 50%;
+        color: var(--color-palette-dark-neutral);
+        font-weight: 500;
+    }
 
-.projects-cards-wrapper {
-    width: 80%;
+    .projects-cards-wrapper {
+        width: 80%;
 
-    border: 1px solid black;
-    padding: 1vh;
-}
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
 
-.project-card {
-    width: fit-content;
-    height: 100%;
-    /* border: 1px solid blue; */
+        padding: 1vh;
+        gap: 20px;
+    }
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1vh;
+    .project-card {
+        width: fit-content;
+        height: 100%;
+        /* border: 1px solid blue; */
 
-    background-color: rgb(166, 228, 254);
-    border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1vh;
 
-    /*
-        Shadow help specifically with the values
-        themselves is from conversation with chatgpt.
-    */
-    --box-shadow-color: rgba(18, 222, 222, 0.435);
+        background-color: rgb(166, 228, 254);
+        border-radius: 8px;
 
-    /* Regular shadow */
-    box-shadow: 0px 1px 6.25px rgba(0, 0, 0, 0.2), 0px 5px 12.5px rgba(0, 0, 0, 0.4);
+        /*
+            Shadow help specifically with the values
+            themselves is from conversation with chatgpt.
+        */
+        --box-shadow-color: rgba(18, 222, 222, 0.435);
 
-    /* Deeper shadow */
-    transform: perspective(1000px);
+        /* Regular shadow */
+        box-shadow: 0px 1px 6.25px rgba(0, 0, 0, 0.2), 0px 5px 12.5px rgba(0, 0, 0, 0.4);
 
-    border: 3px groove black;
+        /* Deeper shadow */
+        transform: perspective(1000px);
 
-    /* Initial tilt */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    cursor: pointer;
-}
+        border: 3px groove black;
 
-.project-card:hover {
-    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(20px);
-    box-shadow: 0px 5px 7.5px rgba(0, 0, 0, 0.2), 0px 10px 15px rgba(0, 0, 0, 0.4);
-}
+        /* Initial tilt */
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
-.project-card img {
-    width: 100%;
-    height: 30%;
-    border-radius: 8px 8px 0 0;
-}
+        .project-image {
+            width: 100%;
+            height: 30%;
+            border-radius: 8px 8px 0 0;
+        }
 
-.project-card .short-project-description {
-    margin: 1vh 0;
-}
+        .short-project-description {
+            width: 90%;
+            margin: 1vh 0;
+            overflow-wrap: break-word;
+        }
 
-.project-card .link-to-landing-page {
-    width: 80%;
-    height: fit-content;
+        .link-to-landing-page {
+            width: 80%;
+            height: fit-content;
 
-    border-radius: 16px;
-    border: 3px groove red;
-    background-color: var(--color-palette-additional-accent);
+            border-radius: 16px;
+            border: 3px groove red;
+            background-color: var(--color-palette-additional-accent);
 
-    margin-bottom: 10px;
+            margin-bottom: 10px;
 
-    /* Removing the default link decoration */
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
+            /* Removing the default link decoration */
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
 
-    transition: all 0.5s ease-in-out;
-}
+            transition: all 0.5s ease-in-out;
+        }
 
-/* When the button to go to project page is hovered. */
-.project-card .link-to-landing-page:hover {
-    color: white;
-    text-shadow: 3px 3px 5px gray;
+        /* When the button to go to project page is hovered. */
+        .link-to-landing-page:hover {
+            color: white;
+            text-shadow: 3px 3px 5px gray;
+        }
+
+        .languages-used-in-project-preview {
+            img {
+                width: 32px;
+                height: 32px;
+            }
+        }
+    }
+
+    .project-card:hover {
+        transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(20px);
+        box-shadow: 0px 5px 7.5px rgba(0, 0, 0, 0.2), 0px 10px 15px rgba(0, 0, 0, 0.4);
+    }
 }
 
 /* #endregion */
