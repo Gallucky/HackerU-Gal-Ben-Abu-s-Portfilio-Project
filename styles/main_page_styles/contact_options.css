@@ -8,20 +8,16 @@
     justify-content: center;
 
     gap: 38px;
-    margin-bottom: 18.53px;
     background-color: #ffffff;
+    padding: 1vh;
 
     .contact-option {
-        width: 48px;
-        height: 48px;
-
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
 
         object-fit: cover;
-
-        border: 1px solid black;
+        gap: 10px;
     }
 }
