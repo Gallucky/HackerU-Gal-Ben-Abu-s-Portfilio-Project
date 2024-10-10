@@ -1,0 +1,27 @@
+.contact-options {
+    width: 100%;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    gap: 38px;
+    margin-bottom: 18.53px;
+    background-color: #ffffff;
+
+    .contact-option {
+        width: 48px;
+        height: 48px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        object-fit: cover;
+
+        border: 1px solid black;
+    }
+}

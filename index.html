@@ -5,15 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Gal Ben Abu's Portfolio Project</title>
 
-        <link rel="stylesheet" href="styles/globals/general.css" />
-        <link rel="stylesheet" href="styles/globals/toolbar.css" />
-        <link rel="stylesheet" href="styles/main_page_styles/header_area.css" />
-        <link rel="stylesheet" href="styles/main_page_styles/programming_languages.css" />
-        <link rel="stylesheet" href="styles/main_page_styles/seperator.css" />
-        <link rel="stylesheet" href="styles/main_page_styles/about.css" />
-        <link rel="stylesheet" href="styles/main_page_styles/services_and_projects.css" />
-        <link rel="stylesheet" href="styles/main_page_styles/contact.css" />
-        <link rel="stylesheet" href="styles/main_page_styles/license.css" />
+        <link rel="stylesheet" href="./styles/globals/general.css" />
+        <link rel="stylesheet" href="./styles/globals/toolbar.css" />
+        <link rel="stylesheet" href="./styles/globals/license.css" />
+        <link rel="stylesheet" href="./styles/main_page_styles/header_area.css" />
+        <link rel="stylesheet" href="./styles/main_page_styles/programming_languages.css" />
+        <link rel="stylesheet" href="./styles/main_page_styles/seperator.css" />
+        <link rel="stylesheet" href="./styles/main_page_styles/about.css" />
+        <link rel="stylesheet" href="./styles/main_page_styles/services_and_projects.css" />
+        <link rel="stylesheet" href="./styles/main_page_styles/contact.css" />
+        <link rel="stylesheet" href="./styles/main_page_styles/license.css" />
 
         <!-- Connecting to google fonts api -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -124,8 +125,8 @@
                         למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור
                         ליאמום בלינך חקיגו רוגצה.
                     </p>
-                    <a href="#" id="download-resume-link">
-                        <span class="outline-text">להורדת קורות חיים</span>
+                    <a href="#" id="download-resume-link" class="outline-text">
+                        להורדת קורות חיים
                     </a>
                 </div>
             </div>
@@ -355,11 +356,103 @@
             </div>
         </div>
 
-        <br /><br /><br /><br /><br /><br /><br /><br />
         <!-- A form section of 'Contact Us' -->
-        <div class="contact-section"></div>
+        <div class="contact-section">
+            <img
+                src="./images/envelope.png"
+                alt="The main logo image for the contact section / area" />
+            <form action="">
+                <div class="form-title">
+                    <div class="form-title">
+                        <h2 class="outline-text">צור קשר</h2>
+                        <p>
+                            לורם איפסום או בקיצור ליפסום, הוא מלל מקובל וחסר משמעות המשמש “ממלא
+                            מקום” בעת עריכ.
+                        </p>
+                    </div>
+
+                    <div class="areas-wrapper">
+                        <div class="full-name-area">
+                            <label for="user-full-name" class="outline-text">שם מלא</label>
+                            <input type="text" id="user-full-name" required />
+                        </div>
+                        <div class="email-area">
+                            <label for="user-email" class="outline-text">דוא״ל</label>
+                            <input type="email" id="user-email" required />
+                        </div>
+                        <div class="phone-number-area">
+                            <label for="user-phone-number" class="outline-text">טלפון</label>
+                            <input
+                                type="tel"
+                                id="user-phone-number"
+                                placeholder="000-0000000"
+                                pattern="[0-9](3)-[0-9](7)"
+                                required />
+                            <!--
+                                This site helped me for the place holder and pattern based on the first example I wrote a pattern and a place holder:
+                                https://www.w3schools.com/tags/att_input_type_tel.asp
+                            -->
+                        </div>
+                        <div class="message-area">
+                            <label for="user-message-contents" class="outline-text"
+                                >תוכן ההודעה</label
+                            >
+                            <textarea
+                                name="user-message-contents"
+                                id="user-message-contents"
+                                required></textarea>
+                        </div>
+                    </div>
+
+                    <input type="submit" id="submit-btn" class="outline-text" value="שליחה" />
+                </div>
+            </form>
+        </div>
+
+        <!-- Contact Area -->
+        <div class="contact-options">
+            <div id="location-option" class="contact-option">
+                <img
+                    src="./images/contact-options/Icon material-location-on.svg"
+                    alt="option - location point logo" />
+                <p>ישראל, אילת</p>
+            </div>
+            <div id="email-option" class="contact-option">
+                <img
+                    src="./images/contact-options/Icon simple-email.svg"
+                    alt="option - email/@ logo" />
+                <p>exampleEmail@gmail.com</p>
+            </div>
+            <div id="whatsapp-option" class="contact-option">
+                <img
+                    src="./images/contact-options/Icon simple-whatsapp.svg"
+                    alt="option - whatsapp logo" />
+                <p>051234567</p>
+            </div>
+            <div id="phone-option" class="contact-option">
+                <img
+                    src="./images/contact-options/Icon simple-whatsapp-1.svg"
+                    alt="option - phone logo" />
+                <p>051234567</p>
+            </div>
+            <div id="linkedin-option" class="contact-option">
+                <img
+                    src="./images/contact-options/Icon awesome-linkedin-in.svg"
+                    alt="option - linkedin logo" />
+                <p>גל בן אבו גל בן אבו</p>
+            </div>
+            <div id="facebook-option" class="contact-option">
+                <img
+                    src="./images/contact-options/Icon awesome-facebook-f.svg"
+                    alt="option - facebook logo" />
+                <p>#GAL_BA.GAL_BA</p>
+            </div>
+        </div>
 
         <!-- A license information -->
-        <div class="license-footer-bar"></div>
+        <div class="license-footer-bar outline-text">
+            <p class="name-year">Gal Ben Abu 2024</p>
+            <p class="license-message">כל הזכויות שמורות לגל בן אבו</p>
+        </div>
     </body>
 </html>

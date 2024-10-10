@@ -14,6 +14,7 @@
 
     background-color: var(--color-palette-complementary);
     border: 1px solid black;
+    border-radius: 16px;
 
     display: flex;
     justify-content: center;
@@ -56,7 +57,7 @@
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    border: 1px solid black;
+    border: 3px groove black;
     padding: 1px;
     margin: 1px;
     background-image: url("..\\..\\images\\profile.jpg");
@@ -64,11 +65,12 @@
     background-repeat: no-repeat;
     background-size: cover;
 
-    transition: all 2s ease-in-out;
+    transition: all 1s ease-in-out;
 }
 
 #profile-image:hover {
-    transform: translate(30vw, 50vh) scale(5);
+    /* transform: translate(30vw, 50vh) scale(5); */
+    transform: translateX(-0.5vw) scale(1.25);
 }
 
 #profile-name {

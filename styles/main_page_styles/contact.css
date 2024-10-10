@@ -1,6 +1,150 @@
-/* #region ============ Contact Area ============ */
+/* ============ Contact Area ============ */
 
 .contact-section {
-}
+    width: 100vw;
+    height: 100vh;
 
-/* #endregion */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    position: relative;
+
+    border: 1px solid black;
+
+    img {
+        width: 40vw;
+        height: 70vh;
+
+        position: absolute;
+        top: 0;
+        left: 10px;
+
+        object-fit: cover;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        margin-right: 10vw;
+
+        .form-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            h2 {
+                --outline-thickness: 2px;
+                font: normal normal 900 36px/53px Heebo;
+                color: var(--color-palette-additional-accent);
+            }
+
+            p {
+                width: 35vw;
+                font: normal normal normal 22px Heebo;
+            }
+        }
+
+        .areas-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            gap: 2vh;
+
+            label {
+                margin-bottom: 0.5vh;
+
+                color: var(--color-palette-accent);
+                font: normal normal bold 18px/22px Heebo;
+
+                cursor: url("../../images/select-cursor_24x24.png"), text;
+            }
+
+            input {
+                width: 35vw;
+                height: 5vh;
+                direction: rtl;
+
+                border: 3px ridge black;
+                font: normal normal normal 18px Heebo;
+                background: #f6f6f67f 0% 0% no-repeat padding-box;
+
+                cursor: url("../../images/select-cursor_24x24.png"), text;
+            }
+
+            .full-name-area {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                justify-content: center;
+
+                margin-top: 3vh;
+            }
+
+            .email-area {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                justify-content: center;
+            }
+
+            .phone-number-area {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                justify-content: center;
+            }
+
+            .message-area {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                justify-content: center;
+
+                textarea {
+                    width: 35vw;
+                    height: 20vh;
+
+                    resize: none;
+                    direction: rtl;
+
+                    border: 3px ridge black;
+                    font: normal normal normal 18px Heebo;
+                    background: #f6f6f67f 0% 0% no-repeat padding-box;
+
+                    cursor: url("../../images/select-cursor_24x24.png"), text;
+                }
+            }
+        }
+
+        #submit-btn {
+            width: 35vw;
+            height: 5vh;
+
+            margin-top: 3vh;
+
+            border: 3px groove black;
+            border-radius: 10px;
+            background: var(--programming-languages-background-color) 0% 0% no-repeat padding-box;
+
+            letter-spacing: 0.33px;
+            color: var(--color-palette-complementary);
+            font: normal normal bold 18px/22px Heebo;
+
+            transition: all 1s ease-in-out;
+        }
+
+        #submit-btn:hover {
+            transform: scale(0.9);
+            color: white;
+            cursor: url("../../images/cursor-click_24x24.png"), pointer;
+        }
+    }
+}

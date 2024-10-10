@@ -1,0 +1,26 @@
+/* #region ============ License Area ============ */
+
+.license-footer-bar {
+    width: 100vw;
+    height: 5vh;
+
+    display: flex;
+    gap: 65vw;
+    align-items: center;
+    padding: 3vh 3vw;
+
+    background-color: var(--programming-languages-background-color);
+    border-bottom: 3px ridge var(--color-palette-additional-accent);
+    color: var(--color-palette-accent);
+    font: normal normal normal 20px/29px Heebo;
+
+    .name-year {
+        justify-self: flex-start;
+    }
+
+    .license-message {
+        justify-self: flex-end;
+    }
+}
+
+/* #endregion */
