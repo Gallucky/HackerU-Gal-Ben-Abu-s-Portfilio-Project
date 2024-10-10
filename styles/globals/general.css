@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
 /* Defining global properties / variables for the mainly used colors.
 Primary Color: Charcoal
 Secondary Color: Teal
@@ -15,6 +17,7 @@ Accent Color: Cyan / Aqua
 }
 
 /* Remove any existing elements margins and paddings */
+
 * {
     margin: 0;
     padding: 0;
