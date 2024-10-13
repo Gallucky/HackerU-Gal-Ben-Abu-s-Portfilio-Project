@@ -28,18 +28,32 @@
 
     background-color: #a9a9a9;
 
+    @media (max-width: 768px) {
+        width: 80%;
+        padding: 5vw;
+    }
+
     h2 {
         width: fit-content;
         height: fit-content;
 
         color: var(--color-palette-accent);
         font-size: 40px;
+
+        @media (max-width: 768px) {
+            font-size: 30px;
+        }
     }
 
     p {
         width: 50%;
         color: var(--color-palette-dark-neutral);
         font-weight: 500;
+
+        @media (max-width: 768px) {
+            width: 100%;
+            font-weight: 400;
+        }
     }
 
     .projects-cards-wrapper {
@@ -52,6 +66,10 @@
 
         padding: 1vh;
         gap: 20px;
+
+        @media (max-width: 768px) {
+            padding: 0;
+        }
     }
 
     .project-card {

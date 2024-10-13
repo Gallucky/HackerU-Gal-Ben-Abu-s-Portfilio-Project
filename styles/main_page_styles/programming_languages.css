@@ -24,6 +24,11 @@
 
     font-size: 1.25rem;
     color: var(--color-palette-accent);
+
+    @media (max-width: 768px) {
+        width: 100%;
+        font-size: 0.8em;
+    }
 }
 
 .programming-languages-and-more-area {
@@ -169,17 +174,39 @@ ht. */
 	Got help from chatgpt See the end of the conversation in:
 	"Projects\Gal Ben Abu's Portfolio Project\images\advance_css_area_help+source\Rating Stars Selector Improvement - Less Repeating Answer From ChatGPT Model 4o"
 */
-.language-card:hover[language="HTML"] ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(-n + 1),
-.language-card:hover[language="CSS"] ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(-n + 3),
-.language-card:hover[language="JavaScript"] ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(-n + 3),
-.language-card:hover[language="Java"] ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(-n + 3),
-.language-card:hover[language="Python"] ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(-n + 2),
-.language-card:hover[language="Powershell"] ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(-n + 3),
-.language-card:hover[language="C#"] ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(-n + 3),
-.language-card:hover[language="C++"] ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(-n + 3),
-.language-card:hover[language="C"] ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(-n + 4),
-.language-card:hover[language="Batch"] ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(-n + 4),
-.language-card:hover[language="Assembly"] ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(-n + 5) {
+.language-card:hover[language="HTML"]
+    ~ .programming-language-difficulty-rating
+    .difficulty-rating-star:nth-child(-n + 1),
+.language-card:hover[language="CSS"]
+    ~ .programming-language-difficulty-rating
+    .difficulty-rating-star:nth-child(-n + 3),
+.language-card:hover[language="JavaScript"]
+    ~ .programming-language-difficulty-rating
+    .difficulty-rating-star:nth-child(-n + 3),
+.language-card:hover[language="Java"]
+    ~ .programming-language-difficulty-rating
+    .difficulty-rating-star:nth-child(-n + 3),
+.language-card:hover[language="Python"]
+    ~ .programming-language-difficulty-rating
+    .difficulty-rating-star:nth-child(-n + 2),
+.language-card:hover[language="Powershell"]
+    ~ .programming-language-difficulty-rating
+    .difficulty-rating-star:nth-child(-n + 3),
+.language-card:hover[language="C#"]
+    ~ .programming-language-difficulty-rating
+    .difficulty-rating-star:nth-child(-n + 3),
+.language-card:hover[language="C++"]
+    ~ .programming-language-difficulty-rating
+    .difficulty-rating-star:nth-child(-n + 3),
+.language-card:hover[language="C"]
+    ~ .programming-language-difficulty-rating
+    .difficulty-rating-star:nth-child(-n + 4),
+.language-card:hover[language="Batch"]
+    ~ .programming-language-difficulty-rating
+    .difficulty-rating-star:nth-child(-n + 4),
+.language-card:hover[language="Assembly"]
+    ~ .programming-language-difficulty-rating
+    .difficulty-rating-star:nth-child(-n + 5) {
     background-image: url("../../images/full_star.png");
 }
 
@@ -187,10 +214,18 @@ ht. */
 
 /* #region ⤷ Half Stars <-| */
 
-.language-card:hover[language="JavaScript"] ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(4),
-.language-card:hover[language="Python"] ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(3),
-.language-card:hover[language="Powershell"] ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(4),
-.language-card:hover[language="C++"] ~ .programming-language-difficulty-rating .difficulty-rating-star:nth-child(4) {
+.language-card:hover[language="JavaScript"]
+    ~ .programming-language-difficulty-rating
+    .difficulty-rating-star:nth-child(4),
+.language-card:hover[language="Python"]
+    ~ .programming-language-difficulty-rating
+    .difficulty-rating-star:nth-child(3),
+.language-card:hover[language="Powershell"]
+    ~ .programming-language-difficulty-rating
+    .difficulty-rating-star:nth-child(4),
+.language-card:hover[language="C++"]
+    ~ .programming-language-difficulty-rating
+    .difficulty-rating-star:nth-child(4) {
     background-image: url("../../images/half_star.png");
 }
 
@@ -268,17 +303,39 @@ ht. */
 	"Projects\Gal Ben Abu's Portfolio Project\images\advance_css_area_help+source
 		\Rating Stars Selector Improvement - Less Repeating Answer From ChatGPT Model 4o"
 */
-.language-card:hover[language="HTML"] ~ .programming-language-experience .experience-star:nth-child(-n + 5),
-.language-card:hover[language="CSS"] ~ .programming-language-experience .experience-star:nth-child(-n + 3),
-.language-card:hover[language="JavaScript"] ~ .programming-language-experience .experience-star:nth-child(-n + 4),
-.language-card:hover[language="Java"] ~ .programming-language-experience .experience-star:nth-child(-n + 4),
-.language-card:hover[language="Python"] ~ .programming-language-experience .experience-star:nth-child(-n + 4),
-.language-card:hover[language="Powershell"] ~ .programming-language-experience .experience-star:nth-child(-n + 4),
-.language-card:hover[language="C#"] ~ .programming-language-experience .experience-star:nth-child(-n + 4),
-.language-card:hover[language="C++"] ~ .programming-language-experience .experience-star:nth-child(-n + 3),
-.language-card:hover[language="C"] ~ .programming-language-experience .experience-star:nth-child(-n + 3),
-.language-card:hover[language="Batch"] ~ .programming-language-experience .experience-star:nth-child(-n + 3),
-.language-card:hover[language="Assembly"] ~ .programming-language-experience .experience-star:nth-child(-n + 1) {
+.language-card:hover[language="HTML"]
+    ~ .programming-language-experience
+    .experience-star:nth-child(-n + 5),
+.language-card:hover[language="CSS"]
+    ~ .programming-language-experience
+    .experience-star:nth-child(-n + 3),
+.language-card:hover[language="JavaScript"]
+    ~ .programming-language-experience
+    .experience-star:nth-child(-n + 4),
+.language-card:hover[language="Java"]
+    ~ .programming-language-experience
+    .experience-star:nth-child(-n + 4),
+.language-card:hover[language="Python"]
+    ~ .programming-language-experience
+    .experience-star:nth-child(-n + 4),
+.language-card:hover[language="Powershell"]
+    ~ .programming-language-experience
+    .experience-star:nth-child(-n + 4),
+.language-card:hover[language="C#"]
+    ~ .programming-language-experience
+    .experience-star:nth-child(-n + 4),
+.language-card:hover[language="C++"]
+    ~ .programming-language-experience
+    .experience-star:nth-child(-n + 3),
+.language-card:hover[language="C"]
+    ~ .programming-language-experience
+    .experience-star:nth-child(-n + 3),
+.language-card:hover[language="Batch"]
+    ~ .programming-language-experience
+    .experience-star:nth-child(-n + 3),
+.language-card:hover[language="Assembly"]
+    ~ .programming-language-experience
+    .experience-star:nth-child(-n + 1) {
     background-image: url("../../images/full_star.png");
 }
 
@@ -291,10 +348,18 @@ ht. */
 	"Projects\Gal Ben Abu's Portfolio Project\images\advance_css_area_help+source
 		\Rating Stars Selector Improvement - Less Repeating Answer From ChatGPT Model 4o"
 */
-.language-card:hover[language="CSS"] ~ .programming-language-experience .experience-star:nth-child(4),
-.language-card:hover[language="Java"] ~ .programming-language-experience .experience-star:nth-child(5),
-.language-card:hover[language="C++"] ~ .programming-language-experience .experience-star:nth-child(4),
-.language-card:hover[language="Batch"] ~ .programming-language-experience .experience-star:nth-child(4) {
+.language-card:hover[language="CSS"]
+    ~ .programming-language-experience
+    .experience-star:nth-child(4),
+.language-card:hover[language="Java"]
+    ~ .programming-language-experience
+    .experience-star:nth-child(5),
+.language-card:hover[language="C++"]
+    ~ .programming-language-experience
+    .experience-star:nth-child(4),
+.language-card:hover[language="Batch"]
+    ~ .programming-language-experience
+    .experience-star:nth-child(4) {
     background-image: url("../../images/half_star.png");
 }
 

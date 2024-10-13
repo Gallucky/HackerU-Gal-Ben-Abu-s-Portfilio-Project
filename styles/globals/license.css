@@ -5,14 +5,26 @@
     height: 5vh;
 
     display: flex;
-    gap: 65vw;
     align-items: center;
+    justify-content: center;
     padding: 3vh 3vw;
+    gap: 70vw;
 
     background-color: var(--programming-languages-background-color);
     border-bottom: 3px ridge var(--color-palette-additional-accent);
     color: var(--color-palette-accent);
     font: normal normal normal 20px/29px Heebo;
+
+    @media (max-width: 768px) {
+        height: 10vh;
+
+        flex-direction: column;
+
+        padding-block: 4vh;
+        gap: 0;
+
+        font-size: 1.1em;
+    }
 
     .name-year {
         justify-self: flex-start;

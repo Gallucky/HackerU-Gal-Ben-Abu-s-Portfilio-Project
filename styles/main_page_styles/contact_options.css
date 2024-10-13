@@ -11,6 +11,38 @@
     background-color: #ffffff;
     padding: 1vh;
 
+    @media (max-width: 768px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 20px;
+
+        #location-option {
+            grid-area: 1 / 1 / 1 / 1;
+        }
+
+        #email-option {
+            grid-area: 1 / 2 / 1 / 2;
+            font-size: 0.8em;
+        }
+
+        #whatsapp-option {
+            grid-area: 2 / 1 / 2 / 1;
+        }
+
+        #phone-option {
+            grid-area: 2 / 2 / 2 / 2;
+        }
+
+        #linkedin-option {
+            grid-area: 3 / 1 / 3 / 1;
+        }
+
+        #facebook-option {
+            grid-area: 3 / 2 / 3 / 2;
+        }
+    }
+
     .contact-option {
         display: flex;
         flex-direction: column;
@@ -19,5 +51,10 @@
 
         object-fit: cover;
         gap: 10px;
+
+        @media (max-width: 768px) {
+            width: 100%;
+            margin-block: 20px;
+        }
     }
 }
