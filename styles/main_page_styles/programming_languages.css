@@ -46,6 +46,13 @@
 
     border-bottom: 1px solid black;
     position: relative;
+
+    @media (max-width: 768px) {
+        display: grid;
+        grid-template-columns: 3fr repeat(5, 1fr) 3fr;
+        grid-template-rows: 1fr repeat(3, 1fr) 1fr;
+        height: 25vh;
+    }
 }
 
 /* Todo: To figure out a way to make a title and then a star experience rating of the programming languages. Maybe even a info button that when it is hovered then it will show a text with more information about it... */
@@ -60,6 +67,8 @@
     background-position: center center;
     background-size: contain;
     background-repeat: no-repeat;
+
+    margin: 2.5vw;
 }
 
 /* The hovered language card */
@@ -506,6 +515,10 @@ ht. */
     background-image: url("../../images/languages_logos/powershell.png");
     /* row-start / col-start / row-end / col-end */
     grid-area: 2 / 7 / 2 / 7;
+
+    @media (max-width: 768px) {
+        grid-area: 3 / 2 / 3 / 2;
+    }
 }
 
 .language-card:hover#powershell ~ .curr-lang-logo {
@@ -527,6 +540,10 @@ ht. */
     background-image: url("../../images/languages_logos/csharp.png");
     /* row-start / col-start / row-end / col-end */
     grid-area: 2 / 8 / 2 / 8;
+
+    @media (max-width: 768px) {
+        grid-area: 3 / 3 / 3 / 3;
+    }
 }
 
 .language-card:hover#csharp ~ .curr-lang-logo {
@@ -548,6 +565,10 @@ ht. */
     background-image: url("../../images/languages_logos/c++.png");
     /* row-start / col-start / row-end / col-end */
     grid-area: 2 / 9 / 2 / 9;
+
+    @media (max-width: 768px) {
+        grid-area: 3 / 4 / 3 / 4;
+    }
 }
 
 .language-card:hover#cpp ~ .curr-lang-logo {
@@ -578,6 +599,9 @@ ht. */
     background-image: url("../../images/languages_logos/c.png");
     /* row-start / col-start / row-end / col-end */
     grid-area: 2 / 10 / 2 / 10;
+    @media (max-width: 768px) {
+        grid-area: 3 / 5 / 3 / 5;
+    }
 }
 
 .language-card:hover#c ~ .curr-lang-logo {
@@ -599,6 +623,10 @@ ht. */
     background-image: url("../../images/languages_logos/batch.png");
     /* row-start / col-start / row-end / col-end */
     grid-area: 2 / 11 / 2 / 11;
+
+    @media (max-width: 768px) {
+        grid-area: 3 / 6 / 3 / 6;
+    }
 }
 
 .language-card:hover#batch ~ .curr-lang-logo {
@@ -620,6 +648,10 @@ ht. */
     background-image: url("../../images/languages_logos/assembly.png");
     /* row-start / col-start / row-end / col-end */
     grid-area: 2 / 12 / 2 / 12;
+    @media (max-width: 768px) {
+        grid-area: 4 / 4 / 4 / 4;
+        margin-top: -2.5px;
+    }
 }
 
 .language-card:hover#assembly ~ .curr-lang-logo {
