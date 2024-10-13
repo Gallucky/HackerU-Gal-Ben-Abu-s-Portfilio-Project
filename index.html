@@ -32,8 +32,8 @@
     </head>
 
     <body>
-        <!-- The tool bar that contains the profile picture and the anchor links in the website. -->
-        <div class="tool-bar">
+        <!-- The nav tool bar that contains the profile picture and the anchor links in the website. -->
+        <nav class="tool-bar">
             <div class="tool-bar-content-wrapper">
                 <div class="profile-area">
                     <div id="profile-image"></div>
@@ -43,13 +43,16 @@
                         alt="Gal Ben Abu" />
                 </div>
                 <div class="links outline-text">
-                    <a href="">ראשי</a>
-                    <a href="">אודות</a>
-                    <a href="">שירותים</a>
-                    <a href="">צור קשר</a>
+                    <a href="#main">ראשי</a>
+                    <a href="#about">אודות</a>
+                    <a href="#services">שירותים</a>
+                    <a href="#contact">צור קשר</a>
                 </div>
             </div>
-        </div>
+        </nav>
+
+        <!-- Anchor link target location to be not hide any content. -->
+        <span id="main" class="anchor-linked"></span>
 
         <!-- The first div / area / section that the user sees when entering the website -->
         <div class="header-area">
@@ -117,6 +120,9 @@
         <!-- A separator that I can style -->
         <div class="separator"></div>
 
+        <!-- Anchor link target location to be not hide any content. -->
+        <span id="about" class="anchor-linked"></span>
+
         <!-- This is the about me section in my project -->
         <div class="about-section">
             <div class="about-content-wrapper">
@@ -136,6 +142,9 @@
                 </div>
             </div>
         </div>
+
+        <!-- Anchor link target location to be not hide any content. -->
+        <span id="services" class="anchor-linked"></span>
 
         <!-- The list of my work and my projects -->
         <div class="services-projects">
@@ -360,6 +369,9 @@
                 </div>
             </div>
         </div>
+
+        <!-- Anchor link target location to be not hide any content. -->
+        <span id="contact" class="anchor-linked"></span>
 
         <!-- A form section of 'Contact Us' -->
         <div class="contact-section">

@@ -12,6 +12,7 @@ Accent Color: Cyan / Aqua
     --color-palette-additional-accent: #e74c3c;
 
     --programming-languages-background-color: #2e6b77;
+    scroll-behavior: smooth;
 }
 
 /* Remove any existing elements margins and paddings */
@@ -102,4 +103,9 @@ span {
 :disabled {
     cursor: url("../../images/unavailable-cursor_24x24.png"), not-allowed;
     cursor: no-drop;
+}
+
+.anchor-linked {
+    padding-top: 75px;
+    margin-top: -75px;
 }
