@@ -1,4 +1,4 @@
-/* #region ============ Toolbar Area ============ */
+/* ============ Toolbar Area ============ */
 
 /* The top / main container of this area */
 .tool-bar {
@@ -25,6 +25,10 @@
     @media (max-width: 768px) {
         width: 100%;
         height: 10vh;
+
+        border-radius: 0;
+        border-top-right-radius: 16px;
+        border-top-left-radius: 16px;
     }
 
     /*
@@ -59,11 +63,11 @@
     gap: 5px;
 
     @media (max-width: 768px) {
-        width: 50%;
+        width: 60%;
         height: 100%;
 
         left: 10px;
-        gap: 20px;
+        gap: 5vw;
     }
 
     #profile-image {
@@ -97,14 +101,17 @@
     #profile-name {
         width: 100px;
         height: 75%;
-        transform: scale(2);
+
         margin: 0 3.5vw;
         filter: brightness(250%) hue-rotate(230deg);
+
+        transform: scale(2);
         transition: filter 5s ease-in-out;
 
         @media (max-width: 768px) {
-            width: 60px;
+            width: 35%;
             height: fit-content;
+            margin: 0 7.5vw;
         }
     }
 
@@ -129,54 +136,64 @@
     right: 50px;
 
     @media (max-width: 768px) {
-        width: 50%;
+        width: 100.5%;
         height: 100%;
+
+        z-index: -1;
+
+        border-bottom-right-radius: 16px;
+        border-bottom-left-radius: 16px;
+        border: 1px solid black;
+        border-top: none;
+
+        top: 60%;
+        right: -1px;
+
+        background-color: var(--color-palette-complementary);
+    }
+
+    /* Each link in the links class */
+    a {
+        width: max-content;
+        position: relative;
+        text-decoration: none;
+
+        font-family: "Rubik";
+        color: var(--color-palette-accent);
+
+        transition: all 1s ease-in-out;
+    }
+
+    /* When the element is hovered... */
+    a:hover {
+        transform: scale(1.2);
+    }
+
+    /* This defines the same element but for for the underline gradient */
+    a::before {
+        content: "";
+        background: var(--color-palette-dominant);
+
+        background: linear-gradient(to right, #0d1b2a, #1e2a78, #3a1c71, #6a1b9a, #2c3e50, #00bcd4);
+
+        border-radius: 2px;
+        height: 2px;
+        width: 100%;
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+    }
+
+    /* White gradient color effect when hovered - for the underline */
+    a:hover::before {
+        background: linear-gradient(
+            to left,
+            rgba(255, 255, 255, 1),
+            rgba(255, 255, 255, 0.9),
+            rgba(255, 255, 255, 0.8),
+            rgba(255, 255, 255, 0.7)
+        );
+
+        transform: scale(1.1);
     }
 }
-
-/* Each link in the links class */
-.links > a {
-    width: max-content;
-    position: relative;
-    text-decoration: none;
-
-    font-family: "Rubik";
-    color: var(--color-palette-accent);
-
-    transition: all 1s ease-in-out;
-}
-
-/* When the element is hovered... */
-.links > a:hover {
-    transform: scale(1.2);
-}
-
-/* This defines the same element but for for the underline gradient */
-.links > a::before {
-    content: "";
-    background: var(--color-palette-dominant);
-
-    background: linear-gradient(to right, #0d1b2a, #1e2a78, #3a1c71, #6a1b9a, #2c3e50, #00bcd4);
-
-    border-radius: 2px;
-    height: 2px;
-    width: 100%;
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-}
-
-/* White gradient color effect when hovered - for the underline */
-.links > a:hover::before {
-    background: linear-gradient(
-        to left,
-        rgba(255, 255, 255, 1),
-        rgba(255, 255, 255, 0.9),
-        rgba(255, 255, 255, 0.8),
-        rgba(255, 255, 255, 0.7)
-    );
-
-    transform: scale(1.1);
-}
-
-/* #endregion */
