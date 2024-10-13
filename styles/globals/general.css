@@ -25,6 +25,10 @@ Accent Color: Cyan / Aqua
     cursor: url("../../images/cursor_24x24.png"), default;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     background-color: var(--color-palette-dominant);
     font-family: "Rubik";
