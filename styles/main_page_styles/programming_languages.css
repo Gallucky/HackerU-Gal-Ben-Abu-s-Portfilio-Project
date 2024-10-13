@@ -68,7 +68,9 @@
     background-size: contain;
     background-repeat: no-repeat;
 
-    margin: 2.5vw;
+    @media (max-width: 768px) {
+        margin: 2.5vw;
+    }
 }
 
 /* The hovered language card */
