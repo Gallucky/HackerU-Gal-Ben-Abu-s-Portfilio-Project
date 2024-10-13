@@ -9,7 +9,7 @@
     /* position: sticky; */
     position: fixed;
     /* Making sure this area is top most layer. */
-    top: 1vh;
+    top: 0.5vh;
 
     z-index: 9999;
 
