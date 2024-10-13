@@ -6,7 +6,8 @@
     width: 75%;
     height: 75px;
 
-    position: sticky;
+    /* position: sticky; */
+    position: fixed;
     /* Making sure this area is top most layer. */
     top: 1vh;
 
@@ -133,7 +134,7 @@
 
     @media (max-width: 768px) {
         width: 100.5%;
-        height: 0;
+        height: 100%;
 
         z-index: -1;
 
@@ -142,11 +143,9 @@
         border: 1px solid black;
         border-top: none;
 
+        display: none;
         top: 60%;
         right: -1px;
-
-        visibility: hidden;
-        opacity: 0;
 
         background-color: var(--color-palette-complementary);
     }
@@ -216,14 +215,8 @@
     }
 }
 
-#hamburger-menu-icon:hover + .links {
+#hamburger-menu-icon:hover + .links,
+.links:hover,
+.links > a:hover {
     display: flex;
-    visibility: visible;
-    opacity: 1;
-    height: 100%;
-
-    a {
-        z-index: 9999;
-        border: 5px dotted blue;
-    }
 }

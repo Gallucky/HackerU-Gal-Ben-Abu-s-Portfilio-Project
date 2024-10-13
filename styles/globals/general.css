@@ -66,6 +66,16 @@ body {
     &::-webkit-resizer {
         border-radius: 10px;
     }
+
+    @media (max-width: 768px) {
+        &::-webkit-scrollbar,
+        &::-webkit-scrollbar-thumb,
+        &::-webkit-scrollbar-thumb:hover,
+        &::-webkit-scrollbar-track,
+        &::-webkit-resizer {
+            display: none;
+        }
+    }
 }
 
 /* | Class Description |
