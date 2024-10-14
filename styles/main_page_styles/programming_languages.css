@@ -126,7 +126,7 @@ ht. */
     height: 400%;
 
     @media (max-width: 768px) {
-        height: 325%;
+        height: 80vh;
     }
 }
 
