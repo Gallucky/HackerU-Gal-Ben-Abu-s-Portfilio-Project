@@ -106,7 +106,7 @@
         transition: filter 5s ease-in-out;
 
         @media (max-width: 768px) {
-            width: 35%;
+            width: 25%;
             height: fit-content;
             margin: 0 7.5vw;
         }
@@ -128,10 +128,20 @@
 
     gap: 20px;
 
+    @media (max-width: 768px) {
+        right: -20%;
+        gap: 10px;
+    }
+
     img {
         width: 40px;
         height: 40px;
         cursor: url("../../images/cursor-click_24x24.png"), pointer;
+
+        @media (max-width: 768px) {
+            width: 32px;
+            height: 32px;
+        }
     }
 
     #language-change {
@@ -235,12 +245,17 @@
         display: inline-block;
         position: absolute;
         right: 20px;
+
+        transition: all 1s linear;
     }
 }
 
 #hamburger-menu-icon:hover {
     @media (max-width: 768px) {
-        src: url("../../images/hamburger-menu-open.png");
+        width: 24px;
+        height: 24px;
+        right: 25px;
+        content: url("../../images/hamburger-menu-open.png");
     }
 }
 
