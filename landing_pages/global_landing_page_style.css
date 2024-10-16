@@ -96,12 +96,22 @@
         text-align: center;
         text-shadow: 0px 0px 24px white;
         font: normal normal 900 80px/118px Heebo;
+
+        @media (max-width: 768px) {
+            width: 100vw;
+            font: normal normal 900 32px/70px Heebo;
+        }
     }
 
     p {
         width: 50%;
         text-align: center;
         font: normal normal normal 20px/30px Heebo;
+
+        @media (max-width: 768px) {
+            width: 80vw;
+            font: normal normal normal 15px/25px Heebo;
+        }
     }
 
     .links-wrapper {
@@ -115,6 +125,10 @@
 
         gap: 20px;
         margin-top: 25px;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+        }
 
         /* View / Download - Links */
         a {
@@ -131,15 +145,30 @@
 
             transition: all 1s ease;
 
+            @media (max-width: 768px) {
+                width: 50vw;
+                padding: 3px 0;
+            }
+
             img {
                 width: 32px;
                 height: 32px;
+
+                @media (max-width: 768px) {
+                    margin-inline: 10px;
+                }
             }
 
             span {
                 padding-right: 1vw;
                 color: black;
                 font: normal normal bold 20px/37px Assistant;
+
+                @media (max-width: 768px) {
+                    text-align: center;
+                    font: normal normal bold 16px/27px Assistant;
+                    margin-right: 10px;
+                }
             }
         }
 
@@ -179,12 +208,23 @@
     border-bottom: 1px solid black;
     padding-bottom: 1%;
 
+    @media (max-width: 768px) {
+        padding: 0;
+        margin: 0;
+        padding-block: 2vh;
+    }
+
     img {
         width: 48px;
         height: 48px;
 
         object-fit: cover;
         transition: transform 1s ease;
+
+        @media (max-width: 768px) {
+            width: 40px;
+            height: 40px;
+        }
     }
 
     img:hover {
@@ -202,10 +242,18 @@
 
     background-color: var(--color-palette-dominant);
 
+    @media (max-width: 768px) {
+        height: 50vh;
+    }
+
     img {
         width: 75%;
         height: 75%;
 
         box-shadow: 0px 0px 40px #00000066;
+
+        @media (max-width: 768px) {
+            width: 90%;
+        }
     }
 }
