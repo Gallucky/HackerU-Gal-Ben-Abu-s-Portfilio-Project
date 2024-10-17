@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>אפשרויות, פיצ'רים והגדרות</title>
+
+        <link rel="stylesheet" href="./styles/globals/general.css" />
+        <link rel="stylesheet" href="./styles/globals/toolbar.css" />
+        <link rel="stylesheet" href="./styles/globals/license.css" />
+        <link rel="stylesheet" href="./styles/extra_features_and_settings_styles/main.css" />
+
+        <!-- Connecting to google's font api -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <!-- Assistant font support -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap"
+            rel="stylesheet" />
+
+        <!-- Heebo font support -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap"
+            rel="stylesheet" />
+
+        <!-- Rubik font support -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+            rel="stylesheet" />
+    </head>
+    <body dir="rtl">
+        <!-- The nav tool bar that contains the profile picture and the anchor links in the website. -->
+        <nav class="tool-bar">
+            <div class="tool-bar-content-wrapper">
+                <div class="profile-area">
+                    <div id="profile-image"></div>
+                    <img
+                        src="./images/Profile-Name-removebg.png"
+                        id="profile-name"
+                        alt="Gal Ben Abu" />
+                </div>
+
+                <div class="extra-features">
+                    <!-- Supported Languages -->
+                    <a href="" id="language-change" class="outline-text">
+                        <abbr title="Change Language / החלף שפה">
+                            <img
+                                src="./images/language_48x48.png"
+                                alt="Language image icon - dropdown for a language change" />
+                        </abbr>
+                    </a>
+
+                    <!-- Enable Smooth Scrolling -->
+                    <!-- chrome://flags/#smooth-scrolling -->
+                    <a href="" id="settings-features" class="outline-text">
+                        <img
+                            src="./images/settings-gear.png"
+                            alt="Settings gear icon image that is a link to an helping page." />
+                    </a>
+                </div>
+
+                <img
+                    id="hamburger-menu-icon"
+                    src="./images/hamburger-menu.png"
+                    alt="Hamburger menu Icon for the dropdown of links while on mobile" />
+
+                <div class="links outline-text">
+                    <a href="#main">ראשי</a>
+                    <a href="#about">אודות</a>
+                    <a href="#services">שירותים</a>
+                    <a href="#contact">צור קשר</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="page-content-wrapper">
+            <div class="header-area">
+                <h1
+                    class="outline-text"
+                    style="--outline-color: var(--color-palette-additional-accent)">
+                    אפשרויות, פיצ'רים והגדרות
+                </h1>
+                <hr />
+            </div>
+            <div class="feature-smooth-scrolling">
+                <div class="title-header">
+                    <h2 class="outline-text" style="--outline-thickness: 2px">
+                        גלילה חלקה [פיצ'ר] לא עובד/ת?
+                    </h2>
+                    <hr />
+                </div>
+                <p class="outline-text">
+                    להלן מדריך שיכול לעזור במידה והאפשרות / הפיצ'ר גלילה חלקה לא עובד/ת
+                </p>
+                <p class="outline-text">
+                    נחפש בשורת החיפוש בדפדפן למעלה את הכתובת הבאה: <br />
+                    <code>chrome://flags/#smooth-scrolling</code> ונלחץ על מקש ה-Enter. <br /><br />
+                    שם נשנה את הערך של האפשרות המודגשת מ - <code>Default</code> או
+                    <code>Disabled</code> ל - <code>Enabled</code> ונפעיל מחדש את הדפדפן.
+                    <br />
+                    אחרי הפעלת הדפדפן מחדש האפשרות גלילה חלקה תהיה מופעלת והדפדפן יתמוך באתרים
+                    שמשתמשים בה.
+                </p>
+                <br />
+
+                <div class="title-header">
+                    <h3 class="outline-text" style="--outline-thickness: 2px">הסבר עם תמונות:</h3>
+                    <hr />
+                </div>
+                <br />
+
+                <span>נחפש <code>chrome://flags/#smooth-scrolling</code> בשורת החיפוש </span>
+                <img
+                    src="./images/guides/smooth-scroll/feature-smooth-scroll-enable-guide-part-1.png"
+                    alt="Smooth scroll guide part 1" />
+                <br />
+
+                <span>כעת יפתח לנו החלון הבא</span><br />
+                <img
+                    src="./images/guides/smooth-scroll/feature-smooth-scroll-enable-guide-part-2.png"
+                    alt="Smooth scroll guide part 2" />
+                <br />
+
+                <span
+                    >Next we will click the on the dropdown next to נלחץ על הרשימה מצד האפשרות
+                    <code>גלילה חלקה</code> ונבחר באפשרות <code>Enabled</code> :</span
+                ><br />
+                <img
+                    src="./images/guides/smooth-scroll/feature-smooth-scroll-enable-guide-part-3.png"
+                    alt="Smooth scroll guide part 3" />
+                <br />
+
+                <p>
+                    הודעה קופצת תופיע אשר מודיעה לנו שהשינויים שביצענו יבואו לידי ביטוי בפעם הבאה
+                    שנפעיל מחדש את הדפדפן, עם אפשרות להפעיל מחדש את הדפדפן. <br />
+                    נלחץ על הכפתור הפעלה מחדש
+                    <span>(נשמור דברים חשובים פתוחים לפני כן ליתר ביטחון)</span>.
+                </p>
+                <img
+                    src="./images/guides/smooth-scroll/feature-smooth-scroll-enable-guide-part-4.png"
+                    alt="Smooth scroll guide part 4" />
+                <br />
+
+                <span>
+                    עכשיו הפיצ'ר הזה פעיל בדפדפן שלנו והוא אמור לעבוד בכל דפדפן אשר משתמש בו.
+                </span>
+                <br />
+            </div>
+        </div>
+    </body>
+</html>

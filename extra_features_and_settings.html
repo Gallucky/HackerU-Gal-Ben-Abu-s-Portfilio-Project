@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Extra Features &amp; Settings</title>
+
+        <link rel="stylesheet" href="./styles/globals/general.css" />
+        <link rel="stylesheet" href="./styles/globals/toolbar.css" />
+        <link rel="stylesheet" href="./styles/globals/license.css" />
+        <link rel="stylesheet" href="./styles/extra_features_and_settings_styles/main.css" />
+
+        <!-- Connecting to google's font api -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <!-- Assistant font support -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap"
+            rel="stylesheet" />
+
+        <!-- Heebo font support -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap"
+            rel="stylesheet" />
+
+        <!-- Rubik font support -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+            rel="stylesheet" />
+    </head>
+    <body>
+        <!-- The nav tool bar that contains the profile picture and the anchor links in the website. -->
+        <nav class="tool-bar">
+            <div class="tool-bar-content-wrapper">
+                <div class="profile-area">
+                    <div id="profile-image"></div>
+                    <img
+                        src="./images/Profile-Name-removebg.png"
+                        id="profile-name"
+                        alt="Gal Ben Abu" />
+                </div>
+
+                <div class="extra-features">
+                    <!-- Supported Languages -->
+                    <a href="" id="language-change" class="outline-text">
+                        <abbr title="Change Language / החלף שפה">
+                            <img
+                                src="./images/language_48x48.png"
+                                alt="Language image icon - dropdown for a language change" />
+                        </abbr>
+                    </a>
+
+                    <!-- Enable Smooth Scrolling -->
+                    <!-- chrome://flags/#smooth-scrolling -->
+                    <a href="" id="settings-features" class="outline-text">
+                        <img
+                            src="./images/settings-gear.png"
+                            alt="Settings gear icon image that is a link to an helping page." />
+                    </a>
+                </div>
+
+                <img
+                    id="hamburger-menu-icon"
+                    src="./images/hamburger-menu.png"
+                    alt="Hamburger menu Icon for the dropdown of links while on mobile" />
+
+                <div class="links outline-text">
+                    <a href="#main">ראשי</a>
+                    <a href="#about">אודות</a>
+                    <a href="#services">שירותים</a>
+                    <a href="#contact">צור קשר</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="page-content-wrapper">
+            <div class="header-area">
+                <h1
+                    class="outline-text"
+                    style="--outline-color: var(--color-palette-additional-accent)">
+                    Features And Settings
+                </h1>
+                <hr />
+            </div>
+            <div class="feature-smooth-scrolling">
+                <div class="title-header">
+                    <h2 class="outline-text" style="--outline-thickness: 2px">
+                        Smooth Scrolling [Feature] Doesn't Work?
+                    </h2>
+                    <hr />
+                </div>
+                <p class="outline-text">
+                    Here is a guide that may help enable this feature if it does't work...
+                </p>
+                <p class="outline-text">
+                    Enter the following address into the searchbar in the top of the browser: <br />
+                    <code>chrome://flags/#smooth-scrolling</code> and press enter. <br /><br />
+                    There change the option from <code>Default</code> or <code>Disabled</code> to
+                    <code>Enabled</code> and restart the browser.
+                    <br />
+                    After those steps the feature will be supported on the browser.
+                </p>
+                <br />
+
+                <div class="title-header">
+                    <h3 class="outline-text" style="--outline-thickness: 2px">
+                        Images Walkthrough:
+                    </h3>
+                    <hr />
+                </div>
+                <br />
+
+                <span
+                    >Enter <code>chrome://flags/#smooth-scrolling</code> to the searchbar and press
+                    enter.
+                </span>
+                <img
+                    src="./images/guides/smooth-scroll/feature-smooth-scroll-enable-guide-part-1.png"
+                    alt="Smooth scroll guide part 1" />
+                <br />
+
+                <span>After we pressed enter the following window will appear:</span><br />
+                <img
+                    src="./images/guides/smooth-scroll/feature-smooth-scroll-enable-guide-part-2.png"
+                    alt="Smooth scroll guide part 2" />
+                <br />
+
+                <span
+                    >Next we will click the on the dropdown next to
+                    <code>Smooth Scrolling</code> select the <code>Enabled</code> option:</span
+                ><br />
+                <img
+                    src="./images/guides/smooth-scroll/feature-smooth-scroll-enable-guide-part-3.png"
+                    alt="Smooth scroll guide part 3" />
+                <br />
+
+                <p>
+                    A pop-up message appears notifying us that the changes will be applied next time
+                    we will restart the browser, with an option to restart the browser. <br />
+                    We click this restart button and the browser will be restarted
+                    <span> (make sure to save any important unsaved work just incase). </span>
+                </p>
+                <img
+                    src="./images/guides/smooth-scroll/feature-smooth-scroll-enable-guide-part-4.png"
+                    alt="Smooth scroll guide part 4" />
+                <br />
+
+                <span
+                    >Now the feature is enabled and should work on the browser's websites that uses
+                    this feature.</span
+                >
+                <br />
+            </div>
+        </div>
+    </body>
+</html>
