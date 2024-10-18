@@ -118,7 +118,6 @@
 }
 
 .extra-features {
-    /* border: 1px solid black; */
     position: absolute;
     left: 25%;
 
@@ -153,6 +152,8 @@
             border: 1px solid black;
 
             opacity: 0;
+            /* Preventing accidental clicks */
+            pointer-events: none;
 
             display: flex;
             flex-direction: column;
@@ -172,6 +173,11 @@
             transform: translateY(-20%);
             transition: all 1s ease;
 
+            @media (max-width: 768px) {
+                padding: 2vw;
+                left: 35%;
+            }
+
             a {
                 text-decoration: underline;
                 color: var(--color-palette-light-neutral);
@@ -181,6 +187,7 @@
             span {
                 cursor: url("../../images/cursor_24x24.png"), default;
                 color: var(--color-palette-additional-accent);
+                filter: brightness(2);
             }
         }
 
@@ -188,6 +195,8 @@
         .supported-languages:hover,
         .supported-languages > a:hover {
             opacity: 1;
+            /* Restoring the links functionality */
+            pointer-events: auto;
             transform: translateY(0);
 
             a:hover {

@@ -43,20 +43,26 @@
 
                 <div class="extra-features">
                     <!-- Supported Languages -->
-                    <a href="" id="language-change" class="outline-text">
-                        <abbr title="Change Language / החלף שפה">
-                            <img
-                                src="./images/language_48x48.png"
-                                alt="Language image icon - dropdown for a language change" />
-                        </abbr>
-                    </a>
+                    <div id="language-change" class="outline-text">
+                        <img
+                            src="./images/language_48x48.png"
+                            alt="Language image icon - dropdown for a language change" />
+                        <div class="supported-languages">
+                            <span class="outline-text">English</span>
+                            <a href="./extra_features_and_settings-he.html" class="outline-text"
+                                >עברית</a
+                            >
+                        </div>
+                    </div>
 
                     <!-- Enable Smooth Scrolling -->
                     <!-- chrome://flags/#smooth-scrolling -->
                     <a href="" id="settings-features" class="outline-text">
-                        <img
-                            src="./images/settings-gear.png"
-                            alt="Settings gear icon image that is a link to an helping page." />
+                        <abbr title="אפשרויות נוספות">
+                            <img
+                                src="./images/settings-gear.png"
+                                alt="Settings gear icon image that is a link to an helping page." />
+                        </abbr>
                     </a>
                 </div>
 
@@ -65,11 +71,11 @@
                     src="./images/hamburger-menu.png"
                     alt="Hamburger menu Icon for the dropdown of links while on mobile" />
 
-                <div class="links outline-text">
-                    <a href="#main">ראשי</a>
-                    <a href="#about">אודות</a>
-                    <a href="#services">שירותים</a>
-                    <a href="#contact">צור קשר</a>
+                <div class="links outline-text" dir="rtl">
+                    <a href="./index-en.html#main">Main Page</a>
+                    <a href="./index-en.html#about">About</a>
+                    <a href="./index-en.html#services">Services</a>
+                    <a href="./index-en.html#contact">Contact</a>
                 </div>
             </div>
         </nav>
@@ -83,7 +89,7 @@
                 </h1>
                 <hr />
             </div>
-            <div class="feature-smooth-scrolling">
+            <div class="feature" id="smooth-scrolling">
                 <div class="title-header">
                     <h2 class="outline-text" style="--outline-thickness: 2px">
                         Smooth Scrolling [Feature] Doesn't Work?
