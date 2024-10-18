@@ -23,8 +23,10 @@ body {
         font: normal normal bold 50px/80px Assistant;
 
         @media (max-width: 768px) {
-            width: 100vw;
-            font: normal normal bold 30px/50px Assistant;
+            width: 100%;
+            margin-top: 1vh;
+            text-align: center;
+            font: normal normal bold 35px/40px Assistant;
         }
     }
 
@@ -32,6 +34,10 @@ body {
         border: 3px groove var(--color-palette-additional-accent);
         border-radius: 16px;
         margin-block: -1vh 1vh;
+
+        @media (max-width: 768px) {
+            margin-block: 0 2vh;
+        }
     }
 
     /* #endregion */
