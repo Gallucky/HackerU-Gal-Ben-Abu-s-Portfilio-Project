@@ -192,8 +192,7 @@
         }
 
         &:hover .supported-languages,
-        .supported-languages:hover,
-        .supported-languages > a:hover {
+        .supported-languages:hover {
             opacity: 1;
             /* Restoring the links functionality */
             pointer-events: auto;
