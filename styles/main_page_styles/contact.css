@@ -35,6 +35,18 @@
             object-fit: contain;
             padding: 1%;
         }
+
+        /* English Support */
+        &.lang-en {
+            left: 55% !important;
+
+            /* Flipping the image horizontally */
+            transform: scaleX(-1);
+
+            @media (max-width: 768px) {
+                left: 50% !important;
+            }
+        }
     }
 
     form {
@@ -53,6 +65,11 @@
             margin-right: 0;
         }
 
+        /* English Support */
+        &.lang-en {
+            margin-right: 50%;
+        }
+
         .form-title {
             display: flex;
             flex-direction: column;
@@ -68,6 +85,13 @@
                     align-self: flex-end;
                     margin-right: 10%;
                     font: normal normal 900 30px/36px Heebo;
+
+                    /* English Support */
+                    &.lang-en {
+                        align-self: flex-start;
+                        margin-right: 0%;
+                        margin-left: 10%;
+                    }
                 }
             }
 
@@ -80,6 +104,11 @@
                     height: 100%;
 
                     text-align: right;
+
+                    /* English Support */
+                    &.lang-en {
+                        text-align: left;
+                    }
                 }
             }
         }
@@ -103,6 +132,11 @@
                 @media (max-width: 768px) {
                     font: normal normal bold 14px/18px Heebo;
                 }
+
+                /* English Support */
+                &.lang-en {
+                    align-self: flex-start;
+                }
             }
 
             input {
@@ -118,6 +152,11 @@
 
                 @media (max-width: 768px) {
                     width: 80vw;
+                }
+
+                /* English Support */
+                &.lang-en {
+                    text-align: left;
                 }
             }
 
@@ -165,6 +204,11 @@
 
                     @media (max-width: 768px) {
                         width: 80vw;
+                    }
+
+                    /* English Support */
+                    &.lang-en {
+                        text-align: left;
                     }
                 }
             }
