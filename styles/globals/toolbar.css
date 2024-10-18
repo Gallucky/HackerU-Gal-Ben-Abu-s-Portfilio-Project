@@ -67,6 +67,11 @@
         gap: 5vw;
     }
 
+    /* English Support */
+    &.lang-en {
+        flex-direction: row-reverse;
+        left: 78%;
+    }
     #profile-image {
         width: 64px;
         height: 64px;
@@ -124,12 +129,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 0.75vh;
 
     gap: 20px;
 
     @media (max-width: 768px) {
         right: -20%;
         gap: 10px;
+    }
+
+    /* English Support */
+    &.lang-en {
+        flex-direction: row-reverse;
+        left: 70%;
     }
 
     img {
@@ -176,6 +188,11 @@
             @media (max-width: 768px) {
                 padding: 2vw;
                 left: 35%;
+            }
+
+            /* English Support */
+            &.lang-en {
+                left: 43%;
             }
 
             a {
@@ -243,6 +260,13 @@
         right: -1px;
 
         background-color: var(--color-palette-complementary);
+    }
+
+    /* English Support */
+    &.lang-en {
+        width: fit-content;
+        flex-direction: row;
+        left: 2.5%;
     }
 
     /* Each link in the links class */
