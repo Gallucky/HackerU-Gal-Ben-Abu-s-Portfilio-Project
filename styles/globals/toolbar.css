@@ -70,8 +70,14 @@
     /* English Support */
     &.lang-en {
         flex-direction: row-reverse;
-        left: 78%;
+        left: 75%;
+
+        @media (max-width: 768px) {
+            left: 35%;
+            gap: 2vw;
+        }
     }
+
     #profile-image {
         width: 64px;
         height: 64px;
@@ -141,7 +147,13 @@
     /* English Support */
     &.lang-en {
         flex-direction: row-reverse;
-        left: 70%;
+        left: 67%;
+        gap: 15px;
+
+        @media (max-width: 768px) {
+            left: -70%;
+            gap: 10px !important;
+        }
     }
 
     img {
@@ -192,7 +204,7 @@
 
             /* English Support */
             &.lang-en {
-                left: 43%;
+                left: 48%;
             }
 
             a {
@@ -267,6 +279,11 @@
         width: fit-content;
         flex-direction: row;
         left: 2.5%;
+
+        @media (max-width: 768px) {
+            width: 100vw;
+            left: -1px;
+        }
     }
 
     /* Each link in the links class */
@@ -327,6 +344,13 @@
         right: 20px;
 
         transition: all 1s linear;
+    }
+
+    /* English Language Support */
+    &.lang-en {
+        @media (max-width: 768px) {
+            left: 3.5% !important;
+        }
     }
 }
 
