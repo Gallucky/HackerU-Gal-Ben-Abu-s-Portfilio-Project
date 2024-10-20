@@ -14,20 +14,20 @@
     text-align: center;
 
     border-top: 1px solid black;
-}
 
-.programming-languages-title > h2 {
-    width: 70%;
-    height: fit-content;
+    h2 {
+        width: 70%;
+        height: fit-content;
 
-    margin: 10% 0;
+        margin: 10% 0;
 
-    font-size: 1.25rem;
-    color: var(--color-palette-accent);
+        font-size: 1.25rem;
+        color: var(--color-palette-accent);
 
-    @media (max-width: 768px) {
-        width: 100%;
-        font-size: 0.8em;
+        @media (max-width: 768px) {
+            width: 100%;
+            font-size: 0.8em;
+        }
     }
 }
 
@@ -57,778 +57,755 @@
         border: 0;
         border-top: 1px dashed black;
     }
-}
 
-/* Todo: To figure out a way to make a title and then a star experience rating of the programming languages. Maybe even a info button that when it is hovered then it will show a text with more information about it... */
-
-.language-card {
-    width: 5vh;
-    height: 5vh;
-
-    margin: 0 10px;
-    transition: transform 0.5s 0.3s ease, filter 0.5s ease;
-
-    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    @media (max-width: 768px) {
-        margin: 2.5vw;
-    }
-}
-
-/* The hovered language card */
-.programming-languages-and-more-area .language-card:hover {
-    transform: scale(1.25);
-}
-
-/* #region | Unfocus non-hovered language cards | */
-/* by lowering their brightness and scaling them down a bit */
-
-/* Any remaining cards next to the hovered language on the rig
-ht. */
-.programming-languages-and-more-area .language-card:hover~.language-card,
-/* The card next to the hovered language on the left. */
-.programming-languages-and-more-area .language-card:has(~ .language-card:hover) {
-    transform: scale(0.9);
-    filter: brightness(0.5) !important;
-}
-
-/* #endregion */
-
-/* | Dropdown Area | */
-#dropdown-area {
-    width: 100%;
-    height: 100%;
-
-    border-bottom: 1px solid black;
-    border-radius: 25%;
-
-    position: absolute;
-    background-color: var(--programming-languages-background-color);
-    z-index: -1;
-
-    transition: height 1s ease-in-out;
-
-    @media (max-width: 768px) {
-        width: 100vw;
-
-        position: absolute;
-        left: -1px;
-
-        border-radius: 16px;
-        border-top: none;
-        border: 1px groove black;
-    }
-}
-
-.language-card:hover ~ #dropdown-area {
-    height: 400%;
-
-    @media (max-width: 768px) {
-        height: 80vh;
-    }
-}
-
-.programming-languages-and-more-area:has(.language-card:hover) {
-    margin-bottom: 11.25%;
-    transition: margin-bottom 1s ease-in-out;
-
-    @media (max-width: 768px) {
-        margin-bottom: 100%;
-        border: 0;
-        border-block: 1px dashed black;
-        border-inline: 1px solid black;
-    }
-}
-
-/* #region | Difficulty Level Rating | */
-
-/* #region ⤷ Current Hovered Programming Language Difficulty Rating - Default Styling <-| */
-
-.difficulty-rating-title {
-    width: fit-content;
-    height: fit-content;
-    font-size: 0;
-
-    position: absolute;
-    left: 5%;
-    top: 165%;
-
-    color: red;
-
-    opacity: 0;
-    transition: font-size 1s ease-in-out;
-
-    @media (max-width: 768px) {
-        top: 100%;
-    }
-}
-
-.language-card:hover ~ .difficulty-rating-title {
-    /* 18.72px = to the default font-size of h3 tag. */
-    font-size: 18.72px;
-
-    opacity: 1;
-    transition: font-size 1s 0.3s ease-in-out;
-
-    @media (max-width: 768px) {
-        font-size: 16px;
-        position: absolute;
-        top: 27.5vh;
-        left: 47vw;
-    }
-}
-
-.programming-language-difficulty-rating {
-    width: 0%;
-    height: 0%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    grid-area: 3 / 2 / 3 / 3;
-    margin: 40% -80% 0% -80%;
-    padding: 5%;
-
-    opacity: 0;
-    transition: height 1s ease-in-out, width 1s ease-in-out;
-
-    @media (max-width: 768px) {
-        position: absolute;
-        top: 18vh;
-        left: 40.5vw;
-    }
-}
-
-.difficulty-rating-star {
-    width: 100%;
-    height: 100%;
-
-    background-image: url(../../images/empty_star.png);
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-}
-
-.language-card:hover ~ .programming-language-difficulty-rating {
-    opacity: 1;
-    width: 250%;
-    height: 50%;
-
-    transition: height 1s 0.3s ease-in-out;
-}
-
-/* #endregion */
-
-/* #region ⤷ Full Stars <-| */
-
-/*
-	Got help from chatgpt See the end of the conversation in:
-	"Projects\Gal Ben Abu's Portfolio Project\images\advance_css_area_help+source\Rating Stars Selector Improvement - Less Repeating Answer From ChatGPT Model 4o"
-*/
-.language-card:hover[language="HTML"]
-    ~ .programming-language-difficulty-rating
-    .difficulty-rating-star:nth-child(-n + 1),
-.language-card:hover[language="CSS"]
-    ~ .programming-language-difficulty-rating
-    .difficulty-rating-star:nth-child(-n + 3),
-.language-card:hover[language="JavaScript"]
-    ~ .programming-language-difficulty-rating
-    .difficulty-rating-star:nth-child(-n + 3),
-.language-card:hover[language="Java"]
-    ~ .programming-language-difficulty-rating
-    .difficulty-rating-star:nth-child(-n + 3),
-.language-card:hover[language="Python"]
-    ~ .programming-language-difficulty-rating
-    .difficulty-rating-star:nth-child(-n + 2),
-.language-card:hover[language="Powershell"]
-    ~ .programming-language-difficulty-rating
-    .difficulty-rating-star:nth-child(-n + 3),
-.language-card:hover[language="C#"]
-    ~ .programming-language-difficulty-rating
-    .difficulty-rating-star:nth-child(-n + 3),
-.language-card:hover[language="C++"]
-    ~ .programming-language-difficulty-rating
-    .difficulty-rating-star:nth-child(-n + 3),
-.language-card:hover[language="C"]
-    ~ .programming-language-difficulty-rating
-    .difficulty-rating-star:nth-child(-n + 4),
-.language-card:hover[language="Batch"]
-    ~ .programming-language-difficulty-rating
-    .difficulty-rating-star:nth-child(-n + 4),
-.language-card:hover[language="Assembly"]
-    ~ .programming-language-difficulty-rating
-    .difficulty-rating-star:nth-child(-n + 5) {
-    background-image: url("../../images/full_star.png");
-}
-
-/* #endregion */
-
-/* #region ⤷ Half Stars <-| */
-
-.language-card:hover[language="JavaScript"]
-    ~ .programming-language-difficulty-rating
-    .difficulty-rating-star:nth-child(4),
-.language-card:hover[language="Python"]
-    ~ .programming-language-difficulty-rating
-    .difficulty-rating-star:nth-child(3),
-.language-card:hover[language="Powershell"]
-    ~ .programming-language-difficulty-rating
-    .difficulty-rating-star:nth-child(4),
-.language-card:hover[language="C++"]
-    ~ .programming-language-difficulty-rating
-    .difficulty-rating-star:nth-child(4) {
-    background-image: url("../../images/half_star.png");
-}
-
-/* #endregion */
-
-/* #endregion */
-
-/* #region | Experience Rating | */
-
-/* #region ⤷ Current Hovered Programming Language Experience Rating - Default Styling <-| */
-
-.experience-title {
-    width: fit-content;
-    height: fit-content;
-    font-size: 0;
-
-    position: absolute;
-    left: 5%;
-    top: 265%;
-
-    color: green;
-
-    opacity: 0;
-    transition: font-size 1s ease-in-out;
-}
-
-.language-card:hover ~ .experience-title {
-    /* 18.72px = to the default font-size of h3 tag. */
-    font-size: 18.72px;
-
-    opacity: 1;
-    transition: font-size 1s 0.3s ease-in-out;
-
-    @media (max-width: 768px) {
-        font-size: 16px;
-
-        position: absolute;
-        top: 35vh;
-        left: 47vw;
-    }
-}
-
-.programming-language-experience {
-    width: 0%;
-    height: 0%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    grid-area: 3 / 2 / 3 / 3;
-    margin: 100% -80% 0% -80%;
-    padding: 5%;
-
-    opacity: 0;
-    transition: height 1s ease-in-out, width 1s ease-in-out;
-
-    @media (max-width: 768px) {
-        position: absolute;
-        top: 21vh;
-        left: 40.5vw;
-    }
-}
-
-.experience-star {
-    width: 100%;
-    height: 100%;
-
-    background-image: url(../../images/empty_star.png);
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-}
-
-.language-card:hover ~ .programming-language-experience {
-    opacity: 1;
-    width: 250%;
-    height: 50%;
-
-    transition: height 1s 0.3s ease-in-out;
-}
-
-/* #endregion */
-
-/* #region ⤷ Full Stars <-| */
-
-/*
-	Got help from chatgpt See the end of the conversation in:
-	"Projects\Gal Ben Abu's Portfolio Project\images\advance_css_area_help+source
-		\Rating Stars Selector Improvement - Less Repeating Answer From ChatGPT Model 4o"
-*/
-.language-card:hover[language="HTML"]
-    ~ .programming-language-experience
-    .experience-star:nth-child(-n + 5),
-.language-card:hover[language="CSS"]
-    ~ .programming-language-experience
-    .experience-star:nth-child(-n + 3),
-.language-card:hover[language="JavaScript"]
-    ~ .programming-language-experience
-    .experience-star:nth-child(-n + 4),
-.language-card:hover[language="Java"]
-    ~ .programming-language-experience
-    .experience-star:nth-child(-n + 4),
-.language-card:hover[language="Python"]
-    ~ .programming-language-experience
-    .experience-star:nth-child(-n + 4),
-.language-card:hover[language="Powershell"]
-    ~ .programming-language-experience
-    .experience-star:nth-child(-n + 4),
-.language-card:hover[language="C#"]
-    ~ .programming-language-experience
-    .experience-star:nth-child(-n + 4),
-.language-card:hover[language="C++"]
-    ~ .programming-language-experience
-    .experience-star:nth-child(-n + 3),
-.language-card:hover[language="C"]
-    ~ .programming-language-experience
-    .experience-star:nth-child(-n + 3),
-.language-card:hover[language="Batch"]
-    ~ .programming-language-experience
-    .experience-star:nth-child(-n + 3),
-.language-card:hover[language="Assembly"]
-    ~ .programming-language-experience
-    .experience-star:nth-child(-n + 1) {
-    background-image: url("../../images/full_star.png");
-}
-
-/* #endregion */
-
-/* #region ⤷ Half Stars <-| */
-
-/*
-	Got help from chatgpt See the end of the conversation in:
-	"Projects\Gal Ben Abu's Portfolio Project\images\advance_css_area_help+source
-		\Rating Stars Selector Improvement - Less Repeating Answer From ChatGPT Model 4o"
-*/
-.language-card:hover[language="CSS"]
-    ~ .programming-language-experience
-    .experience-star:nth-child(4),
-.language-card:hover[language="Java"]
-    ~ .programming-language-experience
-    .experience-star:nth-child(5),
-.language-card:hover[language="C++"]
-    ~ .programming-language-experience
-    .experience-star:nth-child(4),
-.language-card:hover[language="Batch"]
-    ~ .programming-language-experience
-    .experience-star:nth-child(4) {
-    background-image: url("../../images/half_star.png");
-}
-
-/* #endregion */
-
-/* #endregion */
-
-/* | Current Language Logo Image/Icon - Default Styling | */
-.curr-lang-logo {
-    width: 0%;
-    height: 0%;
-
-    grid-area: 3 / 5 / 4 / 5;
-    border: 1px solid black;
-    margin: 30% 600%;
-
-    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
-
-    opacity: 0;
-    transition: height 1s ease-in-out, width 1s ease-in-out;
-
-    @media (max-width: 768px) {
-        position: absolute;
-        top: 200%;
-        right: 300%;
+    &:has(.language-card:hover) {
+        margin-bottom: 11.25%;
+        transition: margin-bottom 1s ease-in-out;
+
+        @media (max-width: 768px) {
+            margin-bottom: 100%;
+            border: 0;
+            border-block: 1px dashed black;
+            border-inline: 1px solid black;
+        }
     }
 
-    /* English Language Support */
-    &.lang-en {
-        margin: 30% -20%;
-    }
-}
+    .language-card {
+        width: 5vh;
+        height: 5vh;
 
-.language-card:hover ~ .curr-lang-logo {
-    width: 100%;
-    height: 100%;
+        margin: 0 10px;
+        transition: transform 0.5s 0.3s ease, filter 0.5s ease;
 
-    opacity: 1;
+        background-position: center center;
+        background-size: contain;
+        background-repeat: no-repeat;
 
-    /* background-size: cover; */
-    transition: height 1s 0.3s ease-in-out;
+        @media (max-width: 768px) {
+            margin: 2.5vw;
+        }
 
-    @media (max-width: 768px) {
-        width: 200%;
-        height: 200%;
+        /* The hovered language card */
+        &:hover {
+            transform: scale(1.25);
+        }
 
-        left: -45vw;
-    }
-}
+        /*  Any cards next to the hovered language on the right and then on the left. */
+        &:hover ~ .language-card,
+        &:has(.language-card:hover) {
+            /* Unfocus other language cards by lowering their brightness and scale a bit. */
+            transform: scale(0.9);
+            filter: brightness(0.5) !important;
+        }
 
-/* #region | Setting the images of the languages as background | */
+        /* Opening the dropdown area on language card hover */
+        &:hover ~ #dropdown-area {
+            height: 400%;
 
-/* #region → HTML ← */
-.language-card#html {
-    background-image: url("../../images/languages_logos/html.png");
-    /* row-start / col-start / row-end / col-end */
-    grid-area: 2 / 2 / 2 / 2;
-}
+            @media (max-width: 768px) {
+                height: 80vh;
+            }
+        }
 
-.language-card:hover#html ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/html.png");
-}
+        /* Showing the difficulty rating title on language card hover */
+        &:hover ~ .difficulty-rating-title {
+            /* 18.72px = to the default font-size of h3 tag. */
+            font-size: 18.72px;
 
-.language-card:hover#html ~ h2::after {
-    content: "HTML - Hyper Text Markup Language";
-}
+            opacity: 1;
+            transition: font-size 1s 0.3s ease-in-out;
 
-.language-card:hover#html ~ p::after {
-    direction: rtl;
-    white-space: pre; /* Maintain whitespace and line breaks */
-    text-align: right;
+            @media (max-width: 768px) {
+                font-size: 16px;
+                position: absolute;
+                top: 27.5vh;
+                left: 47vw;
+            }
+        }
 
-    width: 100%;
-    content: ".שפה זו בנויה מתגים, אפשר לחשוב עליהם כמו על בלוקים, אלמנטים ו-/או חלקים\A.אשר איתם משתמשים ליצור אתר ברשת";
+        /* Showing the difficulty rating itself with it stars (full, half, empty) */
+        &:hover ~ .programming-language-difficulty-rating {
+            opacity: 1;
+            width: 250%;
+            height: 50%;
 
-    /* English Language Support */
-    &.lang-en {
-        direction: ltr;
-        content: "HTML is a tag based language that is used to structure a website.";
-    }
-}
+            transition: height 1s 0.3s ease-in-out;
+        }
 
-/* #endregion */
+        /*
+            Got help from chatgpt See the end of the conversation in:
+            "Projects\Gal Ben Abu's Portfolio Project\images\advance_css_area_help+source\Rating Stars Selector Improvement - Less Repeating Answer From ChatGPT Model 4o"
+            Changing the images to show my difficulty rating of each language [Amount of full stars].
+        */
+        &:hover[language="HTML"]
+            ~ .programming-language-difficulty-rating
+            .difficulty-rating-star:nth-child(-n + 1),
+        &:hover[language="CSS"]
+            ~ .programming-language-difficulty-rating
+            .difficulty-rating-star:nth-child(-n + 3),
+        &:hover[language="JavaScript"]
+            ~ .programming-language-difficulty-rating
+            .difficulty-rating-star:nth-child(-n + 3),
+        &:hover[language="Java"]
+            ~ .programming-language-difficulty-rating
+            .difficulty-rating-star:nth-child(-n + 3),
+        &:hover[language="Python"]
+            ~ .programming-language-difficulty-rating
+            .difficulty-rating-star:nth-child(-n + 2),
+        &:hover[language="Powershell"]
+            ~ .programming-language-difficulty-rating
+            .difficulty-rating-star:nth-child(-n + 3),
+        &:hover[language="C#"]
+            ~ .programming-language-difficulty-rating
+            .difficulty-rating-star:nth-child(-n + 3),
+        &:hover[language="C++"]
+            ~ .programming-language-difficulty-rating
+            .difficulty-rating-star:nth-child(-n + 3),
+        &:hover[language="C"]
+            ~ .programming-language-difficulty-rating
+            .difficulty-rating-star:nth-child(-n + 4),
+        &:hover[language="Batch"]
+            ~ .programming-language-difficulty-rating
+            .difficulty-rating-star:nth-child(-n + 4),
+        &:hover[language="Assembly"]
+            ~ .programming-language-difficulty-rating
+            .difficulty-rating-star:nth-child(-n + 5) {
+            background-image: url("../../images/full_star.png");
+        }
 
-/* #region → CSS ← */
-.language-card#css {
-    background-image: url("../../images/languages_logos/css.png");
-    /* row-start / col-start / row-end / col-end */
-    grid-area: 2 / 3 / 2 / 3;
-}
+        /* Half stars for my difficulty level rating */
+        &:hover[language="JavaScript"]
+            ~ .programming-language-difficulty-rating
+            .difficulty-rating-star:nth-child(4),
+        &:hover[language="Python"]
+            ~ .programming-language-difficulty-rating
+            .difficulty-rating-star:nth-child(3),
+        &:hover[language="Powershell"]
+            ~ .programming-language-difficulty-rating
+            .difficulty-rating-star:nth-child(4),
+        &:hover[language="C++"]
+            ~ .programming-language-difficulty-rating
+            .difficulty-rating-star:nth-child(4) {
+            background-image: url("../../images/half_star.png");
+        }
 
-.language-card:hover#css ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/css.png");
-}
+        /* Showing the experience title */
+        &:hover ~ .experience-title {
+            /* 18.72px = to the default font-size of h3 tag. */
+            font-size: 18.72px;
 
-.language-card:hover#css ~ h2::after {
-    content: "CSS";
-}
+            opacity: 1;
+            transition: font-size 1s 0.3s ease-in-out;
 
-.language-card:hover#css ~ p::after {
-    content: "Cascading Style Sheets also known as CSS is a styling language that is used to control the layout and appearance of webpages written in a markup language like HTML.";
-}
+            @media (max-width: 768px) {
+                font-size: 16px;
 
-/* #endregion */
+                position: absolute;
+                top: 35vh;
+                left: 47vw;
+            }
+        }
 
-/* #region → JavaScript ← */
-.language-card#js {
-    background-image: url("../../images/languages_logos/javascript.png");
-    /* row-start / col-start / row-end / col-end */
-    grid-area: 2 / 4 / 2 / 4;
-}
+        /* Showing the experience rating itself */
+        &:hover ~ .programming-language-experience {
+            opacity: 1;
+            width: 250%;
+            height: 50%;
 
-.language-card:hover#js ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/javascript.png");
-}
+            transition: height 1s 0.3s ease-in-out;
+        }
 
-.language-card:hover#js ~ h2::after {
-    content: "JavaScript";
-}
+        /*
+            Got help from chatgpt See the end of the conversation in:
+            "Projects\Gal Ben Abu's Portfolio Project\images\advance_css_area_help+source\Rating Stars Selector Improvement - Less Repeating Answer From ChatGPT Model 4o"
+            Changing the images to show my experience rating of each language [Amount of full stars].
+        */
+        &:hover[language="HTML"]
+            ~ .programming-language-experience
+            .experience-star:nth-child(-n + 5),
+        &:hover[language="CSS"]
+            ~ .programming-language-experience
+            .experience-star:nth-child(-n + 3),
+        &:hover[language="JavaScript"]
+            ~ .programming-language-experience
+            .experience-star:nth-child(-n + 4),
+        &:hover[language="Java"]
+            ~ .programming-language-experience
+            .experience-star:nth-child(-n + 4),
+        &:hover[language="Python"]
+            ~ .programming-language-experience
+            .experience-star:nth-child(-n + 4),
+        &:hover[language="Powershell"]
+            ~ .programming-language-experience
+            .experience-star:nth-child(-n + 4),
+        &:hover[language="C#"]
+            ~ .programming-language-experience
+            .experience-star:nth-child(-n + 4),
+        &:hover[language="C++"]
+            ~ .programming-language-experience
+            .experience-star:nth-child(-n + 3),
+        &:hover[language="C"] ~ .programming-language-experience .experience-star:nth-child(-n + 3),
+        &:hover[language="Batch"]
+            ~ .programming-language-experience
+            .experience-star:nth-child(-n + 3),
+        &:hover[language="Assembly"]
+            ~ .programming-language-experience
+            .experience-star:nth-child(-n + 1) {
+            background-image: url("../../images/full_star.png");
+        }
 
-.language-card:hover#js ~ p::after {
-    content: "Is a high-level, dynamic, and interpreted programming language that is used to add interactive functionality (mainly client-side) to webpages.";
-}
+        /* Half stars for my experience level rating */
+        &:hover[language="CSS"] ~ .programming-language-experience .experience-star:nth-child(4),
+        &:hover[language="Java"] ~ .programming-language-experience .experience-star:nth-child(5),
+        &:hover[language="C++"] ~ .programming-language-experience .experience-star:nth-child(4),
+        &:hover[language="Batch"] ~ .programming-language-experience .experience-star:nth-child(4) {
+            background-image: url("../../images/half_star.png");
+        }
 
-/* #endregion */
+        /* Showing the Image/Icon of the programming language card that is hovered */
+        &:hover ~ .curr-lang-logo {
+            width: 100%;
+            height: 100%;
 
-/* #region → Java ← */
-.language-card#java {
-    background-image: url("../../images/languages_logos/java.png");
-    filter: brightness(1.75);
-    /* row-start / col-start / row-end / col-end */
-    grid-area: 2 / 5 / 2 / 5;
-}
+            opacity: 1;
 
-.language-card:hover#java ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/java.png");
-    filter: brightness(1.5);
-}
+            /* background-size: cover; */
+            transition: height 1s 0.3s ease-in-out;
 
-.language-card:hover#java ~ h2::after {
-    content: "Java";
-}
+            @media (max-width: 768px) {
+                width: 200%;
+                height: 200%;
 
-.language-card:hover#java ~ p::after {
-    content: "Is a multiplatform, object-oriented programming language that runs on billions of devices worldwide.";
-}
+                left: -45vw;
+            }
+        }
 
-/* #endregion */
+        /* #region | Setting the images of the languages as background | */
 
-/* #region → Python ← */
-.language-card#python {
-    background-image: url("../../images/languages_logos/python.png");
-    /* row-start / col-start / row-end / col-end */
-    grid-area: 2 / 6 / 2 / 6;
-}
+        /* #region → HTML ← */
+        &#html {
+            background-image: url("../../images/languages_logos/html.png");
+            /* row-start / col-start / row-end / col-end */
+            grid-area: 2 / 2 / 2 / 2;
+        }
 
-.language-card:hover#python ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/python.png");
-}
+        /* For the image on the dropdown area */
+        &:hover#html ~ .curr-lang-logo {
+            background-image: url("../../images/languages_logos/html.png");
+        }
 
-.language-card:hover#python ~ h2::after {
-    content: "Python";
-}
+        &:hover#html ~ h2::after {
+            content: "HTML - Hyper Text Markup Language";
+        }
 
-.language-card:hover#python ~ p::after {
-    content: "Is an interpreted, object-oriented, high-level programming language with dynamic semantics developed by Guido van Rossum.";
-}
+        &:hover#html ~ p::after {
+            direction: rtl;
+            white-space: pre; /* Maintain whitespace and line breaks */
+            text-align: right;
 
-/* #endregion */
+            width: 100%;
+            content: ".שפה זו בנויה מתגים, אפשר לחשוב עליהם כמו על בלוקים, אלמנטים ו-/או חלקים\A.אשר איתם משתמשים ליצור אתר ברשת";
 
-/* #region → Powershell ← */
-.language-card#powershell {
-    background-image: url("../../images/languages_logos/powershell.png");
-    /* row-start / col-start / row-end / col-end */
-    grid-area: 2 / 7 / 2 / 7;
+            /* English Language Support */
+            &.lang-en {
+                direction: ltr;
+                content: "HTML is a tag based language that is used to structure a website.";
+            }
+        }
 
-    @media (max-width: 768px) {
-        grid-area: 3 / 2 / 3 / 2;
-    }
-}
+        /* #endregion */
 
-.language-card:hover#powershell ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/powershell.png");
-}
+        /* #region → CSS ← */
+        &#css {
+            background-image: url("../../images/languages_logos/css.png");
+            /* row-start / col-start / row-end / col-end */
+            grid-area: 2 / 3 / 2 / 3;
+        }
 
-.language-card:hover#powershell ~ h2::after {
-    content: "Powershell";
-}
+        &:hover#css ~ .curr-lang-logo {
+            background-image: url("../../images/languages_logos/css.png");
+        }
 
-.language-card:hover#powershell ~ p::after {
-    content: "Created by microsoft, is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework.";
-}
+        &:hover#css ~ h2::after {
+            content: "CSS";
+        }
 
-/* #endregion */
+        &:hover#css ~ p::after {
+            content: "Cascading Style Sheets also known as CSS is a styling language that is used to control the layout and appearance of webpages written in a markup language like HTML.";
+        }
 
-/* #region → C# ← */
-.language-card#csharp {
-    background-image: url("../../images/languages_logos/csharp.png");
-    /* row-start / col-start / row-end / col-end */
-    grid-area: 2 / 8 / 2 / 8;
+        /* #endregion */
 
-    @media (max-width: 768px) {
-        grid-area: 3 / 3 / 3 / 3;
-    }
-}
+        /* #region → JavaScript ← */
+        &#js {
+            background-image: url("../../images/languages_logos/javascript.png");
+            /* row-start / col-start / row-end / col-end */
+            grid-area: 2 / 4 / 2 / 4;
+        }
 
-.language-card:hover#csharp ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/csharp.png");
-}
+        &:hover#js ~ .curr-lang-logo {
+            background-image: url("../../images/languages_logos/javascript.png");
+        }
 
-.language-card:hover#csharp ~ h2::after {
-    content: 'C# (pronounced "C-Sharp")';
-}
+        &:hover#js ~ h2::after {
+            content: "JavaScript";
+        }
 
-.language-card:hover#csharp ~ p::after {
-    content: "Is an object-oriented programming language created by Microsoft that runs on the .NET Framework.";
-}
+        &:hover#js ~ p::after {
+            content: "Is a high-level, dynamic, and interpreted programming language that is used to add interactive functionality (mainly client-side) to webpages.";
+        }
 
-/* #endregion */
+        /* #endregion */
 
-/* #region → C Plus Plus ← */
-.language-card#cpp {
-    background-image: url("../../images/languages_logos/c++.png");
-    /* row-start / col-start / row-end / col-end */
-    grid-area: 2 / 9 / 2 / 9;
+        /* #region → Java ← */
+        &#java {
+            background-image: url("../../images/languages_logos/java.png");
+            filter: brightness(1.75);
+            /* row-start / col-start / row-end / col-end */
+            grid-area: 2 / 5 / 2 / 5;
+        }
 
-    @media (max-width: 768px) {
-        grid-area: 3 / 4 / 3 / 4;
-    }
-}
+        &:hover#java ~ .curr-lang-logo {
+            background-image: url("../../images/languages_logos/java.png");
+            filter: brightness(1.5);
+        }
 
-.language-card:hover#cpp ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/c++.png");
-}
+        &:hover#java ~ h2::after {
+            content: "Java";
+        }
 
-/*
+        &:hover#java ~ p::after {
+            content: "Is a multiplatform, object-oriented programming language that runs on billions of devices worldwide.";
+        }
+
+        /* #endregion */
+
+        /* #region → Python ← */
+        &#python {
+            background-image: url("../../images/languages_logos/python.png");
+            /* row-start / col-start / row-end / col-end */
+            grid-area: 2 / 6 / 2 / 6;
+        }
+
+        &:hover#python ~ .curr-lang-logo {
+            background-image: url("../../images/languages_logos/python.png");
+        }
+
+        &:hover#python ~ h2::after {
+            content: "Python";
+        }
+
+        &:hover#python ~ p::after {
+            content: "Is an interpreted, object-oriented, high-level programming language with dynamic semantics developed by Guido van Rossum.";
+        }
+
+        /* #endregion */
+
+        /* #region → Powershell ← */
+        &#powershell {
+            background-image: url("../../images/languages_logos/powershell.png");
+            /* row-start / col-start / row-end / col-end */
+            grid-area: 2 / 7 / 2 / 7;
+
+            @media (max-width: 768px) {
+                grid-area: 3 / 2 / 3 / 2;
+            }
+        }
+
+        &:hover#powershell ~ .curr-lang-logo {
+            background-image: url("../../images/languages_logos/powershell.png");
+        }
+
+        &:hover#powershell ~ h2::after {
+            content: "Powershell";
+        }
+
+        &:hover#powershell ~ p::after {
+            content: "Created by microsoft, is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework.";
+        }
+
+        /* #endregion */
+
+        /* #region → C# ← */
+        &#csharp {
+            background-image: url("../../images/languages_logos/csharp.png");
+            /* row-start / col-start / row-end / col-end */
+            grid-area: 2 / 8 / 2 / 8;
+
+            @media (max-width: 768px) {
+                grid-area: 3 / 3 / 3 / 3;
+            }
+        }
+
+        &:hover#csharp ~ .curr-lang-logo {
+            background-image: url("../../images/languages_logos/csharp.png");
+        }
+
+        &:hover#csharp ~ h2::after {
+            content: 'C# (pronounced "C-Sharp")';
+        }
+
+        &:hover#csharp ~ p::after {
+            content: "Is an object-oriented programming language created by Microsoft that runs on the .NET Framework.";
+        }
+
+        /* #endregion */
+
+        /* #region → C Plus Plus ← */
+        &#cpp {
+            background-image: url("../../images/languages_logos/c++.png");
+            /* row-start / col-start / row-end / col-end */
+            grid-area: 2 / 9 / 2 / 9;
+
+            @media (max-width: 768px) {
+                grid-area: 3 / 4 / 3 / 4;
+            }
+        }
+
+        &:hover#cpp ~ .curr-lang-logo {
+            background-image: url("../../images/languages_logos/c++.png");
+        }
+
+        /*
 	Overriding the 350% dropdown area height
 	to 400% in order to fit the relatively
 	longer text properly.
 */
-/* .language-card:hover#cpp ~ #dropdown-area {
+        /* &:hover#cpp ~ #dropdown-area {
 	height: 400%;
 } */
 
-.language-card:hover#cpp ~ h2::after {
-    content: "C Plus Plus (C++)";
-}
+        &:hover#cpp ~ h2::after {
+            content: "C Plus Plus (C++)";
+        }
 
-.language-card:hover#cpp ~ p::after {
-    content: "C++ (cpp / c plus plus) is a cross-platform language which extends the C language, it can be used to create high-performance applications. C++ gives programmers a high level of control over system resources and memory.";
-}
+        &:hover#cpp ~ p::after {
+            content: "C++ (cpp / c plus plus) is a cross-platform language which extends the C language, it can be used to create high-performance applications. C++ gives programmers a high level of control over system resources and memory.";
+        }
 
-/* #endregion */
+        /* #endregion */
 
-/* #region → C ← */
-.language-card#c {
-    background-image: url("../../images/languages_logos/c.png");
-    /* row-start / col-start / row-end / col-end */
-    grid-area: 2 / 10 / 2 / 10;
-    @media (max-width: 768px) {
-        grid-area: 3 / 5 / 3 / 5;
+        /* #region → C ← */
+        &#c {
+            background-image: url("../../images/languages_logos/c.png");
+            /* row-start / col-start / row-end / col-end */
+            grid-area: 2 / 10 / 2 / 10;
+            @media (max-width: 768px) {
+                grid-area: 3 / 5 / 3 / 5;
+            }
+        }
+
+        &:hover#c ~ .curr-lang-logo {
+            background-image: url("../../images/languages_logos/c.png");
+        }
+
+        &:hover#c ~ h2::after {
+            content: "C";
+        }
+
+        &:hover#c ~ p::after {
+            content: "Is a procedural language that provides no support for objects and classes, but supports built-in data types.";
+        }
+
+        /* #endregion */
+
+        /* #region → Batch ← */
+        &#batch {
+            background-image: url("../../images/languages_logos/batch.png");
+            /* row-start / col-start / row-end / col-end */
+            grid-area: 2 / 11 / 2 / 11;
+
+            @media (max-width: 768px) {
+                grid-area: 3 / 6 / 3 / 6;
+            }
+        }
+
+        &:hover#batch ~ .curr-lang-logo {
+            background-image: url("../../images/languages_logos/batch.png");
+        }
+
+        &:hover#batch ~ h2::after {
+            content: "Batch";
+        }
+
+        &:hover#batch ~ p::after {
+            content: "Is a scripting language for automating tasks at the OS level through the command line. It processes commands sequentially but is not designed to build full applications, relying on system-specific syntax.";
+        }
+
+        /* #endregion */
+
+        /* #region → Assembly ← */
+        &#assembly {
+            background-image: url("../../images/languages_logos/assembly.png");
+            /* row-start / col-start / row-end / col-end */
+            grid-area: 2 / 12 / 2 / 12;
+            @media (max-width: 768px) {
+                grid-area: 4 / 4 / 4 / 4;
+                margin-top: -2.5px;
+            }
+        }
+
+        &:hover#assembly ~ .curr-lang-logo {
+            background-image: url("../../images/languages_logos/assembly.png");
+        }
+
+        &:hover#assembly ~ h2::after {
+            content: "Assembly";
+        }
+
+        &:hover#assembly ~ p::after {
+            content: "Assembly language is a low-level programming language that represents a computer's machine language with symbolic equivalents. Each manufacturer has a unique assembly language tailored to its specific machine instructions.";
+        }
+
+        /* #endregion */
+
+        /* #endregion */
+
+        /* Showing the programming language name title */
+        &:hover ~ h2 {
+            font-size: 30px;
+            transition: font-size 1s 0.3s ease-in-out;
+
+            @media (max-width: 768px) {
+                width: 100vw;
+
+                font-size: 20px;
+                text-align: center;
+
+                position: absolute;
+                top: 35vh;
+                right: 0;
+            }
+        }
+
+        /*
+            Showing the paragraph containing a short description
+            about the current programming language, determined by the .language-card that is hovered.
+        */
+        &:hover ~ p {
+            font-size: 20px;
+            margin-top: -4.5%;
+            transition: font-size 1s 0.3s ease-in-out;
+
+            @media (max-width: 768px) {
+                width: 80vw;
+
+                font-size: 15px;
+                text-align: center;
+
+                position: absolute;
+                top: 35vh;
+                right: 10vw;
+            }
+        }
     }
-}
 
-.language-card:hover#c ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/c.png");
-}
+    /* | Dropdown Area | */
+    #dropdown-area {
+        width: 100%;
+        height: 100%;
 
-.language-card:hover#c ~ h2::after {
-    content: "C";
-}
-
-.language-card:hover#c ~ p::after {
-    content: "Is a procedural language that provides no support for objects and classes, but supports built-in data types.";
-}
-
-/* #endregion */
-
-/* #region → Batch ← */
-.language-card#batch {
-    background-image: url("../../images/languages_logos/batch.png");
-    /* row-start / col-start / row-end / col-end */
-    grid-area: 2 / 11 / 2 / 11;
-
-    @media (max-width: 768px) {
-        grid-area: 3 / 6 / 3 / 6;
-    }
-}
-
-.language-card:hover#batch ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/batch.png");
-}
-
-.language-card:hover#batch ~ h2::after {
-    content: "Batch";
-}
-
-.language-card:hover#batch ~ p::after {
-    content: "Is a scripting language for automating tasks at the OS level through the command line. It processes commands sequentially but is not designed to build full applications, relying on system-specific syntax.";
-}
-
-/* #endregion */
-
-/* #region → Assembly ← */
-.language-card#assembly {
-    background-image: url("../../images/languages_logos/assembly.png");
-    /* row-start / col-start / row-end / col-end */
-    grid-area: 2 / 12 / 2 / 12;
-    @media (max-width: 768px) {
-        grid-area: 4 / 4 / 4 / 4;
-        margin-top: -2.5px;
-    }
-}
-
-.language-card:hover#assembly ~ .curr-lang-logo {
-    background-image: url("../../images/languages_logos/assembly.png");
-}
-
-.language-card:hover#assembly ~ h2::after {
-    content: "Assembly";
-}
-
-.language-card:hover#assembly ~ p::after {
-    content: "Assembly language is a low-level programming language that represents a computer's machine language with symbolic equivalents. Each manufacturer has a unique assembly language tailored to its specific machine instructions.";
-}
-
-/* #endregion */
-
-/* #endregion */
-
-/* | Current Language Name - Default Styling | */
-.programming-languages-and-more-area h2 {
-    height: fit-content;
-    font-size: 0;
-    color: var(--color-palette-additional-accent);
-
-    grid-area: 3 / 6 / 3 / 12;
-
-    margin: 7% 0 5% 0;
-    justify-self: flex-start;
-    text-align: right;
-
-    transition: font-size 1s ease-in-out;
-
-    /* English Language Support */
-    &.lang-en {
-        text-align: left;
-        justify-self: auto;
-    }
-}
-
-.language-card:hover ~ h2 {
-    font-size: 30px;
-    transition: font-size 1s 0.3s ease-in-out;
-
-    @media (max-width: 768px) {
-        width: 100vw;
-
-        font-size: 20px;
-        text-align: center;
+        border-bottom: 1px solid black;
+        border-radius: 25%;
 
         position: absolute;
-        top: 35vh;
-        right: 0;
+        background-color: var(--programming-languages-background-color);
+        z-index: -1;
+
+        transition: height 1s ease-in-out;
+
+        @media (max-width: 768px) {
+            width: 100vw;
+
+            position: absolute;
+            left: -1px;
+
+            border-radius: 16px;
+            border-top: none;
+            border: 1px groove black;
+        }
+
+        /* English Language Support */
+        &.lang-en {
+            @media (max-width: 768px) {
+            }
+        }
     }
-}
 
-/* | Current Language Info - Default Styling | */
-.programming-languages-and-more-area p {
-    height: fit-content;
-
-    color: var(--color-palette-light-neutral);
-    font-size: 0;
-    grid-area: 4 / 6 / 4 / 12;
-
-    text-align: right;
-    border: 1px solid black;
-    transition: font-size 1s ease-in-out;
-
-    /* English Language Support */
-    &.lang-en {
-        text-align: left;
-        justify-self: auto;
-    }
-}
-
-.language-card:hover ~ p {
-    font-size: 20px;
-    margin-top: -4.5%;
-    transition: font-size 1s 0.3s ease-in-out;
-
-    @media (max-width: 768px) {
-        width: 80vw;
-
-        font-size: 15px;
-        text-align: center;
+    /* Title of the difficulty rating which is over the dropdown area */
+    .difficulty-rating-title {
+        width: fit-content;
+        height: fit-content;
+        font-size: 0;
 
         position: absolute;
-        top: 35vh;
-        right: 10vw;
+        left: 5%;
+        top: 165%;
+
+        color: red;
+
+        opacity: 0;
+        transition: font-size 1s ease-in-out;
+
+        @media (max-width: 768px) {
+            top: 100%;
+        }
+
+        /* English Language Support */
+        &.lang-en {
+            @media (max-width: 768px) {
+            }
+        }
+    }
+
+    /* The rating area itself */
+    .programming-language-difficulty-rating {
+        width: 0%;
+        height: 0%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        grid-area: 3 / 2 / 3 / 3;
+        margin: 40% -80% 0% -80%;
+        padding: 5%;
+
+        opacity: 0;
+        transition: height 1s ease-in-out, width 1s ease-in-out;
+
+        @media (max-width: 768px) {
+            position: absolute;
+            top: 18vh;
+            left: 40.5vw;
+        }
+
+        .difficulty-rating-star {
+            width: 100%;
+            height: 100%;
+
+            background-image: url(../../images/empty_star.png);
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+    }
+
+    /* Title of the experience rating which is over the dropdown area */
+    .experience-title {
+        width: fit-content;
+        height: fit-content;
+        font-size: 0;
+
+        position: absolute;
+        left: 5%;
+        top: 265%;
+
+        color: green;
+
+        opacity: 0;
+        transition: font-size 1s ease-in-out;
+    }
+
+    /* The experience rating itself */
+    .programming-language-experience {
+        width: 0%;
+        height: 0%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        grid-area: 3 / 2 / 3 / 3;
+        margin: 100% -80% 0% -80%;
+        padding: 5%;
+
+        opacity: 0;
+        transition: height 1s ease-in-out, width 1s ease-in-out;
+
+        @media (max-width: 768px) {
+            position: absolute;
+            top: 21vh;
+            left: 40.5vw;
+        }
+
+        /* The stars rating themselves */
+        .experience-star {
+            width: 100%;
+            height: 100%;
+
+            background-image: url(../../images/empty_star.png);
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+    }
+
+    /* | Current Language Logo Image/Icon - Default Styling | */
+    .curr-lang-logo {
+        width: 0%;
+        height: 0%;
+
+        grid-area: 3 / 5 / 4 / 5;
+        border: 1px solid black;
+        margin: 30% 600%;
+
+        background-position: center center;
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        opacity: 0;
+        transition: height 1s ease-in-out, width 1s ease-in-out;
+
+        @media (max-width: 768px) {
+            position: absolute;
+            top: 200%;
+            right: 300%;
+        }
+
+        /* English Language Support */
+        &.lang-en {
+            margin: 30% -20%;
+        }
+    }
+
+    /* | Current Language Name - Default Styling | */
+    h2 {
+        height: fit-content;
+        font-size: 0;
+        color: var(--color-palette-additional-accent);
+
+        grid-area: 3 / 6 / 3 / 12;
+
+        margin: 7% 0 5% 0;
+        justify-self: flex-start;
+        text-align: right;
+
+        transition: font-size 1s ease-in-out;
+
+        /* English Language Support */
+        &.lang-en {
+            text-align: left;
+            justify-self: auto;
+        }
+    }
+
+    /* | Current Language Info - Default Styling | */
+    p {
+        height: fit-content;
+
+        color: var(--color-palette-light-neutral);
+        font-size: 0;
+        grid-area: 4 / 6 / 4 / 12;
+
+        text-align: right;
+        border: 1px solid black;
+        transition: font-size 1s ease-in-out;
+
+        /* English Language Support */
+        &.lang-en {
+            text-align: left;
+            justify-self: auto;
+        }
     }
 }
