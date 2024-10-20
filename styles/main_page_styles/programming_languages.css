@@ -746,9 +746,9 @@
         width: 0%;
         height: 0%;
 
-        grid-area: 3 / 5 / 4 / 5;
+        grid-area: 3 / 11 / 4 / 11;
+        margin: 50% -30%;
         border: 1px solid black;
-        margin: 30% 600%;
 
         background-position: center center;
         background-size: contain;
@@ -765,7 +765,8 @@
 
         /* English Language Support */
         &.lang-en {
-            margin: 30% -20%;
+            grid-area: 3 / 5 / 4 / 5;
+            margin: 50% -30%;
         }
     }
 
@@ -776,8 +777,10 @@
         color: var(--color-palette-additional-accent);
 
         grid-area: 3 / 6 / 3 / 12;
-
         margin: 7% 0 5% 0;
+
+        border: 1px solid black;
+
         justify-self: flex-start;
         text-align: right;
 
@@ -785,6 +788,8 @@
 
         /* English Language Support */
         &.lang-en {
+            direction: ltr;
+
             text-align: left;
             justify-self: auto;
         }
@@ -799,11 +804,13 @@
         grid-area: 4 / 6 / 4 / 12;
 
         text-align: right;
-        border: 1px solid black;
         transition: font-size 1s ease-in-out;
 
+        border: 1px solid black;
         /* English Language Support */
         &.lang-en {
+            grid-area: 4 / 6 / 4 / 12;
+
             text-align: left;
             justify-self: auto;
         }
