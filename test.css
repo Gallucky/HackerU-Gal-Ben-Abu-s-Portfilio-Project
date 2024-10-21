@@ -15,14 +15,6 @@
     grid-gap: 20px;
     align-items: center;
 
-    /* Mobile Support */
-    @media (max-width: 768px) {
-        grid-gap: 0;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: 1fr repeat(6, 1fr) 1fr;
-        align-items: normal;
-    }
-
     * {
         border: 1px solid black;
         align-self: start;
@@ -114,5 +106,68 @@
         justify-self: right;
         grid-area: 3 / 3 / 3 / 3;
         color: green;
+    }
+}
+
+/* Mobile Support */
+@media (max-width: 768px) {
+    .programming-lang-info {
+        grid-template-columns: auto 1fr 1fr auto;
+        grid-template-rows: auto repeat(6, 1fr) auto;
+        grid-gap: 5px;
+        align-items: center;
+        /* padding-inline: 10%; */
+
+        .curr-lang-logo {
+            grid-area: 2 / 2 / 5 / 3;
+            margin-left: 20%;
+        }
+
+        h2 {
+            width: 80%;
+            word-break: break-all;
+            justify-self: center;
+
+            grid-area: 7 / 2 / 7 / 4;
+            margin-top: -30%;
+        }
+
+        p {
+            grid-area: 8 / 2 / 8 / 4;
+            justify-self: center;
+            margin-top: -25%;
+        }
+
+        .difficulty-rating-title {
+            grid-area: 2 / 3 / 2 / 4;
+            margin-top: 20%;
+            margin-right: ;
+        }
+
+        .programming-language-difficulty-rating {
+            height: 50%;
+
+            grid-area: 4 / 3 / 4 / 4;
+            margin-top: -35%;
+
+            .experience-star {
+                width: 50%;
+            }
+        }
+
+        .experience-title {
+            grid-area: 5 / 3 / 5 / 4;
+            margin-top: -50%;
+        }
+
+        .programming-language-experience {
+            height: 50%;
+            grid-area: 6 / 3 / 6 / 4;
+            margin-top: -70%;
+
+            .experience-star {
+                width: 50%;
+            }
+        }
     }
 }
