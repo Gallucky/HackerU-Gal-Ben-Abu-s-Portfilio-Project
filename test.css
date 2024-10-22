@@ -21,10 +21,10 @@
     }
 
     .curr-lang-logo {
-        width: 50%;
+        width: 100%;
         height: 100%;
 
-        grid-area: 2 / 5 / 4 / 5;
+        grid-area: 2 / 5 / 4 / 6;
 
         background-image: url("./images/languages_logos/csharp.png");
         background-repeat: no-repeat;
@@ -33,18 +33,20 @@
     }
 
     h2 {
-        width: fit-content;
+        width: 80%;
         height: fit-content;
 
-        grid-area: 2 / 4 / 2 / 4;
-        color: var(--color-palette-additional-accent);
+        grid-area: 2 / 4 / 3 / 5;
         justify-self: right;
+        word-break: break-all;
+        text-align: right;
+        color: var(--color-palette-additional-accent);
     }
 
     p {
         height: fit-content;
 
-        grid-area: 3 / 4 / 4 / 4;
+        grid-area: 3 / 4 / 4 / 5;
 
         color: var(--color-palette-light-neutral);
         text-align: right;
@@ -58,7 +60,7 @@
         align-items: center;
         justify-content: center;
 
-        grid-area: 2 / 2 / 2 / 2;
+        grid-area: 2 / 2 / 3 / 3;
 
         .difficulty-rating-star {
             width: 100%;
@@ -77,7 +79,7 @@
         align-items: center;
         justify-content: center;
 
-        grid-area: 3 / 2 / 3 / 2;
+        grid-area: 3 / 2 / 4 / 3;
 
         .experience-star {
             width: 100%;
@@ -95,7 +97,7 @@
         height: fit-content;
 
         justify-self: right;
-        grid-area: 2 / 3 / 2 / 3;
+        grid-area: 2 / 3 / 3 / 4;
         color: red;
     }
 
@@ -104,7 +106,7 @@
         height: fit-content;
 
         justify-self: right;
-        grid-area: 3 / 3 / 3 / 3;
+        grid-area: 3 / 3 / 4 / 4;
         color: green;
     }
 }
@@ -113,28 +115,21 @@
 @media (max-width: 768px) {
     .programming-lang-info {
         grid-template-columns: auto 1fr 1fr auto;
-        grid-template-rows: auto repeat(6, 1fr) auto;
+        grid-template-rows: auto repeat(8, 1fr) auto;
         grid-gap: 5px;
         align-items: center;
 
         position: relative;
         text-align: right;
 
-        /* English Language Support */
-        &.lang-en {
-            text-align: left;
-        }
-
         .curr-lang-logo {
-            grid-area: 2 / 2 / 5 / 3;
-            margin-left: 20%;
+            width: 75%;
+            height: 75%;
 
-            /* English Language Support */
-            &.lang-en {
-                grid-area: 2 / 3 / 5 / 4;
-                margin-top: 20%;
-                margin-right: 25%;
-            }
+            align-self: center;
+            justify-self: center;
+            object-fit: cover;
+            grid-area: 2 / 2 / 6 / 3;
         }
 
         h2 {
@@ -142,8 +137,7 @@
             word-break: break-all;
             justify-self: center;
 
-            grid-area: 7 / 2 / 7 / 4;
-            margin-top: -30%;
+            grid-area: 6 / 2 / 7 / 4;
         }
 
         p {
@@ -151,72 +145,86 @@
             word-break: break-all;
             padding: 1%;
 
-            grid-area: 8 / 2 / 8 / 4;
+            grid-area: 7 / 2 / 8 / 4;
             justify-self: center;
-            margin-top: -25%;
         }
 
         .difficulty-rating-title {
-            grid-area: 2 / 3 / 2 / 4;
-            margin-top: 20%;
-            margin-right: 25%;
-
-            /* English Language Support */
-            &.lang-en {
-                grid-area: 2 / 2 / 2 / 3;
-                margin-top: 0;
-                margin-left: 20%;
-            }
+            align-self: self-end;
+            grid-area: 2 / 3 / 3 / 4;
         }
 
         .programming-language-difficulty-rating {
             width: 100%;
             height: 50%;
 
-            grid-area: 4 / 3 / 4 / 4;
+            grid-area: 3 / 3 / 4 / 4;
 
-            position: absolute;
-            top: -9vh;
-            right: 12vw;
-
-            .experience-star {
+            .rating-star {
                 width: 50%;
-            }
-
-            /* English Language Support */
-            &.lang-en {
-                grid-area: 3 / 2 / 3 / 3;
             }
         }
 
         .experience-title {
-            grid-area: 5 / 3 / 5 / 4;
-            margin-top: -50%;
-            margin-right: 25%;
-
-            /* English Language Support */
-            &.lang-en {
-                grid-area: 5 / 2 / 5 / 3;
-            }
+            align-self: self-start;
+            grid-area: 4 / 3 / 5 / 4;
         }
 
         .programming-language-experience {
             width: 100%;
             height: 50%;
 
-            grid-area: 6 / 3 / 6 / 4;
-            position: absolute;
-            top: -18vh;
-            right: 12vw;
+            grid-area: 5 / 3 / 6 / 4;
+            margin-top: -20%;
 
-            .experience-star {
+            .rating-star {
                 width: 50%;
             }
+        }
+    }
 
-            /* English Language Support */
-            &.lang-en {
-                grid-area: 6 / 2 / 6 / 3;
-            }
+    /* English Language Support */
+    .programming-lang-info.lang-en {
+        text-align: left;
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .curr-lang-logo {
+            grid-area: 2 / 3 / 5 / 4;
+            margin-top: 20%;
+            margin-right: 25%;
+        }
+
+        h2 {
+        }
+
+        p {
+        }
+
+        .rating-star {
+            width: 100%;
+            height: 100%;
+        }
+
+        .difficulty-rating-title {
+            grid-area: 2 / 2 / 2 / 3;
+            margin-top: 0;
+            margin-left: 20%;
+        }
+
+        .programming-language-difficulty-rating {
+            grid-area: 3 / 2 / 3 / 3;
+        }
+
+        .experience-title {
+            grid-area: 5 / 2 / 5 / 3;
+        }
+
+        .programming-language-experience {
+            grid-area: 6 / 2 / 6 / 3;
         }
     }
 }
