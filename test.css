@@ -15,8 +15,63 @@
     grid-gap: 20px;
     align-items: center;
 
+    /* English Language Support */
+    &.lang-en {
+        .curr-lang-logo {
+            width: 125%;
+            height: 125%;
+
+            margin-top: -4%;
+            margin-left: -4%;
+
+            grid-area: 2 / 4 / 4 / 5;
+        }
+
+        h2 {
+            align-self: flex-end;
+            justify-self: flex-start;
+            text-align: left;
+            grid-area: 2 / 5 / 3 / 6;
+        }
+
+        p {
+            justify-self: flex-start;
+            text-align: left;
+            grid-area: 3 / 5 / 4 / 6;
+        }
+
+        .difficulty-rating-title {
+            align-self: center;
+            justify-self: flex-start;
+            grid-area: 2 / 2 / 3 / 3;
+        }
+
+        .rating-star {
+            width: 100%;
+            height: 100%;
+
+            background-image: url(../../images/empty_star.png);
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        .programming-language-difficulty-rating {
+            grid-area: 2 / 3 / 3 / 4;
+        }
+
+        .experience-title {
+            align-self: center;
+            justify-self: flex-start;
+            grid-area: 3 / 2 / 4 / 3;
+        }
+
+        .programming-language-experience {
+            grid-area: 3 / 3 / 4 / 4;
+        }
+    }
+
     * {
-        border: 1px solid black;
         align-self: start;
     }
 
@@ -122,6 +177,57 @@
         position: relative;
         text-align: right;
 
+        /* English Language Support */
+        &.lang-en {
+            .curr-lang-logo {
+                width: 50%;
+                height: 50%;
+
+                margin-top: 0;
+                margin-left: 0;
+
+                grid-area: 2 / 3 / 6 / 4;
+            }
+
+            h2 {
+                width: 100vw;
+
+                text-align: center;
+                grid-area: 6 / 2 / 7 / 4;
+            }
+
+            p {
+                justify-self: center;
+                text-align: center;
+                grid-area: 7 / 2 / 8 / 4;
+            }
+
+            .rating-star {
+                height: 200%;
+            }
+
+            .difficulty-rating-title {
+                margin-bottom: -20%;
+                margin-left: 5%;
+                grid-area: 2 / 2 / 3 / 3;
+            }
+
+            .programming-language-difficulty-rating {
+                grid-area: 3 / 2 / 4 / 3;
+            }
+
+            .experience-title {
+                margin-top: -10%;
+                margin-left: 5%;
+                grid-area: 4 / 2 / 5 / 3;
+            }
+
+            .programming-language-experience {
+                margin-top: -15%;
+                grid-area: 5 / 2 / 6 / 3;
+            }
+        }
+
         .curr-lang-logo {
             width: 75%;
             height: 75%;
@@ -180,51 +286,6 @@
             .rating-star {
                 width: 50%;
             }
-        }
-    }
-
-    /* English Language Support */
-    .programming-lang-info.lang-en {
-        text-align: left;
-
-        * {
-            padding: 0;
-            margin: 0;
-        }
-
-        .curr-lang-logo {
-            grid-area: 2 / 3 / 5 / 4;
-            margin-top: 20%;
-            margin-right: 25%;
-        }
-
-        h2 {
-        }
-
-        p {
-        }
-
-        .rating-star {
-            width: 100%;
-            height: 100%;
-        }
-
-        .difficulty-rating-title {
-            grid-area: 2 / 2 / 2 / 3;
-            margin-top: 0;
-            margin-left: 20%;
-        }
-
-        .programming-language-difficulty-rating {
-            grid-area: 3 / 2 / 3 / 3;
-        }
-
-        .experience-title {
-            grid-area: 5 / 2 / 5 / 3;
-        }
-
-        .programming-language-experience {
-            grid-area: 6 / 2 / 6 / 3;
         }
     }
 }
