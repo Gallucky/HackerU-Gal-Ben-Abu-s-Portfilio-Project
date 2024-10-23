@@ -147,10 +147,16 @@
             /* Showing the Image/Icon of the programming language card that is hovered */
             .curr-lang-logo {
                 height: 100px;
+
                 opacity: 1;
 
                 /* background-size: cover; */
                 transition: height 1s 0.3s ease-in-out;
+
+                /* Mobile Support */
+                @media (max-width: 768px) {
+                    height: 100px !important;
+                }
             }
 
             /* Showing the programming language name title */
@@ -353,16 +359,10 @@
         }
 
         &:hover#html ~ .programming-lang-info p::after {
-            direction: rtl;
-            white-space: pre; /* Maintain whitespace and line breaks */
-            text-align: right;
-
-            width: 100%;
             content: ".שפה זו בנויה מתגים, אפשר לחשוב עליהם כמו על בלוקים, אלמנטים ו-/או חלקים\A.אשר איתם משתמשים ליצור אתר ברשת";
 
             /* English Language Support */
             &.lang-en {
-                direction: ltr;
                 content: "HTML is a tag based language that is used to structure a website.";
             }
         }
@@ -643,9 +643,28 @@
             grid-template-rows: repeat(3, 1fr);
             grid-gap: 10px;
 
+            &.lang-en {
+                .logo-wrapper {
+                    grid-area: 1 / 1 / 2 / 2;
+                }
+
+                .rating-wrapper {
+                    grid-area: 1 / 2 / 2 / 3;
+                }
+
+                .text-wrapper {
+                    direction: ltr !important;
+                    align-items: flex-start;
+
+                    h2,
+                    p {
+                        text-align: left !important;
+                        margin-left: 5%;
+                    }
+                }
+            }
+
             * {
-                z-index: 2;
-                font-size: small;
                 opacity: 1;
             }
 
@@ -657,7 +676,7 @@
 
                 .curr-lang-logo {
                     width: 100px !important;
-                    height: 100px !important;
+                    height: 0 !important;
                     background-size: contain !important;
                 }
             }
@@ -668,6 +687,7 @@
 
                 grid-area: 1 / 1 / 2 / 2;
                 gap: 15px !important;
+
                 .difficulty,
                 .experience {
                     flex-direction: column !important;
@@ -883,8 +903,8 @@
 
         @media (max-width: 768px) {
             width: 100vw;
-            height: 300%;
-            z-index: 1;
+            height: 100%;
+            z-index: -1;
 
             position: absolute;
             left: -1px;
