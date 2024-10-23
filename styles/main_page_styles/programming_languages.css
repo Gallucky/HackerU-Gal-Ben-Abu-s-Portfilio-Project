@@ -140,9 +140,6 @@
 
             /* Showing the Image/Icon of the programming language card that is hovered */
             .curr-lang-logo {
-                width: 100%;
-                height: 100%;
-
                 opacity: 1;
 
                 /* background-size: cover; */
@@ -151,7 +148,7 @@
 
             /* Showing the programming language name title */
             h2 {
-                font-size: 30px;
+                font-size: 20px;
                 transition: font-size 1s 0.3s ease-in-out;
             }
 
@@ -160,7 +157,7 @@
                 about the current programming language, determined by the .language-card that is hovered.
             */
             p {
-                font-size: 20px;
+                font-size: 15px;
                 transition: font-size 1s 0.3s ease-in-out;
             }
         }
@@ -613,112 +610,178 @@
 
         z-index: 2;
         position: absolute;
-        justify-items: center;
 
-        * {
-            outline: 1px solid black;
-        }
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: center;
 
-        .curr-lang-logo {
-            width: 100px;
-            height: 100px;
+        padding-inline: 10%;
 
-            position: absolute;
-            top: 50%;
-            right: 25%;
-            transform: translate(-50%, -50%);
-
-            background-image: url("../../images/languages_logos/assembly.png");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center center;
-        }
-
-        h2 {
-            width: 80%;
-            height: 100%;
-
-            grid-area: 2 / 4 / 3 / 5;
-            justify-self: right;
-            word-break: break-all;
-            text-align: right;
-            color: var(--color-palette-additional-accent);
-        }
-
-        p {
-            height: fit-content;
-
-            grid-area: 3 / 4 / 4 / 5;
-
-            color: var(--color-palette-light-neutral);
-            text-align: right;
-            justify-self: right;
-        }
-
-        .difficulty-rating-title {
-            width: fit-content;
-            height: fit-content;
-
-            position: absolute;
-            top: 25%;
-            left: 35%;
-            transform: translate(-50%, -50%);
-
-            color: red;
-        }
-
-        .programming-language-difficulty-rating {
-            width: 10%;
-            height: 20%;
-
-            position: absolute;
-            top: 25%;
-            left: 27%;
-            transform: translate(-50%, -50%);
-
+        &.lang-en {
             display: flex;
+            flex-direction: row;
             align-items: center;
             justify-content: center;
 
-            .difficulty-rating-star {
-                width: 100%;
-                height: 100%;
+            .text-wrapper {
+                align-items: flex-start;
 
-                background-image: url(../../images/empty_star.png);
-                background-size: contain;
-                background-position: center center;
-                background-repeat: no-repeat;
+                h2,
+                p {
+                    text-align: left;
+                }
+            }
+
+            .rating-wrapper {
+                .difficulty,
+                .experience {
+                    flex-direction: row;
+                }
             }
         }
 
-        .experience-title {
-            width: fit-content;
-            height: fit-content;
-
-            position: absolute;
-            top: 50%;
-            left: 34.2%;
-            transform: translate(-50%, -50%);
-
-            color: green;
-        }
-
-        .programming-language-experience {
+        .logo-wrapper {
+            width: 10%;
             height: 100%;
+
             display: flex;
             align-items: center;
             justify-content: center;
 
-            grid-area: 3 / 2 / 4 / 3;
+            .curr-lang-logo {
+                width: 100px;
+                height: 100px;
 
-            .experience-star {
-                width: 100%;
-                height: 100%;
+                border: 1px solid black;
 
-                background-image: url(../../images/empty_star.png);
-                background-size: contain;
-                background-position: center center;
+                background-image: url("../../images/languages_logos/assembly.png");
                 background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center center;
+            }
+        }
+
+        .text-wrapper {
+            width: 35%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+
+            font-size: 20px;
+            gap: 5px;
+
+            * {
+                border: 1px solid black;
+                width: 100%;
+            }
+
+            h2 {
+                width: 80%;
+                height: 1fr;
+                word-break: break-all;
+                text-align: right;
+                color: var(--color-palette-additional-accent);
+            }
+
+            p {
+                width: 90%;
+                height: 2fr;
+                color: var(--color-palette-light-neutral);
+                text-align: right;
+                justify-self: right;
+            }
+        }
+
+        .rating-wrapper {
+            width: 35%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid black;
+
+            .difficulty {
+                width: 100%;
+                height: 50%;
+
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+
+                .difficulty-rating-title {
+                    width: fit-content;
+                    height: fit-content;
+                    text-align: center;
+
+                    font-size: 20px;
+                    color: red;
+                }
+
+                .programming-language-difficulty-rating {
+                    width: 50%;
+                    height: 50%;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .difficulty-rating-star {
+                        width: 100%;
+                        height: 90%;
+
+                        background-image: url(../../images/empty_star.png);
+                        background-size: contain;
+                        background-position: center center;
+                        background-repeat: no-repeat;
+                    }
+                }
+            }
+
+            .experience {
+                width: 100%;
+                height: 50%;
+
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+
+                .experience-title {
+                    width: fit-content;
+                    height: fit-content;
+
+                    text-align: center;
+
+                    color: green;
+                }
+
+                .programming-language-experience {
+                    width: 50%;
+                    height: 50%;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .experience-star {
+                        width: 100%;
+                        height: 90%;
+
+                        background-image: url("../../images/empty_star.png");
+                        background-size: contain;
+                        background-position: center center;
+                        background-repeat: no-repeat;
+                    }
+                }
             }
         }
     }
