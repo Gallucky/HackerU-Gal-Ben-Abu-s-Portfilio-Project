@@ -157,6 +157,11 @@
             h2 {
                 font-size: 20px;
                 transition: font-size 1s 0.3s ease-in-out;
+
+                /* Mobile Support */
+                @media (max-width: 768px) {
+                    font-size: 16px;
+                }
             }
 
             /*
@@ -166,6 +171,11 @@
             p {
                 font-size: 15px;
                 transition: font-size 1s 0.3s ease-in-out;
+
+                /* Mobile Support */
+                @media (max-width: 768px) {
+                    font-size: 11px;
+                }
             }
         }
 
@@ -624,6 +634,72 @@
 
         padding-inline: 10%;
 
+        /* Mobile Support */
+        @media (max-width: 768px) {
+            margin-top: 20vh;
+
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            grid-gap: 10px;
+
+            * {
+                z-index: 2;
+                font-size: small;
+                opacity: 1;
+            }
+
+            .logo-wrapper {
+                width: 100% !important;
+                height: 100% !important;
+
+                grid-area: 1 / 2 / 2 / 3;
+
+                .curr-lang-logo {
+                    width: 100px !important;
+                    height: 100px !important;
+                    background-size: contain !important;
+                }
+            }
+
+            .rating-wrapper {
+                width: 100% !important;
+                height: 100% !important;
+
+                grid-area: 1 / 1 / 2 / 2;
+                gap: 15px !important;
+                .difficulty,
+                .experience {
+                    flex-direction: column !important;
+                    gap: 0 !important;
+                }
+
+                .difficulty .programming-language-difficulty-rating,
+                .experience .programming-language-experience {
+                    width: 75% !important;
+                    height: 100% !important;
+                }
+            }
+
+            .text-wrapper {
+                width: 80vw !important;
+                height: 25vh !important;
+
+                grid-area: 2 / 1 / 3 / 3;
+
+                display: flex;
+                flex-direction: column;
+
+                direction: rtl;
+
+                * {
+                    text-align: right !important;
+                    align-self: flex-start;
+                    margin-right: 5%;
+                }
+            }
+        }
+
         &.lang-en {
             display: flex;
             flex-direction: row;
@@ -807,6 +883,8 @@
 
         @media (max-width: 768px) {
             width: 100vw;
+            height: 300%;
+            z-index: 1;
 
             position: absolute;
             left: -1px;
