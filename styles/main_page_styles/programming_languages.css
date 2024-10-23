@@ -59,11 +59,11 @@
     }
 
     &:has(.language-card:hover) {
-        margin-bottom: 56vh !important;
+        margin-bottom: 13.2% !important;
         transition: margin-bottom 1s ease-in-out;
 
         @media (max-width: 768px) {
-            margin-bottom: 100%;
+            margin-bottom: 56vh !important;
             border: 0;
             border-block: 1px dashed black;
             border-inline: 1px solid black;
@@ -361,11 +361,11 @@
 
         &:hover#html ~ .programming-lang-info p::after {
             content: "שפה זו בנויה מתגים, אפשר לחשוב עליהם כמו על בלוקים, אלמנטים ו-/או חלקים\A.אשר איתם משתמשים ליצור אתר ברשת.";
+        }
 
-            /* English Language Support */
-            &.lang-en {
-                content: "HTML is a tag based language that is used to structure a website.";
-            }
+        /* English Language Support */
+        &:hover#html.lang-en ~ .programming-lang-info .text-wrapper p::after {
+            content: "HTML is a tag based language that is used to structure a website.";
         }
 
         /* #endregion */
@@ -385,7 +385,12 @@
             content: "CSS";
         }
 
-        &:hover#css ~ .programming-lang-info p::after {
+        &:hover#css ~ .programming-lang-info .text-wrapper p::after {
+            content: "גליונות סגנון מדורגים, הידועים גם בשם CSS, הם שפת עיצוב המשמשת לשליטה על הפריסה והמראה של דפי אינטרנט הכתובים בשפת סימון כמו HTML.";
+        }
+
+        /* English Language Support */
+        &:hover#css.lang-en ~ .programming-lang-info .text-wrapper p::after {
             content: "Cascading Style Sheets also known as CSS is a styling language that is used to control the layout and appearance of webpages written in a markup language like HTML.";
         }
 
@@ -407,6 +412,11 @@
         }
 
         &:hover#js ~ .programming-lang-info p::after {
+            content: "Is a high-level, dynamic, and interpreted programming language that is used to add interactive functionality (mainly client-side) to webpages.";
+        }
+
+        /* English Language Support */
+        &:hover#js.lang-en ~ .programming-lang-info .text-wrapper p::after {
             content: "Is a high-level, dynamic, and interpreted programming language that is used to add interactive functionality (mainly client-side) to webpages.";
         }
 
@@ -433,6 +443,11 @@
             content: "Is a multiplatform, object-oriented programming language that runs on billions of devices worldwide.";
         }
 
+        /* English Language Support */
+        &:hover#java.lang-en ~ .programming-lang-info .text-wrapper p::after {
+            content: "Is a multiplatform, object-oriented programming language that runs on billions of devices worldwide.";
+        }
+
         /* #endregion */
 
         /* #region → Python ← */
@@ -451,6 +466,11 @@
         }
 
         &:hover#python ~ .programming-lang-info p::after {
+            content: "Is an interpreted, object-oriented, high-level programming language with dynamic semantics developed by Guido van Rossum.";
+        }
+
+        /* English Language Support */
+        &:hover#python.lang-en ~ .programming-lang-info .text-wrapper p::after {
             content: "Is an interpreted, object-oriented, high-level programming language with dynamic semantics developed by Guido van Rossum.";
         }
 
@@ -479,6 +499,11 @@
             content: "Created by microsoft, is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework.";
         }
 
+        /* English Language Support */
+        &:hover#powershell.lang-en ~ .programming-lang-info .text-wrapper p::after {
+            content: "Created by microsoft, is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework.";
+        }
+
         /* #endregion */
 
         /* #region → C# ← */
@@ -501,6 +526,11 @@
         }
 
         &:hover#csharp ~ .programming-lang-info p::after {
+            content: "Is an object-oriented programming language created by Microsoft that runs on the .NET Framework.";
+        }
+
+        /* English Language Support */
+        &:hover#csharp.lang-en ~ .programming-lang-info .text-wrapper p::after {
             content: "Is an object-oriented programming language created by Microsoft that runs on the .NET Framework.";
         }
 
@@ -538,6 +568,11 @@
             content: "C++ (cpp / c plus plus) is a cross-platform language which extends the C language, it can be used to create high-performance applications. C++ gives programmers a high level of control over system resources and memory.";
         }
 
+        /* English Language Support */
+        &:hover#cpp.lang-en ~ .programming-lang-info .text-wrapper p::after {
+            content: "C++ (cpp / c plus plus) is a cross-platform language which extends the C language, it can be used to create high-performance applications. C++ gives programmers a high level of control over system resources and memory.";
+        }
+
         /* #endregion */
 
         /* #region → C ← */
@@ -559,6 +594,11 @@
         }
 
         &:hover#c ~ .programming-lang-info p::after {
+            content: "Is a procedural language that provides no support for objects and classes, but supports built-in data types.";
+        }
+
+        /* English Language Support */
+        &:hover#c.lang-en ~ .programming-lang-info .text-wrapper p::after {
             content: "Is a procedural language that provides no support for objects and classes, but supports built-in data types.";
         }
 
@@ -587,6 +627,11 @@
             content: "Is a scripting language for automating tasks at the OS level through the command line. It processes commands sequentially but is not designed to build full applications, relying on system-specific syntax.";
         }
 
+        /* English Language Support */
+        &:hover#batch.lang-en ~ .programming-lang-info .text-wrapper p::after {
+            content: "Is a scripting language for automating tasks at the OS level through the command line. It processes commands sequentially but is not designed to build full applications, relying on system-specific syntax.";
+        }
+
         /* #endregion */
 
         /* #region → Assembly ← */
@@ -609,6 +654,11 @@
         }
 
         &:hover#assembly ~ .programming-lang-info p::after {
+            content: "Assembly language is a low-level programming language that represents a computer's machine language with symbolic equivalents. Each manufacturer has a unique assembly language tailored to its specific machine instructions.";
+        }
+
+        /* English Language Support */
+        &:hover#assembly.lang-en ~ .programming-lang-info .text-wrapper p::after {
             content: "Assembly language is a low-level programming language that represents a computer's machine language with symbolic equivalents. Each manufacturer has a unique assembly language tailored to its specific machine instructions.";
         }
 
