@@ -412,7 +412,7 @@
         }
 
         &:hover#js ~ .programming-lang-info p::after {
-            content: "Is a high-level, dynamic, and interpreted programming language that is used to add interactive functionality (mainly client-side) to webpages.";
+            content: "שפת תכנות ברמה גבוהה, דינמית ומפורשת, המשמשת להוספת פונקציונליות אינטראקטיבית (בעיקר בצד הלקוח) לדפי אינטרנט.";
         }
 
         /* English Language Support */
@@ -440,7 +440,7 @@
         }
 
         &:hover#java ~ .programming-lang-info p::after {
-            content: "Is a multiplatform, object-oriented programming language that runs on billions of devices worldwide.";
+            content: "שפת תכנות מרובת פלטפורמות ומונחית עצמים, שפועלת על מיליארדי מכשירים ברחבי העולם.";
         }
 
         /* English Language Support */
@@ -466,7 +466,7 @@
         }
 
         &:hover#python ~ .programming-lang-info p::after {
-            content: "Is an interpreted, object-oriented, high-level programming language with dynamic semantics developed by Guido van Rossum.";
+            content: "שפת תכנות מפורשת, מונחית עצמים וברמה גבוהה עם סמנטיקה דינמית, שפותחה על ידי גוידו ואן רוסום.";
         }
 
         /* English Language Support */
@@ -496,7 +496,7 @@
         }
 
         &:hover#powershell ~ .programming-lang-info p::after {
-            content: "Created by microsoft, is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework.";
+            content: "נוצרה על ידי מיקרוסופט, היא פתרון אוטומציה חוצה פלטפורמות המורכב ממעטפת שורת פקודה, שפת סקריפטים ומסגרת לניהול תצורה.";
         }
 
         /* English Language Support */
@@ -526,7 +526,7 @@
         }
 
         &:hover#csharp ~ .programming-lang-info p::after {
-            content: "Is an object-oriented programming language created by Microsoft that runs on the .NET Framework.";
+            content: "שפת תכנות מונחית עצמים שנוצרה על ידי מיקרוסופט ופועלת על גבי .NET Framework.";
         }
 
         /* English Language Support */
@@ -551,21 +551,12 @@
             background-image: url("../../images/languages_logos/c++.png");
         }
 
-        /*
-	Overriding the 350% dropdown area height
-	to 400% in order to fit the relatively
-	longer text properly.
-*/
-        /* &:hover#cpp ~ #dropdown-area {
-	height: 400%;
-} */
-
         &:hover#cpp ~ .programming-lang-info h2::after {
             content: "C Plus Plus (C++)";
         }
 
         &:hover#cpp ~ .programming-lang-info p::after {
-            content: "C++ (cpp / c plus plus) is a cross-platform language which extends the C language, it can be used to create high-performance applications. C++ gives programmers a high level of control over system resources and memory.";
+            content: "C++ (סי פלוס פלוס) היא שפה חוצת פלטפורמות המרחיבה את שפת C, וניתן להשתמש בה ליצירת יישומים בעלי ביצועים גבוהים. C++ מעניקה למתכנתים שליטה גבוהה על משאבי המערכת והזיכרון.";
         }
 
         /* English Language Support */
@@ -594,7 +585,7 @@
         }
 
         &:hover#c ~ .programming-lang-info p::after {
-            content: "Is a procedural language that provides no support for objects and classes, but supports built-in data types.";
+            content: "שפת תכנות פרוצדורלית שאינה תומכת באובייקטים ובמחלקות, אך תומכת בסוגי נתונים מובנים.";
         }
 
         /* English Language Support */
@@ -624,7 +615,7 @@
         }
 
         &:hover#batch ~ .programming-lang-info p::after {
-            content: "Is a scripting language for automating tasks at the OS level through the command line. It processes commands sequentially but is not designed to build full applications, relying on system-specific syntax.";
+            content: "שפת סקריפטים לאוטומציה של משימות ברמת מערכת ההפעלה דרך שורת הפקודה. היא מעבדת פקודות באופן סדרתי אך לא נועדה לבניית יישומים מלאים, ותלויה בתחביר ייחודי למערכת.";
         }
 
         /* English Language Support */
@@ -654,7 +645,7 @@
         }
 
         &:hover#assembly ~ .programming-lang-info p::after {
-            content: "Assembly language is a low-level programming language that represents a computer's machine language with symbolic equivalents. Each manufacturer has a unique assembly language tailored to its specific machine instructions.";
+            content: "שפת Assembly היא שפת תכנות ברמה נמוכה המייצגת את שפת המכונה של מחשב באמצעות מקבילות סימבוליות. לכל יצרן יש שפת Assembly ייחודית המותאמת להוראות המכונה הספציפיות שלו.";
         }
 
         /* English Language Support */

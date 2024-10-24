@@ -2,7 +2,7 @@
 
 .about-section {
     width: 100%;
-    height: 60vh;
+    height: fit-content;
 
     display: flex;
     align-items: center;
@@ -47,6 +47,10 @@
     }
 }
 
+.underline {
+    text-decoration: 1px underline;
+}
+
 .about-text-wrapper {
     width: 100%;
     height: fit-content;
@@ -55,31 +59,85 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
     gap: 1.5vh;
-}
+    margin-bottom: 1%;
+    padding: 1%;
 
-.about-text-wrapper > h2 {
-    width: fit-content;
-    height: fit-content;
+    h2 {
+        width: fit-content;
+        height: fit-content;
 
-    font-size: 40px;
+        font-size: 40px;
 
-    color: var(--color-palette-accent);
+        color: var(--color-palette-accent);
 
-    @media (max-width: 768px) {
-        font-size: 30px;
+        @media (max-width: 768px) {
+            font-size: 30px;
+        }
     }
-}
 
-.about-text-wrapper > p {
-    width: 50%;
-    height: fit-content;
+    p {
+        padding: 1%;
+    }
 
-    color: var(--color-palette-dark-neutral);
-    font-weight: 500;
+    p,
+    ul {
+        font-size: 20px;
+        width: 100%;
+        height: fit-content;
 
-    @media (max-width: 768px) {
-        width: 150%;
+        color: var(--color-palette-dark-neutral);
+        font-weight: 500;
+
+        @media (max-width: 768px) {
+            width: 150%;
+            font-size: 15px;
+        }
+    }
+
+    ul {
+        width: fit-content;
+        padding: 0 1%;
+        margin-top: -0.5%;
+        list-style-type: none;
+        text-align: right;
+
+        /* English Language Support */
+        &.lang-en {
+            text-align: left !important;
+
+            li::before {
+                content: "→";
+                left: -30px;
+            }
+        }
+
+        li {
+            position: relative;
+            a {
+                text-decoration: none;
+                color: var(--color-palette-dark-neutral);
+
+                border-bottom: 1px dashed var(--color-palette-dark-neutral);
+
+                transition: all 1s linear;
+
+                &:hover {
+                    font-size: 1.1em;
+                    color: var(--color-palette-complementary);
+                    border-color: var(--color-palette-complementary);
+                }
+            }
+
+            &::before {
+                content: "←";
+                position: absolute;
+                right: -30px;
+                top: 0;
+                color: var(--color-palette-dark-neutral);
+            }
+        }
     }
 }
 

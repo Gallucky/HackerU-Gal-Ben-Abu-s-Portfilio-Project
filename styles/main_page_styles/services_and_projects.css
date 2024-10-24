@@ -54,6 +54,11 @@
             width: 100%;
             font-weight: 400;
         }
+
+        /* English Language Support */
+        &.lang-en {
+            width: 80%;
+        }
     }
 
     .projects-cards-wrapper {
@@ -116,7 +121,7 @@
 
         .short-project-description {
             width: 90%;
-            margin: 1vh 0;
+            margin-top: -1vh;
             overflow-wrap: break-word;
         }
 
