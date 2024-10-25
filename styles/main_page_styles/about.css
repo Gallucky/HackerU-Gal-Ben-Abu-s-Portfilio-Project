@@ -64,6 +64,20 @@
     margin-bottom: 1%;
     padding: 1%;
 
+    &.lang-en ul {
+        width: 75%;
+
+        li {
+            text-align: left;
+
+            &::before {
+                position: absolute !important;
+                content: "→";
+                right: calc(100% + 10px);
+            }
+        }
+    }
+
     h2 {
         width: fit-content;
         height: fit-content;
@@ -103,16 +117,6 @@
         list-style-type: none;
         text-align: right;
 
-        /* English Language Support */
-        &.lang-en {
-            text-align: left !important;
-
-            li::before {
-                content: "→";
-                left: -30px;
-            }
-        }
-
         li {
             position: relative;
             a {
@@ -131,17 +135,11 @@
                 }
             }
 
-            a.lang-en:hover {
-                font-size: 1.1em;
-                color: var(--color-palette-complementary);
-                border-color: var(--color-palette-complementary);
-            }
-
             &::before {
                 content: "←";
                 position: absolute;
-                right: -30px;
                 top: 0;
+                right: -30px;
                 color: var(--color-palette-dark-neutral);
             }
         }
