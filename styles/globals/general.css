@@ -1,8 +1,4 @@
-/* Defining global properties / variables for the mainly used colors.
-Primary Color: Charcoal
-Secondary Color: Teal
-Accent Color: Cyan / Aqua
-*/
+/* Defining global properties / variables for the mainly used colors. */
 :root {
     --color-palette-dominant: #36454f;
     --color-palette-complementary: #008080;
@@ -10,6 +6,7 @@ Accent Color: Cyan / Aqua
     --color-palette-light-neutral: #f0f0f0;
     --color-palette-dark-neutral: #2c3e50;
     --color-palette-additional-accent: #e74c3c;
+    --color-palette-dark-accent: #1c4b4e;
 
     --programming-languages-background-color: #2e6b77;
     scroll-behavior: smooth;
