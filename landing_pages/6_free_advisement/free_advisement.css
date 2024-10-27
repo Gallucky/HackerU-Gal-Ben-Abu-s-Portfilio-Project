@@ -13,6 +13,15 @@ body {
     justify-content: center;
 
     gap: 12.5vh;
+
+    /* Mobile Support */
+    @media (max-width: 768px) {
+        overflow-y: auto;
+
+        width: 100%;
+        height: 100%;
+        gap: 0;
+    }
 }
 
 .top-border-line {
@@ -24,6 +33,12 @@ body {
     right: 0;
 
     background: #fdbd03 0% 0% no-repeat padding-box;
+
+    /* Mobile Support */
+    @media (max-width: 768px) {
+        width: 85%;
+        height: 10px;
+    }
 }
 
 .whatsapp-floating-contact-area {
@@ -45,6 +60,11 @@ body {
         width: 48px;
         height: 48px;
     }
+
+    /* Mobile Support */
+    @media (max-width: 768px) {
+        display: none;
+    }
 }
 
 .content {
@@ -60,6 +80,18 @@ body {
 
     gap: 10vw;
 
+    /* Mobile Support */
+    @media (max-width: 768px) {
+        height: fit-content;
+        flex-direction: column;
+
+        gap: 0;
+        margin-top: 5vh;
+
+        /* Between the contact-us-area */
+        margin-bottom: 40%;
+    }
+
     img {
         width: fit-content;
         height: 125%;
@@ -67,14 +99,32 @@ body {
         margin-top: -2%;
 
         object-fit: contain;
+
+        /* Mobile Support */
+        @media (max-width: 768px) {
+            width: 25%;
+            height: 25%;
+
+            margin-inline: 37.5%;
+
+            margin-top: 1vh;
+            margin-bottom: 3vh;
+        }
     }
 
     .text {
         width: 50%;
+
         display: flex;
         flex-direction: column;
         align-content: center;
         justify-content: center;
+
+        /* Mobile Support */
+        @media (max-width: 768px) {
+            width: 80vw;
+            margin-inline: 10vw;
+        }
 
         h1 {
             width: fit-content;
@@ -84,6 +134,13 @@ body {
             color: #fdbd03;
             text-align: right;
             font: normal normal 900 66px/97px Heebo;
+
+            /* Mobile Support */
+            @media (max-width: 768px) {
+                width: 100%;
+                text-align: center;
+                font: normal normal 900 40px/59px Heebo;
+            }
         }
 
         p {
@@ -92,6 +149,16 @@ body {
             color: #020253;
             text-align: right;
             font: normal normal normal 20px/29px Heebo;
+
+            /* Mobile Support */
+            @media (max-width: 768px) {
+                width: 80vw;
+                text-align: center;
+                font: normal normal normal 15px/22px Heebo;
+
+                margin-top: -10%;
+                margin-bottom: 10%;
+            }
         }
 
         form {
@@ -110,12 +177,23 @@ body {
                 color: #2c2c2c;
                 text-align: right;
                 font: normal normal bold 16px/24px Heebo;
+
+                /* Mobile Support */
+                @media (max-width: 768px) {
+                    font: normal normal bold 10px/14px Heebo;
+                }
             }
 
             input,
             textarea {
                 border: 0;
                 background: #e5eeff 0% 0% no-repeat padding-box;
+                border-bottom: 4px solid #fdbd03;
+
+                /* Mobile Support */
+                @media (max-width: 768px) {
+                    border-bottom: 3px solid #fdbd03;
+                }
             }
 
             .contact-info {
@@ -128,6 +206,11 @@ body {
                 justify-content: center;
                 gap: 2vw;
 
+                /* Mobile Support */
+                @media (max-width: 768px) {
+                    flex-direction: column;
+                }
+
                 .full-name-area,
                 .email-area {
                     width: 50%;
@@ -137,11 +220,21 @@ body {
                     flex-direction: column;
                     align-content: flex-end;
                     justify-content: center;
+
+                    /* Mobile Support */
+                    @media (max-width: 768px) {
+                        width: 100%;
+                    }
                 }
 
                 input {
                     height: 50px;
-                    border-bottom: 4px solid #fdbd03;
+
+                    /* Mobile Support */
+                    @media (max-width: 768px) {
+                        width: 100%;
+                        height: 37px;
+                    }
                 }
             }
 
@@ -160,7 +253,10 @@ body {
 
                     resize: none;
 
-                    border-bottom: 4px solid #fdbd03;
+                    /* Mobile Support */
+                    @media (max-width: 768px) {
+                        height: 106px;
+                    }
                 }
             }
 
@@ -175,7 +271,17 @@ body {
 
                 align-self: flex-end;
 
+                border-bottom: 0;
                 background: #fdbd03 0% 0% no-repeat padding-box;
+
+                /* Mobile Support */
+                @media (max-width: 768px) {
+                    width: 100%;
+                    height: 37px;
+
+                    letter-spacing: 0.23px;
+                    font: normal normal bold 15px/21px Heebo;
+                }
             }
         }
     }
@@ -192,6 +298,16 @@ body {
     gap: 1.5vw;
     margin-left: 2vw;
 
+    /* Mobile Support */
+    @media (max-width: 768px) {
+        width: 100vw;
+        margin: 0;
+        gap: 5vw;
+
+        /* Between elements below / after */
+        margin-bottom: 10%;
+    }
+
     .contact-option {
         width: 80px;
         height: 80px;
@@ -205,6 +321,12 @@ body {
 
         background: #fdbd03 0% 0% no-repeat padding-box;
 
+        /* Mobile Support */
+        @media (max-width: 768px) {
+            width: 46px;
+            height: 46px;
+        }
+
         .image-logo {
             width: 32px;
             height: 32px;
@@ -213,13 +335,26 @@ body {
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center center;
+
+            /* Mobile Support */
+            @media (max-width: 768px) {
+                width: 15px;
+                height: 15px;
+            }
         }
 
         &#facebook .image-logo {
             width: 40px;
             height: 40px;
+
             background-size: contain;
             background-image: url("./images/facebook_f.svg");
+
+            /* Mobile Support */
+            @media (max-width: 768px) {
+                width: 20px;
+                height: 20px;
+            }
         }
         &#instagram .image-logo {
             background-image: url("./images/instagram.svg");
@@ -242,4 +377,10 @@ body {
     left: 0;
 
     background: #fdbd03 0% 0% no-repeat padding-box;
+
+    /* Mobile Support */
+    @media (max-width: 768px) {
+        width: 100vw;
+        height: 10px;
+    }
 }
