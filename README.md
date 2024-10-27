@@ -57,8 +57,10 @@ These projects highlight my ability to create engaging and functional web applic
 
 ### Option 2 - Open Via Links
 
-1. For the Hebrew version (Default) - [Click Here](https://gallucky.github.io/HackerU-Gal-Ben-Abu-s-Portfilio-Project/)
-2. For the English version - [Click Here](https://gallucky.github.io/HackerU-Gal-Ben-Abu-s-Portfilio-Project/index-en.html)
+| **#** | **File Name** | **Description** | **Link To Page** |
+| :-- | :-- | :-- | :-- |
+| **1** | `index.html` | `For the Hebrew version (Default)` | [Hebrew Page](https://gallucky.github.io/HackerU-Gal-Ben-Abu-s-Portfilio-Project/) |
+| **2** | `index-en.html` | `For the English version` | [English Page](https://gallucky.github.io/HackerU-Gal-Ben-Abu-s-Portfilio-Project/index-en.html) |
 
 ## License
 
