@@ -1,0 +1,245 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+
+    gap: 12.5vh;
+}
+
+.top-border-line {
+    width: 25%;
+    height: 18px;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    background: #fdbd03 0% 0% no-repeat padding-box;
+}
+
+.whatsapp-floating-contact-area {
+    width: 90px;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 5vh;
+    left: 2vw;
+
+    border-radius: 50%;
+    background: #fdbd03 0% 0% no-repeat padding-box;
+
+    img {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+.content {
+    width: 100vw;
+    height: 60vh;
+
+    margin-top: 15vh;
+
+    display: flex;
+    flex-direction: row-reverse;
+    align-content: center;
+    justify-content: center;
+
+    gap: 10vw;
+
+    img {
+        width: fit-content;
+        height: 125%;
+
+        margin-top: -2%;
+
+        object-fit: contain;
+    }
+
+    .text {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+
+        h1 {
+            width: fit-content;
+            height: 97px;
+
+            align-self: flex-end;
+            color: #fdbd03;
+            text-align: right;
+            font: normal normal 900 66px/97px Heebo;
+        }
+
+        p {
+            width: 60%;
+            align-self: flex-end;
+            color: #020253;
+            text-align: right;
+            font: normal normal normal 20px/29px Heebo;
+        }
+
+        form {
+            width: 100%;
+            height: fit-content;
+
+            margin-top: 2.5vh;
+
+            display: flex;
+            flex-direction: column;
+            align-content: flex-end;
+            justify-content: center;
+            gap: 2.5vh;
+
+            label {
+                color: #2c2c2c;
+                text-align: right;
+                font: normal normal bold 16px/24px Heebo;
+            }
+
+            input,
+            textarea {
+                border: 0;
+                background: #e5eeff 0% 0% no-repeat padding-box;
+            }
+
+            .contact-info {
+                width: 100%;
+                height: fit-content;
+
+                display: flex;
+                flex-direction: row-reverse;
+                align-content: center;
+                justify-content: center;
+                gap: 2vw;
+
+                .full-name-area,
+                .email-area {
+                    width: 50%;
+                    height: fit-content;
+
+                    display: flex;
+                    flex-direction: column;
+                    align-content: flex-end;
+                    justify-content: center;
+                }
+
+                input {
+                    height: 50px;
+                    border-bottom: 4px solid #fdbd03;
+                }
+            }
+
+            .form-message {
+                width: 100%;
+                height: fit-content;
+
+                display: flex;
+                flex-direction: column;
+                align-content: flex-end;
+                justify-content: center;
+
+                textarea {
+                    width: 100%;
+                    height: 143px;
+
+                    resize: none;
+
+                    border-bottom: 4px solid #fdbd03;
+                }
+            }
+
+            #submit-btn {
+                width: 166px;
+                height: 50px;
+
+                color: #000000;
+                text-align: center;
+                letter-spacing: 0.33px;
+                font: normal normal bold 22px/30px Heebo;
+
+                align-self: flex-end;
+
+                background: #fdbd03 0% 0% no-repeat padding-box;
+            }
+        }
+    }
+}
+
+.contact-us-area {
+    width: fit-content;
+    height: fit-content;
+
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    gap: 1.5vw;
+    margin-left: 2vw;
+
+    .contact-option {
+        width: 80px;
+        height: 80px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+        box-shadow: 0px 3px 6px #00000029;
+
+        background: #fdbd03 0% 0% no-repeat padding-box;
+
+        .image-logo {
+            width: 32px;
+            height: 32px;
+
+            background-image: none;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+
+        &#facebook .image-logo {
+            width: 40px;
+            height: 40px;
+            background-size: contain;
+            background-image: url("./images/facebook_f.svg");
+        }
+        &#instagram .image-logo {
+            background-image: url("./images/instagram.svg");
+        }
+        &#linkedin .image-logo {
+            background-image: url("./images/linked-in.svg");
+        }
+        &#phone .image-logo {
+            background-image: url("./images/phone.svg");
+        }
+    }
+}
+
+.bottom-border-line {
+    width: 51.5%;
+    height: 18px;
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    background: #fdbd03 0% 0% no-repeat padding-box;
+}
