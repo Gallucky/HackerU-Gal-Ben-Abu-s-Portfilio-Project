@@ -258,7 +258,7 @@
 
     @media (max-width: 768px) {
         width: 100.5%;
-        height: 100%;
+        height: 0;
 
         z-index: -1;
 
@@ -267,11 +267,14 @@
         border: 1px solid black;
         border-top: none;
 
-        display: none;
-        top: 60%;
+        display: flex;
+        opacity: 0;
+        top: 50%;
         right: -1px;
 
         background-color: var(--color-palette-complementary);
+
+        transition: all 0.5s ease-in-out;
     }
 
     /* English Support */
@@ -343,7 +346,7 @@
         position: absolute;
         right: 20px;
 
-        transition: all 1s linear;
+        transition: all 0.5s linear;
     }
 
     /* English Language Support */
@@ -359,12 +362,15 @@
         width: 24px;
         height: 24px;
         right: 25px;
-        content: url("../../images/hamburger-menu-open.png");
+
+        transform: rotate(90deg) scale(1.5);
     }
 }
 
 #hamburger-menu-icon:hover + .links,
-.links:hover,
 .links > a:hover {
     display: flex;
+
+    height: 100%;
+    opacity: 1;
 }
