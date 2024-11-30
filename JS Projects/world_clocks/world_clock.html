@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>World Clock</title>
+
+		<link
+			rel="preconnect"
+			href="https://fonts.googleapis.com" />
+		<link
+			rel="preconnect"
+			href="https://fonts.gstatic.com"
+			crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Heebo:wght@100..900&family=Orbitron:wght@400..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+			rel="stylesheet" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Heebo:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Orbitron:wght@400..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+			rel="stylesheet" />
+
+		<script
+			src="./world_clock.js"
+			defer></script>
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				display: flex;
+				align-content: center;
+				justify-content: center;
+				gap: 50px;
+			}
+
+			.clock {
+				width: 200px;
+				height: 100px;
+
+				margin-top: 100px;
+				display: flex;
+				flex-direction: column;
+				align-content: center;
+				justify-content: center;
+
+				box-shadow: 3px 6px 12px 12px silver;
+				border-radius: 12px;
+				text-align: center;
+
+				font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+
+				h1 {
+					font-size: 20px;
+					text-decoration: underline;
+				}
+
+				h2 {
+					margin-top: 10px;
+
+					font-size: 17px;
+					font-weight: bold;
+					letter-spacing: -1px;
+					font-family: "Orbitron", "JetBrains Mono";
+
+					transform: translateY(0);
+					transition: transform 0.2s ease-in-out;
+
+					span {
+						text-align: center;
+					}
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="clock">
+			<h1>Israel Clock:</h1>
+			<h2 id="israel-jerusalem-time">
+				<span
+					class="digit"
+					id="hours-left">
+					0
+				</span>
+				<span id="hours-right">0</span>
+
+				<span id="hours-minutes-separator">:</span>
+
+				<span id="minutes-left">0</span>
+				<span id="minutes-right">0</span>
+
+				<span id="minutes-seconds-separator">:</span>
+
+				<span id="seconds-left">0</span>
+				<span id="seconds-right">0</span>
+			</h2>
+		</div>
+		<div class="clock">
+			<h1>Argentina Clock:</h1>
+			<h2 id="argentina-buenos-aires-time">
+				<span class="hours-left">0</span>
+				<span class="hours-right">0</span>
+
+				<span class="hours-minutes-separator">:</span>
+
+				<span class="minutes-left">0</span>
+				<span class="minutes-right">0</span>
+
+				<span class="minutes-seconds-separator">:</span>
+
+				<span class="seconds-left">0</span>
+				<span class="seconds-right">0</span>
+			</h2>
+		</div>
+		<div class="clock">
+			<h1>USA Clock:</h1>
+			<h2 id="usa-washington-time">
+				<span class="hours-left">0</span>
+				<span class="hours-right">0</span>
+
+				<span class="hours-minutes-separator">:</span>
+
+				<span class="minutes-left">0</span>
+				<span class="minutes-right">0</span>
+
+				<span class="minutes-seconds-separator">:</span>
+
+				<span class="seconds-left">0</span>
+				<span class="seconds-right">0</span>
+			</h2>
+		</div>
+		<div class="clock">
+			<h1>New-Zeland Clock:</h1>
+			<h2 id="new-zealand-wellington-time">
+				<span class="hours-left">0</span>
+				<span class="hours-right">0</span>
+
+				<span class="hours-minutes-separator">:</span>
+
+				<span class="minutes-left">0</span>
+				<span class="minutes-right">0</span>
+
+				<span class="minutes-seconds-separator">:</span>
+
+				<span class="seconds-left">0</span>
+				<span class="seconds-right">0</span>
+			</h2>
+		</div>
+	</body>
+</html>
