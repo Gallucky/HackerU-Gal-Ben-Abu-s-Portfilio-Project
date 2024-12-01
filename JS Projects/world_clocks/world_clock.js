@@ -21,6 +21,9 @@ const clockCreator = (name, id, timeInterval, zoneGMT) => {
 	const hoursLeft = document.createElement("span");
 	const hoursRight = document.createElement("span");
 
+	hoursLeft.innerHTML = "0";
+	hoursRight.innerHTML = "0";
+
 	// Setting the hours digits ids.
 	hoursLeft.id = "hours-left";
 	hoursRight.id = "hours-right";
@@ -33,10 +36,14 @@ const clockCreator = (name, id, timeInterval, zoneGMT) => {
 	const hoursMinutesSeparator = document.createElement("span");
 	hoursMinutesSeparator.classList.add("clock-separator");
 	hoursMinutesSeparator.id = "hours-minutes-separator";
+	hoursMinutesSeparator.innerHTML = ":";
 
 	// Creating the minutes digits.
 	const minutesLeft = document.createElement("span");
 	const minutesRight = document.createElement("span");
+
+	minutesLeft.innerHTML = "0";
+	minutesRight.innerHTML = "0";
 
 	// Setting the minutes digits ids.
 	minutesLeft.id = "minutes-left";
@@ -50,10 +57,14 @@ const clockCreator = (name, id, timeInterval, zoneGMT) => {
 	const minutesSecondsSeparator = document.createElement("span");
 	minutesSecondsSeparator.classList.add("clock-separator");
 	minutesSecondsSeparator.id = "minutes-seconds";
+	minutesSecondsSeparator.innerHTML = ":";
 
 	// Creating the seconds digits.
 	const secondsLeft = document.createElement("span");
 	const secondsRight = document.createElement("span");
+
+	secondsLeft.innerText = "0";
+	secondsRight.innerText = "0";
 
 	// Setting the seconds digits ids.
 	secondsLeft.id = "seconds-left";
@@ -76,19 +87,20 @@ const clockCreator = (name, id, timeInterval, zoneGMT) => {
 	const clock = () => {
 		// Basing to GMT 0 / Z time zone.
 		const currTime = new Date();
-		const currTimeUTC = new Date(currTime.toUTCString());
-		const clockTime = currTimeUTC;
+		const currTimeClockFormat = currTime.toUTCString().split(" ")[4];
 
-		clockTime.setHours(clockTime.getHours() + zoneGMT);
-		const digitalTimeText = clockTime.toUTCString().split(" ")[4];
-
-		console.log(currTime.toUTCString());
 		// Getting the digits information
-		const hours = "00"; //digitalTimeText.split(":")[0];
-		const minutes = "00"; //digitalTimeText.split(":")[1];
-		const seconds = "00"; //digitalTimeText.split(":")[2];
+		let hours = Number(currTimeClockFormat.split(":")[0]) + zoneGMT;
+		if (hours >= 24) {
+			hours -= 24;
+		}
+		hours = "" + hours;
+		const minutes = currTimeClockFormat.split(":")[1];
+		const seconds = currTimeClockFormat.split(":")[2];
 
-		if (hours > 10) {
+		console.log(`Name: ${name} Hours: ${hours} Minutes: ${minutes} Seconds: ${seconds}`);
+
+		if (hours.length === 2) {
 			hoursLeft.innerHTML = hours[0];
 			hoursRight.innerHTML = hours[1];
 		} else {
@@ -96,7 +108,7 @@ const clockCreator = (name, id, timeInterval, zoneGMT) => {
 			hoursRight.innerHTML = hours;
 		}
 
-		if (minutes > 10) {
+		if (minutes.length === 2) {
 			minutesLeft.innerHTML = minutes[0];
 			minutesRight.innerHTML = minutes[1];
 		} else {
@@ -104,7 +116,7 @@ const clockCreator = (name, id, timeInterval, zoneGMT) => {
 			minutesRight.innerHTML = minutes;
 		}
 
-		if (seconds > 10) {
+		if (seconds.length === 2) {
 			secondsLeft.innerHTML = seconds[0];
 			secondsRight.innerHTML = seconds[1];
 		} else {
@@ -113,10 +125,15 @@ const clockCreator = (name, id, timeInterval, zoneGMT) => {
 		}
 	};
 
+	clockDiv.appendChild(clockTitle);
+	clockDiv.appendChild(clockHeader);
+
+	document.body.appendChild(clockDiv);
+
 	setInterval(clock, timeInterval);
 };
 
-clockCreator("israel-jerusalem-time", 1000, 2);
-clockCreator("argentina-buenos-aires-time", 1000, -3);
-clockCreator("usa-washington-time", 1000, -5);
-clockCreator("new-zealand-wellington-time", 1000, 13);
+clockCreator("Israel/Jerusalem", "israel-jerusalem-time", 1000, 2);
+clockCreator("Argentina/Buenos Aires", "argentina-buenos-aires-time", 1000, -3);
+clockCreator("USA/Washington", "usa-washington-time", 1000, -5);
+clockCreator("New Zealand/Wellington", "new-zealand-wellington-time", 1000, 13);
