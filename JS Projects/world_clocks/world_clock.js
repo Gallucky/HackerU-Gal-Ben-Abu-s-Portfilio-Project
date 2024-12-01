@@ -87,16 +87,15 @@ const clockCreator = (name, id, timeInterval, zoneGMT) => {
 	const clock = () => {
 		// Basing to GMT 0 / Z time zone.
 		const currTime = new Date();
-		const currTimeClockFormat = currTime.toUTCString().split(" ")[4];
 
 		// Getting the digits information
-		let hours = Number(currTimeClockFormat.split(":")[0]) + zoneGMT;
+		let hours = currTime.getUTCHours() + zoneGMT;
 		if (hours >= 24) {
 			hours -= 24;
 		}
 		hours = "" + hours;
-		const minutes = currTimeClockFormat.split(":")[1];
-		const seconds = currTimeClockFormat.split(":")[2];
+		const minutes = "" + currTime.getUTCMinutes();
+		const seconds = "" + currTime.getUTCSeconds();
 
 		console.log(`Name: ${name} Hours: ${hours} Minutes: ${minutes} Seconds: ${seconds}`);
 
