@@ -127,7 +127,7 @@ const clockCreator = (name, id, timeInterval, zoneGMT) => {
 	clockDiv.appendChild(clockTitle);
 	clockDiv.appendChild(clockHeader);
 
-	document.body.appendChild(clockDiv);
+	// document.body.appendChild(clockDiv);
 
 	setInterval(clock, timeInterval);
 };
