@@ -1,234 +1,127 @@
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-	display: flex;
-	align-content: center;
-	justify-content: center;
-	gap: 30px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 30px;
 }
 
 .clock {
-	width: 300px;
-	height: 100px;
+    width: 300px;
+    height: 100px;
 
-	margin-top: 100px;
-	display: flex;
-	flex-direction: column;
-	align-content: center;
-	justify-content: center;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
 
-	box-shadow: 3px 6px 12px 12px silver;
-	border-radius: 12px;
-	text-align: center;
+    box-shadow: 3px 6px 12px 12px silver;
+    border-radius: 12px;
+    text-align: center;
 
-	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 
-	h1 {
-		font-size: 20px;
-		text-decoration: underline;
-	}
+    h1 {
+        font-size: 20px;
+        text-decoration: underline;
+    }
 
-	h2 {
-		width: fit-content;
-		margin: auto;
+    h2 {
+        width: fit-content;
+        margin: auto;
 
-		user-select: none;
+        user-select: none;
+        position: relative;
 
-		display: flex;
-		align-content: center;
-		justify-content: center;
+        display: flex;
+        align-content: center;
+        justify-content: center;
 
-		margin-top: 10px;
+        margin-top: 10px;
 
-		font-size: 17px;
-		font-weight: bold;
-		letter-spacing: 0px;
-		font-family: "Orbitron", "JetBrains Mono";
+        font-size: 17px;
+        font-weight: bold;
+        letter-spacing: 0px;
+        font-family: "Orbitron", "JetBrains Mono";
 
-		transform: translateY(0);
-		transition: transform 0.2s ease-in-out;
+        transform: translateY(0);
+        transition: transform 0.2s ease-in-out;
 
-		.digit-area,
-		.separator-area {
-			display: flex;
-			flex-direction: column;
-			/* border: 1px solid black; */
-		}
+        .digit-area,
+        .separator-area {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
 
-		.separator-area .middle {
-			display: flex;
-			align-content: center;
-			justify-content: center;
-		}
+        .separator-area .top,
+        .separator-area .bottom {
+            color: transparent;
+            user-select: none;
+        }
 
-		.separator-area .top,
-		.separator-area .bottom {
-			color: transparent;
-			user-select: none;
-		}
+        .digit.top,
+        .separator-area .top,
+        .separator-area .bottom {
+            filter: brightness(0.9);
+        }
 
-		.digit.top,
-		.digit.bottom,
-		.separator-area .top,
-		.separator-area .bottom {
-			filter: brightness(0.9);
-		}
+        .digit {
+            background-color: #616161;
+        }
 
-		.digit.top {
-			/* KEY LINE 👇 Ensures 3D effect is preserved */
-			transform-style: preserve-3d;
-			/* KEY LINE 👇 This creates the actual tilt */
-			transform: rotateX(40deg);
-			animation: infinite ease updateClockTop 1s;
-		}
+        span {
+            text-align: center;
+        }
 
-		.digit.bottom {
-			/* KEY LINE 👇 Ensures 3D effect is preserved */
-			transform-style: preserve-3d;
-			/* KEY LINE 👇 This creates the actual tilt */
-			transform: rotateX(-40deg);
+        .border-right,
+        .border-left {
+            width: 20px;
+            height: 50%;
 
-			animation: infinite ease updateClockBottom 1s;
-		}
+            margin-top: 12.5%;
+            display: flex;
+            flex-direction: column;
+            /* align-self: center; */
+            /* justify-self: center; */
 
-		.digit.middle {
-			animation: infinite ease updateClockMiddle 1s;
-		}
+            border: 1px solid black;
+            background-color: gray;
 
-		.digit {
-			background-color: #616161;
-		}
+            transform-style: preserve-3d;
+        }
 
-		span {
-			text-align: center;
-		}
+        .border-right {
+            transform: rotateY(60deg);
+            margin-left: -3px;
+        }
 
-		.border-right,
-		.border-left {
-			width: 20px;
-			height: 93%;
-
-			margin-top: 2.5px;
-
-			display: flex;
-			flex-direction: column;
-
-			border: 1px solid black;
-			background-color: gray;
-
-			transform-style: preserve-3d;
-		}
-
-		.border-right {
-			transform: rotateY(60deg);
-			margin-left: -3px;
-		}
-
-		.border-left {
-			margin-right: -3px;
-			transform: rotateY(-60deg);
-		}
-	}
+        .border-left {
+            margin-right: -3px;
+            transform: rotateY(-60deg);
+        }
+    }
 }
 
-@keyframes updateClockTop {
-	0% {
-		transform: rotateX(40deg) translateY(4px);
-	}
+@keyframes updateDigit {
+    0% {
+        opacity: 0;
+        transform: rotateX(-90deg) translateY(0) rotateZ(0);
+    }
 
-	25% {
-		transform: rotateX(30deg) translateY(8px);
-	}
+    50% {
+        opacity: 0.5;
+        transform: rotateX(-45deg) translateY(0) rotateZ(0);
+    }
 
-	50% {
-		transform: rotateX(20deg) translateY(12px);
-	}
-
-	75% {
-		transform: rotateX(10deg) translateY(20px);
-	}
-
-	100% {
-		transform: rotateX(0deg) translateY(24px);
-	}
-}
-
-@keyframes updateClockMiddle {
-	0% {
-		transform: rotateX(0deg) translateY(6px);
-	}
-
-	25% {
-		transform: rotateX(-10deg) translateY(12x);
-	}
-
-	50% {
-		transform: rotateX(-20deg) translateY(18px);
-	}
-
-	75% {
-		transform: rotateX(-30deg) translateY(24px);
-	}
-
-	100% {
-		transform: rotateX(-40deg) translateY(30px);
-	}
-}
-
-@keyframes updateClockBottom {
-	0% {
-		transform: rotateX(-40deg) translateY(6px);
-		opacity: 1;
-	}
-
-	10% {
-		transform: rotateX(-50deg) translateY(12px);
-		opacity: 0.6;
-	}
-
-	20% {
-		transform: rotateX(-60deg) translateY(18px);
-		opacity: 0.4;
-	}
-
-	30% {
-		transform: rotateX(-70deg) translateY(24px);
-		opacity: 0.2;
-	}
-
-	40% {
-		transform: rotateX(-80deg) translateY(32px);
-		opacity: 0;
-	}
-
-	50% {
-		transform: rotateX(80deg) translateY(-80px);
-	}
-
-	60% {
-		transform: rotateX(60deg) translateY(-80px);
-	}
-
-	70% {
-		transform: rotateX(50deg) translateY(-80px);
-	}
-
-	80% {
-		transform: rotateX(40deg) translateY(-40px);
-		opacity: 1;
-	}
-
-	90% {
-		transform: rotateX(80deg) translateY(-20px);
-		opacity: 1;
-	}
-
-	100% {
-		transform: rotateX(80deg) translateY(-20px);
-		opacity: 1;
-	}
+    100% {
+        opacity: 1;
+        transform: rotateX(0) translateY(22px) rotateZ(0);
+    }
 }

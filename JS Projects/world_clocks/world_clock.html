@@ -1,187 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0" />
-		<title>World Clock</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>World Clock</title>
 
-		<link
-			rel="preconnect"
-			href="https://fonts.googleapis.com" />
-		<link
-			rel="preconnect"
-			href="https://fonts.gstatic.com"
-			crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Heebo:wght@100..900&family=Orbitron:wght@400..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-			rel="stylesheet" />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Heebo:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Orbitron:wght@400..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-			rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Heebo:wght@100..900&family=Orbitron:wght@400..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+            rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Heebo:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Orbitron:wght@400..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+            rel="stylesheet" />
 
-		<script
-			src="./world_clock.js"
-			defer></script>
+        <script src="./world_clock.js" defer></script>
 
-		<link
-			rel="stylesheet"
-			href="./world_clock_styles.css" />
-	</head>
+        <link rel="stylesheet" href="./world_clock_styles.css" />
+    </head>
 
-	<body>
-		<div class="clock">
-			<h1>Israel Clock:</h1>
-			<h2 id="israel-jerusalem-time">
-				<span class="border-left"></span>
+    <body>
+        <div class="clock">
+            <h1>Israel Clock:</h1>
+            <h2 id="israel-jerusalem-time">
+                <span class="border-left"></span>
 
-				<div class="digit-area">
-					<span
-						class="digit top"
-						id="hours-left-top">
-						2
-					</span>
-					<span
-						class="digit middle"
-						id="hours-left-middle">
-						1
-					</span>
-					<span
-						class="digit bottom"
-						id="hours-left-bottom">
-						0
-					</span>
-				</div>
-				<div class="digit-area">
-					<span
-						id="hours-right-top"
-						class="digit top">
-						2
-					</span>
-					<span
-						id="hours-right-middle"
-						class="digit middle">
-						1
-					</span>
-					<span
-						id="hours-right-bottom"
-						class="digit bottom">
-						0
-					</span>
-				</div>
+                <div class="digit-area">
+                    <span class="digit top" id="hours-left-top"> 2 </span>
+                    <span class="digit bottom" id="hours-left-middle"> 1 </span>
+                </div>
+                <div class="digit-area">
+                    <span id="hours-right-top" class="digit top"> 2 </span>
+                    <span id="hours-right-middle" class="digit bottom"> 1 </span>
+                </div>
 
-				<div class="separator-area">
-					<span
-						class="top"
-						id="hours-minutes-separator-top">
-						:
-					</span>
-					<span
-						class="middle"
-						id="hours-minutes-separator-middle">
-						:
-					</span>
-					<span
-						class="bottom"
-						id="hours-minutes-separator-bottom">
-						:
-					</span>
-				</div>
+                <div class="separator-area">
+                    <span class="top" id="hours-minutes-separator-top"> : </span>
+                    <span class="middle" id="hours-minutes-separator-middle"> : </span>
+                    <span class="bottom" id="hours-minutes-separator-bottom"> : </span>
+                </div>
 
-				<div class="digit-area">
-					<span
-						class="digit top"
-						id="minutes-left-top">
-						2
-					</span>
-					<span
-						class="digit middle"
-						id="minutes-left-middle">
-						1
-					</span>
-					<span
-						class="digit bottom"
-						id="minutes-left-bottom">
-						0
-					</span>
-				</div>
-				<div class="digit-area">
-					<span
-						class="digit top"
-						id="minutes-right-top">
-						2
-					</span>
-					<span
-						class="digit middle"
-						id="minutes-right-middle">
-						1
-					</span>
-					<span
-						class="digit bottom"
-						id="minutes-right-bottom">
-						0
-					</span>
-				</div>
+                <div class="digit-area">
+                    <span class="digit top" id="minutes-left-top"> 2 </span>
+                    <span class="digit bottom" id="minutes-left-middle"> 1 </span>
+                </div>
+                <div class="digit-area">
+                    <span class="digit top" id="minutes-right-top"> 2 </span>
+                    <span class="digit bottom" id="minutes-right-middle"> 1 </span>
+                </div>
 
-				<div class="separator-area">
-					<span
-						class="top"
-						id="minutes-seconds-separator-top">
-						:
-					</span>
-					<span
-						class="middle"
-						id="minutes-seconds-separator-middle">
-						:
-					</span>
-					<span
-						class="bottom"
-						id="minutes-seconds-separator-bottom">
-						:
-					</span>
-				</div>
+                <div class="separator-area">
+                    <span class="top" id="minutes-seconds-separator-top"> : </span>
+                    <span class="middle" id="minutes-seconds-separator-middle"> : </span>
+                    <span class="bottom" id="minutes-seconds-separator-bottom"> : </span>
+                </div>
 
-				<div class="digit-area">
-					<span
-						class="digit top"
-						id="seconds-left-top">
-						2
-					</span>
-					<span
-						class="digit middle"
-						id="seconds-left-middle">
-						1
-					</span>
-					<span
-						class="digit bottom"
-						id="seconds-left-bottom">
-						0
-					</span>
-				</div>
+                <div class="digit-area">
+                    <span class="digit top" id="seconds-left-top"> 2 </span>
+                    <span class="digit bottom" id="seconds-left-middle"> 1 </span>
+                </div>
 
-				<div class="digit-area">
-					<span
-						class="digit top"
-						id="seconds-right-top">
-						2
-					</span>
-					<span
-						class="digit middle"
-						id="seconds-right-middle">
-						1
-					</span>
-					<span
-						class="digit bottom"
-						id="seconds-right-bottom">
-						0
-					</span>
-				</div>
+                <div class="digit-area">
+                    <span class="digit top" id="seconds-right-top"> 2 </span>
+                    <span class="digit bottom" id="seconds-right-middle"> 1 </span>
+                </div>
 
-				<span class="border-right"></span>
-			</h2>
-		</div>
-		<!-- <div class="clock">
+                <span class="border-right"></span>
+            </h2>
+        </div>
+        <!-- <div class="clock">
 			<h1>Argentina Clock:</h1>
 			<h2 id="argentina-buenos-aires-time">
 				<span class="hours-left">0</span>
@@ -232,5 +119,5 @@
 				<span class="seconds-right">0</span>
 			</h2>
 		</div> -->
-	</body>
+    </body>
 </html>
