@@ -84,6 +84,144 @@ const clockCreator = (name, id, timeInterval, zoneGMT) => {
 	clockHeader.appendChild(secondsLeft);
 	clockHeader.appendChild(secondsRight);
 
+	const updateClock = () => {
+		// Resetting the animation across all elements in the clock.
+		hoursLeft.style.animation = "none";
+		hoursRight.style.animation = "none";
+		minutesLeft.style.animation = "none";
+		minutesRight.style.animation = "none";
+		secondsLeft.style.animation = "none";
+		secondsRight.style.animation = "none";
+
+		if (hours < 10 && hours > 0) {
+			// Only the hours-right.
+			// Trigger the animation
+			requestAnimationFrame(() => {
+				hoursRight.style.animation = "updateClock 500ms ease-in-out";
+			});
+
+			if (currTime.getUTCHours() + 1 >= 10) {
+				hoursRightTop.innerHTML = 0;
+			} else {
+				hoursRightTop.innerHTML = currTime.getUTCHours() + 1;
+			}
+
+			hoursRightMiddle.innerHTML = currTime.getUTCHours();
+			hoursRightBottom.innerHTML = currTime.getUTCHours() - 1;
+		} else if (hours > 10) {
+			// Hours right and left.
+			// Trigger the animation
+			requestAnimationFrame(() => {
+				hoursLeft.style.animation = "updateClock 500ms ease-in-out";
+				hoursRight.style.animation = "updateClock 500ms ease-in-out";
+			});
+
+			if (currTime.getUTCHours() + 1 > 9) {
+				hoursRightTop.innerHTML = 0;
+			} else {
+				hoursRightTop.innerHTML = currTime.getUTCHours() + 1;
+			}
+
+			hoursRightMiddle.innerHTML = currTime.getUTCHours();
+			hoursRightBottom.innerHTML = currTime.getUTCHours() - 1;
+
+			if (currTime.getUTCHours() + 1 > 24) {
+				hoursLeftTop.innerHTML = 0;
+			} else {
+				hoursLeftTop.innerHTML = currTime.getUTCHours() + 1;
+			}
+
+			hoursLeftMiddle.innerHTML = currTime.getUTCHours();
+			hoursLeftBottom.innerHTML = currTime.getUTCHours() - 1;
+		}
+
+		if (minutes < 10 && minutes > 0) {
+			// Minutes right.
+			// Trigger the animation
+			requestAnimationFrame(() => {
+				minutesRight.style.animation = "updateClock 500ms ease-in-out";
+			});
+
+			if (currTime.getUTCHours() + 1 > 9) {
+				minutesRightTop.innerHTML = 0;
+			} else {
+				minutesRightTop.innerHTML = currTime.getUTCHours() + 1;
+			}
+
+			minutesRightMiddle.innerHTML = currTime.getUTCHours();
+			minutesRightBottom.innerHTML = currTime.getUTCHours() - 1;
+		} else if (minutes > 10) {
+			// Minutes right and left.
+			// Trigger the animation
+			requestAnimationFrame(() => {
+				minutesLeft.style.animation = "updateClock 500ms ease-in-out";
+				minutesRight.style.animation = "updateClock 500ms ease-in-out";
+			});
+
+			if (currTime.getUTCHours() + 1 > 9) {
+				minutesRightTop.innerHTML = 0;
+			} else {
+				minutesRightTop.innerHTML = currTime.getUTCHours() + 1;
+			}
+
+			minutesRightMiddle.innerHTML = currTime.getUTCHours();
+			minutesRightBottom.innerHTML = currTime.getUTCHours() - 1;
+
+			if (currTime.getUTCHours() + 1 > 59) {
+				minutesLeftTop.innerHTML = 0;
+			} else {
+				minutesLeftTop.innerHTML = currTime.getUTCHours() + 1;
+			}
+
+			minutesLeftMiddle.innerHTML = currTime.getUTCHours();
+			minutesLeftBottom.innerHTML = currTime.getUTCHours() - 1;
+		}
+
+		if (seconds < 10 && seconds > 0) {
+			// Seconds right.
+			// Trigger the animation
+			requestAnimationFrame(() => {
+				secondsRight.style.animation = "updateClock 500ms ease-in-out";
+			});
+
+			if (currTime.getUTCHours() + 1 > 9) {
+				secondsRightTop.innerHTML = 0;
+			} else {
+				secondsRightTop.innerHTML = currTime.getUTCHours() + 1;
+			}
+
+			secondsRightMiddle.innerHTML = currTime.getUTCHours();
+			secondsRightBottom.innerHTML = currTime.getUTCHours() - 1;
+		} else if (seconds > 10) {
+			// Seconds right and left.
+			// Trigger the animation
+			requestAnimationFrame(() => {
+				secondsLeft.style.animation = "updateClock 500ms ease-in-out";
+				secondsRight.style.animation = "updateClock 500ms ease-in-out";
+			});
+
+			if (currTime.getUTCHours() + 1 > 9) {
+				secondsRightTop.innerHTML = 0;
+			} else {
+				secondsRightTop.innerHTML = currTime.getUTCHours() + 1;
+			}
+
+			secondsRightMiddle.innerHTML = currTime.getUTCHours();
+			secondsRightBottom.innerHTML = currTime.getUTCHours() - 1;
+
+			if (currTime.getUTCHours() + 1 > 59) {
+				secondsLeftTop.innerHTML = 0;
+			} else {
+				secondsLeftTop.innerHTML = currTime.getUTCHours() + 1;
+			}
+
+			secondsMiddle.innerHTML = currTime.getUTCHours();
+			secondsLeftBottom.innerHTML = currTime.getUTCHours() - 1;
+		}
+
+		const elementToApplyAnimation = document.getElementById();
+	};
+
 	const clock = () => {
 		// Basing to GMT 0 / Z time zone.
 		const currTime = new Date();
