@@ -17,10 +17,10 @@ const clockCreator = (name, id, timeInterval, zoneGMT) => {
     const clockHeader = document.createElement("h2");
     clockHeader.id = id;
 
+    //#region | Hours |
     // Creating the hours digits.
     const hoursLeft = document.createElement("div");
     const hoursRight = document.createElement("div");
-
     // Adding the relevant classes to the hours digits.
     hoursLeft.classList.add("digit-area");
     hoursRight.classList.add("digit-area");
@@ -39,8 +39,10 @@ const clockCreator = (name, id, timeInterval, zoneGMT) => {
 
     hoursRightTop.classList.add("digit", "top", "hours");
     hoursRightBottom.classList.add("digit", "bottom", "hours");
+    //#endregion
 
-    // Creating the minutes - seconds separator.
+    //#region | Hours - Minutes - Separator |
+    // Creating the hours - minutes separator.
     const hoursMinutesSeparator = document.createElement("div");
     hoursMinutesSeparator.classList.add("separator-area");
 
@@ -55,7 +57,9 @@ const clockCreator = (name, id, timeInterval, zoneGMT) => {
     hoursMinutesSeparator.appendChild(hoursMinutesSeparatorTop);
     hoursMinutesSeparator.appendChild(hoursMinutesSeparatorMiddle);
     hoursMinutesSeparator.appendChild(hoursMinutesSeparatorBottom);
+    //#endregion
 
+    //#region | Minutes |
     // Creating the minutes digits.
     const minutesLeft = document.createElement("div");
     const minutesRight = document.createElement("div");
@@ -78,7 +82,9 @@ const clockCreator = (name, id, timeInterval, zoneGMT) => {
 
     minutesRightTop.classList.add("digit", "top", "minutes");
     minutesRightBottom.classList.add("digit", "bottom", "minutes");
+    //#endregion
 
+    //#region | Minutes - Seconds - Separator |
     // Creating the minutes - seconds separator.
     const minutesSecondsSeparator = document.createElement("div");
     minutesSecondsSeparator.classList.add("separator-area");
@@ -94,7 +100,9 @@ const clockCreator = (name, id, timeInterval, zoneGMT) => {
     minutesSecondsSeparator.appendChild(minutesSecondsSeparatorTop);
     minutesSecondsSeparator.appendChild(minutesSecondsSeparatorMiddle);
     minutesSecondsSeparator.appendChild(minutesSecondsSeparatorBottom);
+    //#endregion
 
+    //#region | Seconds |
     // Creating the seconds digits.
     const secondsLeft = document.createElement("div");
     const secondsRight = document.createElement("div");
@@ -117,6 +125,7 @@ const clockCreator = (name, id, timeInterval, zoneGMT) => {
 
     secondsRightTop.classList.add("digit", "top", "seconds");
     secondsRightBottom.classList.add("digit", "bottom", "seconds");
+    //#endregion
 
     // Resetting to 0 for all digit elements and their separators.
     hoursLeftTop.innerHTML = "0";
@@ -365,7 +374,328 @@ const clockCreator = (name, id, timeInterval, zoneGMT) => {
     setInterval(updateClock, timeInterval);
 };
 
-clockCreator("Israel/Jerusalem", "israel-jerusalem-time", 1000, 2);
-clockCreator("Argentina/Buenos Aires", "argentina-buenos-aires-time", 1000, -3);
-clockCreator("USA/Washington", "usa-washington-time", 1000, -5);
-clockCreator("New Zealand/Wellington", "new-zealand-wellington-time", 1000, 13);
+const clockUpdated = (name, id, timeInterval, zoneGMT) => {
+    if (zoneGMT < -12 || zoneGMT > 14) {
+        return undefined;
+    }
+
+    const currentDate = new Date();
+
+    const clockText = document.getElementById(id);
+
+    const hoursLeftTop = document.getElementById(`hours-left-top`);
+    const hoursLeftBottom = document.getElementById(`hours-left-bottom`);
+    const hoursRightTop = document.getElementById(`hours-right-top`);
+    const hoursRightBottom = document.getElementById(`hours-right-bottom`);
+
+    const hoursMinutesSeparatorTop = document.getElementById(`hours-minutes-separator-top`);
+    const hoursMinutesSeparatorBottom = document.getElementById(`hours-minutes-separator-bottom`);
+
+    const minutesLeftTop = document.getElementById(`minutes-left-top`);
+    const minutesLeftBottom = document.getElementById(`minutes-left-bottom`);
+    const minutesRightTop = document.getElementById(`minutes-right-top`);
+    const minutesRightBottom = document.getElementById(`minutes-right-bottom`);
+
+    const minutesSecondsSeparatorTop = document.getElementById(`minutes-seconds-separator-top`);
+    const minutesSecondsSeparatorBottom = document.getElementById(
+        `minutes-seconds-separator-bottom`
+    );
+
+    const secondsLeftTop = document.getElementById(`seconds-left-top`);
+    const secondsLeftBottom = document.getElementById(`seconds-left-bottom`);
+    const secondsRightTop = document.getElementById(`seconds-right-top`);
+    const secondsRightBottom = document.getElementById(`seconds-right-bottom`);
+
+    const timeHandling = () => {
+        // Hours Handling.
+        const currentHours = (currentDate.getUTCHours() + zoneGMT) % 24;
+        const clockHours = +hoursLeftBottom.innerHTML + +hoursRightBottom.innerHTML;
+
+        if (clockHours !== currentHours) {
+            // The hour has changed - updating the clock.
+            if (currentHours >= 10) {
+                // Handle both right and left digits.
+                // Handle only the right digit.
+                if (hoursRightBottom.innerHTML !== currentHours.toString()[1]) {
+                    // The hour has changed - updating the clock.
+                    // Trigger the animation
+                    requestAnimationFrame(() => {
+                        hoursRightTop.style.animation = "1s ease updateDigit";
+                        hoursLeftTop.style.animation = "1s ease updateDigit";
+
+                        // When the animation has ended update the current hour digits.
+                        hoursRightTop.addEventListener(
+                            "animationend",
+                            () => {
+                                console.log("[Hours Right]: Animation finished.");
+                                // Updating the hours-right-bottom digit.
+                                hoursRightBottom.innerHTML = currentHours % 10;
+
+                                hoursRightTop.innerHTML = (+currentHours.toString()[1] + 1) % 10;
+
+                                // Removing the animation.
+                                hoursRightTop.style.animation = "none";
+                            },
+                            // Ensures the listener is removed after execution.
+                            { once: true }
+                        );
+
+                        hoursLeftTop.addEventListener(
+                            "animationend",
+                            () => {
+                                console.log("[Hours Left]: Animation finished.");
+                                // Updating the hours-right-bottom digit.
+                                hoursLeftBottom.innerHTML = Math.floor(currentHours / 10);
+                                switch (currentHours) {
+                                    case 0:
+                                        hoursLeftTop.innerHTML = 1;
+                                        break;
+                                    case 10:
+                                        hoursLeftTop.innerHTML = 2;
+                                        break;
+                                    case 20:
+                                        hoursLeftTop.innerHTML = 0;
+                                        break;
+                                    default:
+                                }
+
+                                // Removing the animation.
+                                hoursLeftTop.style.animation = "none";
+                            },
+                            // Ensures the listener is removed after execution.
+                            { once: true }
+                        );
+                    });
+                }
+            } else {
+                // Handle only the right digit.
+                if (hoursRightBottom.innerHTML !== currentHours.toString()) {
+                    // The hour(s) has changed - updating the clock.
+                    // Trigger the animation
+                    requestAnimationFrame(() => {
+                        hoursRightTop.style.animation = "1s ease updateDigit";
+
+                        // When the animation has ended update the current hours digits.
+                        hoursRightTop.addEventListener(
+                            "animationend",
+                            () => {
+                                console.log("[Hours Right]: Animation finished.");
+                                // Updating the hours-right-bottom digit.
+                                hoursRightBottom.innerHTML = currentHours;
+                                hoursRightTop.innerHTML = currentHours + 1;
+
+                                // Removing the animation.
+                                hoursRightTop.style.animation = "none";
+                            },
+                            // Ensures the listener is removed after execution.
+                            { once: true }
+                        );
+                    });
+                }
+            }
+        }
+
+        // Minutes Handling.
+        const currentMinutes = (currentDate.getUTCMinutes() + zoneGMT) % 60;
+        const clockMinutes = +minutesLeftBottom.innerHTML + +minutesRightBottom.innerHTML;
+
+        if (clockMinutes !== currentMinutes) {
+            if (currentMinutes >= 10) {
+                // Handle both right and left digits.
+                // Handle only the right digit.
+                if (minutesRightBottom.innerHTML !== currentMinutes.toString()[1]) {
+                    // The hour has changed - updating the clock.
+                    // Trigger the animation
+                    requestAnimationFrame(() => {
+                        minutesRightTop.style.animation = "1s ease updateDigit";
+                        minutesLeftTop.style.animation = "1s ease updateDigit";
+
+                        // When the animation has ended update the current minutes digits.
+                        minutesRightTop.addEventListener(
+                            "animationend",
+                            () => {
+                                console.log("[Minutes Right]: Animation finished.");
+                                // Updating the minutes-right-bottom digit.
+                                minutesRightBottom.innerHTML = currentMinutes % 10;
+
+                                minutesRightTop.innerHTML =
+                                    (+currentMinutes.toString()[1] + 1) % 10;
+
+                                // Removing the animation.
+                                minutesRightTop.style.animation = "none";
+                            },
+                            // Ensures the listener is removed after execution.
+                            { once: true }
+                        );
+
+                        minutesLeftTop.addEventListener(
+                            "animationend",
+                            () => {
+                                console.log("[Minutes Left]: Animation finished.");
+                                // Updating the minutes-right-bottom digit.
+                                minutesLeftBottom.innerHTML = Math.floor(currentMinutes / 10);
+                                switch (currentMinutes) {
+                                    case 0:
+                                        minutesLeftTop.innerHTML = 1;
+                                        break;
+                                    case 10:
+                                        minutesLeftTop.innerHTML = 2;
+                                        break;
+                                    case 20:
+                                        minutesLeftTop.innerHTML = 3;
+                                        break;
+                                    case 30:
+                                        minutesLeftTop.innerHTML = 4;
+                                        break;
+                                    case 40:
+                                        minutesLeftTop.innerHTML = 5;
+                                        break;
+                                    case 50:
+                                        minutesLeftTop.innerHTML = 0;
+                                        break;
+
+                                    default:
+                                }
+
+                                // Removing the animation.
+                                minutesLeftTop.style.animation = "none";
+                            },
+                            // Ensures the listener is removed after execution.
+                            { once: true }
+                        );
+                    });
+                }
+            } else {
+                // Handle only the right digit.
+                if (hoursRightBottom.innerHTML !== currentHours.toString()) {
+                    // The minute(s) has changed - updating the clock.
+                    // Trigger the animation
+                    requestAnimationFrame(() => {
+                        minutesRightTop.style.animation = "1s ease updateDigit";
+
+                        // When the animation has ended update the current minutes digits.
+                        minutesRightTop.addEventListener(
+                            "animationend",
+                            () => {
+                                console.log("[Minutes Right]: Animation finished.");
+                                // Updating the minutes-right-bottom digit.
+                                minutesRightBottom.innerHTML = currentMinutes;
+                                minutesRightTop.innerHTML = currentMinutes + 1;
+
+                                // Removing the animation.
+                                minutesRightTop.style.animation = "none";
+                            },
+                            // Ensures the listener is removed after execution.
+                            { once: true }
+                        );
+                    });
+                }
+            }
+        }
+
+        // Seconds Handling.
+        const currentSeconds = (currentDate.getUTCSeconds() + zoneGMT) % 60;
+        const clockSeconds = +secondsLeftBottom.innerHTML + +secondsRightBottom.innerHTML;
+
+        if (clockSeconds !== currentSeconds) {
+            if (currentSeconds >= 10) {
+                // Handle both right and left digits.
+                // Handle only the right digit.
+                if (secondsRightBottom.innerHTML !== currentSeconds.toString()[1]) {
+                    // The second(s) has changed - updating the clock.
+                    // Trigger the animation
+                    requestAnimationFrame(() => {
+                        secondsRightTop.style.animation = "1s ease updateDigit";
+                        secondsLeftTop.style.animation = "1s ease updateDigit";
+
+                        // When the animation has ended update the current seconds digits.
+                        secondsRightTop.addEventListener(
+                            "animationend",
+                            () => {
+                                console.log("[Seconds Right]: Animation finished.");
+                                // Updating the seconds-right-bottom digit.
+                                secondsRightBottom.innerHTML = currentSeconds % 10;
+
+                                secondsRightTop.innerHTML =
+                                    (+currentSeconds.toString()[1] + 1) % 10;
+
+                                // Removing the animation.
+                                secondsRightTop.style.animation = "none";
+                            },
+                            // Ensures the listener is removed after execution.
+                            { once: true }
+                        );
+
+                        secondsLeftTop.addEventListener(
+                            "animationend",
+                            () => {
+                                console.log("[Seconds Left]: Animation finished.");
+                                // Updating the seconds-right-bottom digit.
+                                secondsLeftBottom.innerHTML = Math.floor(currentSeconds / 10);
+                                switch (currentSeconds) {
+                                    case 0:
+                                        secondsLeftTop.innerHTML = 1;
+                                        break;
+                                    case 10:
+                                        secondsLeftTop.innerHTML = 2;
+                                        break;
+                                    case 20:
+                                        secondsLeftTop.innerHTML = 3;
+                                        break;
+                                    case 30:
+                                        secondsLeftTop.innerHTML = 4;
+                                        break;
+                                    case 40:
+                                        secondsLeftTop.innerHTML = 5;
+                                        break;
+                                    case 50:
+                                        secondsLeftTop.innerHTML = 0;
+                                        break;
+
+                                    default:
+                                }
+
+                                // Removing the animation.
+                                secondsLeftTop.style.animation = "none";
+                            },
+                            // Ensures the listener is removed after execution.
+                            { once: true }
+                        );
+                    });
+                }
+            } else {
+                // Handle only the right digit.
+                if (secondsRightBottom.innerHTML !== currentSeconds.toString()) {
+                    // The second(s) has changed - updating the clock.
+                    // Trigger the animation
+                    requestAnimationFrame(() => {
+                        secondsRightTop.style.animation = "1s ease updateDigit";
+
+                        // When the animation has ended update the current seconds digits.
+                        secondsRightTop.addEventListener(
+                            "animationend",
+                            () => {
+                                console.log("[Seconds Right]: Animation finished.");
+                                // Updating the seconds-right-bottom digit.
+                                secondsRightBottom.innerHTML = currentSeconds;
+                                secondsRightTop.innerHTML = currentSeconds + 1;
+
+                                // Removing the animation.
+                                secondsRightTop.style.animation = "none";
+                            },
+                            // Ensures the listener is removed after execution.
+                            { once: true }
+                        );
+                    });
+                }
+            }
+        }
+    };
+
+    setInterval(timeHandling, timeInterval);
+};
+
+clockUpdated("Israel/Jerusalem", "israel-jerusalem-time", 1000, 2);
+clockUpdated("Argentina/Buenos Aires", "argentina-buenos-aires-time", 1000, -3);
+clockUpdated("USA/Washington", "usa-washington-time", 1000, -5);
+clockUpdated("New Zealand/Wellington", "new-zealand-wellington-time", 1000, 13);

@@ -60,16 +60,19 @@ body {
             gap: 1px;
         }
 
-        .separator-area .top,
-        .separator-area .bottom {
+        .separator-area .top {
             color: transparent;
             user-select: none;
         }
 
         .digit.top,
-        .separator-area .top,
-        .separator-area .bottom {
+        .separator-area .top {
             filter: brightness(0.9);
+        }
+
+        .separator-area .bottom {
+            position: absolute;
+            top: 25%;
         }
 
         .digit {
@@ -83,9 +86,9 @@ body {
         .border-right,
         .border-left {
             width: 20px;
-            height: 50%;
+            height: 75%;
 
-            margin-top: 12.5%;
+            margin-top: 6.25%;
             display: flex;
             flex-direction: column;
             /* align-self: center; */
