@@ -112,7 +112,11 @@ const calculateAnswer = (question) => {
     }
 };
 
-let currentAnswer = 0;
+const gameConfiguration = {};
+const maxNumberOfQuestions = 10;
+let currentQuestionNumber = 1;
+let correctAnswers = 0;
+let currentQuestion = "";
 
 const startGame = () => {
     const gameContainer = document.querySelector(".game-container");
@@ -178,14 +182,6 @@ const startGame = () => {
                         <td>x</td>
                         <td>x</td>
                     </tr>
-                    <tr>
-                        <td>x</td>
-                        <td>x</td>
-                        <td>x</td>
-                        <td>x</td>
-                        <td>x</td>
-                        <td>x</td>
-                    </tr>
                 </tbody>
             </table>
         </div>
@@ -220,8 +216,21 @@ const startGame = () => {
     }
 
     // Game began.
+    console.log("Game Started.");
+
+    // Game configuration.
+    console.log(`Difficulty Selected: ${gameDifficulty.value}`);
+    console.log(`Operator Selected: ${gameOperatorSelection.value}`);
+
+    // Saving configuration.
+    gameConfiguration.difficulty = gameDifficulty.value;
+    gameConfiguration.operatorSelection = gameOperatorSelection.value;
+
     // First question will be generated.
-    const currentQuestion = generateQuestion(difficulty.value, operatorSelection.value);
+    currentQuestion = generateQuestion(
+        gameConfiguration.difficulty,
+        gameConfiguration.operatorSelection
+    );
 
     // Updating the question.
     const questionElement = document.querySelector(".question");
@@ -236,9 +245,95 @@ const submitAnswer = () => {
     const answer = document.querySelector("#answer").value;
     console.log(`User's Answer: ${answer}`);
 
+    const answerInputElement = document.querySelector(".answer-input > input");
+    answerInputElement.disabled = true;
+    let pointsGiven = 0;
+
     if (+answer === currentAnswer) {
         console.log("Answer is correct.");
+        answerInputElement.style.backgroundColor = "lightgreen";
+        correctAnswers++;
+        pointsGiven = 1;
     } else {
         console.log("Answer is incorrect.");
+        answerInputElement.style.backgroundColor = "#ff474c";
+    }
+
+    console.log(`Current amount of correct answers: ${correctAnswers}`);
+
+    // Saving question info to the answers table.
+    const answersTableBody = document.querySelector("#answers-for-previous-questions");
+    const oldAnswersTableBodyInnerHTML = answersTableBody.innerHTML;
+    if (currentQuestionNumber === 1) {
+        answersTableBody.innerHTML = `
+                <tr>
+                    <td>${currentQuestionNumber}</td>
+                    <td>${currentQuestion}</td>
+                    <td>${gameConfiguration.difficulty}</td>
+                    <td>${currentAnswer}</td>
+                    <td>${answer}</td>
+                    <td>${pointsGiven}</td>
+                </tr>
+            `;
+    } else {
+        answersTableBody.innerHTML =
+            oldAnswersTableBodyInnerHTML +
+            `
+                <tr>
+                    <td>${currentQuestionNumber}</td>
+                    <td>${currentQuestion}</td>
+                    <td>${gameConfiguration.difficulty}</td>
+                    <td>${currentAnswer}</td>
+                    <td>${answer}</td>
+                    <td>${pointsGiven}</td>
+                </tr>
+            `;
+    }
+
+    // Preparing for the next question.
+    const submitAnswer = document.querySelector("#submit-answer");
+    submitAnswer.innerHTML = "Next Question ➡";
+    currentQuestionNumber++;
+    submitAnswer.onclick = () => nextQuestion(currentQuestionNumber);
+};
+
+const showSummaryScreen = () => {
+    const gameContainer = document.querySelector(".game-container");
+
+    gameContainer.innerHTML = `<h1>Game Summary</h1>`;
+};
+
+const nextQuestion = (questionNumber) => {
+    console.log(`\nQuestion Number: ${questionNumber}`);
+
+    // Checking if the max number of questions in the game has been reached.
+    if (questionNumber === maxNumberOfQuestions) {
+        console.log("Game Ended.");
+        showSummaryScreen();
+    } else {
+        // Restoring the submitAnswer button to its default state.
+        const submitAnswerElement = document.querySelector("#submit-answer");
+        submitAnswerElement.innerHTML = "Submit";
+        submitAnswerElement.onclick = () => submitAnswer();
+
+        // Restoring the answer input field to its default state.
+        const answerInputElement = document.querySelector(".answer-input > input");
+        answerInputElement.style.backgroundColor = "lightblue";
+        answerInputElement.value = "";
+        answerInputElement.disabled = false;
+
+        // Generating the next question.
+        currentQuestion = generateQuestion(
+            gameConfiguration.difficulty,
+            gameConfiguration.operatorSelection
+        );
+
+        // Updating the question.
+        const questionElement = document.querySelector(".question");
+        questionElement.innerText = currentQuestion;
+
+        // Calculating the answer.
+        currentAnswer = calculateAnswer(currentQuestion);
+        console.log(`Calculated Answer: ${currentAnswer}`);
     }
 };
