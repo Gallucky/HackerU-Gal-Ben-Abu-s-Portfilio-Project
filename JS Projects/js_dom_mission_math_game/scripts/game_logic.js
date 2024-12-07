@@ -337,3 +337,6 @@ const nextQuestion = (questionNumber) => {
         console.log(`Calculated Answer: ${currentAnswer}`);
     }
 };
+
+// Division bug needs to be fixed because the input element of type number
+// is not compatible with decimal numbers / fractions...
