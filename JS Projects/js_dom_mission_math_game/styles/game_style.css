@@ -3,6 +3,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Heebo:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Orbitron:wght@400..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 /* Rubik Font: */
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+/* Bebas Neue - Static Font */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
 * {
     padding: 0;
@@ -95,6 +97,34 @@ body {
         border-radius: 16px;
     }
 
+    .difficulty {
+        font-weight: 600;
+
+        &.easy-difficulty,
+        .easy-difficulty {
+            color: green;
+            font-weight: 600;
+        }
+
+        &.medium-difficulty,
+        .medium-difficulty {
+            color: yellow;
+            font-weight: 600;
+        }
+
+        &.hard-difficulty,
+        .hard-difficulty {
+            color: rgb(255, 30, 0);
+            font-weight: 600;
+        }
+
+        &.extreme-difficulty,
+        .extreme-difficulty {
+            color: rgb(108, 1, 1);
+            font-weight: 600;
+        }
+    }
+
     select:focus {
         outline: none;
         border-color: teal;
@@ -135,8 +165,6 @@ body {
         justify-content: flex-start;
 
         gap: 30px;
-
-        border: 1px solid black;
 
         .tool-info-difficulty-level {
             width: auto;
@@ -179,6 +207,11 @@ body {
         border: 1px solid black;
 
         .question {
+            margin-top: 5%;
+            font-family: Bebas Neue;
+            font-size: 75px;
+
+            user-select: none;
         }
 
         .answer {
@@ -188,7 +221,7 @@ body {
             align-content: center;
             justify-content: center;
 
-            gap: 10px;
+            gap: 20px;
 
             .answer-input {
                 width: fit-content;
@@ -199,7 +232,6 @@ body {
                 justify-content: center;
 
                 gap: 10px;
-                margin-top: 10px;
                 margin-inline: auto;
 
                 /* border: 1px solid black; */
@@ -209,22 +241,34 @@ body {
                     font-size: 15px;
                     font-weight: 600;
 
-                    line-height: 120%;
+                    line-height: 160%;
                 }
 
                 input {
-                    border: none;
+                    outline: none;
                     background: none;
 
-                    border: 1px solid black;
+                    border: 1px solid black !important;
                     border-radius: 3px;
 
                     background-color: lightblue;
+
+                    line-height: 150%;
+                    text-indent: 5px;
+                    caret-shape: block;
+
+                    font-family: Rubik;
+
+                    transition: border 0.1s ease-in-out;
+
+                    cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+
+                    &:focus {
+                        border: 3px groove black !important;
+                    }
                 }
 
                 input[type="number"] {
-                    outline: none;
-
                     &::-webkit-inner-spin-button,
                     &::-webkit-outer-spin-button {
                         -webkit-appearance: none;
@@ -236,25 +280,28 @@ body {
                 width: 20%;
                 height: fit-content;
 
-                margin-bottom: 10px;
+                margin-bottom: 20px;
                 margin-inline: auto;
 
-                border: none;
-                outline: none;
-
-                border: 1px groove black;
-                outline: 3px groove silver;
+                border: 1px groove black !important;
+                outline: 3px groove silver !important;
 
                 border-radius: 16px;
 
-                background: 0;
+                background: none;
                 background-color: teal;
 
                 font-size: 15px;
                 font-weight: 600;
                 font-family: Orbitron;
 
-                cursor: pointer;
+                cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+
+                transition: all 0.5s ease-in-out;
+
+                &:hover {
+                    transform: scale(0.9);
+                }
             }
         }
     }
@@ -275,7 +322,7 @@ body {
 
             align-self: center;
 
-            border: 1px solid black;
+            border: 1px solid black !important;
             border-collapse: collapse;
 
             thead {
@@ -308,7 +355,5 @@ body {
                 border-top: 1px solid black;
             }
         }
-
-        border: 1px solid black;
     }
 }

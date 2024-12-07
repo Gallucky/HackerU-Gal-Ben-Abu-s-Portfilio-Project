@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>JS DOM Mission Math Game</title>
+        <link rel="stylesheet" href="../../styles/globals/general.css" />
         <link rel="stylesheet" href="./styles/game_style.css" />
         <script src="./scripts/game_logic.js" defer></script>
     </head>
@@ -12,11 +13,11 @@
             <div class="game-toolbar">
                 <div class="tool-info-difficulty-level">
                     <label for="difficulty" id="difficulty-label"> Difficulty: </label>
-                    <select class="difficulty" name="difficulty" id="difficulty">
-                        <option value="easy">Easy 😊</option>
-                        <option value="medium">Medium 🤘</option>
-                        <option value="hard">Hard 🔥</option>
-                        <option value="extreme">Extreme 🚒</option>
+                    <select class="difficulty easy-difficulty" name="difficulty" id="difficulty">
+                        <option class="easy-difficulty" value="easy">Easy 😊</option>
+                        <option class="medium-difficulty" value="medium">Medium 🤘</option>
+                        <option class="hard-difficulty" value="hard">Hard 🔥</option>
+                        <option class="extreme-difficulty" value="extreme">Extreme 🚒</option>
                     </select>
                 </div>
                 <div class="tool-info-operator">
@@ -33,9 +34,7 @@
                 </div>
             </div>
             <div class="game-body">
-                <div class="question">
-                    <span></span>
-                </div>
+                <div class="question">X OPERATOR Y = ?</div>
 
                 <div class="answer">
                     <div class="answer-input">
@@ -51,6 +50,7 @@
                         <tr>
                             <th>#</th>
                             <th>Question</th>
+                            <th>Difficulty</th>
                             <th>Answer</th>
                             <th>Your Answer</th>
                             <th>Points Given</th>
@@ -63,8 +63,10 @@
                             <td>x</td>
                             <td>x</td>
                             <td>x</td>
+                            <td>x</td>
                         </tr>
                         <tr>
+                            <td>x</td>
                             <td>x</td>
                             <td>x</td>
                             <td>x</td>
