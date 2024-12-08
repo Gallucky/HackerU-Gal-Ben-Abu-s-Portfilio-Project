@@ -97,6 +97,8 @@ const calculateAnswer = (question) => {
     const operator = questionSplitted[1];
     const secondNumber = +questionSplitted[2];
 
+    let result = 0;
+
     switch (operator) {
         case "+":
             return firstNumber + secondNumber;
@@ -106,14 +108,20 @@ const calculateAnswer = (question) => {
             return firstNumber * secondNumber;
         case "÷":
             // Making sure the result is accurate up to the nearest 2 digits after the decimal point.
-            return (firstNumber / secondNumber).toFixed(2);
+            result = (firstNumber / secondNumber).toFixed(2);
         default:
             break;
     }
+
+    return +result;
 };
 
 const gameConfiguration = {};
 const maxNumberOfQuestions = 10;
+
+let gameDifficulty;
+let gameOperatorSelection;
+
 let currentQuestionNumber = 1;
 let correctAnswers = 0;
 let currentQuestion = "";
@@ -156,7 +164,8 @@ const startGame = () => {
             <div class="answer">
                 <div class="answer-input">
                     <label for="answer-question">Answer:</label>
-                    <input type="number" name="answer-question" id="answer" />
+                    <!--  step="0.01" is to make sure the input is accurate up to the nearest 2 digits after the decimal point. -->
+                    <input type="number" name="answer-question" id="answer" step="0.01" />
                 </div>
                 <button onclick="submitAnswer()" id="submit-answer">Submit</button>
             </div>
@@ -175,12 +184,12 @@ const startGame = () => {
                 </thead>
                 <tbody id="answers-for-previous-questions">
                     <tr>
-                        <td>x</td>
-                        <td>x</td>
-                        <td>x</td>
-                        <td>x</td>
-                        <td>x</td>
-                        <td>x</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
                     </tr>
                 </tbody>
             </table>
@@ -192,8 +201,8 @@ const startGame = () => {
     // based on the user input.
 
     // Getting the updated elements
-    const gameDifficulty = document.querySelector("#difficulty");
-    const gameOperatorSelection = document.querySelector("#operator-selection");
+    gameDifficulty = document.querySelector("#difficulty");
+    gameOperatorSelection = document.querySelector("#operator-selection");
 
     // Applying the user's input to the updated elements.
     gameDifficulty.value = difficulty.value;
@@ -226,11 +235,19 @@ const startGame = () => {
     gameConfiguration.difficulty = gameDifficulty.value;
     gameConfiguration.operatorSelection = gameOperatorSelection.value;
 
+    // Setting up the flags that will be raised if the
+    // configuration will be changed mid game.
+    gameConfiguration.difficultyModified = false;
+    gameConfiguration.operatorSelectionModified = false;
+
     // First question will be generated.
     currentQuestion = generateQuestion(
         gameConfiguration.difficulty,
         gameConfiguration.operatorSelection
     );
+
+    const answersTable = document.querySelector(".game-information > .information-table");
+    answersTable.style.userSelect = "none";
 
     // Updating the question.
     const questionElement = document.querySelector(".question");
@@ -242,14 +259,15 @@ const startGame = () => {
 };
 
 const submitAnswer = () => {
-    const answer = document.querySelector("#answer").value;
-    console.log(`User's Answer: ${answer}`);
+    const answer = +document.querySelector("#answer").value;
+    console.log(`User's Answer: ${answer}\nAnswer Type: ${typeof answer}`);
 
     const answerInputElement = document.querySelector(".answer-input > input");
     answerInputElement.disabled = true;
     let pointsGiven = 0;
 
-    if (+answer === currentAnswer) {
+    // Checking if the user's answer is correct.
+    if (answer === currentAnswer) {
         console.log("Answer is correct.");
         answerInputElement.style.backgroundColor = "lightgreen";
         correctAnswers++;
@@ -262,8 +280,11 @@ const submitAnswer = () => {
     console.log(`Current amount of correct answers: ${correctAnswers}`);
 
     // Saving question info to the answers table.
-    const answersTableBody = document.querySelector("#answers-for-previous-questions");
+    const answersTableBody = document.getElementById("answers-for-previous-questions");
     const oldAnswersTableBodyInnerHTML = answersTableBody.innerHTML;
+
+    const answersTable = document.querySelector(".game-information > .information-table");
+
     if (currentQuestionNumber === 1) {
         answersTableBody.innerHTML = `
                 <tr>
@@ -275,6 +296,7 @@ const submitAnswer = () => {
                     <td>${pointsGiven}</td>
                 </tr>
             `;
+        answersTable.style.userSelect = "auto";
     } else {
         answersTableBody.innerHTML =
             oldAnswersTableBodyInnerHTML +
@@ -311,6 +333,34 @@ const nextQuestion = (questionNumber) => {
         console.log("Game Ended.");
         showSummaryScreen();
     } else {
+        if (gameConfiguration.difficulty !== gameDifficulty.value) {
+            console.log(`
+                Game configuration changed mid game.
+                Updating game configuration to match user input.
+                Difficulty: ${gameDifficulty.value} ➡ ${gameConfiguration.difficulty}
+            `);
+
+            // Updating the game configuration that was changed.
+            gameConfiguration.difficulty = gameDifficulty.value;
+
+            // Raising flag to indicate that the game configuration has changed.
+            gameConfiguration.difficultyModified = true;
+        }
+
+        if (gameConfiguration.operatorSelection !== gameOperatorSelection.value) {
+            console.log(`
+                Game configuration changed mid game.
+                Updating game configuration to match user input.
+                Operator Selection: ${gameOperatorSelection.value} ➡ ${gameConfiguration.operatorSelection}
+            `);
+
+            // Updating the game configuration that was changed.
+            gameConfiguration.operatorSelection = gameOperatorSelection.value;
+
+            // Raising flag to indicate that the game configuration has changed.
+            gameConfiguration.operatorSelectionModified = true;
+        }
+
         // Restoring the submitAnswer button to its default state.
         const submitAnswerElement = document.querySelector("#submit-answer");
         submitAnswerElement.innerHTML = "Submit";
@@ -340,3 +390,16 @@ const nextQuestion = (questionNumber) => {
 
 // Division bug needs to be fixed because the input element of type number
 // is not compatible with decimal numbers / fractions...
+// FIXED:
+// 1) Added the step attribute to the input element.
+// 2) calculateAnswer method returned a string because of the toFixed method.
+//    Changed the return type to number regardless of the result.
+
+// Todo:
+// 1) Fix the coloring of the difficulty level when changed. ✔
+//    [solution in game_style.css - under select and select:focus + &:has(option:checked[value="..."])]
+// 2) Difficulty of questions actually changes for the next questions.
+//    Same as the operators. ✔
+// 3) If difficulty change while in game set a flag of difficulty to be custom at the end.
+// Same for the operator(s)... ✔
+// 4) Summary Screen...

@@ -95,30 +95,42 @@ body {
         border: none;
         border: 1px solid black;
         border-radius: 16px;
+
+        &:has(option:checked[value="easy"]) {
+            color: green;
+        }
+
+        &:has(option:checked[value="medium"]) {
+            color: yellow;
+        }
+
+        &:has(option:checked[value="hard"]) {
+            color: rgb(255, 30, 0);
+        }
+
+        &:has(option:checked[value="extreme"]) {
+            color: rgb(108, 1, 1);
+        }
     }
 
     .difficulty {
         font-weight: 600;
 
-        &.easy-difficulty,
         .easy-difficulty {
             color: green;
             font-weight: 600;
         }
 
-        &.medium-difficulty,
         .medium-difficulty {
             color: yellow;
             font-weight: 600;
         }
 
-        &.hard-difficulty,
         .hard-difficulty {
             color: rgb(255, 30, 0);
             font-weight: 600;
         }
 
-        &.extreme-difficulty,
         .extreme-difficulty {
             color: rgb(108, 1, 1);
             font-weight: 600;
@@ -128,7 +140,25 @@ body {
     select:focus {
         outline: none;
         border-color: teal;
+
+        /* Default Box Shadow */
         box-shadow: 0 0 5px teal;
+
+        &:has(option:checked[value="easy"]) {
+            box-shadow: 0 0 5px green;
+        }
+
+        &:has(option:checked[value="medium"]) {
+            box-shadow: 0 0 5px yellow;
+        }
+
+        &:has(option:checked[value="hard"]) {
+            box-shadow: 0 0 5px rgb(255, 30, 0);
+        }
+
+        &:has(option:checked[value="extreme"]) {
+            box-shadow: 0 0 5px rgb(108, 1, 1);
+        }
     }
 
     .start-game-button {
@@ -277,6 +307,8 @@ body {
             #submit-answer {
                 width: 20%;
                 height: fit-content;
+
+                user-select: none;
 
                 margin-bottom: 20px;
                 margin-inline: auto;
