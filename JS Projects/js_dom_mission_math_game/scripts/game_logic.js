@@ -346,7 +346,7 @@ const nextQuestion = (questionNumber) => {
         console.log(`
                 Game configuration changed mid game.
                 Updating game configuration to match user input.
-                Difficulty: ${gameDifficulty.value} ➡ ${gameConfiguration.difficulty}
+                Difficulty: ${gameConfiguration.difficulty} ➡ ${gameDifficulty.value}
             `);
 
         // Updating the game configuration that was changed.
@@ -360,7 +360,7 @@ const nextQuestion = (questionNumber) => {
         console.log(`
                 Game configuration changed mid game.
                 Updating game configuration to match user input.
-                Operator Selection: ${gameOperatorSelection.value} ➡ ${gameConfiguration.operatorSelection}
+                Operator Selection: ${gameConfiguration.operatorSelection} ➡ ${gameOperatorSelection.value}
             `);
 
         // Updating the game configuration that was changed.

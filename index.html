@@ -1,465 +1,604 @@
 <!DOCTYPE html>
 <html lang="he">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Gal Ben Abu's Portfolio Project</title>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gal Ben Abu's Portfolio Project</title>
+        <link rel="stylesheet" href="./styles/globals/general.css" />
+        <link rel="stylesheet" href="./styles/globals/toolbar.css" />
+        <link rel="stylesheet" href="./styles/globals/license.css" />
+        <link rel="stylesheet" href="./styles/main_page_styles/header_area.css" />
+        <link rel="stylesheet" href="./styles/main_page_styles/programming_languages.css" />
+        <link rel="stylesheet" href="./styles/main_page_styles/separator.css" />
+        <link rel="stylesheet" href="./styles/main_page_styles/about.css" />
+        <link rel="stylesheet" href="./styles/main_page_styles/services_and_projects.css" />
+        <link rel="stylesheet" href="./styles/main_page_styles/contact.css" />
+        <link rel="stylesheet" href="./styles/main_page_styles/contact_options.css" />
 
-    <link rel="stylesheet" href="./styles/globals/general.css" />
-    <link rel="stylesheet" href="./styles/globals/toolbar.css" />
-    <link rel="stylesheet" href="./styles/globals/license.css" />
-    <link rel="stylesheet" href="./styles/main_page_styles/header_area.css" />
-    <link rel="stylesheet" href="./styles/main_page_styles/programming_languages.css" />
-    <link rel="stylesheet" href="./styles/main_page_styles/separator.css" />
-    <link rel="stylesheet" href="./styles/main_page_styles/about.css" />
-    <link rel="stylesheet" href="./styles/main_page_styles/services_and_projects.css" />
-    <link rel="stylesheet" href="./styles/main_page_styles/contact.css" />
-    <link rel="stylesheet" href="./styles/main_page_styles/contact_options.css" />
+        <!-- Connecting to google fonts api -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Connecting to google fonts api -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- Rubik font from google -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+            rel="stylesheet" />
 
-    <!-- Rubik font from google -->
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-        rel="stylesheet" />
+        <!-- Heebo font from google -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+            rel="stylesheet" />
+    </head>
 
-    <!-- Heebo font from google -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-        rel="stylesheet" />
-</head>
-
-<body>
-    <!-- The nav tool bar that contains the profile picture and the anchor links in the website. -->
-    <nav class="tool-bar" dir="ltr">
-        <div class="tool-bar-content-wrapper">
-            <div class="profile-area">
-                <div id="profile-image"></div>
-                <img src="./images/Profile-Name-removebg.png" id="profile-name" alt="Gal Ben Abu" />
-            </div>
-
-            <div class="extra-features">
-                <!-- Supported Languages -->
-                <div id="language-change" class="outline-text">
-                    <img src="./images/language_48x48.png" alt="Language image icon - dropdown for a language change" />
-                    <div class="supported-languages">
-                        <a href="./index-en.html" class="outline-text">English</a>
-                        <span class="outline-text">עברית</span>
-                    </div>
+    <body>
+        <!-- The nav tool bar that contains the profile picture and the anchor links in the website. -->
+        <nav class="tool-bar" dir="ltr">
+            <div class="tool-bar-content-wrapper">
+                <div class="profile-area">
+                    <div id="profile-image"></div>
+                    <img
+                        src="./images/Profile-Name-removebg.png"
+                        id="profile-name"
+                        alt="Gal Ben Abu" />
                 </div>
 
-                <!-- Enable Smooth Scrolling -->
-                <!-- chrome://flags/#smooth-scrolling -->
-                <a href="./extra_features_and_settings-he.html" id="settings-features" class="outline-text">
-                    <abbr title="אפשרויות נוספות">
-                        <img src="./images/settings-gear.png"
-                            alt="Settings gear icon image that is a link to an helping page." />
-                    </abbr>
-                </a>
-            </div>
-
-            <img id="hamburger-menu-icon" src="./images/hamburger-menu.png"
-                alt="Hamburger menu Icon for the dropdown of links while on mobile" />
-
-            <div class="links outline-text">
-                <a href="./index.html#main">ראשי</a>
-                <a href="./index.html#about">אודות</a>
-                <a href="./index.html#services">שירותים</a>
-                <a href="./index.html#contact">צור קשר</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Anchor link target location to be not hide any content. -->
-    <span id="main" class="anchor-linked"></span>
-
-    <!-- The first div / area / section that the user sees when entering the website -->
-    <div class="header-area">
-        <h1 class="outline-text" style="--outline-thickness: 2px">תיק עבודות</h1>
-        <p class="outline-text" dir="rtl">
-            ברוכים הבאים לאתר הפורטפוליו שלי. <br />
-            כאן תוכלו להתרשם ממגוון העבודות והשירותים שאני מציע בתחום פיתוח אתרים ותכנות. <br />
-            האתר מציג פרויקטים נבחרים שממחישים את היכולות שלי, <br />
-            לצד תכנים מקצועיים ועדכונים על הטכנולוגיות בהן אני מתמחה.
-        </p>
-    </div>
-
-    <div class="programming-languages-title">
-        <h2 class="outline-text" dir="rtl">
-            רשימה של שפות תכנות יחד עם דירוג הקושי ודירוג החוויה הכללית שלי עם כל אחת מהן.
-        </h2>
-    </div>
-
-    <!-- A section bar for my coding and styling languages etc... -->
-    <div class="programming-languages-and-more-area">
-        <!-- #region | Languages Logos | -->
-        <div class="language-card lang-he" id="html" language="HTML"></div>
-        <div class="language-card lang-he" id="css" language="CSS"></div>
-        <div class="language-card lang-he" id="js" language="JavaScript"></div>
-        <div class="language-card lang-he" id="java" language="Java"></div>
-        <div class="language-card lang-he" id="python" language="Python"></div>
-        <div class="language-card lang-he" id="powershell" language="Powershell"></div>
-        <div class="language-card lang-he" id="csharp" language="C#"></div>
-        <div class="language-card lang-he" id="cpp" language="C++"></div>
-        <div class="language-card lang-he" id="c" language="C"></div>
-        <div class="language-card lang-he" id="batch" language="Batch"></div>
-        <div class="language-card lang-he" id="assembly" language="Assembly"></div>
-        <!-- #endregion -->
-
-        <div class="programming-lang-info">
-            <div class="logo-wrapper">
-                <!-- Language Info Area -->
-                <div class="curr-lang-logo"></div>
-            </div>
-
-            <div class="text-wrapper">
-                <!-- Current Language Text -->
-                <h2 class="outline-text"></h2>
-                <!-- Info about said language. -->
-                <p dir="rtl"></p>
-            </div>
-
-            <div class="rating-wrapper">
-                <div class="difficulty">
-                    <!-- My Difficulty Level Rating -->
-                    <h3 class="difficulty-rating-title outline-text">:רמת קושי</h3>
-                    <div class="programming-language-difficulty-rating">
-                        <div class="difficulty-rating-star"></div>
-                        <div class="difficulty-rating-star"></div>
-                        <div class="difficulty-rating-star"></div>
-                        <div class="difficulty-rating-star"></div>
-                        <div class="difficulty-rating-star"></div>
+                <div class="extra-features">
+                    <!-- Supported Languages -->
+                    <div id="language-change" class="outline-text">
+                        <img
+                            src="./images/language_48x48.png"
+                            alt="Language image icon - dropdown for a language change" />
+                        <div class="supported-languages">
+                            <a href="./index-en.html" class="outline-text">English</a>
+                            <span class="outline-text">עברית</span>
+                        </div>
                     </div>
+
+                    <!-- Enable Smooth Scrolling -->
+                    <!-- chrome://flags/#smooth-scrolling -->
+                    <a
+                        href="./extra_features_and_settings-he.html"
+                        id="settings-features"
+                        class="outline-text">
+                        <abbr title="אפשרויות נוספות">
+                            <img
+                                src="./images/settings-gear.png"
+                                alt="Settings gear icon image that is a link to an helping page." />
+                        </abbr>
+                    </a>
                 </div>
 
-                <div class="experience">
-                    <!-- My Experience Level Rating -->
-                    <h3 class="experience-title outline-text">:חוויה כללית</h3>
-                    <div class="programming-language-experience">
-                        <div class="experience-star"></div>
-                        <div class="experience-star"></div>
-                        <div class="experience-star"></div>
-                        <div class="experience-star"></div>
-                        <div class="experience-star"></div>
-                    </div>
+                <img
+                    id="hamburger-menu-icon"
+                    src="./images/hamburger-menu.png"
+                    alt="Hamburger menu Icon for the dropdown of links while on mobile" />
+
+                <div class="links outline-text">
+                    <a href="./index.html#main">ראשי</a>
+                    <a href="./index.html#about">אודות</a>
+                    <a href="./index.html#services">שירותים</a>
+                    <a href="./index.html#contact">צור קשר</a>
+                    <a href="./JS Projects/js_dom_mission_math_game/index.html">
+                        <abbr
+                            title="TEMP - Remove Later - Click here to play JS DOM Mission Math Game">
+                            Math Game
+                        </abbr>
+                    </a>
                 </div>
             </div>
-        </div>
+        </nav>
 
-        <!-- Dropdown Area -->
-        <div id="dropdown-area"></div>
-    </div>
+        <!-- Anchor link target location to be not hide any content. -->
+        <span id="main" class="anchor-linked"></span>
 
-    <!-- Anchor link target location to be not hide any content. -->
-    <span id="about" class="anchor-linked"></span>
-
-    <!-- This is the about me section in my project -->
-    <div class="about-section">
-        <div class="about-content-wrapper">
-            <div id="about-profile-picture" alt="My (Gal Ben Abu's) Profile Picture in the about section"></div>
-            <div class="about-text-wrapper" dir="rtl">
-                <h2 class="outline-text" style="--outline-thickness: 2px">קצת עלי</h2>
-                <p>
-                    קוראים לי גל, אני בן 20 מאילת כרגע חייל בתפקיד מנהל רשת. <br />
-                    אני אוהב לתכנת, לכתוב קטעי קוד וסקריפטים, ולשחק במשחקי מחשב. <br />
-                    <br />
-                    ברשותי ידע מעמיק בתחום, אשר נרכש בעקבות השתתפותי בתוכניות ייעודיות.
-                    <br />
-                    <br />
-                    <span class="underline">בין התוכניות שהייתי בהן:</span> <br />
-                </p>
-                <ul>
-                    <li>
-                        <a href="https://www.magshimim.cyber.org.il/about" target="_blank">מגשימים</a>
-                        - תכנית הסייבר הלאומית [3 שנים]
-                    </li>
-                    <li>Star Tech - תוכנית פיתוח יכולות טכנולוגיות בשפת processing [שנה]</li>
-                    <li>
-                        <a href="https://pop.education.gov.il/scientific-technological-reserve/"
-                            target="_blank">עתודה</a>
-                        - עתודה מדעית טכנולוגית (עמ"ט) היא תוכנית מצוינות יוקרתית של החינוך
-                        הטכנולוגי במערכת החינוך.
-                    </li>
-                </ul>
-                <p>
-                    בנוסף ל5 יח"ל מתמטיקה ו5 יח"ל אנגלית בתיכון הגברתי 5 יח"ל פיזיקה, <br />
-                    5 יח"ל מדעי המחשב ו- 5 יח"ל הנדסת תוכנה. <br />
-                    בסך הכל 10 יחידות לימוד במחשבים.
-                </p>
-                <a href="./Gal Ben Abu's Programmer Resume.pdf" id="download-resume-link" download="resume-template"
-                    class="outline-text">
-                    להורדת קורות חיים
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Anchor link target location to be not hide any content. -->
-    <span id="services" class="anchor-linked"></span>
-
-    <!-- The list of my work and my projects -->
-    <div class="services-projects">
-        <div class="projects-area-content">
-            <h2 class="outline-text" style="--outline-thickness: 2px">עבודות נבחרות</h2>
-            <p dir="rtl">
-                להלן עבודות נבחרות של אתרים מעוצבים מראש אשר מימשתי אותם <br />
-                בכך שיצרתי אתרים מותאמים למחשב ולנייד. <br />
-                העבודות נכתבו בכמה שפות שונות וחלקן גם בדרכים מתקדמות יותר.
+        <!-- The first div / area / section that the user sees when entering the website -->
+        <div class="header-area">
+            <h1 class="outline-text" style="--outline-thickness: 2px">תיק עבודות</h1>
+            <p class="outline-text" dir="rtl">
+                ברוכים הבאים לאתר הפורטפוליו שלי. <br />
+                כאן תוכלו להתרשם ממגוון העבודות והשירותים שאני מציע בתחום פיתוח אתרים ותכנות. <br />
+                האתר מציג פרויקטים נבחרים שממחישים את היכולות שלי, <br />
+                לצד תכנים מקצועיים ועדכונים על הטכנולוגיות בהן אני מתמחה.
             </p>
+        </div>
 
-            <div class="projects-cards-wrapper">
-                <div class="project-card">
-                    <img src="./landing_pages/1_leading_you_forward_1/images/project_preview.png"
-                        alt="The project image" class="project-image" />
-                    <h3 class="project-name outline-text" style="
-                                color: blue;
-                                --outline-thickness: 1px;
-                                --outline-color: rgba(0, 183, 255, 0.127);
-                            ">
-                        Leading You Forward
-                    </h3>
-                    <div class="languages-used-in-project-preview">
-                        <img src="./images/languages_logos/html.png" alt="Project Used language name" />
+        <div class="programming-languages-title">
+            <h2 class="outline-text" dir="rtl">
+                רשימה של שפות תכנות יחד עם דירוג הקושי ודירוג החוויה הכללית שלי עם כל אחת מהן.
+            </h2>
+        </div>
 
-                        <img src="./images/languages_logos/css.png" alt="Project Used language name" />
-                    </div>
-                    <p class="short-project-description" dir="rtl">
-                        רוצים הדרכה להצלחה, <br />
-                        תובילו קדימה אל לחיצת הכפתור.
-                    </p>
-                    <a href="./landing_pages/1_leading_you_forward_1/landing_page.html" target="_blank"
-                        class="link-to-landing-page">« לעמוד הפרויקט</a>
+        <!-- A section bar for my coding and styling languages etc... -->
+        <div class="programming-languages-and-more-area">
+            <!-- #region | Languages Logos | -->
+            <div class="language-card lang-he" id="html" language="HTML"></div>
+            <div class="language-card lang-he" id="css" language="CSS"></div>
+            <div class="language-card lang-he" id="js" language="JavaScript"></div>
+            <div class="language-card lang-he" id="java" language="Java"></div>
+            <div class="language-card lang-he" id="python" language="Python"></div>
+            <div class="language-card lang-he" id="powershell" language="Powershell"></div>
+            <div class="language-card lang-he" id="csharp" language="C#"></div>
+            <div class="language-card lang-he" id="cpp" language="C++"></div>
+            <div class="language-card lang-he" id="c" language="C"></div>
+            <div class="language-card lang-he" id="batch" language="Batch"></div>
+            <div class="language-card lang-he" id="assembly" language="Assembly"></div>
+            <!-- #endregion -->
+
+            <div class="programming-lang-info">
+                <div class="logo-wrapper">
+                    <!-- Language Info Area -->
+                    <div class="curr-lang-logo"></div>
                 </div>
 
-                <div class="project-card">
-                    <img src="./landing_pages/2_here_and_now/project_preview.png" alt="The project image"
-                        class="project-image" />
-                    <h3 class="project-name outline-text" style="
-                                color: blue;
-                                --outline-thickness: 1px;
-                                --outline-color: rgba(0, 183, 255, 0.127);
-                            ">
-                        Here &amp; Now
-                    </h3>
-                    <div class="languages-used-in-project-preview">
-                        <img src="./images/languages_logos/html.png" alt="Project Used language name" />
-
-                        <img src="./images/languages_logos/css.png" alt="Project Used language name" />
-                    </div>
-                    <p class="short-project-description" dir="rtl">
-                        רוצים ליהנות ממגוון מתנות, <br />
-                        לחצו כאן ועכשיו.
-                    </p>
-                    <a href="./landing_pages/2_here_and_now/landing_page.html" target="_blank"
-                        class="link-to-landing-page">« לעמוד הפרויקט</a>
+                <div class="text-wrapper">
+                    <!-- Current Language Text -->
+                    <h2 class="outline-text"></h2>
+                    <!-- Info about said language. -->
+                    <p dir="rtl"></p>
                 </div>
 
-                <div class="project-card">
-                    <img src="./landing_pages/3_good_coffee_for_good_morning/images/project_preview.png"
-                        alt="The project image" class="project-image" />
-                    <h3 class="project-name outline-text" style="
-                                color: blue;
-                                --outline-thickness: 1px;
-                                --outline-color: rgba(0, 183, 255, 0.127);
-                            ">
-                        Good Coffee For Good Day
-                    </h3>
-                    <div class="languages-used-in-project-preview">
-                        <img src="./images/languages_logos/html.png" alt="Project Used language name" />
-
-                        <img src="./images/languages_logos/css.png" alt="Project Used language name" />
+                <div class="rating-wrapper">
+                    <div class="difficulty">
+                        <!-- My Difficulty Level Rating -->
+                        <h3 class="difficulty-rating-title outline-text">:רמת קושי</h3>
+                        <div class="programming-language-difficulty-rating">
+                            <div class="difficulty-rating-star"></div>
+                            <div class="difficulty-rating-star"></div>
+                            <div class="difficulty-rating-star"></div>
+                            <div class="difficulty-rating-star"></div>
+                            <div class="difficulty-rating-star"></div>
+                        </div>
                     </div>
-                    <p class="short-project-description" dir="rtl">
-                        אין כמו קפה טוב על הבוקר, <br />
-                        לפרטים נוספים היכנסו כאן.
-                    </p>
-                    <a href="./landing_pages/3_good_coffee_for_good_morning/landing_page.html" target="_blank"
-                        class="link-to-landing-page">« לעמוד הפרויקט</a>
+
+                    <div class="experience">
+                        <!-- My Experience Level Rating -->
+                        <h3 class="experience-title outline-text">:חוויה כללית</h3>
+                        <div class="programming-language-experience">
+                            <div class="experience-star"></div>
+                            <div class="experience-star"></div>
+                            <div class="experience-star"></div>
+                            <div class="experience-star"></div>
+                            <div class="experience-star"></div>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-                <div class="project-card">
-                    <img src="./landing_pages/4_let_us_lead_you_forward/images/project_preview.png"
-                        alt="The project image" class="project-image" />
-                    <h3 class="project-name outline-text" style="
-                                color: blue;
-                                --outline-thickness: 1px;
-                                --outline-color: rgba(0, 183, 255, 0.127);
-                            ">
-                        Let Us Lead You Forward
-                    </h3>
-                    <div class="languages-used-in-project-preview">
-                        <img src="./images/languages_logos/html.png" alt="Project Used language name" />
+            <!-- Dropdown Area -->
+            <div id="dropdown-area"></div>
+        </div>
 
-                        <img src="./images/languages_logos/css.png" alt="Project Used language name" />
+        <!-- Anchor link target location to be not hide any content. -->
+        <span id="about" class="anchor-linked"></span>
 
-                        <img src="./images/languages_logos/Bootstrap_64x64.png" alt="Project Used language name" />
-                    </div>
-                    <p class="short-project-description" dir="rtl">
-                        משימות חוזרות מעכבות אותכם? <br />
-                        תנו לנו לטפל בהן - לפרטים נוספים.
+        <!-- This is the about me section in my project -->
+        <div class="about-section">
+            <div class="about-content-wrapper">
+                <div
+                    id="about-profile-picture"
+                    alt="My (Gal Ben Abu's) Profile Picture in the about section"></div>
+                <div class="about-text-wrapper" dir="rtl">
+                    <h2 class="outline-text" style="--outline-thickness: 2px">קצת עלי</h2>
+                    <p>
+                        קוראים לי גל, אני בן 20 מאילת כרגע חייל בתפקיד מנהל רשת. <br />
+                        אני אוהב לתכנת, לכתוב קטעי קוד וסקריפטים, ולשחק במשחקי מחשב. <br />
+                        <br />
+                        ברשותי ידע מעמיק בתחום, אשר נרכש בעקבות השתתפותי בתוכניות ייעודיות.
+                        <br />
+                        <br />
+                        <span class="underline">בין התוכניות שהייתי בהן:</span> <br />
                     </p>
-                    <a href="./landing_pages/4_let_us_lead_you_forward/landing_page.html" target="_blank"
-                        class="link-to-landing-page">« לעמוד הפרויקט</a>
-                </div>
-
-                <div class="project-card">
-                    <img src="./landing_pages/5_discover_the_world/images/project_preview.png" alt="The project image"
-                        class="project-image" />
-                    <h3 class="project-name outline-text" style="
-                                color: blue;
-                                --outline-thickness: 1px;
-                                --outline-color: rgba(0, 183, 255, 0.127);
-                            ">
-                        Discover The World
-                    </h3>
-                    <div class="languages-used-in-project-preview">
-                        <img src="./images/languages_logos/html.png" alt="Project Used language name" />
-
-                        <img src="./images/languages_logos/css.png" alt="Project Used language name" />
-                    </div>
-                    <p class="short-project-description" dir="rtl">
-                        רוצים לטרוף את העולם? <br />
-                        הנה כמה דברים שכדאי שתדעו לפני.
+                    <ul>
+                        <li>
+                            <a href="https://www.magshimim.cyber.org.il/about" target="_blank"
+                                >מגשימים</a
+                            >
+                            - תכנית הסייבר הלאומית [3 שנים]
+                        </li>
+                        <li>Star Tech - תוכנית פיתוח יכולות טכנולוגיות בשפת processing [שנה]</li>
+                        <li>
+                            <a
+                                href="https://pop.education.gov.il/scientific-technological-reserve/"
+                                target="_blank"
+                                >עתודה</a
+                            >
+                            - עתודה מדעית טכנולוגית (עמ"ט) היא תוכנית מצוינות יוקרתית של החינוך
+                            הטכנולוגי במערכת החינוך.
+                        </li>
+                    </ul>
+                    <p>
+                        בנוסף ל5 יח"ל מתמטיקה ו5 יח"ל אנגלית בתיכון הגברתי 5 יח"ל פיזיקה, <br />
+                        5 יח"ל מדעי המחשב ו- 5 יח"ל הנדסת תוכנה. <br />
+                        בסך הכל 10 יחידות לימוד במחשבים.
                     </p>
-                    <a href="./landing_pages/5_discover_the_world/landing_page.html" target="_blank"
-                        class="link-to-landing-page">« לעמוד הפרויקט</a>
-                </div>
-
-                <div class="project-card">
-                    <img src="./landing_pages/7_think_outside_the_box/images/project_preview.png"
-                        alt="The project image" class="project-image" />
-                    <h3 class="project-name outline-text" style="
-                                color: blue;
-                                --outline-thickness: 1px;
-                                --outline-color: rgba(0, 183, 255, 0.127);
-                            ">
-                        Think Outside The Box
-                    </h3>
-                    <div class="languages-used-in-project-preview">
-                        <img src="./images/languages_logos/html.png" alt="Project Used language name" />
-
-                        <img src="./images/languages_logos/css.png" alt="Project Used language name" />
-
-                        <img src="./images/languages_logos/SASS_64x64.png" alt="Project Used language name" />
-                    </div>
-                    <p class="short-project-description" dir="rtl">
-                        חושבים שיש לכם ראש יצירתי? <br />
-                        תירשמו באתר ותוכיחו את עצמכם.
-                    </p>
-                    <a href="./landing_pages/7_think_outside_the_box/landing_page.html" target="_blank"
-                        class="link-to-landing-page">« לעמוד הפרויקט</a>
-                </div>
-
-                <div class="project-card">
-                    <img src="./landing_pages/6_free_advisement/images/project_preview.png" alt="The project image"
-                        class="project-image" />
-                    <h3 class="project-name outline-text" style="
-                                color: blue;
-                                --outline-thickness: 1px;
-                                --outline-color: rgba(0, 183, 255, 0.127);
-                            ">
-                        Free Advisement
-                    </h3>
-                    <div class="languages-used-in-project-preview">
-                        <img src="./images/languages_logos/html.png" alt="Project Used language name" />
-
-                        <img src="./images/languages_logos/css.png" alt="Project Used language name" />
-
-                        <img src="./images/languages_logos/SASS_64x64.png" alt="Project Used language name" />
-                    </div>
-                    <p class="short-project-description" dir="rtl">
-                        זקוקים להכוונה מקצועית? <br />
-                        הצטרפו וקבלו תשובות ממומחים.
-                    </p>
-                    <a href="./landing_pages/6_free_advisement/landing_page.html" target="_blank"
-                        class="link-to-landing-page">« לעמוד הפרויקט</a>
+                    <a
+                        href="./Gal Ben Abu's Programmer Resume.pdf"
+                        id="download-resume-link"
+                        download="resume-template"
+                        class="outline-text">
+                        להורדת קורות חיים
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- A separator that I can style -->
-    <div class="separator"></div>
+        <!-- Anchor link target location to be not hide any content. -->
+        <span id="services" class="anchor-linked"></span>
 
-    <!-- Anchor link target location to be not hide any content. -->
-    <span id="contact" class="anchor-linked"></span>
+        <!-- The list of my work and my projects -->
+        <div class="services-projects">
+            <div class="projects-area-content">
+                <h2 class="outline-text" style="--outline-thickness: 2px">עבודות נבחרות</h2>
+                <p dir="rtl">
+                    להלן עבודות נבחרות של אתרים מעוצבים מראש אשר מימשתי אותם <br />
+                    בכך שיצרתי אתרים מותאמים למחשב ולנייד. <br />
+                    העבודות נכתבו בכמה שפות שונות וחלקן גם בדרכים מתקדמות יותר.
+                </p>
 
-    <!-- A form section of 'Contact Us' -->
-    <div class="contact-section lang-en">
-        <img src="./images/envelope.png" alt="The main logo image for the contact section / area" />
-        <form action="">
-            <div class="form-title">
-                <div class="form-title">
-                    <h2 class="outline-text">צור קשר</h2>
-                    <p dir="rtl">
-                        צרו איתי קשר באמצעות הטופס הנ"ל. <br />
-                        תמלאו את הפרטים ואחזור אליכם בהקדם האפשרי.
-                    </p>
+                <div class="projects-cards-wrapper">
+                    <div class="project-card">
+                        <img
+                            src="./landing_pages/1_leading_you_forward_1/images/project_preview.png"
+                            alt="The project image"
+                            class="project-image" />
+                        <h3
+                            class="project-name outline-text"
+                            style="
+                                color: blue;
+                                --outline-thickness: 1px;
+                                --outline-color: rgba(0, 183, 255, 0.127);
+                            ">
+                            Leading You Forward
+                        </h3>
+                        <div class="languages-used-in-project-preview">
+                            <img
+                                src="./images/languages_logos/html.png"
+                                alt="Project Used language name" />
+
+                            <img
+                                src="./images/languages_logos/css.png"
+                                alt="Project Used language name" />
+                        </div>
+                        <p class="short-project-description" dir="rtl">
+                            רוצים הדרכה להצלחה, <br />
+                            תובילו קדימה אל לחיצת הכפתור.
+                        </p>
+                        <a
+                            href="./landing_pages/1_leading_you_forward_1/landing_page.html"
+                            target="_blank"
+                            class="link-to-landing-page"
+                            >« לעמוד הפרויקט</a
+                        >
+                    </div>
+
+                    <div class="project-card">
+                        <img
+                            src="./landing_pages/2_here_and_now/project_preview.png"
+                            alt="The project image"
+                            class="project-image" />
+                        <h3
+                            class="project-name outline-text"
+                            style="
+                                color: blue;
+                                --outline-thickness: 1px;
+                                --outline-color: rgba(0, 183, 255, 0.127);
+                            ">
+                            Here &amp; Now
+                        </h3>
+                        <div class="languages-used-in-project-preview">
+                            <img
+                                src="./images/languages_logos/html.png"
+                                alt="Project Used language name" />
+
+                            <img
+                                src="./images/languages_logos/css.png"
+                                alt="Project Used language name" />
+                        </div>
+                        <p class="short-project-description" dir="rtl">
+                            רוצים ליהנות ממגוון מתנות, <br />
+                            לחצו כאן ועכשיו.
+                        </p>
+                        <a
+                            href="./landing_pages/2_here_and_now/landing_page.html"
+                            target="_blank"
+                            class="link-to-landing-page"
+                            >« לעמוד הפרויקט</a
+                        >
+                    </div>
+
+                    <div class="project-card">
+                        <img
+                            src="./landing_pages/3_good_coffee_for_good_morning/images/project_preview.png"
+                            alt="The project image"
+                            class="project-image" />
+                        <h3
+                            class="project-name outline-text"
+                            style="
+                                color: blue;
+                                --outline-thickness: 1px;
+                                --outline-color: rgba(0, 183, 255, 0.127);
+                            ">
+                            Good Coffee For Good Day
+                        </h3>
+                        <div class="languages-used-in-project-preview">
+                            <img
+                                src="./images/languages_logos/html.png"
+                                alt="Project Used language name" />
+
+                            <img
+                                src="./images/languages_logos/css.png"
+                                alt="Project Used language name" />
+                        </div>
+                        <p class="short-project-description" dir="rtl">
+                            אין כמו קפה טוב על הבוקר, <br />
+                            לפרטים נוספים היכנסו כאן.
+                        </p>
+                        <a
+                            href="./landing_pages/3_good_coffee_for_good_morning/landing_page.html"
+                            target="_blank"
+                            class="link-to-landing-page"
+                            >« לעמוד הפרויקט</a
+                        >
+                    </div>
+
+                    <div class="project-card">
+                        <img
+                            src="./landing_pages/4_let_us_lead_you_forward/images/project_preview.png"
+                            alt="The project image"
+                            class="project-image" />
+                        <h3
+                            class="project-name outline-text"
+                            style="
+                                color: blue;
+                                --outline-thickness: 1px;
+                                --outline-color: rgba(0, 183, 255, 0.127);
+                            ">
+                            Let Us Lead You Forward
+                        </h3>
+                        <div class="languages-used-in-project-preview">
+                            <img
+                                src="./images/languages_logos/html.png"
+                                alt="Project Used language name" />
+
+                            <img
+                                src="./images/languages_logos/css.png"
+                                alt="Project Used language name" />
+
+                            <img
+                                src="./images/languages_logos/Bootstrap_64x64.png"
+                                alt="Project Used language name" />
+                        </div>
+                        <p class="short-project-description" dir="rtl">
+                            משימות חוזרות מעכבות אותכם? <br />
+                            תנו לנו לטפל בהן - לפרטים נוספים.
+                        </p>
+                        <a
+                            href="./landing_pages/4_let_us_lead_you_forward/landing_page.html"
+                            target="_blank"
+                            class="link-to-landing-page"
+                            >« לעמוד הפרויקט</a
+                        >
+                    </div>
+
+                    <div class="project-card">
+                        <img
+                            src="./landing_pages/5_discover_the_world/images/project_preview.png"
+                            alt="The project image"
+                            class="project-image" />
+                        <h3
+                            class="project-name outline-text"
+                            style="
+                                color: blue;
+                                --outline-thickness: 1px;
+                                --outline-color: rgba(0, 183, 255, 0.127);
+                            ">
+                            Discover The World
+                        </h3>
+                        <div class="languages-used-in-project-preview">
+                            <img
+                                src="./images/languages_logos/html.png"
+                                alt="Project Used language name" />
+
+                            <img
+                                src="./images/languages_logos/css.png"
+                                alt="Project Used language name" />
+                        </div>
+                        <p class="short-project-description" dir="rtl">
+                            רוצים לטרוף את העולם? <br />
+                            הנה כמה דברים שכדאי שתדעו לפני.
+                        </p>
+                        <a
+                            href="./landing_pages/5_discover_the_world/landing_page.html"
+                            target="_blank"
+                            class="link-to-landing-page"
+                            >« לעמוד הפרויקט</a
+                        >
+                    </div>
+
+                    <div class="project-card">
+                        <img
+                            src="./landing_pages/7_think_outside_the_box/images/project_preview.png"
+                            alt="The project image"
+                            class="project-image" />
+                        <h3
+                            class="project-name outline-text"
+                            style="
+                                color: blue;
+                                --outline-thickness: 1px;
+                                --outline-color: rgba(0, 183, 255, 0.127);
+                            ">
+                            Think Outside The Box
+                        </h3>
+                        <div class="languages-used-in-project-preview">
+                            <img
+                                src="./images/languages_logos/html.png"
+                                alt="Project Used language name" />
+
+                            <img
+                                src="./images/languages_logos/css.png"
+                                alt="Project Used language name" />
+
+                            <img
+                                src="./images/languages_logos/SASS_64x64.png"
+                                alt="Project Used language name" />
+                        </div>
+                        <p class="short-project-description" dir="rtl">
+                            חושבים שיש לכם ראש יצירתי? <br />
+                            תירשמו באתר ותוכיחו את עצמכם.
+                        </p>
+                        <a
+                            href="./landing_pages/7_think_outside_the_box/landing_page.html"
+                            target="_blank"
+                            class="link-to-landing-page"
+                            >« לעמוד הפרויקט</a
+                        >
+                    </div>
+
+                    <div class="project-card">
+                        <img
+                            src="./landing_pages/6_free_advisement/images/project_preview.png"
+                            alt="The project image"
+                            class="project-image" />
+                        <h3
+                            class="project-name outline-text"
+                            style="
+                                color: blue;
+                                --outline-thickness: 1px;
+                                --outline-color: rgba(0, 183, 255, 0.127);
+                            ">
+                            Free Advisement
+                        </h3>
+                        <div class="languages-used-in-project-preview">
+                            <img
+                                src="./images/languages_logos/html.png"
+                                alt="Project Used language name" />
+
+                            <img
+                                src="./images/languages_logos/css.png"
+                                alt="Project Used language name" />
+
+                            <img
+                                src="./images/languages_logos/SASS_64x64.png"
+                                alt="Project Used language name" />
+                        </div>
+                        <p class="short-project-description" dir="rtl">
+                            זקוקים להכוונה מקצועית? <br />
+                            הצטרפו וקבלו תשובות ממומחים.
+                        </p>
+                        <a
+                            href="./landing_pages/6_free_advisement/landing_page.html"
+                            target="_blank"
+                            class="link-to-landing-page"
+                            >« לעמוד הפרויקט</a
+                        >
+                    </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="areas-wrapper">
-                    <div class="full-name-area">
-                        <label for="user-full-name" class="outline-text">שם מלא</label>
-                        <input type="text" id="user-full-name" required />
+        <!-- A separator that I can style -->
+        <div class="separator"></div>
+
+        <!-- Anchor link target location to be not hide any content. -->
+        <span id="contact" class="anchor-linked"></span>
+
+        <!-- A form section of 'Contact Us' -->
+        <div class="contact-section lang-en">
+            <img
+                src="./images/envelope.png"
+                alt="The main logo image for the contact section / area" />
+            <form action="">
+                <div class="form-title">
+                    <div class="form-title">
+                        <h2 class="outline-text">צור קשר</h2>
+                        <p dir="rtl">
+                            צרו איתי קשר באמצעות הטופס הנ"ל. <br />
+                            תמלאו את הפרטים ואחזור אליכם בהקדם האפשרי.
+                        </p>
                     </div>
-                    <div class="email-area">
-                        <label for="user-email" class="outline-text">דוא״ל</label>
-                        <input type="email" id="user-email" required />
-                    </div>
-                    <div class="phone-number-area">
-                        <label for="user-phone-number" class="outline-text">טלפון</label>
-                        <input type="tel" id="user-phone-number" placeholder="000-0000000" required />
-                        <!--
+
+                    <div class="areas-wrapper">
+                        <div class="full-name-area">
+                            <label for="user-full-name" class="outline-text">שם מלא</label>
+                            <input type="text" id="user-full-name" required />
+                        </div>
+                        <div class="email-area">
+                            <label for="user-email" class="outline-text">דוא״ל</label>
+                            <input type="email" id="user-email" required />
+                        </div>
+                        <div class="phone-number-area">
+                            <label for="user-phone-number" class="outline-text">טלפון</label>
+                            <input
+                                type="tel"
+                                id="user-phone-number"
+                                placeholder="000-0000000"
+                                required />
+                            <!--
                                 This site helped me for the place holder and pattern based on the first example I wrote a pattern and a place holder:
                                 https://www.w3schools.com/tags/att_input_type_tel.asp
                             -->
+                        </div>
+                        <div class="message-area">
+                            <label for="user-message-contents" class="outline-text"
+                                >תוכן ההודעה</label
+                            >
+                            <textarea
+                                name="user-message-contents"
+                                id="user-message-contents"
+                                required></textarea>
+                        </div>
                     </div>
-                    <div class="message-area">
-                        <label for="user-message-contents" class="outline-text">תוכן ההודעה</label>
-                        <textarea name="user-message-contents" id="user-message-contents" required></textarea>
-                    </div>
+
+                    <input type="submit" id="submit-btn" class="outline-text" value="שליחה" />
                 </div>
+            </form>
+        </div>
 
-                <input type="submit" id="submit-btn" class="outline-text" value="שליחה" />
+        <!-- Contact Area -->
+        <div class="contact-options">
+            <div id="location-option" class="contact-option">
+                <img
+                    src="./images/contact-options/Icon material-location-on.svg"
+                    alt="option - location point logo" />
+                <p>ישראל, אילת</p>
             </div>
-        </form>
-    </div>
+            <div id="email-option" class="contact-option">
+                <img
+                    src="./images/contact-options/Icon simple-email.svg"
+                    alt="option - email/@ logo" />
+                <p>exampleEmail@gmail.com</p>
+            </div>
+            <div id="whatsapp-option" class="contact-option">
+                <img
+                    src="./images/contact-options/Icon simple-whatsapp.svg"
+                    alt="option - whatsapp logo" />
+                <p>051234567</p>
+            </div>
+            <div id="phone-option" class="contact-option">
+                <img
+                    src="./images/contact-options/Icon simple-whatsapp-1.svg"
+                    alt="option - phone logo" />
+                <p>051234567</p>
+            </div>
+            <div id="linkedin-option" class="contact-option">
+                <img
+                    src="./images/contact-options/Icon awesome-linkedin-in.svg"
+                    alt="option - linkedin logo" />
+                <p>גל בן אבו גל בן אבו</p>
+            </div>
+            <div id="facebook-option" class="contact-option">
+                <img
+                    src="./images/contact-options/Icon awesome-facebook-f.svg"
+                    alt="option - facebook logo" />
+                <p>#GAL_BA.GAL_BA</p>
+            </div>
+        </div>
 
-    <!-- Contact Area -->
-    <div class="contact-options">
-        <div id="location-option" class="contact-option">
-            <img src="./images/contact-options/Icon material-location-on.svg" alt="option - location point logo" />
-            <p>ישראל, אילת</p>
+        <!-- A license information -->
+        <div class="license-footer-bar outline-text">
+            <p class="name-year">Gal Ben Abu 2024</p>
+            <p class="license-message">כל הזכויות שמורות לגל בן אבו</p>
         </div>
-        <div id="email-option" class="contact-option">
-            <img src="./images/contact-options/Icon simple-email.svg" alt="option - email/@ logo" />
-            <p>exampleEmail@gmail.com</p>
-        </div>
-        <div id="whatsapp-option" class="contact-option">
-            <img src="./images/contact-options/Icon simple-whatsapp.svg" alt="option - whatsapp logo" />
-            <p>051234567</p>
-        </div>
-        <div id="phone-option" class="contact-option">
-            <img src="./images/contact-options/Icon simple-whatsapp-1.svg" alt="option - phone logo" />
-            <p>051234567</p>
-        </div>
-        <div id="linkedin-option" class="contact-option">
-            <img src="./images/contact-options/Icon awesome-linkedin-in.svg" alt="option - linkedin logo" />
-            <p>גל בן אבו גל בן אבו</p>
-        </div>
-        <div id="facebook-option" class="contact-option">
-            <img src="./images/contact-options/Icon awesome-facebook-f.svg" alt="option - facebook logo" />
-            <p>#GAL_BA.GAL_BA</p>
-        </div>
-    </div>
-
-    <!-- A license information -->
-    <div class="license-footer-bar outline-text">
-        <p class="name-year">Gal Ben Abu 2024</p>
-        <p class="license-message">כל הזכויות שמורות לגל בן אבו</p>
-    </div>
-</body>
-
+    </body>
 </html>
