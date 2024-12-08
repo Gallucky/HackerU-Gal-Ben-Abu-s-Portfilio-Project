@@ -213,7 +213,8 @@ body {
             line-height: 150%;
         }
 
-        .tool-info-operator {
+        .tool-info-operator,
+        .tool-info-number-of-questions {
             width: auto;
             height: 80%;
 
@@ -227,6 +228,49 @@ body {
             font-family: Orbitron;
             font-weight: 500;
             line-height: 150%;
+        }
+
+        .tool-info-number-of-questions {
+            user-select: none;
+        }
+
+        .tool-info-abort-game {
+            width: auto;
+            height: 80%;
+
+            display: flex;
+            align-content: center;
+            justify-content: center;
+
+            margin-left: auto;
+
+            #abort-game-btn {
+                width: 1.5vw;
+                height: 1.5vw;
+
+                line-height: 170%;
+                text-indent: 0.5%;
+
+                display: flex;
+                align-content: center;
+                justify-content: center;
+
+                user-select: none;
+
+                border: 1px groove black !important;
+                outline: 3px groove silver !important;
+
+                border-radius: 16px;
+                background-color: teal !important;
+
+                cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+
+                transition: all 0.5s ease-in-out;
+
+                &:hover {
+                    transform: scale(0.9);
+                }
+            }
         }
     }
 

@@ -157,6 +157,12 @@ const startGame = () => {
                     <option value="random">Random [+,-,×,÷]</option>
                 </select>
             </div>
+            <div class="tool-info-number-of-questions">
+                Question: x / x
+            </div>
+            <div class="tool-info-abort-game">
+                <button onclick="abortGame()" id="abort-game-btn">❌</button>
+            </div>
         </div>
         <div class="game-body">
             <div class="question">X OPERATOR Y = ?</div>
@@ -239,6 +245,10 @@ const startGame = () => {
     // configuration will be changed mid game.
     gameConfiguration.difficultyModified = false;
     gameConfiguration.operatorSelectionModified = false;
+
+    // Updating the question number info.
+    const questionNumberInfo = document.querySelector(".tool-info-number-of-questions");
+    questionNumberInfo.innerText = `Question: ${currentQuestionNumber} / ${maxNumberOfQuestions}`;
 
     // First question will be generated.
     currentQuestion = generateQuestion(
@@ -328,39 +338,47 @@ const showSummaryScreen = () => {
 const nextQuestion = (questionNumber) => {
     console.log(`\nQuestion Number: ${questionNumber}`);
 
-    // Checking if the max number of questions in the game has been reached.
-    if (questionNumber === maxNumberOfQuestions) {
-        console.log("Game Ended.");
-        showSummaryScreen();
-    } else {
-        if (gameConfiguration.difficulty !== gameDifficulty.value) {
-            console.log(`
+    // Updating the question number info.
+    const questionNumberInfo = document.querySelector(".tool-info-number-of-questions");
+    questionNumberInfo.innerText = `Question: ${currentQuestionNumber} / ${maxNumberOfQuestions}`;
+
+    if (gameConfiguration.difficulty !== gameDifficulty.value) {
+        console.log(`
                 Game configuration changed mid game.
                 Updating game configuration to match user input.
                 Difficulty: ${gameDifficulty.value} ➡ ${gameConfiguration.difficulty}
             `);
 
-            // Updating the game configuration that was changed.
-            gameConfiguration.difficulty = gameDifficulty.value;
+        // Updating the game configuration that was changed.
+        gameConfiguration.difficulty = gameDifficulty.value;
 
-            // Raising flag to indicate that the game configuration has changed.
-            gameConfiguration.difficultyModified = true;
-        }
+        // Raising flag to indicate that the game configuration has changed.
+        gameConfiguration.difficultyModified = true;
+    }
 
-        if (gameConfiguration.operatorSelection !== gameOperatorSelection.value) {
-            console.log(`
+    if (gameConfiguration.operatorSelection !== gameOperatorSelection.value) {
+        console.log(`
                 Game configuration changed mid game.
                 Updating game configuration to match user input.
                 Operator Selection: ${gameOperatorSelection.value} ➡ ${gameConfiguration.operatorSelection}
             `);
 
-            // Updating the game configuration that was changed.
-            gameConfiguration.operatorSelection = gameOperatorSelection.value;
+        // Updating the game configuration that was changed.
+        gameConfiguration.operatorSelection = gameOperatorSelection.value;
 
-            // Raising flag to indicate that the game configuration has changed.
-            gameConfiguration.operatorSelectionModified = true;
-        }
+        // Raising flag to indicate that the game configuration has changed.
+        gameConfiguration.operatorSelectionModified = true;
+    }
 
+    // Checking if the max number of questions in the game has been reached.
+    if (currentQuestionNumber === maxNumberOfQuestions) {
+        // Applying changes to the submitAnswer button for the last question.
+        const submitAnswerElement = document.querySelector("#submit-answer");
+        submitAnswerElement.innerHTML = "View Results";
+        submitAnswerElement.onclick = () => showSummaryScreen();
+
+        console.log("Game Ended.");
+    } else {
         // Restoring the submitAnswer button to its default state.
         const submitAnswerElement = document.querySelector("#submit-answer");
         submitAnswerElement.innerHTML = "Submit";
