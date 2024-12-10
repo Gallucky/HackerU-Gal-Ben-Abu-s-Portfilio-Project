@@ -1,3 +1,6 @@
+// Changing the URL without reloading
+// history.pushState(null, "", "/Gal_Ben_Abu's_Portfolio/JS_Projects/Oren's_Math_Game/index.html");
+
 const resetToStartingScreen = () => {
     // Selects the first element with the class "game-container".
     const gameContainer = document.querySelector(".game-container");
@@ -158,10 +161,10 @@ const startGame = () => {
                 </select>
             </div>
             <div class="tool-info-number-of-questions">
-                Question: x / x
+                <label>Question: x / x</label>
             </div>
             <div class="tool-info-abort-game">
-                <button onclick="abortGame()" id="abort-game-btn">❌</button>
+                <button onclick="abortGame()" id="abort-game-btn"><span>❌</span></button>
             </div>
         </div>
         <div class="game-body">
@@ -248,7 +251,7 @@ const startGame = () => {
 
     // Updating the question number info.
     const questionNumberInfo = document.querySelector(".tool-info-number-of-questions");
-    questionNumberInfo.innerText = `Question: ${currentQuestionNumber} / ${maxNumberOfQuestions}`;
+    questionNumberInfo.innerHTML = `<label>Question: ${currentQuestionNumber} / ${maxNumberOfQuestions}</label>`;
 
     // First question will be generated.
     currentQuestion = generateQuestion(
@@ -342,6 +345,7 @@ const nextQuestion = (questionNumber) => {
     const questionNumberInfo = document.querySelector(".tool-info-number-of-questions");
     questionNumberInfo.innerText = `Question: ${currentQuestionNumber} / ${maxNumberOfQuestions}`;
 
+    // Maybe migrate to event listener...
     if (gameConfiguration.difficulty !== gameDifficulty.value) {
         console.log(`
                 Game configuration changed mid game.
@@ -404,6 +408,83 @@ const nextQuestion = (questionNumber) => {
         currentAnswer = calculateAnswer(currentQuestion);
         console.log(`Calculated Answer: ${currentAnswer}`);
     }
+};
+
+const abortGame = () => {
+    // Catching the game container element.
+    const gameContainer = document.querySelector(".game-container");
+
+    // Creating a pop up confirmation dialog.
+    const confirmationDialog = document.createElement("dialog");
+    confirmationDialog.id = "abort-game-confirmation-dialog";
+
+    confirmationDialog.style.width = "400px";
+    confirmationDialog.style.height = "200px";
+    confirmationDialog.popover = "auto";
+
+    gameContainer.style.position = "relative";
+    confirmationDialog.style.position = "absolute";
+    confirmationDialog.style.top = "50%";
+    confirmationDialog.style.left = "50%";
+    confirmationDialog.style.transform = "translate(-50%, -50%)";
+
+    confirmationDialog.style.zIndex = "1";
+    // confirmationDialog.style.opacity = "0.9";
+    confirmationDialog.style.backgroundColor = "rgba(255, 255, 255, 0.926)";
+
+    confirmationDialog.style.borderRadius = "16px";
+    confirmationDialog.style.border = "3px groove black";
+    confirmationDialog.style.boxShadow = "0px 0px 10px 5px rgba(0, 0, 0, 0.5)";
+
+    confirmationDialog.style.display = "flex";
+    confirmationDialog.style.flexDirection = "column-reverse";
+    confirmationDialog.style.alignContent = "center";
+    confirmationDialog.style.justifyContent = "center";
+    confirmationDialog.style.gap = "20px";
+
+    const confirmationTitle = document.createElement("h2");
+    confirmationTitle.id = "abort-game-confirmation-title";
+    confirmationTitle.innerHTML = `Abort Game?<br>Your progress will <strong>not</strong> be saved.`;
+
+    const confirmationButtons = document.createElement("div");
+    confirmationButtons.id = "abort-game-confirmation-buttons";
+
+    confirmationButtons.style.display = "flex";
+    confirmationButtons.style.alignContent = "center";
+    confirmationButtons.style.justifyContent = "center";
+    confirmationButtons.style.gap = "20px";
+
+    const abortButton = document.createElement("button");
+    abortButton.id = "abort-confirm-btn";
+    abortButton.classList.add("outline-text");
+    abortButton.innerHTML = "Abort Game Anyway";
+
+    const cancelButton = document.createElement("button");
+    cancelButton.id = "abort-cancel-btn";
+    cancelButton.classList.add("outline-text");
+    cancelButton.innerHTML = "<span>Continue Game</span>";
+
+    // Adding functionality to the buttons.
+
+    // When the user/player chose to abort.
+    abortButton.onclick = () => {};
+
+    // When the user/player chose to continue playing the game
+    // and cancel the abort game action.
+    cancelButton.onclick = () => {};
+
+    confirmationButtons.appendChild(abortButton);
+    confirmationButtons.appendChild(cancelButton);
+    confirmationDialog.appendChild(confirmationButtons);
+
+    confirmationDialog.appendChild(confirmationTitle);
+    gameContainer.appendChild(confirmationDialog);
+
+    // Before showing the confirmation dialog, the abort game button should be disabled.
+    const abortGameButton = document.querySelector("#abort-game");
+    abortGameButton.disabled = true;
+
+    confirmationDialog.show();
 };
 
 // Division bug needs to be fixed because the input element of type number

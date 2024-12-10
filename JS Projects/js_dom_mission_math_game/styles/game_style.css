@@ -38,14 +38,14 @@ body {
     box-shadow: 0px 0px 30px 0.01px black;
 
     h1 {
-        font-size: 30px;
+        font-size: 50px;
         text-decoration: 3px underline black;
         text-underline-offset: 6px;
     }
 
     h2 {
         width: 60%;
-        font-size: 20px;
+        font-size: 30px;
         margin-block: 10px;
         margin-inline: auto;
     }
@@ -67,7 +67,7 @@ body {
         border-radius: 10px;
 
         h3 {
-            font-size: 18px;
+            font-size: 25px;
             text-decoration: underline;
             text-underline-offset: 6px;
             margin-bottom: 6px;
@@ -75,7 +75,7 @@ body {
 
         #difficulty-label,
         #operator-selection-label {
-            font-size: 16px;
+            font-size: 20px;
             font-family: Rubik;
         }
     }
@@ -83,6 +83,7 @@ body {
     select {
         width: auto;
         padding-inline: 5px 0px;
+        font-size: 20px;
 
         background-color: rgb(147, 184, 252);
         margin-inline: auto;
@@ -94,7 +95,7 @@ body {
         /* Resetting the border to no border */
         border: none;
         border: 1px solid black;
-        border-radius: 16px;
+        border-radius: 20px;
 
         &:has(option:checked[value="easy"]) {
             color: green;
@@ -166,6 +167,8 @@ body {
         height: 6%;
         margin-inline: auto;
 
+        font-size: 20px;
+
         background: 0;
         border: 0;
         border: 1px solid black;
@@ -176,7 +179,7 @@ body {
         background-color: cadetblue;
         border-radius: 16px;
 
-        cursor: pointer;
+        cursor: url("../../../images/cursor-click_24x24.png"), pointer;
 
         transition: all 1s ease-in-out;
     }
@@ -196,23 +199,12 @@ body {
 
         gap: 30px;
 
+        /* Only on the level to be aligned to the left via margin-left. */
         .tool-info-difficulty-level {
-            width: auto;
-            height: 80%;
-
-            display: flex;
-            align-content: center;
-            justify-content: center;
-
-            gap: 10px;
-            margin-block: auto;
             margin-left: 30px;
-
-            font-family: Orbitron;
-            font-weight: 500;
-            line-height: 150%;
         }
 
+        .tool-info-difficulty-level,
         .tool-info-operator,
         .tool-info-number-of-questions {
             width: auto;
@@ -227,11 +219,13 @@ body {
 
             font-family: Orbitron;
             font-weight: 500;
-            line-height: 150%;
-        }
-
-        .tool-info-number-of-questions {
             user-select: none;
+
+            label {
+                border-block: 1px solid black;
+                line-height: 200%;
+                font-size: 18px;
+            }
         }
 
         .tool-info-abort-game {
@@ -248,10 +242,8 @@ body {
                 width: 1.5vw;
                 height: 1.5vw;
 
-                line-height: 170%;
-                text-indent: 0.5%;
-
                 display: flex;
+                flex-direction: column;
                 align-content: center;
                 justify-content: center;
 
@@ -270,6 +262,15 @@ body {
                 &:hover {
                     transform: scale(0.9);
                 }
+
+                span {
+                    cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+                    text-align: center;
+                    align-self: center;
+                    justify-self: center;
+                    line-height: 25%;
+                    text-indent: 0.8%;
+                }
             }
         }
     }
@@ -283,7 +284,7 @@ body {
         .question {
             margin-top: 5%;
             font-family: Bebas Neue;
-            font-size: 75px;
+            font-size: 90px;
 
             user-select: none;
         }
@@ -310,7 +311,7 @@ body {
 
                 label {
                     font-family: Orbitron;
-                    font-size: 15px;
+                    font-size: 19px;
                     font-weight: 600;
 
                     line-height: 160%;
@@ -365,7 +366,7 @@ body {
                 background: none;
                 background-color: teal;
 
-                font-size: 15px;
+                font-size: 19px;
                 font-weight: 600;
                 font-family: Orbitron;
 
@@ -401,7 +402,7 @@ body {
 
             thead {
                 font-family: Orbitron;
-                font-size: 15px;
+                font-size: 19px;
 
                 tr {
                     background-color: rgb(100, 109, 233);
@@ -410,7 +411,7 @@ body {
 
             tbody {
                 font-family: Rubik;
-                font-size: 15px;
+                font-size: 19px;
 
                 tr:nth-child(odd) {
                     background-color: lightskyblue;
@@ -427,6 +428,66 @@ body {
 
             tr {
                 border-top: 1px solid black;
+            }
+        }
+    }
+
+    dialog {
+        #abort-game-confirmation-title {
+            width: 100%;
+            height: fit-content;
+
+            margin-top: 40px;
+
+            font-family: Orbitron;
+            font-size: 20px !important;
+
+            text-align: center;
+        }
+
+        #abort-game-confirmation-buttons {
+            width: 100%;
+            height: fit-content;
+
+            margin-bottom: 40px !important;
+
+            #abort-confirm-btn,
+            #abort-cancel-btn {
+                width: fit-content;
+                height: fit-content;
+
+                padding: 1px 10px;
+
+                color: white;
+
+                text-align: center;
+                font-size: 15px;
+                font-family: Orbitron;
+
+                border: 3px groove black !important;
+                border-radius: 16px;
+
+                background-color: teal;
+
+                cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+
+                transition: all 0.5s ease-in-out;
+
+                &:hover {
+                    transform: scale(0.9);
+                }
+            }
+
+            #abort-confirm-btn {
+                color: red;
+            }
+
+            #abort-cancel-btn {
+                color: rgb(5, 134, 5);
+                span {
+                    filter: brightness(2);
+                    cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+                }
             }
         }
     }
