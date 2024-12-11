@@ -376,11 +376,24 @@ const nextQuestion = (questionNumber) => {
     }
 
     // Checking if the max number of questions in the game has been reached.
-    if (currentQuestionNumber === maxNumberOfQuestions) {
+    if (currentQuestionNumber > maxNumberOfQuestions) {
         // Applying changes to the submitAnswer button for the last question.
         const submitAnswerElement = document.querySelector("#submit-answer");
         submitAnswerElement.innerHTML = "View Results";
         submitAnswerElement.onclick = () => showSummaryScreen();
+
+        // After the last question was answered / submitted,
+        // removing the answer input field.
+        const answerInputFieldElement = document.querySelector(".answer-input");
+        answerInputFieldElement.remove();
+
+        // Updating the question number info to be the same as the max number of questions.
+        const questionNumberInfo = document.querySelector(".tool-info-number-of-questions");
+        questionNumberInfo.innerText = `Question: ${maxNumberOfQuestions} / ${maxNumberOfQuestions}`;
+
+        // Updating the question.
+        const questionElement = document.querySelector(".question");
+        questionElement.innerText = "The Game Has Ended";
 
         console.log("Game Ended.");
     } else {
