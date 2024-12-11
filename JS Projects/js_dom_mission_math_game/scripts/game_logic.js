@@ -411,6 +411,10 @@ const nextQuestion = (questionNumber) => {
 };
 
 const abortGame = () => {
+    // Before showing the confirmation dialog, the abort game button should be disabled.
+    const abortGameButton = document.querySelector("#abort-game-btn");
+    abortGameButton.disabled = true;
+
     // Catching the game container element.
     const gameContainer = document.querySelector(".game-container");
 
@@ -471,7 +475,18 @@ const abortGame = () => {
 
     // When the user/player chose to continue playing the game
     // and cancel the abort game action.
-    cancelButton.onclick = () => {};
+    cancelButton.onclick = () => {
+        console.log(confirmationDialog);
+        confirmationDialog.close();
+
+        // Through confirmation dialog element accessing it's parent and then removing the
+        // confirmation dialog from it's child list and thus removing it from the DOM.
+        confirmationDialog.parentElement.removeChild(confirmationDialog);
+
+        // Re-enabling the abort game button.
+        const abortGameButton = document.querySelector("#abort-game-btn");
+        abortGameButton.disabled = false;
+    };
 
     confirmationButtons.appendChild(abortButton);
     confirmationButtons.appendChild(cancelButton);
@@ -479,10 +494,6 @@ const abortGame = () => {
 
     confirmationDialog.appendChild(confirmationTitle);
     gameContainer.appendChild(confirmationDialog);
-
-    // Before showing the confirmation dialog, the abort game button should be disabled.
-    const abortGameButton = document.querySelector("#abort-game");
-    abortGameButton.disabled = true;
 
     confirmationDialog.show();
 };
