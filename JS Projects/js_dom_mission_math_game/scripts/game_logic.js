@@ -310,6 +310,7 @@ const submitAnswer = () => {
                 </tr>
             `;
         answersTable.style.userSelect = "auto";
+        console.log(`first question replaces the innerHTML of the answers table`);
     } else {
         answersTableBody.innerHTML =
             oldAnswersTableBodyInnerHTML +
@@ -428,12 +429,10 @@ const abortGame = () => {
 
     gameContainer.style.position = "relative";
     confirmationDialog.style.position = "absolute";
-    confirmationDialog.style.top = "50%";
-    confirmationDialog.style.left = "50%";
-    confirmationDialog.style.transform = "translate(-50%, -50%)";
+    confirmationDialog.style.top = "25%";
+    confirmationDialog.style.left = "30%";
 
     confirmationDialog.style.zIndex = "1";
-    // confirmationDialog.style.opacity = "0.9";
     confirmationDialog.style.backgroundColor = "rgba(255, 255, 255, 0.926)";
 
     confirmationDialog.style.borderRadius = "16px";
@@ -471,21 +470,44 @@ const abortGame = () => {
     // Adding functionality to the buttons.
 
     // When the user/player chose to abort.
-    abortButton.onclick = () => {};
+    abortButton.onclick = () => {
+        // Adding a closing animation to the confirmation dialog.
+        confirmationDialog.classList.add("fade-out-shrink");
+
+        confirmationDialog.addEventListener(
+            "animationend",
+            () => {
+                // Resetting / game information and deleting progress.
+                currentQuestionNumber = 1;
+
+                // Game resetting to the starting screen.
+                resetToStartingScreen();
+            },
+            // Making sure this event listener runs only once.
+            { once: true }
+        );
+    };
 
     // When the user/player chose to continue playing the game
     // and cancel the abort game action.
     cancelButton.onclick = () => {
-        console.log(confirmationDialog);
-        confirmationDialog.close();
+        // Adding a closing animation to the confirmation dialog.
+        confirmationDialog.classList.add("fade-out-shrink");
 
-        // Through confirmation dialog element accessing it's parent and then removing the
-        // confirmation dialog from it's child list and thus removing it from the DOM.
-        confirmationDialog.parentElement.removeChild(confirmationDialog);
+        confirmationDialog.addEventListener(
+            "animationend",
+            () => {
+                // Through confirmation dialog element accessing it's parent and then removing the
+                // confirmation dialog from it's child list and thus removing it from the DOM.
+                confirmationDialog.parentElement.removeChild(confirmationDialog);
 
-        // Re-enabling the abort game button.
-        const abortGameButton = document.querySelector("#abort-game-btn");
-        abortGameButton.disabled = false;
+                // Re-enabling the abort game button.
+                const abortGameButton = document.querySelector("#abort-game-btn");
+                abortGameButton.disabled = false;
+            },
+            // Making sure this event listener runs only once.
+            { once: true }
+        );
     };
 
     confirmationButtons.appendChild(abortButton);
