@@ -250,8 +250,8 @@ const startGame = () => {
     gameConfiguration.operatorSelectionModified = false;
 
     // Updating the question number info.
-    const questionNumberInfo = document.querySelector(".tool-info-number-of-questions");
-    questionNumberInfo.innerHTML = `<label>Question: ${currentQuestionNumber} / ${maxNumberOfQuestions}</label>`;
+    const questionNumberInfo = document.querySelector(".tool-info-number-of-questions > label");
+    questionNumberInfo.innerText = `Question: ${currentQuestionNumber} / ${maxNumberOfQuestions}`;
 
     // First question will be generated.
     currentQuestion = generateQuestion(
@@ -343,7 +343,7 @@ const nextQuestion = (questionNumber) => {
     console.log(`\nQuestion Number: ${questionNumber}`);
 
     // Updating the question number info.
-    const questionNumberInfo = document.querySelector(".tool-info-number-of-questions");
+    const questionNumberInfo = document.querySelector(".tool-info-number-of-questions > label");
     questionNumberInfo.innerText = `Question: ${currentQuestionNumber} / ${maxNumberOfQuestions}`;
 
     // Maybe migrate to event listener...
@@ -388,12 +388,22 @@ const nextQuestion = (questionNumber) => {
         answerInputFieldElement.remove();
 
         // Updating the question number info to be the same as the max number of questions.
-        const questionNumberInfo = document.querySelector(".tool-info-number-of-questions");
+        const questionNumberInfo = document.querySelector(".tool-info-number-of-questions > label");
         questionNumberInfo.innerText = `Question: ${maxNumberOfQuestions} / ${maxNumberOfQuestions}`;
 
         // Updating the question.
         const questionElement = document.querySelector(".question");
         questionElement.innerText = "The Game Has Ended";
+
+        // Removing the abort game button because the game has ended.
+        const abortGameButton = document.querySelector("#abort-game-btn");
+
+        // Adding a fade-out animation to the abort game button.
+        abortGameButton.classList.add("fade-out");
+
+        abortGameButton.addEventListener("animationend", () => abortGameButton.remove(), {
+            once: true,
+        });
 
         console.log("Game Ended.");
     } else {
