@@ -1,16 +1,58 @@
 // Changing the URL without reloading
 // history.pushState(null, "", "/Gal_Ben_Abu's_Portfolio/JS_Projects/Oren's_Math_Game/index.html");
 
+// Applying the right speed for each element with the class .rainbow-text.
+const applyRainbowAnimationDuration = () => {
+    const rainbowTexts = document.querySelectorAll(".rainbow-text");
+
+    rainbowTexts.forEach((rainbowText) => {
+        // Can also use rainbowText.dataset.animationDuration
+        const duration = rainbowText.getAttribute("data-animation-duration");
+        let logMessage = "";
+
+        // Checking if the attribute exists.
+        // If the attribute does not exists,
+        // then the value will be null or in other words false.
+        if (duration) {
+            if (!(duration.includes("ms") || duration.includes("s"))) {
+                rainbowText.style.animationDuration =
+                    rainbowText.getAttribute("data-animation-duration") + "s";
+                logMessage += `Unit is not ms or s - defaulting to s`;
+            } else {
+                rainbowText.style.animationDuration = duration;
+            }
+            logMessage += `\nSetting animation duration of: ${rainbowText.style.animationDuration}`;
+        } else {
+            logMessage = `Attribute not exists or invalid defaulting to 20s`;
+        }
+
+        console.log(logMessage);
+
+        // If the attribute does not exists,
+        // it will not override the default value of 20s...
+    });
+};
+applyRainbowAnimationDuration();
+
 const resetToStartingScreen = () => {
     // Selects the first element with the class "game-container".
     const gameContainer = document.querySelector(".game-container");
 
-    // Resetting the contents of the game-container back into its
-    // default state - Starting Screen.
-    gameContainer.innerHTML = `
-        <h1>Oren's Math Game</h1>
+    const previousGame = localStorage.getItem("previousGame");
+
+    // Checking if a previous game has been played and saved.
+    if (previousGame) {
+        // Found previous game data in local storage,
+        // loading it into the screen.
+
+        gameContainer.innerHTML = `
+            <h1>Oren's Math Game</h1>
 
             <h2>Welcome to Oren's Math Game where you can play and test your math skills.</h2>
+            
+            <div class="previous-game">
+                ${previousGame}
+            </div>;
 
             <div class="game-configuration">
                 <h3>Game Configuration</h3>
@@ -38,7 +80,43 @@ const resetToStartingScreen = () => {
             </div>
 
             <button class="start-game-button" onclick="startGame()">Start Game</button>
-    `;
+        `;
+    } else {
+        // Resetting the contents of the game-container back into its
+        // default state - Starting Screen.
+        gameContainer.innerHTML = `
+            <h1>Oren's Math Game</h1>
+
+            <h2>Welcome to Oren's Math Game where you can play and test your math skills.</h2>
+            
+            <div class="game-configuration">
+                <h3>Game Configuration</h3>
+                <div class="difficulty-section">
+                    <label for="difficulty" id="difficulty-label"> Difficulty: </label>
+                    <select class="difficulty easy-difficulty" name="difficulty" id="difficulty">
+                        <option class="easy-difficulty" value="easy">Easy 😊</option>
+                        <option class="medium-difficulty" value="medium">Medium 🤘</option>
+                        <option class="hard-difficulty" value="hard">Hard 🔥</option>
+                        <option class="extreme-difficulty" value="extreme">Extreme 🚒</option>
+                    </select>
+                </div>
+                <div class="operator-selection-section">
+                    <label for="operator-selection" id="operator-selection-label">
+                        Operator(s):
+                    </label>
+                    <select name="operator-selection" id="operator-selection">
+                        <option value="add">Addition ( + )</option>
+                        <option value="subtraction">Subtraction ( - )</option>
+                        <option value="multiplication">Multiplication ( × )</option>
+                        <option value="division">Division ( ÷ )</option>
+                        <option value="random">Random [+,-,×,÷]</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="start-game-button" onclick="startGame()">Start Game</button>
+        `;
+    }
 };
 
 // Resetting to the Starting Screen.
@@ -336,7 +414,131 @@ const submitAnswer = () => {
 const showSummaryScreen = () => {
     const gameContainer = document.querySelector(".game-container");
 
-    gameContainer.innerHTML = `<h1>Game Summary</h1>`;
+    // Creating the elements for the summary screen.
+    gameContainer.innerHTML = `
+        <h1>Game Summary</h1>
+        <div class="score-area">
+            <span class="score">10%</span>
+            <div class="info">
+                <span class="amount-of-questions">Total amount of questions: </span>
+                <span class="right-answers">Amount of right answers: </span>
+                <span class="wrong-answers">Amount of wrong answers: </span>
+                <span class="overall-difficulty">Overall difficulty: </span>
+            </div>
+        </div>
+        <div class="actions">
+            <button onclick="viewPastGames()">View Past Games</button>
+            <button onclick="shareResults()">Share</button>
+            <button id="back-to-main-screen-btn">Back to Main Screen</button>
+        </div>
+    `;
+
+    // Showing information about the game and it's results.
+    const score = document.querySelector(".score");
+    const amountOfQuestions = document.querySelector(".amount-of-questions");
+    const rightAnswers = document.querySelector(".right-answers");
+    const wrongAnswers = document.querySelector(".wrong-answers");
+    const overallDifficulty = document.querySelector(".overall-difficulty");
+
+    score.classList.add("outline-text");
+    score.setAttribute("style", "--outline-thickness: 2px");
+
+    const activeTimeouts = new Set();
+
+    for (let i = 0; i <= Math.round((correctAnswers / maxNumberOfQuestions) * 100); i++) {
+        const timeoutID = setTimeout(() => {
+            score.innerText = `${i}%`;
+
+            if (i < 40) {
+                score.setAttribute("data-score", "red");
+            } else if (i >= 40 && i < 60) {
+                score.setAttribute("data-score", "orange");
+            } else if (i >= 60 && i < 70) {
+                score.setAttribute("data-score", "yellow");
+            } else if (i >= 70 && i < 80) {
+                score.setAttribute("data-score", "lime");
+            } else if (i >= 80 && i < 90) {
+                score.setAttribute("data-score", "green");
+                score.style.filter = "brightness(1.5)";
+            } else if (i >= 90 && i < 100) {
+                // Dark green.
+                score.setAttribute("data-score", "#006400");
+                score.style.filter = "brightness(1.5)";
+            } else {
+                // Fallback color for the score.
+                score.innerText.color = "black";
+            }
+
+            activeTimeouts.delete(timeoutID);
+        }, i * 50);
+
+        activeTimeouts.add(timeoutID);
+    }
+
+    amountOfQuestions.innerText = `Total amount of questions: ${maxNumberOfQuestions}`;
+    rightAnswers.innerText = `Amount of right answers: ${correctAnswers}`;
+    wrongAnswers.innerText = `Amount of wrong answers: ${maxNumberOfQuestions - correctAnswers}`;
+
+    if (gameConfiguration.difficultyModified) {
+        overallDifficulty.innerHTML = `Overall difficulty: <span class="rainbow-text">Custom</span>`;
+    } else {
+        overallDifficulty.innerHTML = `Overall difficulty: <span>${gameConfiguration.difficulty}</span>`;
+        const overallDifficultySpan = overallDifficulty.getElementsByTagName("span")[0];
+
+        overallDifficultySpan.classList.add("outline-text");
+
+        switch (gameConfiguration.difficulty) {
+            case "easy":
+                overallDifficultySpan.setAttribute("style", "--outline-color: black");
+                overallDifficultySpan.style.color = "lime";
+                break;
+            case "medium":
+                overallDifficultySpan.setAttribute("style", "--outline-color: black");
+                overallDifficultySpan.style.color = "yellow";
+                break;
+            case "hard":
+                overallDifficultySpan.setAttribute("style", "--outline-color: black");
+                overallDifficultySpan.style.color = "hard";
+                break;
+        }
+    }
+
+    const backToMainScreenButton = document.getElementById("back-to-main-screen-btn");
+    backToMainScreenButton.onclick = () => {
+        // Resetting / game information.
+        currentQuestionNumber = 1;
+        correctAnswers = 0;
+        gameConfiguration.difficultyModified = false;
+        gameConfiguration.operatorSelectionModified = false;
+
+        resetToStartingScreen();
+    };
+
+    // Each set amount of time this setInterval function
+    // will run and check if the animation setTimeouts are done.
+    const intervalID = setInterval(() => {
+        if (activeTimeouts.size === 0) {
+            clearInterval(intervalID);
+            activeTimeouts.clear();
+
+            // After the animation timeouts are done,
+            // making sure this interval doesn't run again.
+
+            // Now the innerText / innerHTML are updated.
+
+            // Saving the game to local storage.
+            localStorage.setItem(
+                "pastGames",
+                `
+                    score: ${score.innerText},
+                    amountOfQuestions: ${amountOfQuestions.innerText},
+                    rightAnswers: ${rightAnswers.innerText},
+                    wrongAnswers: ${wrongAnswers.innerText},
+                    overallDifficulty: ${overallDifficulty.innerText}
+                `
+            );
+        }
+    }, 100);
 };
 
 const nextQuestion = (questionNumber) => {

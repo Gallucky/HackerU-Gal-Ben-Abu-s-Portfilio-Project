@@ -18,6 +18,10 @@ body {
 
 .game-container {
     width: 50vw;
+
+    align-self: center;
+    justify-self: center;
+
     min-height: 50vh;
 
     padding: 2vh;
@@ -523,4 +527,144 @@ body {
 
 .answer-submitted {
     user-select: text !important;
+}
+
+.score-area {
+    width: 75%;
+    align-self: center;
+    justify-self: center;
+    margin-top: 20px;
+
+    padding: 5%;
+    border: 1px solid black;
+
+    background: linear-gradient(0deg, transparent, rgba(0, 0, 255, 0.5)),
+        linear-gradient(45deg, rgba(0, 128, 128, 0.7), transparent),
+        linear-gradient(135deg, rgba(0, 0, 255, 0.4), rgba(0, 128, 128, 0.6));
+
+    border-radius: 16px;
+    border: 4px groove black;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
+        rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
+        rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+    .score {
+        width: fit-content;
+        height: 10fr;
+
+        text-align: center;
+        font-family: Orbitron;
+        font-size: 70px;
+        font-weight: 500;
+
+        user-select: none;
+        cursor: url("../../../images/cursor_24x24.png"), default;
+
+        &[data-score="red"] {
+            color: red;
+        }
+        &[data-score="orange"] {
+            color: orange;
+        }
+        &[data-score="yellow"] {
+            color: yellow;
+        }
+        &[data-score="lime"] {
+            color: lime;
+        }
+        &[data-score="green"] {
+            color: green;
+        }
+        &[data-score="#006400"] {
+            color: #006400;
+        }
+    }
+
+    .info {
+        width: fit-content;
+        height: 1fr;
+        margin-top: 10px;
+        margin-inline: auto;
+
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+
+        font-weight: 500;
+        font-family: Orbitron;
+        font-size: 20px;
+        padding: 20px;
+    }
+}
+
+.actions {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 20px;
+
+    margin-block: 20px 10px;
+
+    button {
+        width: fit-content;
+        height: fit-content;
+
+        border-radius: 16px;
+        border: 3px groove black !important;
+
+        padding: 0px 10px;
+
+        font-family: Orbitron;
+        font-size: 19px;
+        font-weight: 600;
+
+        background-color: rgb(100, 109, 233);
+
+        cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+
+        transition: all 0.5s ease-in-out;
+
+        &:hover {
+            transform: scale(0.9);
+        }
+    }
+}
+
+.rainbow-text {
+    /* Fallback for older browsers */
+    background: red;
+
+    --gradient-colors: red, orange, yellow, green, cyan, blue, violet, red, orange, yellow, green,
+        cyan, blue, violet, red;
+
+    /* For older WebKit browsers */
+    background: -webkit-linear-gradient(to right, var(--gradient-colors));
+    /* For older Firefox */
+    background: -moz-linear-gradient(to right, var(--gradient-colors));
+    /* For older Opera */
+    background: -o-linear-gradient(to right, var(--gradient-colors));
+    /* Standard Syntax */
+    background: linear-gradient(to right, var(--gradient-colors));
+
+    background-size: 200% 100%;
+    background-position: 0% 50%;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 20px;
+    font-family: Orbitron;
+    font-weight: 500;
+
+    animation: rainbow-gradient-animation 20s linear infinite forwards;
+}
+
+@keyframes rainbow-gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
 }
