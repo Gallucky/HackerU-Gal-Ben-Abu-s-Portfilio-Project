@@ -528,7 +528,7 @@ const showSummaryScreen = () => {
 
             // Saving the game to local storage.
             localStorage.setItem(
-                "pastGames",
+                "pastGame",
                 `
                     score: ${score.innerText},
                     amountOfQuestions: ${amountOfQuestions.innerText},

@@ -668,3 +668,12 @@ body {
         background-position: 100% 50%;
     }
 }
+
+.previous-game {
+    width: 80%;
+    text-align: center;
+
+    font-family: Orbitron;
+    font-weight: 500;
+    font-size: 30px;
+}
