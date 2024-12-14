@@ -112,10 +112,6 @@ body {
         &:has(option:checked[value="hard"]) {
             color: rgb(255, 30, 0);
         }
-
-        &:has(option:checked[value="extreme"]) {
-            color: rgb(108, 1, 1);
-        }
     }
 
     .difficulty {
@@ -133,11 +129,6 @@ body {
 
         .hard-difficulty {
             color: rgb(255, 30, 0);
-            font-weight: 600;
-        }
-
-        .extreme-difficulty {
-            color: rgb(108, 1, 1);
             font-weight: 600;
         }
     }
@@ -160,15 +151,13 @@ body {
         &:has(option:checked[value="hard"]) {
             box-shadow: 0 0 5px rgb(255, 30, 0);
         }
-
-        &:has(option:checked[value="extreme"]) {
-            box-shadow: 0 0 5px rgb(108, 1, 1);
-        }
     }
 
     .start-game-button {
         width: 30%;
         height: 6%;
+
+        margin-block: 10px;
         margin-inline: auto;
 
         font-size: 20px;
@@ -559,25 +548,6 @@ body {
 
         user-select: none;
         cursor: url("../../../images/cursor_24x24.png"), default;
-
-        &[data-score="red"] {
-            color: red;
-        }
-        &[data-score="orange"] {
-            color: orange;
-        }
-        &[data-score="yellow"] {
-            color: yellow;
-        }
-        &[data-score="lime"] {
-            color: lime;
-        }
-        &[data-score="green"] {
-            color: green;
-        }
-        &[data-score="#006400"] {
-            color: #006400;
-        }
     }
 
     .info {
@@ -595,6 +565,27 @@ body {
         font-family: Orbitron;
         font-size: 20px;
         padding: 20px;
+    }
+}
+
+.score {
+    &[data-score="red"] {
+        color: red;
+    }
+    &[data-score="orange"] {
+        color: orange;
+    }
+    &[data-score="yellow"] {
+        color: yellow;
+    }
+    &[data-score="lime"] {
+        color: lime;
+    }
+    &[data-score="green"] {
+        color: green;
+    }
+    &[data-score="#006400"] {
+        color: #006400;
     }
 }
 
@@ -670,10 +661,33 @@ body {
 }
 
 .previous-game {
-    width: 80%;
+    width: fit-content;
     text-align: center;
 
     font-family: Orbitron;
     font-weight: 500;
-    font-size: 30px;
+    font-size: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+
+    align-self: center;
+    justify-self: center;
+
+    margin-bottom: -10px;
+    padding-inline: 10px;
+
+    border: 3px groove black;
+    border-radius: 16px;
+    box-shadow: 0px 0px 10px 0.01px black;
+
+    h3 {
+        font-size: 30px;
+    }
+
+    #previous-game-score {
+        font-size: 25px;
+    }
 }

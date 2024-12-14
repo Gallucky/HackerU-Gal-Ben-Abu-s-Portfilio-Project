@@ -38,12 +38,15 @@ const resetToStartingScreen = () => {
     // Selects the first element with the class "game-container".
     const gameContainer = document.querySelector(".game-container");
 
-    const previousGame = localStorage.getItem("previousGame");
+    const previousGameSavedData = JSON.parse(localStorage.getItem("previousGame"));
+
+    console.log(`Previous Game Saved Data: ${previousGameSavedData}`);
 
     // Checking if a previous game has been played and saved.
-    if (previousGame) {
+    if (previousGameSavedData) {
         // Found previous game data in local storage,
         // loading it into the screen.
+        console.log(`Already played the game at least once.`);
 
         gameContainer.innerHTML = `
             <h1>Oren's Math Game</h1>
@@ -51,7 +54,13 @@ const resetToStartingScreen = () => {
             <h2>Welcome to Oren's Math Game where you can play and test your math skills.</h2>
             
             <div class="previous-game">
-                ${previousGame}
+                <h3>Previous Game</h3>
+                <span id="previous-game-score">Score: <span class="score outline-text" data-score="${previousGameSavedData.scoreColor}">${previousGameSavedData.score}</span></span>
+                <span id="previous-game-amount-of-questions">${previousGameSavedData.amountOfQuestions}</span>
+                <span id="previous-game-right-answers">${previousGameSavedData.rightAnswers}</span>
+                <span id="previous-game-wrong-answers">${previousGameSavedData.wrongAnswers}</span>
+                <span id="previous-game-difficulty">${previousGameSavedData.overallDifficulty}</span>
+                <span id="previous-game-date">Date: ${previousGameSavedData.date}</span>
             </div>;
 
             <div class="game-configuration">
@@ -62,7 +71,6 @@ const resetToStartingScreen = () => {
                         <option class="easy-difficulty" value="easy">Easy 😊</option>
                         <option class="medium-difficulty" value="medium">Medium 🤘</option>
                         <option class="hard-difficulty" value="hard">Hard 🔥</option>
-                        <option class="extreme-difficulty" value="extreme">Extreme 🚒</option>
                     </select>
                 </div>
                 <div class="operator-selection-section">
@@ -97,7 +105,6 @@ const resetToStartingScreen = () => {
                         <option class="easy-difficulty" value="easy">Easy 😊</option>
                         <option class="medium-difficulty" value="medium">Medium 🤘</option>
                         <option class="hard-difficulty" value="hard">Hard 🔥</option>
-                        <option class="extreme-difficulty" value="extreme">Extreme 🚒</option>
                     </select>
                 </div>
                 <div class="operator-selection-section">
@@ -132,7 +139,7 @@ const generateQuestion = (difficulty, operator) => {
         case "medium":
             rangeEnd = 100;
             break;
-        case "hard" || "extreme":
+        case "hard":
             rangeEnd = 1000;
             break;
         default:
@@ -223,7 +230,6 @@ const startGame = () => {
                     <option class="easy-difficulty" value="easy">Easy 😊</option>
                     <option class="medium-difficulty" value="medium">Medium 🤘</option>
                     <option class="hard-difficulty" value="hard">Hard 🔥</option>
-                    <option class="extreme-difficulty" value="extreme">Extreme 🚒</option>
                 </select>
             </div>
             <div class="tool-info-operator">
@@ -305,9 +311,6 @@ const startGame = () => {
             break;
         case "hard":
             gameDifficulty.classList.add("hard-difficulty");
-            break;
-        case "extreme":
-            gameDifficulty.classList.add("extreme-difficulty");
             break;
     }
 
@@ -427,8 +430,6 @@ const showSummaryScreen = () => {
             </div>
         </div>
         <div class="actions">
-            <button onclick="viewPastGames()">View Past Games</button>
-            <button onclick="shareResults()">Share</button>
             <button id="back-to-main-screen-btn">Back to Main Screen</button>
         </div>
     `;
@@ -483,8 +484,8 @@ const showSummaryScreen = () => {
         overallDifficulty.innerHTML = `Overall difficulty: <span class="rainbow-text">Custom</span>`;
     } else {
         overallDifficulty.innerHTML = `Overall difficulty: <span>${gameConfiguration.difficulty}</span>`;
-        const overallDifficultySpan = overallDifficulty.getElementsByTagName("span")[0];
 
+        const overallDifficultySpan = overallDifficulty.getElementsByTagName("span")[0];
         overallDifficultySpan.classList.add("outline-text");
 
         switch (gameConfiguration.difficulty) {
@@ -498,7 +499,7 @@ const showSummaryScreen = () => {
                 break;
             case "hard":
                 overallDifficultySpan.setAttribute("style", "--outline-color: black");
-                overallDifficultySpan.style.color = "hard";
+                overallDifficultySpan.style.color = "red";
                 break;
         }
     }
@@ -518,25 +519,26 @@ const showSummaryScreen = () => {
     // will run and check if the animation setTimeouts are done.
     const intervalID = setInterval(() => {
         if (activeTimeouts.size === 0) {
+            // After the animation timeouts are done,
+            // making sure this interval doesn't run again.
             clearInterval(intervalID);
             activeTimeouts.clear();
 
-            // After the animation timeouts are done,
-            // making sure this interval doesn't run again.
-
             // Now the innerText / innerHTML are updated.
+            // Getting the data to save in the current scope,
+            // to insure the variable exists.
+            const dataToSave = {
+                score: score.innerText,
+                scoreColor: score.getAttribute("data-score"),
+                amountOfQuestions: amountOfQuestions.innerText,
+                rightAnswers: rightAnswers.innerText,
+                wrongAnswers: wrongAnswers.innerText,
+                overallDifficulty: overallDifficulty.innerHTML,
+                date: new Date().toLocaleDateString(),
+            };
 
             // Saving the game to local storage.
-            localStorage.setItem(
-                "pastGame",
-                `
-                    score: ${score.innerText},
-                    amountOfQuestions: ${amountOfQuestions.innerText},
-                    rightAnswers: ${rightAnswers.innerText},
-                    wrongAnswers: ${wrongAnswers.innerText},
-                    overallDifficulty: ${overallDifficulty.innerText}
-                `
-            );
+            localStorage.setItem("previousGame", JSON.stringify(dataToSave));
         }
     }, 100);
 };
