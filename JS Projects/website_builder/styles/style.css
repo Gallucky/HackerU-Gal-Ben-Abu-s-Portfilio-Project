@@ -1,0 +1,133 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.website-builder-area {
+    width: 95vw;
+    height: 90vh;
+
+    align-self: center;
+    justify-self: center;
+
+    margin-block: 5vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+
+    background-color: #7c919a;
+
+    border: 1px solid black;
+    box-shadow: 0px 0px 30px 0.01px black;
+
+    /* Default / fallback text font */
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: normal;
+    font-size: 20px;
+    text-align: start;
+}
+
+.tools-panel {
+    width: 20%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    gap: 10px;
+
+    position: relative;
+
+    border: 1px dotted black;
+
+    * {
+        margin-block-start: 2.5%;
+        margin-inline-start: 1%;
+    }
+
+    h2.tools-panel-title {
+        width: fit-content;
+        height: fit-content;
+
+        margin-block: 10px;
+        margin-inline: auto;
+
+        font-size: 1.25em;
+        text-align: center;
+        text-decoration: underline;
+
+        border: 1px solid black;
+    }
+
+    .tool {
+        width: 90%;
+        height: 10%;
+
+        margin-block-start: 5%;
+        margin-inline-start: 5%;
+
+        h3.tool-title {
+            font-size: 17px;
+            text-indent: 5%;
+        }
+
+        #element-type {
+            min-width: 10px;
+            width: fit-content;
+
+            margin-inline-start: 5.5%;
+
+            border: 1px solid black;
+            border-radius: 16px;
+        }
+
+        border: 1px solid black;
+    }
+
+    .settings {
+        width: 48px;
+        height: 48px;
+
+        display: flex;
+        align-content: center;
+        justify-content: center;
+
+        padding: 7%;
+
+        position: absolute;
+        left: 15px;
+        bottom: 20px;
+
+        background-color: #ffffff;
+
+        background-image: url("../../../images/settings-gear.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        object-fit: cover;
+        transform: scale(0.9);
+
+        border: 3px groove black !important;
+        border-radius: 50%;
+    }
+}
+
+.workspace {
+    width: 80%;
+    height: 100%;
+
+    position: relative;
+
+    border: 1px dotted black;
+}
+
+#example-test-div {
+    width: 200px;
+    height: 100px;
+
+    user-select: none;
+    /* cursor: grab; */
+    border: 1px solid black;
+}
