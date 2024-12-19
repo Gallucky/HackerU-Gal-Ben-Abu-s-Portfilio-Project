@@ -1,4 +1,5 @@
 {
     "cSpell.enableFiletypes": ["html"],
-    "editor.unicodeHighlight.ambiguousCharacters": false
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "liveServer.settings.port": 3001
 }

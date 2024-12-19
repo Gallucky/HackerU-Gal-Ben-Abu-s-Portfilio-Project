@@ -130,4 +130,5 @@
     user-select: none;
     /* cursor: grab; */
     border: 1px solid black;
+    position: absolute;
 }
