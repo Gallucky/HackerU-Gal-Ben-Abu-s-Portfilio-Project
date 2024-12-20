@@ -1,7 +1,10 @@
 // Testing the drag idea.
 
+const workspace = document.getElementById("workspace");
+
 const testerDiv = document.getElementById("example-test-div");
 
+/*=============================================================================
 // Chatting with claude helped fix and implement the onmouseup event problem that
 // the element will stay in 'grab' mode....
 // Key Notes:
@@ -12,6 +15,7 @@ const testerDiv = document.getElementById("example-test-div");
 // 4. Using window is more reliable than document because it is the document's parent
 //    and is quicker.
 // 5. Cleanup is simpler thus fewer possible bugs to occur / interferences.
+=============================================================================*/
 
 // Claude Chat Fix Explanation:
 /*
@@ -50,14 +54,47 @@ const dragElement = (element) => {
     let elementXPos = 0;
     let elementYPos = 0;
 
+    let draggingElementX = false;
+    let draggingElementY = false;
+
     const moveElement = (e) => {
         mouseXPos = elementXPos - e.clientX;
         mouseYPos = elementYPos - e.clientY;
         elementXPos = e.clientX;
         elementYPos = e.clientY;
 
-        element.style.top = `${element.offsetTop - mouseYPos}px`;
-        element.style.left = `${element.offsetLeft - mouseXPos}px`;
+        const maxY = workspace.clientWidth;
+        const maxX = workspace.clientHeight;
+
+        // Preventing the element from going out of bounds
+        if (element.offsetLeft - mouseXPos < 0) {
+            element.style.left = "0px";
+
+            console.log(
+                `element's X position crossed the 0 boundary: ${element.offsetLeft - mouseXPos}`
+            );
+            removeEventListener("mousemove", moveElement);
+        } else {
+            // Moving the element in the X axis.
+            element.style.left = `${element.offsetLeft - mouseXPos}px`;
+        }
+
+        if (element.offsetTop - mouseYPos < 0) {
+            element.style.top = "0px";
+
+            console.log(
+                `element's Y position crossed the 0 boundary: ${element.offsetLeft - mouseXPos}`
+            );
+
+            removeEventListener("mousemove", moveElement);
+        } else {
+            // Moving the element in the Y axis.
+            element.style.top = `${element.offsetTop - mouseYPos}px`;
+        }
+
+        // console.log(
+        //     `Dragging element: ${element.id}\nCurrent Position:\nX: ${element.style.left}, Y: ${element.style.top}`
+        // );
     };
 
     const startDragging = (e) => {
@@ -81,4 +118,15 @@ const dragElement = (element) => {
     element.addEventListener("mousedown", startDragging);
 };
 
-dragElement(testerDiv);
+const updateDraggableElements = () => {
+    const draggableElements = document.querySelectorAll("[data-draggable]");
+
+    // Applying to every element that has the data-draggable attribute,
+    // the dragging functionality.
+    draggableElements.forEach((element) => {
+        dragElement(element);
+    });
+};
+
+// Loading saved data from local storage.
+updateDraggableElements();
