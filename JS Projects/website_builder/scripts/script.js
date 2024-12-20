@@ -54,8 +54,7 @@ const dragElement = (element) => {
     let elementXPos = 0;
     let elementYPos = 0;
 
-    let draggingElementX = false;
-    let draggingElementY = false;
+    const elementBorder = element.style.border;
 
     const moveElement = (e) => {
         mouseXPos = elementXPos - e.clientX;
@@ -63,8 +62,10 @@ const dragElement = (element) => {
         elementXPos = e.clientX;
         elementYPos = e.clientY;
 
-        const maxY = workspace.clientWidth;
-        const maxX = workspace.clientHeight;
+        const paddingForBorders = 4;
+
+        const maxX = workspace.clientWidth - element.clientWidth - paddingForBorders;
+        const maxY = workspace.clientHeight - element.clientHeight - paddingForBorders;
 
         // Preventing the element from going out of bounds
         if (element.offsetLeft - mouseXPos < 0) {
@@ -72,6 +73,14 @@ const dragElement = (element) => {
 
             console.log(
                 `element's X position crossed the 0 boundary: ${element.offsetLeft - mouseXPos}`
+            );
+            removeEventListener("mousemove", moveElement);
+        } else if (element.offsetLeft - mouseXPos > maxX) {
+            element.style.left = `${maxX}px`;
+
+            console.log(
+                `element's X position crossed the maxX boundary:\n
+                X: ${element.offsetLeft - mouseXPos}`
             );
             removeEventListener("mousemove", moveElement);
         } else {
@@ -87,14 +96,21 @@ const dragElement = (element) => {
             );
 
             removeEventListener("mousemove", moveElement);
+        } else if (element.offsetTop - mouseYPos > maxY) {
+            element.style.top = `${maxY}px`;
+            console.log(
+                `element's Y position crossed the maxY boundary:\n
+                Y: ${element.offsetTop + mouseYPos}`
+            );
+            removeEventListener("mousemove", moveElement);
         } else {
             // Moving the element in the Y axis.
             element.style.top = `${element.offsetTop - mouseYPos}px`;
         }
 
-        // console.log(
-        //     `Dragging element: ${element.id}\nCurrent Position:\nX: ${element.style.left}, Y: ${element.style.top}`
-        // );
+        console.log(
+            `Dragging element: ${element.id}\nCurrent Position:\nX: ${element.style.left}, Y: ${element.style.top}`
+        );
     };
 
     const startDragging = (e) => {
@@ -105,11 +121,13 @@ const dragElement = (element) => {
         window.addEventListener("mousemove", moveElement); // Change to window
         window.addEventListener("mouseup", stopDragging, { once: true }); // Add once: true
         element.style.cursor = "grabbing";
+        element.style.border = "3px groove teal";
     };
 
     const stopDragging = () => {
         window.removeEventListener("mousemove", moveElement);
         element.style.cursor = "grab";
+        element.style.border = elementBorder;
     };
 
     // Initial setup

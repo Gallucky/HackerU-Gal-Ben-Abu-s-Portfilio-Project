@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
 * {
     padding: 0;
     margin: 0;
@@ -43,12 +45,7 @@
 
     border: 1px dotted black;
 
-    * {
-        margin-block-start: 2.5%;
-        margin-inline-start: 1%;
-    }
-
-    h2.tools-panel-title {
+    h2.tools-title {
         width: fit-content;
         height: fit-content;
 
@@ -64,27 +61,122 @@
 
     .tool {
         width: 90%;
-        height: 10%;
-
-        margin-block-start: 5%;
-        margin-inline-start: 5%;
-
-        h3.tool-title {
-            font-size: 17px;
-            text-indent: 5%;
-        }
-
-        #element-type {
-            min-width: 10px;
-            width: fit-content;
-
-            margin-inline-start: 5.5%;
-
-            border: 1px solid black;
-            border-radius: 16px;
-        }
+        height: fit-content-;
 
         border: 1px solid black;
+
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+
+        align-self: center;
+        justify-self: center;
+
+        gap: 10px;
+
+        h3.tool-title {
+            font-size: 1.25em;
+        }
+
+        label {
+            font-weight: 500;
+            align-self: center;
+            justify-self: center;
+
+            line-height: 100%;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 6px;
+        }
+
+        &#element-type {
+            flex-direction: row;
+            align-content: center;
+            justify-content: start;
+
+            padding-block: 10px;
+
+            select {
+                width: 45%;
+                background-color: white;
+                border: 1px groove black;
+                border-radius: 16px;
+
+                margin-top: 5px;
+
+                border: 1px solid black;
+
+                font-size: 0.75em;
+                font-family: Rubik;
+                text-indent: 10px;
+
+                &:hover {
+                    cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+                }
+            }
+        }
+
+        &#element-name {
+            width: 90%;
+            height: fit-content;
+
+            position: relative;
+
+            label {
+                margin-right: auto;
+            }
+
+            input {
+                width: 90%;
+                height: 3vh;
+
+                font-family: Rubik;
+                font-size: 0.75em;
+
+                border: 1px solid black;
+                border-radius: 5px;
+            }
+
+            #information {
+                width: 32px;
+                height: 32px;
+
+                transform: scale(0.75);
+
+                display: flex;
+                align-content: center;
+                justify-content: center;
+
+                position: absolute;
+                right: 0;
+                top: 0;
+
+                border-radius: 50%;
+                background-image: url("../../../images/information.png");
+                background-position: center center;
+                background-repeat: no-repeat;
+                object-fit: cover;
+                background-color: white;
+            }
+        }
+
+        &#element-text {
+            label {
+                margin-right: auto;
+            }
+
+            textarea {
+                width: 90%;
+                height: 10vh;
+                resize: none;
+
+                font-family: Rubik;
+                font-size: 0.75em;
+
+                border-radius: 5px;
+            }
+        }
     }
 
     .settings {

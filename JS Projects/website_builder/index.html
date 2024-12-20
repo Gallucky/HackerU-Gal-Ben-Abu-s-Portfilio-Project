@@ -11,22 +11,36 @@
     <body>
         <div class="website-builder-area">
             <div class="tools-panel">
-                <h2 class="tools-panel-title">Creator Tools</h2>
-                <div class="tool">
-                    <h3 class="tool-title">Element Type:</h3>
-                    <select name="element-type" id="element-type">
-                        <option value="hint" selected disabled>Select Type</option>
+                <h2 class="tools-title">Creator Tools:</h2>
+                <div class="tool" id="element-type">
+                    <label for="selection">Element Type:</label>
+                    <select name="element-type" id="selection">
+                        <option value="" selected disabled>Select Type:</option>
                         <option value="div">Div</option>
+                        <option value="p">Paragraph</option>
+                        <option value="h1">Header 1</option>
+                        <option value="h2">Header 2</option>
+                        <option value="h3">Header 3</option>
+                        <option value="h4">Header 4</option>
+                        <option value="h5">Header 5</option>
+                        <option value="h6">Header 6</option>
+                        <option value="a">Link</option>
+                        <option value="img">Image</option>
+                        <option value="input">Input</option>
+                        <option value="button">Button</option>
                     </select>
                 </div>
-                <div class="tool">
-                    <h3 class="tool-title">Element Size:</h3>
-                </div>
-                <div class="tool">
-                    <h3 class="tool-title">Background Color:</h3>
+
+                <div class="tool" id="element-name">
+                    <label for="name">Element Name:</label>
+                    <input type="text" id="name" />
+                    <div id="information"></div>
                 </div>
 
-                <div class="settings"></div>
+                <div class="tool" id="element-text">
+                    <label for="text">Element Text:</label>
+                    <textarea type="text" id="text">i</textarea>
+                </div>
             </div>
             <div id="workspace">
                 <div id="example-test-div" data-draggable>TEST</div>
