@@ -81,13 +81,12 @@
 
         label {
             font-weight: 500;
-            align-self: center;
-            justify-self: center;
 
             line-height: 100%;
             text-decoration: underline;
             text-decoration-thickness: 1px;
-            text-underline-offset: 6px;
+
+            text-underline-offset: 3px;
         }
 
         &#element-type {
@@ -96,6 +95,12 @@
             justify-content: start;
 
             padding-block: 10px;
+
+            label {
+                align-self: center;
+                justify-self: center;
+                text-underline-offset: 6px;
+            }
 
             select {
                 width: 45%;
@@ -109,7 +114,7 @@
 
                 font-size: 0.75em;
                 font-family: Rubik;
-                text-indent: 10px;
+                text-indent: 5px;
 
                 &:hover {
                     cursor: url("../../../images/cursor-click_24x24.png"), pointer;
@@ -122,10 +127,6 @@
             height: fit-content;
 
             position: relative;
-
-            label {
-                margin-right: auto;
-            }
 
             input {
                 width: 90%;
@@ -162,10 +163,6 @@
         }
 
         &#element-text {
-            label {
-                margin-right: auto;
-            }
-
             textarea {
                 width: 90%;
                 height: 10vh;
@@ -176,6 +173,133 @@
 
                 border-radius: 5px;
             }
+        }
+
+        .unit {
+            font-size: 0.75em;
+            font-family: Rubik;
+            font-weight: 500;
+
+            margin-block: 0;
+            margin-right: auto !important;
+
+            /* border-block: 1px dotted black; */
+            line-height: 150%;
+        }
+
+        .separator {
+            width: fit-content;
+            height: fit-content;
+
+            font-family: Rubik;
+            font-size: 0.1em;
+            font-weight: 500;
+
+            text-align: center;
+            line-height: normal;
+
+            align-self: end;
+            justify-self: center;
+        }
+
+        .horizontal-wrapper {
+            width: 90%;
+            height: fit-content;
+
+            margin-top: -10px;
+
+            display: flex;
+            flex-direction: row;
+
+            align-content: center;
+            justify-content: start;
+
+            gap: 0.3em;
+
+            input {
+                width: 30%;
+                border-radius: 5px;
+                border: 3px groove gray;
+
+                font-size: 0.8em;
+                font-family: Rubik;
+            }
+
+            span {
+                margin-left: -3px;
+                font-size: 0.8em;
+            }
+        }
+
+        &#element-size {
+            #element-size-label {
+                font-weight: 700;
+            }
+
+            .horizontal-wrapper2 {
+                width: 90%;
+                height: fit-content;
+            }
+
+            .outer-wrapper {
+                display: flex;
+                flex-direction: row;
+                align-content: center;
+                justify-content: start;
+
+                position: relative;
+
+                gap: 0;
+
+                .separator {
+                    width: fit-content;
+                    height: fit-content;
+
+                    font-size: 0.9em;
+
+                    align-self: center;
+                    text-align: center;
+                    justify-self: center;
+
+                    position: absolute;
+                    top: 58%;
+                    left: 37.5%;
+                }
+
+                #width,
+                #height {
+                    width: 50%;
+                }
+
+                input {
+                    width: 50%;
+
+                    font-family: Rubik;
+                    font-size: 0.75em;
+                    text-indent: 5px;
+
+                    border-radius: 5px;
+                    border: 1px solid black;
+                }
+            }
+        }
+
+        &#element-bg-color {
+            input {
+                width: 50%;
+            }
+        }
+
+        &#element-font-color {
+            input {
+                width: 50%;
+            }
+        }
+
+        &#element-font-size {
+            display: flex;
+            align-content: center;
+            justify-content: start;
         }
     }
 

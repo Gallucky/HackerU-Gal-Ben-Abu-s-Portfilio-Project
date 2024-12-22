@@ -11,9 +11,9 @@
     <body>
         <div class="website-builder-area">
             <div class="tools-panel">
-                <h2 class="tools-title">Creator Tools:</h2>
+                <h2 class="tools-title">Element Creator Tools:</h2>
                 <div class="tool" id="element-type">
-                    <label for="selection">Element Type:</label>
+                    <label for="selection">Type:</label>
                     <select name="element-type" id="selection">
                         <option value="" selected disabled>Select Type:</option>
                         <option value="div">Div</option>
@@ -32,14 +32,59 @@
                 </div>
 
                 <div class="tool" id="element-name">
-                    <label for="name">Element Name:</label>
+                    <label for="name">Name:</label>
                     <input type="text" id="name" />
                     <div id="information"></div>
                 </div>
 
                 <div class="tool" id="element-text">
-                    <label for="text">Element Text:</label>
-                    <textarea type="text" id="text">i</textarea>
+                    <label for="text">Text:</label>
+                    <textarea type="text" id="text"></textarea>
+                </div>
+
+                <div class="tool" id="element-size">
+                    <label id="element-size-label">Size:</label>
+
+                    <div class="outer-wrapper">
+                        <span class="separator">x</span>
+                        <div id="width">
+                            <label for="width-input">Width:</label>
+                            <div class="horizontal-wrapper2">
+                                <input type="number" id="width-input" step="1" value="1" />
+                                <span class="unit">px</span>
+                            </div>
+                        </div>
+                        <div id="height">
+                            <label for="height-input">Height:</label>
+                            <div class="horizontal-wrapper2">
+                                <input type="number" id="height-input" step="1" value="1" />
+                                <span class="unit">px</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool" id="element-bg-color">
+                    <label for="color">Background Color:</label>
+                    <input type="color" id="color" />
+                </div>
+
+                <div class="tool" id="element-font-color">
+                    <label for="font-color-input">Font Color:</label>
+                    <input type="color" id="font-color-input" />
+                </div>
+
+                <div class="tool" id="element-font-size">
+                    <label for="font-size-input">Font Size:</label>
+                    <div class="horizontal-wrapper">
+                        <input type="number" id="font-size-input" step="1" value="16" />
+                        <span class="unit">px</span>
+                    </div>
+                </div>
+
+                <div class="tool" id="element-font-family">
+                    <label for="font-family-input">Font Family:</label>
+                    <input type="text" id="font-family-input" />
                 </div>
             </div>
             <div id="workspace">
