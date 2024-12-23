@@ -142,9 +142,77 @@ const updateDraggableElements = () => {
     // Applying to every element that has the data-draggable attribute,
     // the dragging functionality.
     draggableElements.forEach((element) => {
-        dragElement(element);
+        if (!element.dataset.appliedDragFunctionality) {
+            element.dataset.appliedDragFunctionality = true;
+            dragElement(element);
+        }
     });
 };
 
 // Loading saved data from local storage.
 updateDraggableElements();
+
+// Implementing the create draggable element functionality.
+const createDraggableElement = () => {
+    const elementType = document.querySelector("#element-type #selection");
+    const elementName = document.getElementById("name");
+    const elementText = document.getElementById("text");
+    const elementSize = document.getElementById("size");
+    const elementWidth = document.getElementById("width");
+    const elementHeight = document.getElementById("height");
+    const elementBgColor = document.getElementById("color");
+    const elementTextColor = document.getElementById("font-color-input");
+    const elementFontSize = document.getElementById("font-size-input");
+    const elementFontFamily = document.getElementById("font-family-input");
+
+    console.log(elementType);
+
+    let requiredValuesEmpty = false;
+
+    if (elementType.value == "") {
+        console.log("Element type is empty");
+
+        const elementTypeBorderBackup = elementType.style.border;
+        elementType.style.border = "2px solid red";
+        elementType.onchange = () => {
+            // Restoring the border to its original state.
+            elementType.style.border = elementTypeBorderBackup;
+        };
+
+        requiredValuesEmpty = true;
+    }
+
+    if (elementName.value == "") {
+        console.log("Element name is empty");
+
+        const elementNameBorderBackup = elementName.style.border;
+        elementName.style.border = "2px solid red";
+        elementName.onchange = () => {
+            // Restoring the border to its original state.
+            elementName.style.border = elementNameBorderBackup;
+        };
+
+        requiredValuesEmpty = true;
+    }
+
+    if (!requiredValuesEmpty) {
+        const newElement = document.createElement(elementType.value);
+        newElement.id = elementName.value;
+        newElement.setAttribute("data-draggable", "");
+        newElement.style.width = `${elementWidth.value}px`;
+        newElement.style.height = `${elementHeight.value}px`;
+
+        newElement.innerText = elementText.value;
+        newElement.style.fontSize = `${elementFontSize.value}px`;
+        newElement.style.fontFamily = elementFontFamily.value;
+
+        newElement.style.color = elementTextColor.value;
+        newElement.style.backgroundColor = elementBgColor.value;
+
+        newElement.style.display = "flex";
+        newElement.style.userSelect = "none";
+
+        workspace.appendChild(newElement);
+        updateDraggableElements();
+    }
+};

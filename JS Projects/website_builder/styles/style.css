@@ -300,6 +300,61 @@
             display: flex;
             align-content: center;
             justify-content: start;
+
+            .horizontal-wrapper {
+                margin-top: 1px;
+            }
+        }
+
+        &#element-font-family {
+            display: flex;
+            align-content: center;
+            justify-content: start;
+
+            input {
+                width: 90%;
+                border-radius: 5px;
+
+                font-family: Rubik;
+                font-size: 0.75em;
+
+                border: 1px solid black;
+            }
+        }
+    }
+
+    #buttons-area {
+        width: 13vw;
+        height: fit-content;
+
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: space-evenly;
+
+        margin-block: 6vh;
+        margin-inline: auto;
+        gap: 10px;
+
+        transform: scale(1.3);
+        border: 1px solid black;
+
+        button {
+            width: 45%;
+
+            border: 3px groove black;
+            border-radius: 20px;
+
+            font-family: Rubik;
+
+            background-color: #16929b;
+
+            transition: all 0.3s ease-in-out;
+        }
+
+        button:hover {
+            cursor: url("../../../images/cursor-click_24x24.png"), pointer;
+            transform: scale(0.9);
         }
     }
 

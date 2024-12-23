@@ -50,14 +50,14 @@
                         <div id="width">
                             <label for="width-input">Width:</label>
                             <div class="horizontal-wrapper2">
-                                <input type="number" id="width-input" step="1" value="1" />
+                                <input type="number" id="width-input" step="1" value="100" />
                                 <span class="unit">px</span>
                             </div>
                         </div>
                         <div id="height">
                             <label for="height-input">Height:</label>
                             <div class="horizontal-wrapper2">
-                                <input type="number" id="height-input" step="1" value="1" />
+                                <input type="number" id="height-input" step="1" value="100" />
                                 <span class="unit">px</span>
                             </div>
                         </div>
@@ -66,7 +66,7 @@
 
                 <div class="tool" id="element-bg-color">
                     <label for="color">Background Color:</label>
-                    <input type="color" id="color" />
+                    <input type="color" id="color" value="#ffffff" />
                 </div>
 
                 <div class="tool" id="element-font-color">
@@ -84,7 +84,15 @@
 
                 <div class="tool" id="element-font-family">
                     <label for="font-family-input">Font Family:</label>
-                    <input type="text" id="font-family-input" />
+                    <input type="text" id="font-family-input" value="arial" />
+                </div>
+
+                <div id="buttons-area">
+                    <button id="create-element-btn" onclick="createDraggableElement()">
+                        Create
+                    </button>
+
+                    <button id="save-workspace-btn" onclick="saveWorkspace()">Save</button>
                 </div>
             </div>
             <div id="workspace">
