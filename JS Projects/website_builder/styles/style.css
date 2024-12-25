@@ -154,9 +154,10 @@
                 top: 0;
 
                 border-radius: 50%;
-                background-image: url("../../../images/information.png");
+                background-image: url("../images/information-symbol.png");
                 background-position: center center;
                 background-repeat: no-repeat;
+                background-size: cover;
                 object-fit: cover;
                 background-color: white;
             }

@@ -157,9 +157,8 @@ const createDraggableElement = () => {
     const elementType = document.querySelector("#element-type #selection");
     const elementName = document.getElementById("name");
     const elementText = document.getElementById("text");
-    const elementSize = document.getElementById("size");
-    const elementWidth = document.getElementById("width");
-    const elementHeight = document.getElementById("height");
+    const elementWidth = document.getElementById("width-input");
+    const elementHeight = document.getElementById("height-input");
     const elementBgColor = document.getElementById("color");
     const elementTextColor = document.getElementById("font-color-input");
     const elementFontSize = document.getElementById("font-size-input");
@@ -199,8 +198,6 @@ const createDraggableElement = () => {
         const newElement = document.createElement(elementType.value);
         newElement.id = elementName.value;
         newElement.setAttribute("data-draggable", "");
-        newElement.style.width = `${elementWidth.value}px`;
-        newElement.style.height = `${elementHeight.value}px`;
 
         newElement.innerText = elementText.value;
         newElement.style.fontSize = `${elementFontSize.value}px`;
@@ -209,10 +206,22 @@ const createDraggableElement = () => {
         newElement.style.color = elementTextColor.value;
         newElement.style.backgroundColor = elementBgColor.value;
 
-        newElement.style.display = "flex";
+        // newElement.style.display = "flex";
         newElement.style.userSelect = "none";
 
+        newElement.style.width = `${elementWidth.value}px`;
+        newElement.style.height = `${elementHeight.value}px`;
+
+        console.log("Width: ");
+        console.log(elementWidth);
+
+        console.log("Height: ");
+        console.log(elementHeight);
+
+        newElement.style.minWidth = `${elementWidth.value}px`;
+        newElement.style.minHeight = `${elementHeight.value}px`;
+
         workspace.appendChild(newElement);
-        updateDraggableElements();
+        dragElement(newElement);
     }
 };
