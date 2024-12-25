@@ -6,7 +6,7 @@
         <title>Website Builder</title>
         <link rel="stylesheet" href="../../styles/globals/general.css" />
         <link rel="stylesheet" href="./styles/style.css" />
-        <script src="./scripts/script.js" defer></script>
+        <script type="module" src="./scripts/script.js" defer></script>
     </head>
     <body>
         <div class="website-builder-area">
@@ -50,14 +50,24 @@
                         <div id="width">
                             <label for="width-input">Width:</label>
                             <div class="horizontal-wrapper2">
-                                <input type="number" id="width-input" step="1" value="100" />
+                                <input
+                                    type="number"
+                                    id="width-input"
+                                    step="1"
+                                    value="100"
+                                    min="50" />
                                 <span class="unit">px</span>
                             </div>
                         </div>
                         <div id="height">
                             <label for="height-input">Height:</label>
                             <div class="horizontal-wrapper2">
-                                <input type="number" id="height-input" step="1" value="100" />
+                                <input
+                                    type="number"
+                                    id="height-input"
+                                    step="1"
+                                    value="100"
+                                    min="50" />
                                 <span class="unit">px</span>
                             </div>
                         </div>

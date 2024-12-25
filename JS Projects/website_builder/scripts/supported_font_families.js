@@ -1,0 +1,23 @@
+const selectionFontFamily = document.getElementById("element-font-family");
+const fontNames = [
+    "Merriweather",
+    "Rubik",
+    "Playfair Display",
+    "Bebas Neue",
+    "Roboto",
+    "Lato",
+    "Montserrat",
+    "Poppins",
+    "Dancing Script",
+    "Pacifico",
+    "Source Code Pro",
+    "David Libre",
+    "Frank Ruhl Libre",
+    "Assistant",
+    "Arimo",
+    "Secular One",
+    "Amatic SC",
+    "Heebo",
+    "Varela Round",
+    "IBM Plex Mono",
+];

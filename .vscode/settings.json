@@ -1,5 +1,6 @@
 {
     "cSpell.enableFiletypes": ["html"],
     "editor.unicodeHighlight.ambiguousCharacters": false,
-    "liveServer.settings.port": 3001
+    "liveServer.settings.port": 3001,
+    "cSpell.words": ["Amatic", "Bebas", "Merriweather", "Neue", "Playfair", "Ruhl", "Varela"]
 }
