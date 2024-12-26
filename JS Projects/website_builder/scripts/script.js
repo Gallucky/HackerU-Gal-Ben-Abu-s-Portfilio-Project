@@ -1,5 +1,6 @@
 import { createDraggableElement } from "./drag.js";
 import { changeValuesBelowMinimumLimitListener } from "./general_listeners.js";
+import { populateFontFamilySelectionOptions } from "./supported_font_families.js";
 
 // Giving access to the createDraggableElement function globally.
 window.createDraggableElement = createDraggableElement;
@@ -17,3 +18,6 @@ const newElementSizeHeightInput = document.getElementById("height-input");
 
 newElementSizeWidthInput.onchange = changeValuesBelowMinimumLimitListener;
 newElementSizeHeightInput.onchange = changeValuesBelowMinimumLimitListener;
+
+const selectionFontFamily = document.getElementById("font-family-selection");
+populateFontFamilySelectionOptions(selectionFontFamily);

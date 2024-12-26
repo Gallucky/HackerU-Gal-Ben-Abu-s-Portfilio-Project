@@ -160,7 +160,7 @@ const createDraggableElement = () => {
     const elementBgColor = document.getElementById("color");
     const elementTextColor = document.getElementById("font-color-input");
     const elementFontSize = document.getElementById("font-size-input");
-    const elementFontFamily = document.getElementById("font-family-input");
+    const elementFontFamily = document.getElementById("font-family-selection");
 
     console.log(elementType);
 
