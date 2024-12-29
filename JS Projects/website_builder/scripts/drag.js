@@ -150,19 +150,56 @@ const updateDraggableElements = () => {
 // Loading saved data from local storage.
 updateDraggableElements();
 
-let requiredValuesEmpty = false;
-const elementInvalidDefaultValueKeptHandler = (element, logText) => {
+const styleTemporarilyInvalidElement = (element) => {
+    const elementBorderBackup = element.style.border;
+    element.style.border = "2px solid red";
+
+    element.onchange = () => {
+        // Restoring the border to its original state.
+        element.style.border = elementBorderBackup;
+    };
+};
+
+let elementWithInvalidValue = false;
+const elementContainsInvalidValue = (element, elementAttributeName) => {
+    // If the element doesn't exist or
+    // the logText doesn't exist or is empty exit.
+    if (!element) {
+        return;
+    }
+
+    if (!elementAttributeName || elementAttributeName == "") {
+        elementAttributeName = "unknown";
+    }
+
     if (element.value == "") {
-        console.log(`The ${element.id} element's ${logText} attribute is empty / not specified.`);
+        console.log(`The ${element.id} element's ${elementAttributeName} attribute is invalid`);
 
-        const elementBorderBackup = element.style.border;
-        element.style.border = "2px solid red";
-        element.onchange = () => {
-            // Restoring the border to its original state.
-            element.style.border = elementBorderBackup;
-        };
+        styleTemporarilyInvalidElement(element);
+        elementWithInvalidValue = true;
+    }
 
-        requiredValuesEmpty = true;
+    if (elementAttributeName.toLowerCase() === "name") {
+        // If the element has an ID,
+        // check if it's already taken by another element.
+        const elementOfIDToCreate = element.value;
+
+        // The auto complete generated this line
+        // and that is a better solution than the one I thought.
+        // Here selecting all the element with the dataset
+        // attribute called data-draggable.
+        const createdDraggableElements = Array.from(
+            document.querySelectorAll("#workspace > [data-draggable]")
+        );
+
+        for (let elementIndex in createdDraggableElements) {
+            if (createdDraggableElements[elementIndex].id === elementOfIDToCreate) {
+                elementWithInvalidValue = true;
+                const nameInput = document.getElementById("name");
+                styleTemporarilyInvalidElement(nameInput);
+                break;
+            }
+        }
     }
 };
 
@@ -178,13 +215,13 @@ const createDraggableElement = () => {
     const elementFontSize = document.getElementById("font-size-input");
     const elementFontFamily = document.getElementById("font-family-selection");
 
-    console.log(elementType);
+    elementContainsInvalidValue(elementType, "Type");
+    elementContainsInvalidValue(elementName, "Name");
+    elementContainsInvalidValue(elementFontFamily, "Font Family");
 
-    elementInvalidDefaultValueKeptHandler(elementType, "Type");
-    elementInvalidDefaultValueKeptHandler(elementName, "Name");
-    elementInvalidDefaultValueKeptHandler(elementFontFamily, "Font Family");
+    if (!elementWithInvalidValue) {
+        console.log(elementType.value);
 
-    if (!requiredValuesEmpty) {
         const newElement = document.createElement(elementType.value);
         newElement.id = elementName.value;
         newElement.setAttribute("data-draggable", "");
