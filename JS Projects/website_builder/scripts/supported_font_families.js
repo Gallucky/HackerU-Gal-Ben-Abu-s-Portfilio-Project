@@ -22,8 +22,6 @@ export const fontNames = [
 ];
 
 export const populateFontFamilySelectionOptions = (selectionFontFamily) => {
-    console.log(`Here`);
-
     const defaultOption = document.createElement("option");
     defaultOption.value = "";
     defaultOption.innerText = "- Select Font -";
@@ -38,4 +36,15 @@ export const populateFontFamilySelectionOptions = (selectionFontFamily) => {
         option.style.fontFamily = fontNames[i];
         selectionFontFamily.appendChild(option);
     }
+};
+
+export const getFontFamilySelectionOnValueChangeListenerHandler = (selectionFontFamily) => {
+    selectionFontFamily.onchange = (e) => {
+        console.log(e.target.value);
+        if (e.target.value === "") {
+            selectionFontFamily.style.fontFamily = "Rubik";
+        } else {
+            selectionFontFamily.style.fontFamily = e.target.value;
+        }
+    };
 };

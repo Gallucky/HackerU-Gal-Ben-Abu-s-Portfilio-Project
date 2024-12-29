@@ -321,6 +321,16 @@
 
                 border: 1px solid black;
             }
+
+            #font-family-selection {
+                width: 90%;
+                height: fit-content;
+
+                border: 1px solid black;
+                border-radius: 5px;
+
+                font-size: 0.75em;
+            }
         }
     }
 

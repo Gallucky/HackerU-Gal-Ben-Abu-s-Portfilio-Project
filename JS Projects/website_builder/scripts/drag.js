@@ -150,6 +150,22 @@ const updateDraggableElements = () => {
 // Loading saved data from local storage.
 updateDraggableElements();
 
+let requiredValuesEmpty = false;
+const elementInvalidDefaultValueKeptHandler = (element, logText) => {
+    if (element.value == "") {
+        console.log(`The ${element.id} element's ${logText} attribute is empty / not specified.`);
+
+        const elementBorderBackup = element.style.border;
+        element.style.border = "2px solid red";
+        element.onchange = () => {
+            // Restoring the border to its original state.
+            element.style.border = elementBorderBackup;
+        };
+
+        requiredValuesEmpty = true;
+    }
+};
+
 // Implementing the create draggable element functionality.
 const createDraggableElement = () => {
     const elementType = document.querySelector("#element-type #selection");
@@ -164,33 +180,9 @@ const createDraggableElement = () => {
 
     console.log(elementType);
 
-    let requiredValuesEmpty = false;
-
-    if (elementType.value == "") {
-        console.log("Element type is empty");
-
-        const elementTypeBorderBackup = elementType.style.border;
-        elementType.style.border = "2px solid red";
-        elementType.onchange = () => {
-            // Restoring the border to its original state.
-            elementType.style.border = elementTypeBorderBackup;
-        };
-
-        requiredValuesEmpty = true;
-    }
-
-    if (elementName.value == "") {
-        console.log("Element name is empty");
-
-        const elementNameBorderBackup = elementName.style.border;
-        elementName.style.border = "2px solid red";
-        elementName.onchange = () => {
-            // Restoring the border to its original state.
-            elementName.style.border = elementNameBorderBackup;
-        };
-
-        requiredValuesEmpty = true;
-    }
+    elementInvalidDefaultValueKeptHandler(elementType, "Type");
+    elementInvalidDefaultValueKeptHandler(elementName, "Name");
+    elementInvalidDefaultValueKeptHandler(elementFontFamily, "Font Family");
 
     if (!requiredValuesEmpty) {
         const newElement = document.createElement(elementType.value);

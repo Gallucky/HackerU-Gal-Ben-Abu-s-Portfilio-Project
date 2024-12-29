@@ -12,4 +12,24 @@ const changeValuesBelowMinimumLimitListener = (e) => {
     }
 };
 
-export { changeValuesBelowMinimumLimitListener };
+const changeValuesAboveMaximumLimitListener = (e, type) => {
+    const workspace = document.getElementById("workspace");
+    // I don't use the e.target.parent because currently the element
+    // is the input element and not the draggable element soon to be created.
+
+    const maxWidth = workspace.clientWidth * 0.9;
+    const maxHeight = workspace.clientHeight * 0.9;
+
+    if (type.toLowerCase() === "width" && e.target.value > maxWidth) {
+        e.target.value = Math.round(maxWidth);
+    } else if (type.toLowerCase() === "height" && e.target.value > maxHeight) {
+        e.target.value = Math.round(maxHeight);
+    }
+};
+
+const changeValuesListenerAndHandler = (e, type, parent) => {
+    changeValuesBelowMinimumLimitListener(e);
+    changeValuesAboveMaximumLimitListener(e, type, parent);
+};
+
+export { changeValuesListenerAndHandler };

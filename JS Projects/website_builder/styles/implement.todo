@@ -1,0 +1,18 @@
+Website Builder - Progress Report #10:
+✔ Completed: Default option is not remained selected.
+✔ Completed: Limit the max size of the created element to be around
+  90% width and 90% height of the workspace...
+
+TODO:
+# Started on commit "Website Builder - Progress Report #9"
+  1 - 4
+
+1) Needing to figure out a way to make sure there are not
+  created elements with the same name / id..
+2) Figure out a way to edit properties of already
+  created elements.
+3) Figure out a way to save everything to local storage
+  as it been and load it when entering the website if
+  there is saved data.
+4) make a clear button with confirmation dialog.
+  etc... etc...
