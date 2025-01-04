@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#cards-container img {
+    height: 35%;
+}
+
+.fa.fa-heart {
+    color: black;
+}
+
+.fa.fa-heart:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.fa.fa-heart.liked {
+    color: red;
+}
