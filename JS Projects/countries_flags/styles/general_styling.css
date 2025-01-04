@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+#cards-container {
+    gap: 20px;
+    padding: 10px;
+}
+
 #cards-container img {
     height: 35%;
 }

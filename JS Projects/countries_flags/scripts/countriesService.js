@@ -8,10 +8,15 @@ const getCountries = async () => {
 };
 
 const allCountries = await getCountries();
-let shownCountries = [...allCountries];
+const allCountriesNames = new Set(allCountries.map((country) => country.name.common));
+let namesOfShownCountries = new Set(allCountriesNames);
 
 const resetShownCountries = () => {
-    shownCountries = [...allCountries];
+    namesOfShownCountries = new Set(allCountriesNames);
+};
+
+const setShownCountries = (countries) => {
+    namesOfShownCountries = new Set(countries.map((country) => country.name.common));
 };
 
 const searchCountry = (country) => {
@@ -24,4 +29,10 @@ const searchCountry = (country) => {
     return filteredCountries;
 };
 
-export { allCountries, shownCountries, searchCountry, resetShownCountries };
+export {
+    allCountries,
+    namesOfShownCountries,
+    searchCountry,
+    resetShownCountries,
+    setShownCountries,
+};
