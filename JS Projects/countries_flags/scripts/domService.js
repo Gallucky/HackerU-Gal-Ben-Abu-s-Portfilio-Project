@@ -115,4 +115,31 @@ const arrangeCountriesCards = () => {
     });
 };
 
+const searchActionsHandler = () => {
+    const order = document.querySelector("img.order-image");
+
+    order.onclick = () => {
+        const orderType = order.getAttribute("data-order-type");
+
+        order.classList.toggle("hidden");
+        setTimeout(() => {
+            if (orderType === "desc") {
+                // Change to the opposite order type - ascending.
+                order.src = "./images/icons8-ascending-up-24.png";
+                order.alt = "Ascending order image";
+                order.setAttribute("data-order-type", "asc");
+            } else {
+                // The order type is asc, if it is not asc then default to ascending order.
+                // Change to the opposite order type - descending.
+                order.src = "./images/icons8-descending-down-24.png";
+                order.alt = "Descending order image";
+                order.setAttribute("data-order-type", "desc");
+            }
+        }, 100);
+        order.classList.toggle("hidden");
+    };
+};
+
+searchActionsHandler();
+
 export { arrangeCountriesCards };

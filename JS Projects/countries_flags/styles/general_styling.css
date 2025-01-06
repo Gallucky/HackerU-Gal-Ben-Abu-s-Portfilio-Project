@@ -25,3 +25,44 @@
 .fa.fa-heart.liked {
     color: red;
 }
+
+#search-sort,
+#search-order {
+    text-align: start;
+    direction: rtl;
+}
+
+#order-image {
+    width: 24px;
+    height: 24px;
+
+    background-image: url("../images/icons8-ascending-up-24.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: 1;
+
+    margin: 4vw;
+}
+
+#btn-sort {
+    border-radius: 16px;
+    background: #ebebe0 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+@keyframes order-opacity-animation {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
