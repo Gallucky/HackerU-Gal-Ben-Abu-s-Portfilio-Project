@@ -30,12 +30,15 @@
         <h4 class="text-center text-white">חיפוש</h4>
         <div class="m-auto mt-1 d-flex justify-content-center col-md-6 col-sm-12 border">
             <input id="search-input" class="form-control m-4" />
-            <select name="search-sort" id="search-sort" class="form-select m-4">
-                <option value="" selected disabled>מיין לפי:</option>
-                <option value="name">שם</option>
-                <option value="population">אוכלוסייה</option>
-                <option value="region">איזור</option>
-            </select>
+            <div class="select-area">
+                <label for="search-sort">מיין לפי:</label>
+                <select name="search-sort" id="search-sort">
+                    <option value="without" selected>ללא</option>
+                    <option value="name">שם</option>
+                    <option value="population">אוכלוסייה</option>
+                    <option value="region">איזור</option>
+                </select>
+            </div>
 
             <button id="btn-sort">
                 <img src="./images/icons8-ascending-up-24.png" alt="Ascending order image" class="order-image" data-order-type="asc"></img>
