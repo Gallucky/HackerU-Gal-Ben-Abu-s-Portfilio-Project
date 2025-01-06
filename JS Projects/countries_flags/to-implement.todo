@@ -1,0 +1,13 @@
+To continue the work on:
+
+- Sorting button to sort ascending / descending.
+- Filter dropdown which will filter based on one of the following:
+    - A Country
+    - A Region
+    - Population
+    will work with the search bar.
+- Favorite button to show only the countries the user bookmarked as favorite.
+- Clear favorite button.
+    - will show a dialog asking for confirmation to clear the bookmarked countries list.
++ To think about more ideas to implement.
+    
