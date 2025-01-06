@@ -1,12 +1,18 @@
 import { createDraggableElement } from "./drag.js";
 import { changeValuesListenerAndHandler } from "./general_listeners.js";
-import {
-    populateFontFamilySelectionOptions,
-    getFontFamilySelectionOnValueChangeListenerHandler,
-} from "./supported_font_families.js";
+import { populateFontFamilySelectionOptions } from "./supported_font_families.js";
+import { getFontFamilySelectionOnValueChangeListenerHandler } from "./supported_font_families.js";
+
+import { editCreatedDraggableElements } from "./edit_element.js";
+import { editCreatedDraggableElement } from "./edit_element.js";
 
 // Giving access to the createDraggableElement function globally.
 window.createDraggableElement = createDraggableElement;
+
+// Load saved data from local storage.
+
+// Apply edit functionality to loaded already created draggable elements.
+editCreatedDraggableElements();
 
 // Testing the drag idea.
 const workspace = document.getElementById("workspace");

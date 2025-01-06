@@ -1,5 +1,7 @@
 // Dragging newly created elements functionality.
 
+import { editCreatedDraggableElement } from "./edit_element.js";
+
 const workspace = document.getElementById("workspace");
 
 /*=============================================================================
@@ -247,6 +249,8 @@ const createDraggableElement = () => {
 
         newElement.style.minWidth = `${elementWidth.value}px`;
         newElement.style.minHeight = `${elementHeight.value}px`;
+
+        editCreatedDraggableElement(newElement);
 
         workspace.appendChild(newElement);
         dragElement(newElement);
