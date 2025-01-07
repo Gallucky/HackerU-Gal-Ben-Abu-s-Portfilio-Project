@@ -45,3 +45,19 @@ customSelectElements.forEach((element) => {
         };
     });
 });
+
+document.addEventListener("click", (e) => {
+    const customSelectElements = document.querySelectorAll(".custom-select");
+
+    customSelectElements.forEach((element) => {
+        if (!element.contains(e.target)) {
+            element.classList.remove("active");
+        }
+    });
+});
+
+const removeActiveClassFromAllCustomSelectElements = () => {
+    customSelectElements.forEach((element) => {
+        element.classList.remove("active");
+    });
+};

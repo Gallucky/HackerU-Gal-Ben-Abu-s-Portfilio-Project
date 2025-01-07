@@ -1,7 +1,10 @@
 .custom-select {
     position: relative;
-    width: 200px;
+    width: fit-content;
     font-family: system-ui;
+
+    background: none;
+    /* border: none; */
 
     * {
         user-select: none;
@@ -11,7 +14,8 @@
 .select-value {
     background-color: white;
     padding: 5px 30px 5px 10px;
-    border: 123px solid #ccc;
+    margin: -5px -30px -5px -10px;
+    /* border: 123px solid #ccc; */
     border-radius: 4px;
     cursor: pointer;
     position: relative;
@@ -45,8 +49,7 @@
     margin-top: 2px;
 
     position: absolute;
-    top: 100%;
-    left: 0;
+    top: 120%;
     right: 0;
 
     opacity: 0;

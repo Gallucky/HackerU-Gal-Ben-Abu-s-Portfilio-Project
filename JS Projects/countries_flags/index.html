@@ -19,8 +19,12 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="./styles/general_styling.css" />
         <script src="./scripts/index.js" type="module" defer></script>
+
+        <link rel="stylesheet" href="./styles/custom_select.css">
+        <script src="./scripts/customSelect.js" defer></script>
     </head>
     <body class="bg-dark">
+
         <!-- Title -->
         <div class="bg-primary">
             <h1 class="text-center text-white p-4">מדינות העולם</h1>
@@ -32,12 +36,15 @@
             <input id="search-input" class="form-control m-4" />
             <div class="select-area">
                 <label for="search-sort">מיין לפי:</label>
-                <select name="search-sort" id="search-sort">
-                    <option value="without" selected>ללא</option>
-                    <option value="name">שם</option>
-                    <option value="population">אוכלוסייה</option>
-                    <option value="region">איזור</option>
-                </select>
+                <div id="search-sort" class="custom-select" value="">
+                    <div class="select-value">ללא</div>
+                    <div class="select-options">
+                        <div class="select-option" value="without" selected>ללא</div>
+                        <div class="select-option" value="name">שם</div>
+                        <div class="select-option" value="population">אוכלוסייה</div>
+                        <div class="select-option" value="region">איזור</div>
+                    </div>
+                </div>
             </div>
 
             <button id="btn-sort">

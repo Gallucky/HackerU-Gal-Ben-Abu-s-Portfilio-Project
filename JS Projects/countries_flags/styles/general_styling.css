@@ -6,6 +6,14 @@
     box-sizing: border-box;
 }
 
+body {
+    overflow-x: hidden;
+}
+
+img {
+    user-select: none;
+}
+
 #cards-container {
     gap: 20px;
     padding: 10px;
@@ -32,32 +40,6 @@
 #search-order {
     text-align: start;
     direction: rtl;
-}
-
-#search-sort {
-    border-radius: 8px;
-    font-family: Rubik;
-
-    background: teal 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
-    border: 3px groove black;
-
-    option {
-        border: 4px solid black;
-    }
-
-    option:hover {
-        background: none !important;
-        color: white;
-        font-weight: 500;
-    }
-
-    &:hover {
-        cursor: pointer;
-        option:hover {
-            background: none !important;
-        }
-    }
 }
 
 .select-area {
@@ -110,6 +92,8 @@
     box-shadow: 0px 3px 6px #00000029;
 
     margin-block: auto;
+
+    user-select: none;
 
     transition: transform 0.5s ease-in-out;
 
