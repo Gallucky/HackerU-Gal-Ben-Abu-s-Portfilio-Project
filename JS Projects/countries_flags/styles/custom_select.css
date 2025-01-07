@@ -30,6 +30,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
+
+    transition: background-image 0.5s ease-in-out;
 }
 
 .custom-select.active .select-value::after {
@@ -47,55 +49,24 @@
     left: 0;
     right: 0;
 
-    transform: translateY(-100px);
-
     opacity: 0;
-    height: 0;
+    transform: scaleY(0);
+    transform-origin: top;
 
     background: white;
     border: 1px solid #ccc;
     border-radius: 0 0 4px 4px;
 
-    overflow-y: auto;
+    overflow-y: hidden;
     z-index: 1000;
 
-    animation: fadeIn 0.2s ease forwards;
+    transition: all 0.5s ease-in-out;
 }
 
 /* Show options when active class is present */
 .custom-select.active .select-options {
-    /* display: block; */
-    animation: fadeOut 0.5s ease forwards;
-}
-
-@keyframes fadeIn {
-    from {
-        height: 0;
-        opacity: 0;
-        border: none;
-        transform: translateY(-200px);
-    }
-    to {
-        height: fit-content;
-        opacity: 1;
-        border: 3px groove black;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeOut {
-    from {
-        height: fit-content;
-        opacity: 1;
-        border: 3px groove black;
-        transform: translateY(0);
-    }
-    to {
-        height: 0;
-        opacity: 0;
-        border: none;
-        transform: translateY(-200px);
-    }
+    transform: scaleY(1);
+    opacity: 1;
 }
 
 .select-value {
