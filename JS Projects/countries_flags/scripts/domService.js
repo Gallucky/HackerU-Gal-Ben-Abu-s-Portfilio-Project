@@ -12,12 +12,13 @@ const createCard = (country) => {
     card.id = "card-" + country.name.common;
     card.style.width = "300px";
     card.style.height = "400px";
-    card.style.padding = "0.5rem 1rem";
+    // card.style.padding = "0.5rem 1rem";
 
     const flag = document.createElement("img");
     flag.classList.add("card-img-top", "img", "img-round");
     flag.style.width = "300px !important";
-    flag.style.outline = "3px groove black";
+    flag.style.height = "40%";
+    flag.style.borderBottom = "3px groove teal";
 
     flag.src = country.flags.png;
     flag.alt = `Flag of ${country.name.common}`;
@@ -115,31 +116,23 @@ const arrangeCountriesCards = () => {
     });
 };
 
-const searchActionsHandler = () => {
-    const order = document.querySelector("img.order-image");
+const sortASCAndDESCBtn = document.getElementById("btn-sort");
 
-    order.onclick = () => {
-        const orderType = order.getAttribute("data-order-type");
+sortASCAndDESCBtn.onclick = () => {
+    const orderType = sortASCAndDESCBtn.getAttribute("data-order-type");
 
-        order.classList.toggle("hidden");
-        setTimeout(() => {
-            if (orderType === "desc") {
-                // Change to the opposite order type - ascending.
-                order.src = "./images/icons8-ascending-up-24.png";
-                order.alt = "Ascending order image";
-                order.setAttribute("data-order-type", "asc");
-            } else {
-                // The order type is asc, if it is not asc then default to ascending order.
-                // Change to the opposite order type - descending.
-                order.src = "./images/icons8-descending-down-24.png";
-                order.alt = "Descending order image";
-                order.setAttribute("data-order-type", "desc");
-            }
-        }, 100);
-        order.classList.toggle("hidden");
-    };
+    if (orderType === "asc") {
+        // Change to the opposite order type - descending.
+        sortASCAndDESCBtn.style.backgroundImage = `url("./images/icons8-descending-down-24.png")`;
+        sortASCAndDESCBtn.style.ariaDescription = "Descending order image";
+        sortASCAndDESCBtn.setAttribute("data-order-type", "desc");
+    } else {
+        // The order type is desc, if it is not desc then default to descending order.
+        // Change to the opposite order type - ascending.
+        sortASCAndDESCBtn.style.backgroundImage = `url("./images/icons8-ascending-up-24.png")`;
+        sortASCAndDESCBtn.style.ariaDescription = "Ascending order image";
+        sortASCAndDESCBtn.setAttribute("data-order-type", "asc");
+    }
 };
-
-searchActionsHandler();
 
 export { arrangeCountriesCards };
