@@ -1,4 +1,4 @@
-import { allCountries } from "./countriesService.js";
+import { allCountries, sortCountries } from "./countriesService.js";
 import { namesOfShownCountries } from "./countriesService.js";
 import { saveToFavorite, removeFromFavorite } from "./localStorageService.js";
 
@@ -121,18 +121,33 @@ const sortASCAndDESCBtn = document.getElementById("btn-sort");
 sortASCAndDESCBtn.onclick = () => {
     const orderType = sortASCAndDESCBtn.getAttribute("data-order-type");
 
+    const customSelectOrderBy = document.querySelector("#search-sort.custom-select");
+
     if (orderType === "asc") {
         // Change to the opposite order type - descending.
         sortASCAndDESCBtn.style.backgroundImage = `url("./images/icons8-descending-down-24.png")`;
         sortASCAndDESCBtn.style.ariaDescription = "Descending order image";
         sortASCAndDESCBtn.setAttribute("data-order-type", "desc");
+
+        sortCountries("desc", customSelectOrderBy.dataset.value);
     } else {
         // The order type is desc, if it is not desc then default to descending order.
         // Change to the opposite order type - ascending.
+        sortCountries("asc", customSelectOrderBy.dataset.value);
         sortASCAndDESCBtn.style.backgroundImage = `url("./images/icons8-ascending-up-24.png")`;
         sortASCAndDESCBtn.style.ariaDescription = "Ascending order image";
         sortASCAndDESCBtn.setAttribute("data-order-type", "asc");
     }
+
+    reorderCountryCards();
+};
+
+const reorderCountryCards = () => {
+    const cardsContainer = document.getElementById("cards-container");
+
+    namesOfShownCountries.forEach((countryName) => {
+        cardsContainer.appendChild(countriesCards[countryName]);
+    });
 };
 
 export { arrangeCountriesCards };

@@ -8,15 +8,16 @@ const getCountries = async () => {
 };
 
 const allCountries = await getCountries();
+console.log(allCountries);
 const allCountriesNames = new Set(allCountries.map((country) => country.name.common));
-let namesOfShownCountries = new Set(allCountriesNames);
+let namesOfShownCountries = [...allCountriesNames];
 
 const resetShownCountries = () => {
-    namesOfShownCountries = new Set(allCountriesNames);
+    namesOfShownCountries = [...allCountriesNames];
 };
 
 const setShownCountries = (countries) => {
-    namesOfShownCountries = new Set(countries.map((country) => country.name.common));
+    namesOfShownCountries = countries.map((country) => country.name.common);
 };
 
 const searchCountry = (country) => {
@@ -29,10 +30,53 @@ const searchCountry = (country) => {
     return filteredCountries;
 };
 
+const sortCountries = (type, by = "name") => {
+    const sortByMap = {
+        name: (country) => country.name.common.toLowerCase(),
+        region: (country) => country.region.toLowerCase(),
+        population: (country) => country.population,
+    };
+
+    // If the result returns an undefined value break out of the function and return.
+    if (!sortByMap[by]) {
+        console.log("by = ", by);
+        console.log("sortByMap[by] = ", sortByMap[by]);
+        return;
+    }
+
+    console.log("Before Sorting\n", namesOfShownCountries);
+
+    namesOfShownCountries = [...allCountries]
+        // The sort method is a destructive method,
+        // hence why we use a shallow copy of allCountries array.
+        .sort((curr, next) => {
+            const currValue = sortByMap[by](curr);
+            const nextValue = sortByMap[by](next);
+
+            // If statement is true the next value switch places with the current value.
+            // When the currentValue and nextValue are of type string,
+            // the comparison is done by dictionary-like order (lexicographically).
+            // NOTE: This if statements are telling the sort method how to rearrange the array,
+            //       based on this logic and result values:
+            //       1 -> next value needs to go before the current value.
+            //       -1 -> next value needs to go after the current value.
+            //       0 -> order does not change.
+            if (type === "asc") return currValue > nextValue ? 1 : currValue < nextValue ? -1 : 0;
+            if (type === "desc") return currValue < nextValue ? 1 : currValue > nextValue ? -1 : 0;
+
+            // No sorting.
+            return 0;
+        })
+        .map((country) => country.name.common);
+
+    console.log("After Sorting\n", namesOfShownCountries);
+};
+
 export {
     allCountries,
     namesOfShownCountries,
     searchCountry,
     resetShownCountries,
     setShownCountries,
+    sortCountries,
 };

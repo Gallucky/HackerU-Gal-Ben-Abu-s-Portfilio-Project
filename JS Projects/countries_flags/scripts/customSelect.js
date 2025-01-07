@@ -2,13 +2,13 @@ const customSelectElements = document.querySelectorAll(".custom-select");
 
 customSelectElements.forEach((element) => {
     if (element.querySelectorAll(".select-option").length === 0) {
-        element.setAttribute("value", "");
+        element.dataset.value = "";
     } else {
         const selectedOption = element.querySelector(".selected");
         if (selectedOption) {
-            element.setAttribute("value", element.querySelector(".selected").getAttribute("value"));
+            element.dataset.value = element.querySelector(".selected").dataset.value;
         } else {
-            element.setAttribute("value", "");
+            element.dataset.value = "";
         }
     }
 
@@ -41,7 +41,10 @@ customSelectElements.forEach((element) => {
             element.classList.remove("active");
 
             element.querySelector(".select-value").innerText = option.innerText;
-            element.setAttribute("value", option.getAttribute("value"));
+            element.dataset.value = option.dataset.value;
+
+            const orderType = sortASCAndDESCBtn.dataset.orderType;
+            sortCountries(orderType, element.dataset.value);
         };
     });
 });

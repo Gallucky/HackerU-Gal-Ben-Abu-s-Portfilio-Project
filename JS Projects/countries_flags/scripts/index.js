@@ -1,4 +1,9 @@
-import { allCountries, searchCountry, setShownCountries } from "./countriesService.js";
+import {
+    allCountries,
+    searchCountry,
+    setShownCountries,
+    sortCountries,
+} from "./countriesService.js";
 import { arrangeCountriesCards } from "./domService.js";
 
 const searchInput = document.getElementById("search-input");
