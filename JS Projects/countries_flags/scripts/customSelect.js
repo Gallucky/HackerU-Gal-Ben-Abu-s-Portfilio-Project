@@ -42,9 +42,6 @@ customSelectElements.forEach((element) => {
 
             element.querySelector(".select-value").innerText = option.innerText;
             element.dataset.value = option.dataset.value;
-
-            const orderType = sortASCAndDESCBtn.dataset.orderType;
-            sortCountries(orderType, element.dataset.value);
         };
     });
 });

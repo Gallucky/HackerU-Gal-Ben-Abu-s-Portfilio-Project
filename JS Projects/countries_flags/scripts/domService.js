@@ -105,15 +105,16 @@ const arrangeCountriesCards = () => {
 
         // If it does not exist in the namesOfShownCountries array.
         // We need to hide it from the DOM.
-        if (!namesOfShownCountries.has(countryName)) {
+        if (!namesOfShownCountries.includes(countryName)) {
             document.getElementById(countryID).style.display = "none";
         }
         // If it is in the namesOfShownCountries array.
         // We need to show it in the DOM.
-        else if (namesOfShownCountries.has(countryName)) {
+        else if (namesOfShownCountries.includes(countryName)) {
             document.getElementById(countryID).style.display = "block";
         }
     });
+    console.log("Been in arrangeCountriesCards");
 };
 
 const sortASCAndDESCBtn = document.getElementById("btn-sort");
@@ -129,14 +130,15 @@ sortASCAndDESCBtn.onclick = () => {
         sortASCAndDESCBtn.style.ariaDescription = "Descending order image";
         sortASCAndDESCBtn.setAttribute("data-order-type", "desc");
 
-        sortCountries("desc", customSelectOrderBy.dataset.value);
+        sortCountries(namesOfShownCountries, "desc", customSelectOrderBy.dataset.value);
     } else {
         // The order type is desc, if it is not desc then default to descending order.
         // Change to the opposite order type - ascending.
-        sortCountries("asc", customSelectOrderBy.dataset.value);
         sortASCAndDESCBtn.style.backgroundImage = `url("./images/icons8-ascending-up-24.png")`;
         sortASCAndDESCBtn.style.ariaDescription = "Ascending order image";
         sortASCAndDESCBtn.setAttribute("data-order-type", "asc");
+
+        sortCountries(namesOfShownCountries, "asc", customSelectOrderBy.dataset.value);
     }
 
     reorderCountryCards();
@@ -145,9 +147,20 @@ sortASCAndDESCBtn.onclick = () => {
 const reorderCountryCards = () => {
     const cardsContainer = document.getElementById("cards-container");
 
+    if (!countriesCards) throw new Error("No countries cards found.");
+    else {
+        console.log("countriesCards:", countriesCards);
+    }
+
+    console.log("namesOfShownCountries:", namesOfShownCountries);
+
     namesOfShownCountries.forEach((countryName) => {
+        // console.log("countryName:", countryName);
+        // console.log("countriesCards[countryName]:", countriesCards[countryName]);
+
+        if (!countriesCards[countryName]) throw new Error("No country card found.");
         cardsContainer.appendChild(countriesCards[countryName]);
     });
 };
 
-export { arrangeCountriesCards };
+export { arrangeCountriesCards, reorderCountryCards };

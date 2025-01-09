@@ -17,22 +17,28 @@ const resetShownCountries = () => {
 };
 
 const setShownCountries = (countries) => {
-    namesOfShownCountries = countries.map((country) => country.name.common);
+    console.log("Been in setShownCountries");
+    namesOfShownCountries = countries;
 };
 
 const searchCountry = (country) => {
     const countryName = country.toLowerCase();
-    const filteredCountries = allCountries.filter((word) => {
-        const wordLower = word.name.common.toLowerCase();
-        return wordLower.includes(countryName);
-    });
+
+    const filteredCountries = allCountries
+        .filter((word) => {
+            const wordLower = word.name.common.toLowerCase();
+            return wordLower.includes(countryName);
+        })
+        .map((country) => country.name.common);
+
+    console.log("Been in searchCountry");
 
     return filteredCountries;
 };
 
-const sortCountries = (type, by = "name") => {
+const sortCountries = (countries, type, by = "name") => {
     const sortByMap = {
-        name: (country) => country.name.common.toLowerCase(),
+        name: (country) => country.toLowerCase(),
         region: (country) => country.region.toLowerCase(),
         population: (country) => country.population,
     };
@@ -46,7 +52,7 @@ const sortCountries = (type, by = "name") => {
 
     console.log("Before Sorting\n", namesOfShownCountries);
 
-    namesOfShownCountries = [...allCountries]
+    namesOfShownCountries = [...countries]
         // The sort method is a destructive method,
         // hence why we use a shallow copy of allCountries array.
         .sort((curr, next) => {
@@ -66,10 +72,15 @@ const sortCountries = (type, by = "name") => {
 
             // No sorting.
             return 0;
-        })
-        .map((country) => country.name.common);
+        });
 
-    console.log("After Sorting\n", namesOfShownCountries);
+    console.log("After Sorting:");
+    namesOfShownCountries.forEach((country) => {
+        const countryData = allCountries.filter((c) => c.name.common === country)[0];
+        console.log("Name:", country, "Population:", countryData.population);
+    });
+
+    return namesOfShownCountries;
 };
 
 export {
