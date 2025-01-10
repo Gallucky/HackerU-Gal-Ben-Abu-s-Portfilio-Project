@@ -98,11 +98,6 @@
     .select-option:hover {
         background-color: transparent;
         color: white;
+        font-weight: 500;
     }
-}
-
-.select-option:hover {
-    background: transparent;
-    color: white;
-    font-weight: 500;
 }

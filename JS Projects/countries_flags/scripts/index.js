@@ -20,6 +20,11 @@ orderByOptions.forEach((option) => {
         // This will prevent multiple event actions from happening together.
         e.stopPropagation();
 
+        // Removing the selected class from all options.
+        orderByOptions.forEach((option) => {
+            option.classList.remove("selected");
+        });
+
         // Adds the selected class to the selected option.
         option.classList.toggle("selected");
 
@@ -28,6 +33,12 @@ orderByOptions.forEach((option) => {
 
         orderBy.querySelector(".select-value").innerText = option.innerText;
         orderBy.dataset.value = option.dataset.value;
+
+        if (orderBy.dataset.value === "without") {
+            orderType.style.display = "none";
+        } else {
+            orderType.style.display = "block";
+        }
 
         console.log(
             "Here in index.js - order by options foreach in option.onclick clicked occurred!"
