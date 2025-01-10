@@ -5,7 +5,12 @@ import {
     setShownCountries,
     sortCountries,
 } from "./countriesService.js";
-import { arrangeCountriesCards, reorderCountryCards } from "./domService.js";
+
+import {
+    arrangeCountriesCards,
+    reorderCountryCards,
+    showAndHideMessageNoFavoriteCountries,
+} from "./domService.js";
 
 const searchInput = document.getElementById("search-input");
 let filteredCountries = namesOfShownCountries;
@@ -28,9 +33,12 @@ showFavoritesCheckBox.addEventListener("change", () => {
     filteredCountries = searchCountry(searchInput.value, showFavorites);
     setShownCountries(filteredCountries);
     arrangeCountriesCards();
+
     // Reorder the country cards.
     sortCountries(filteredCountries, orderType.dataset.orderType, orderBy.dataset.value);
     reorderCountryCards();
+
+    showAndHideMessageNoFavoriteCountries(showFavorites);
 });
 
 // Order by custom select element's options onclick event listener.

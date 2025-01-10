@@ -1,6 +1,10 @@
 import { allCountries, sortCountries } from "./countriesService.js";
 import { namesOfShownCountries } from "./countriesService.js";
-import { saveToFavorite, removeFromFavorite } from "./localStorageService.js";
+import {
+    saveToFavorite,
+    removeFromFavorite,
+    isFavoriteCountriesListEmpty,
+} from "./localStorageService.js";
 
 const cardsContainer = document.getElementById("cards-container");
 const countriesCards = {};
@@ -25,6 +29,7 @@ const createCard = (country) => {
 
     const cardBody = document.createElement("div");
     cardBody.classList.add("card-body");
+    cardBody.style.height = "50%";
 
     const countryName = document.createElement("h5");
     countryName.classList.add("card-title");
@@ -163,4 +168,34 @@ const reorderCountryCards = () => {
     });
 };
 
-export { arrangeCountriesCards, reorderCountryCards };
+const noFavoriteCountriesMessage = document.createElement("div");
+noFavoriteCountriesMessage.id = "no-favorite-countries-message";
+noFavoriteCountriesMessage.style.display = "none";
+
+noFavoriteCountriesMessage.style.width = "300px";
+noFavoriteCountriesMessage.style.height = "200px";
+noFavoriteCountriesMessage.style.backgroundColor = "#707070";
+noFavoriteCountriesMessage.style.border = "3px groove black";
+noFavoriteCountriesMessage.style.borderRadius = "8px";
+
+noFavoriteCountriesMessage.innerText = "You haven't saved any favorite countries yet.";
+noFavoriteCountriesMessage.style.fontSize = "1.5rem";
+noFavoriteCountriesMessage.style.textAlign = "center";
+noFavoriteCountriesMessage.style.color = "black";
+
+noFavoriteCountriesMessage.style.display = "flex";
+noFavoriteCountriesMessage.style.alignContent = "center";
+noFavoriteCountriesMessage.style.justifyContent = "center";
+noFavoriteCountriesMessage.style.marginBlock = "100px";
+
+cardsContainer.appendChild(noFavoriteCountriesMessage);
+
+const showAndHideMessageNoFavoriteCountries = (favoriteCheckBoxState = false) => {
+    if (favoriteCheckBoxState && isFavoriteCountriesListEmpty()) {
+        noFavoriteCountriesMessage.style.display = "block";
+    } else {
+        noFavoriteCountriesMessage.style.display = "none";
+    }
+};
+
+export { arrangeCountriesCards, reorderCountryCards, showAndHideMessageNoFavoriteCountries };

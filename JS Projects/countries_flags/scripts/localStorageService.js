@@ -46,4 +46,15 @@ const isCountryFavorite = (countryName) => {
     }
 };
 
-export { saveToFavorite, removeFromFavorite, isCountryFavorite };
+const isFavoriteCountriesListEmpty = () => {
+    const favoriteCountries = JSON.parse(localStorage.getItem("favoriteCountries"));
+
+    // If there are favorite countries array in the local storage.
+    if (favoriteCountries) {
+        return favoriteCountries.length === 0;
+    }
+
+    return false;
+};
+
+export { saveToFavorite, removeFromFavorite, isCountryFavorite, isFavoriteCountriesListEmpty };
