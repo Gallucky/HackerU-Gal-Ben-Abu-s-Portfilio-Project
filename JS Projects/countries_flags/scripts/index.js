@@ -13,6 +13,9 @@ const orderBy = document.getElementById("search-sort");
 const orderType = document.getElementById("btn-sort");
 const orderByOptions = orderBy.querySelectorAll(".select-option");
 
+// By default, hide the sort type button.
+orderType.style.display = "none";
+
 // Order by custom select element's options onclick event listener.
 orderByOptions.forEach((option) => {
     option.onclick = (e) => {
