@@ -55,9 +55,3 @@ document.addEventListener("click", (e) => {
         }
     });
 });
-
-const removeActiveClassFromAllCustomSelectElements = () => {
-    customSelectElements.forEach((element) => {
-        element.classList.remove("active");
-    });
-};

@@ -9,6 +9,12 @@ const getCountries = async () => {
 
 const allCountries = await getCountries();
 console.log(allCountries);
+
+const allCountriesData = {};
+allCountries.forEach((country) => {
+    allCountriesData[country.name.common] = country;
+});
+
 const allCountriesNames = new Set(allCountries.map((country) => country.name.common));
 let namesOfShownCountries = [...allCountriesNames];
 
@@ -38,9 +44,9 @@ const searchCountry = (country) => {
 
 const sortCountries = (countries, type, by = "name") => {
     const sortByMap = {
-        name: (country) => country.toLowerCase(),
-        region: (country) => country.region.toLowerCase(),
-        population: (country) => country.population,
+        name: (countryData) => countryData.name.common.toLowerCase(),
+        region: (countryData) => countryData.region.toLowerCase(),
+        population: (countryData) => +countryData.population,
     };
 
     // If the result returns an undefined value break out of the function and return.
@@ -56,8 +62,9 @@ const sortCountries = (countries, type, by = "name") => {
         // The sort method is a destructive method,
         // hence why we use a shallow copy of allCountries array.
         .sort((curr, next) => {
-            const currValue = sortByMap[by](curr);
-            const nextValue = sortByMap[by](next);
+            // Getting the actual object that contains all of the data from the allCountriesData map.
+            const currValue = sortByMap[by](allCountriesData[curr]);
+            const nextValue = sortByMap[by](allCountriesData[next]);
 
             // If statement is true the next value switch places with the current value.
             // When the currentValue and nextValue are of type string,
