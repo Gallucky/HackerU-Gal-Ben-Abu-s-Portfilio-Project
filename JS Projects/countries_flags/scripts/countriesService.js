@@ -1,3 +1,5 @@
+import { isCountryFavorite } from "./localStorageService.js";
+
 const getCountries = async () => {
     try {
         const res = await fetch("https://restcountries.com/v3.1/all");
@@ -27,17 +29,26 @@ const setShownCountries = (countries) => {
     namesOfShownCountries = countries;
 };
 
-const searchCountry = (country) => {
+const searchCountry = (country, showFavorites = false) => {
     const countryName = country.toLowerCase();
 
     const filteredCountries = allCountries
         .filter((word) => {
             const wordLower = word.name.common.toLowerCase();
-            return wordLower.includes(countryName);
+            if (showFavorites) {
+                console.log(
+                    "IN FAVORITES FILTERING",
+                    wordLower.includes(countryName) && isCountryFavorite(word.name.common)
+                );
+
+                return wordLower.includes(countryName) && isCountryFavorite(word.name.common);
+            } else {
+                return wordLower.includes(countryName);
+            }
         })
         .map((country) => country.name.common);
 
-    console.log("Been in searchCountry");
+    console.log("Been in searchCountry", filteredCountries);
 
     return filteredCountries;
 };
@@ -50,10 +61,15 @@ const sortCountries = (countries, type, by = "name") => {
     };
 
     // If the result returns an undefined value break out of the function and return.
-    if (!sortByMap[by]) {
+    if (!sortByMap[by] && by !== "without") {
         console.log("by = ", by);
         console.log("sortByMap[by] = ", sortByMap[by]);
         return;
+    }
+
+    if (by === "without") {
+        namesOfShownCountries = [...countries];
+        return namesOfShownCountries;
     }
 
     console.log("Before Sorting\n", namesOfShownCountries);

@@ -65,15 +65,19 @@
     text-align: center;
 
     position: absolute;
-    top: -200%;
+    top: -225%;
     left: -550%;
 
-    background-color: teal;
+    background-color: powderblue;
     border: 3px groove black;
     border-radius: 8px;
 
-    opacity: 1;
-    transition: opacity 0.2s ease;
+    /* Prevent hover on the ::after element */
+    pointer-events: none;
+
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease;
 }
 
 .checkbox-bg {
@@ -122,6 +126,7 @@
 
     &::after {
         opacity: 1;
+        transform: translateY(0);
     }
 }
 

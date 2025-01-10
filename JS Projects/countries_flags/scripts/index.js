@@ -7,6 +7,7 @@ import {
 } from "./countriesService.js";
 import { arrangeCountriesCards, reorderCountryCards } from "./domService.js";
 
+const searchInput = document.getElementById("search-input");
 let filteredCountries = namesOfShownCountries;
 
 const orderBy = document.getElementById("search-sort");
@@ -15,6 +16,22 @@ const orderByOptions = orderBy.querySelectorAll(".select-option");
 
 // By default, hide the sort type button.
 orderType.style.display = "none";
+
+const showFavoritesCheckBox = document.querySelector("#show-favorites > input");
+let showFavorites = false;
+
+// Updating based on the show favorites checkbox state.
+showFavoritesCheckBox.addEventListener("change", () => {
+    console.log("Show favorites changed from", showFavorites, "→", showFavoritesCheckBox.checked);
+    showFavorites = showFavoritesCheckBox.checked;
+
+    filteredCountries = searchCountry(searchInput.value, showFavorites);
+    setShownCountries(filteredCountries);
+    arrangeCountriesCards();
+    // Reorder the country cards.
+    sortCountries(filteredCountries, orderType.dataset.orderType, orderBy.dataset.value);
+    reorderCountryCards();
+});
 
 // Order by custom select element's options onclick event listener.
 orderByOptions.forEach((option) => {
@@ -54,10 +71,9 @@ orderByOptions.forEach((option) => {
 });
 
 // Search input event listener.
-const searchInput = document.getElementById("search-input");
 searchInput.addEventListener("input", () => {
     const searchValue = searchInput.value;
-    filteredCountries = searchCountry(searchValue);
+    filteredCountries = searchCountry(searchValue, showFavorites);
     setShownCountries(filteredCountries);
 
     arrangeCountriesCards();

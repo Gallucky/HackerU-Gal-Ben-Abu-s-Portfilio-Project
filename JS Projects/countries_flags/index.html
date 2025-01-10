@@ -22,6 +22,8 @@
 
         <link rel="stylesheet" href="./styles/custom_select.css" />
         <script src="./scripts/customSelect.js" defer></script>
+
+        <link rel="stylesheet" href="./styles/checkbox.css" />
     </head>
     <body class="bg-dark">
         <!-- Title -->
@@ -33,6 +35,23 @@
         <h4 class="text-center text-white">חיפוש</h4>
         <div class="m-auto mt-1 d-flex justify-content-center col-md-6 col-sm-12 border">
             <input id="search-input" class="form-control m-4" />
+
+            <label id="show-favorites" class="ios-checkbox red m-auto">
+                <input type="checkbox" />
+                <div class="checkbox-wrapper">
+                    <div class="checkbox-bg"></div>
+                    <svg fill="none" viewBox="0 0 24 24" class="checkbox-icon">
+                        <path
+                            stroke-linejoin="round"
+                            stroke-linecap="round"
+                            stroke-width="3"
+                            stroke="currentColor"
+                            d="M4 12L10 18L20 6"
+                            class="check-path"></path>
+                    </svg>
+                </div>
+            </label>
+
             <div class="select-area">
                 <label for="search-sort">מיין לפי:</label>
                 <div id="search-sort" class="custom-select" data-value="without">
