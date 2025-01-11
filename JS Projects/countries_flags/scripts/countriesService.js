@@ -13,7 +13,7 @@ const allCountries = await getCountries();
 console.log(allCountries);
 
 const allCountriesData = {};
-allCountries.forEach((country) => {
+await allCountries.forEach((country) => {
     allCountriesData[country.name.common] = country;
 });
 
