@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Website Builder</title>
+        <link rel="stylesheet" href="../../styles/globals/general.css" />
+        <link rel="stylesheet" href="./styles/style.css" />
+        <link rel="stylesheet" href="./styles/supported_fonts.css" />
+        <script type="module" src="./scripts/index.js" defer></script>
+    </head>
+    <body>
+        <div class="website-builder-area">
+            <aside>
+                <div class="tools-panel custom-scroll-bar">
+                    <h2 class="tools-title">Element Creator Tools:</h2>
+                    <div class="tool" id="element-type">
+                        <label for="selection">Type:</label>
+                        <select name="element-type" id="selection">
+                            <option value="" selected disabled>Select Type:</option>
+                            <option value="div">Div</option>
+                            <option value="p">Paragraph</option>
+                            <option value="h1">Header 1</option>
+                            <option value="h2">Header 2</option>
+                            <option value="h3">Header 3</option>
+                            <option value="h4">Header 4</option>
+                            <option value="h5">Header 5</option>
+                            <option value="h6">Header 6</option>
+                            <option value="a">Link</option>
+                            <option value="img">Image</option>
+                            <option value="input">Input</option>
+                            <option value="button">Button</option>
+                        </select>
+                    </div>
+                    <div class="tool" id="element-name">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" />
+                        <div id="information"></div>
+                    </div>
+                    <div class="tool" id="element-text">
+                        <label for="text">Text:</label>
+                        <textarea type="text" id="text"></textarea>
+                    </div>
+                    <div class="tool" id="element-size">
+                        <label id="element-size-label">Size:</label>
+                        <div class="outer-wrapper">
+                            <span class="separator">x</span>
+                            <div id="width">
+                                <label for="width-input">Width:</label>
+                                <div class="horizontal-wrapper2">
+                                    <input
+                                        type="number"
+                                        id="width-input"
+                                        step="1"
+                                        value="100"
+                                        min="50" />
+                                    <span class="unit">px</span>
+                                </div>
+                            </div>
+                            <div id="height">
+                                <label for="height-input">Height:</label>
+                                <div class="horizontal-wrapper2">
+                                    <input
+                                        type="number"
+                                        id="height-input"
+                                        step="1"
+                                        value="100"
+                                        min="50" />
+                                    <span class="unit">px</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool" id="element-bg-color">
+                        <label for="color">Background Color:</label>
+                        <input type="color" id="color" value="#ffffff" />
+                    </div>
+                    <div class="tool" id="element-font-color">
+                        <label for="font-color-input">Font Color:</label>
+                        <input type="color" id="font-color-input" />
+                    </div>
+                    <div class="tool" id="element-font-size">
+                        <label for="font-size-input">Font Size:</label>
+                        <div class="horizontal-wrapper">
+                            <input type="number" id="font-size-input" step="1" value="16" />
+                            <span class="unit">px</span>
+                        </div>
+                    </div>
+                    <div class="tool" id="element-font-family">
+                        <label for="font-family-selection">Font Family:</label>
+                        <select name="font-family-selection" id="font-family-selection"></select>
+                    </div>
+                </div>
+                <div id="buttons-area">
+                    <button id="create-element-btn" onclick="createDraggableElement()">
+                        Create
+                    </button>
+                    <button id="save-workspace-btn" onclick="saveWorkspace()">Save</button>
+                </div>
+            </aside>
+            <div id="workspace">
+                <div
+                    id="example-test-div"
+                    data-draggable
+                    style="
+                        font-family: David;
+                        font-size: 20px;
+                        width: 200px;
+                        height: 200px;
+                        background-color: white;
+                        color: black;
+                    ">
+                    TEST
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
