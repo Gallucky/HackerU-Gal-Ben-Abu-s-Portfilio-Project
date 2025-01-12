@@ -154,8 +154,27 @@ export class Tool {
 
                 const linkToolCSS = document.createElement("link");
                 linkToolCSS.rel = "stylesheet";
-                linkToolCSS.href = "./styles/tools/size.css";
-                document.head.appendChild(linkToolCSS);
+
+                const addLink = (linkURL) => {
+                    linkToolCSS.href = linkURL;
+                    document.head.appendChild(linkToolCSS);
+                };
+
+                const toolBodyType = ToolBody.getToolBodyTypeOf(toolBodyElement);
+                if (toolBodyType) {
+                    if (toolBodyType === "size") {
+                        addLink("./styles/tools/size.css");
+                    } else if (toolBodyType === "input" || toolBodyType === "color") {
+                        addLink("./styles/tools/input.css");
+                    } else if (toolBodyType === "select") {
+                        addLink("./styles/tools/select.css");
+                    } else {
+                        console.log(
+                            `[tool.js] - ${this.name}:`,
+                            `Tool body type is not supported.`
+                        );
+                    }
+                }
 
                 console.log(
                     `[tool.js] - ${this.name}: Created and added tool body to the tool successfully.`

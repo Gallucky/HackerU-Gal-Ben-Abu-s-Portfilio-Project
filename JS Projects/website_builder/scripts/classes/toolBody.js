@@ -118,4 +118,20 @@ export class ToolBody {
 
         return textArea;
     }
+
+    static getToolBodyTypeOf(toolBodyElement) {
+        if (!toolBodyElement || !toolBodyElement instanceof HTMLElement) return null;
+
+        if (toolBodyElement.classList.contains("size-element")) {
+            return "size";
+        } else if (toolBodyElement.classList.contains("input-element")) {
+            return "input";
+        } else if (toolBodyElement.classList.contains("color-element")) {
+            return "color";
+        } else if (toolBodyElement.classList.contains("select-element")) {
+            return "select";
+        } else {
+            return "HTMLElement";
+        }
+    }
 }
