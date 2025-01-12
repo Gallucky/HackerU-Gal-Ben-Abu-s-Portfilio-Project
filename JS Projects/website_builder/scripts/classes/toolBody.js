@@ -1,37 +1,24 @@
+/**
+ * `@description`
+ * Class for creating tool bodies from a set template.
+ * The class contains static methods for ease of access and use.
+ *
+ * Used by - \@see `Tool`
+ */
 export class ToolBody {
-    // Static fields to access like Math.PI and other fields...
-    static sizeElement = ToolBody.#initializeSizeElement();
-    static inputElement = ToolBody.#initializeInputElement();
-    static colorElement = ToolBody.#initializeColorElement();
-    static selectElement = ToolBody.#initializeSelectElement();
-
-    // Public Methods:
-
-    /**
-     * Returns the type of the tool body element.
-     * If the tool body element is not an instance of ToolBody returns undefined.
-     * @param {ToolBody.FieldElement} toolBodyElement
-     * @returns {string | undefined}
-     */
-    static getType(toolBodyElement) {
-        if (!toolBodyElement || !toolBodyElement instanceof ToolBody) {
-            return undefined;
-        }
-
-        if (toolBodyElement.classList.includes("size-element")) {
-            return "size";
-        } else if (toolBodyElement.classList.includes("input-element")) {
-            return "input";
-        } else if (toolBodyElement.classList.includes("color-element")) {
-            return "color";
-        } else if (toolBodyElement.classList.includes("select-element")) {
-            return "select";
-        }
-    }
-
     // Private methods like Math.floor and other methods which are
     // public methods, here those methods will be hidden.
-    static #initializeSizeElement() {
+
+    /**
+     * `@description:`
+     * Static method for creating a size element.
+     * Creates an @type {HTMLElement} with width and height number inputs and their titles.
+     * @example @yields
+     * Width: Height:\
+     * [number input] [number input]
+     * @returns {HTMLElement} The created size element.
+     */
+    static sizeElement() {
         const sizeElement = document.createElement("div");
         sizeElement.classList.add("size-element");
 
@@ -64,7 +51,15 @@ export class ToolBody {
         return sizeElement;
     }
 
-    static #initializeInputElement() {
+    /**
+     * `@description:`
+     * Static method for creating a input element.
+     * Creates an @type {HTMLElement} with a text input element.
+     * @example @yields
+     * [text input]
+     * @returns {HTMLElement} The created text input element.
+     */
+    static inputElement() {
         const input = document.createElement("input");
         input.classList.add("input-element");
 
@@ -74,7 +69,15 @@ export class ToolBody {
         return input;
     }
 
-    static #initializeColorElement() {
+    /**
+     * `@description:`
+     * Static method for creating a color element.
+     * Creates an @type {HTMLElement} with a color input element.
+     * @example @yields
+     * [color input]
+     * @returns {HTMLElement} The created color input element.
+     */
+    static colorElement() {
         const color = document.createElement("input");
         color.classList.add("color-element");
 
@@ -83,10 +86,36 @@ export class ToolBody {
         return color;
     }
 
-    static #initializeSelectElement() {
+    /**
+     * `@description:`
+     * Static method for creating a select element.
+     * Creates an @type {HTMLElement} with a select element.
+     * @example @yields
+     * [select]
+     * @returns {HTMLElement} The created select element.
+     */
+    static selectElement() {
         const select = document.createElement("select");
         select.classList.add("select-element");
 
         return select;
+    }
+
+    /**
+     * `@description:`
+     * Static method for creating a textarea element.
+     * Creates an @type {`HTMLElement`} with a textarea element.
+     * `@example`
+     * `@yields`
+     * [textarea]
+     * @returns {`HTMLElement`} The created textarea element.
+     */
+    static textAreaElement() {
+        const textArea = document.createElement("textarea");
+        textArea.classList.add("text-area-element");
+
+        textArea.style.resize = "none";
+
+        return textArea;
     }
 }

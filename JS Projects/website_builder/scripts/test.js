@@ -1,6 +1,9 @@
 import { Tool } from "./classes/tool.js";
 import { ToolBody } from "./classes/toolBody.js";
 
+/**
+ * @deprecated
+ */
 const firstTest = () => {
     const tool = new Tool("Test Tool", "This is a test tool.");
 
@@ -40,22 +43,76 @@ const firstTest = () => {
 // firstTest();
 
 const secondTest = () => {
-    const elementSize = new Tool("element-type", "The type of the created element tool");
+    const elementType = new Tool("element-type", "The type of the created element tool");
+    const elementName = new Tool("element-name", "The name of the created element tool");
+    const elementSize = new Tool("element-size", "The type of the created element tool");
+    const elementText = new Tool("element-text", "The text of the created element tool");
+    const elementBgColor = new Tool(
+        "element-bg-color",
+        "The background color of the created element tool"
+    );
+    const elementFontColor = new Tool(
+        "element-font-color",
+        "The font color of the created element tool"
+    );
+    const elementFontSize = new Tool(
+        "element-font-size",
+        "The font size of the created element tool"
+    );
+    const elementFontFamily = new Tool(
+        "element-font-family",
+        "The font family of the created element tool"
+    );
 
+    // Type:
+    elementType.addLabel("Type:");
+    elementType.addToolBody(ToolBody.selectElement());
+    elementType.addTo();
+    console.log(elementType);
+
+    // Name:
+    elementName.addLabel("Name:");
+    elementName.addToolBody(ToolBody.inputElement());
+    elementName.addTo();
+    console.log(elementName);
+
+    // Size:
     elementSize.addLabel("Size:");
     elementSize.labelElement.style.textDecoration = "underline";
-    elementSize.labelElement.style. = "0.2em";
-    elementSize.addToolBody(ToolBody.sizeElement);
+    elementSize.labelElement.style.textUnderlineOffset = "0.2em";
+    elementSize.addToolBody(ToolBody.sizeElement());
     elementSize.addTo();
-
     console.log(elementSize);
 
-    const elementName = new Tool("element-name", "The name of the created element tool");
+    // Text Area:
+    elementText.addLabel("Text:");
+    elementText.addToolBody(ToolBody.textAreaElement());
+    elementText.addTo();
+    console.log(elementText);
 
-    elementName.addLabel("Name:");
-    elementName.addToolBody(ToolBody.inputElement);
+    // Background Color:
+    elementBgColor.addLabel("Background Color:");
+    elementBgColor.addToolBody(ToolBody.colorElement());
+    elementBgColor.addTo();
+    console.log(elementBgColor);
 
-    elementName.addTo();
+    // Font Color:
+    elementFontColor.addLabel("Font Color:");
+    elementFontColor.addToolBody(ToolBody.colorElement());
+    elementFontColor.addTo();
+    console.log(elementFontColor);
+
+    // Font Size:
+    elementFontSize.addLabel("Font Size:");
+    elementFontSize.addToolBody(ToolBody.inputElement());
+    elementFontSize.addTo();
+    console.log(elementFontSize);
+
+    // Font Family:
+    elementFontFamily.addLabel("Font Family:");
+    elementFontFamily.addToolBody(ToolBody.selectElement());
+    elementFontFamily.addTo();
+    console.log(elementFontFamily);
 };
 
 secondTest();

@@ -1,12 +1,56 @@
 import { ToolBody } from "./toolBody.js";
 
+/**
+ * Class for creating tools
+ * @example
+ * const textTool = new Tool("Text Tool", "Tool to add text to the created element.");
+ * textTool.addLabel("Text:");
+ * textTool.addToolBody(ToolBody.textAreaElement());
+ *
+ * @see ToolBody For more information about tool bodies.
+ */
 export class Tool {
+    /**
+     * The name of the tool
+     * @field
+     * @type string
+     */
     name;
+
+    /**
+     * The description of the tool
+     * @field
+     * @type string
+     */
     description;
+
+    /**
+     * The label element of the tool
+     * @field
+     * @type HTMLElement
+     */
     labelElement;
+
+    /**
+     * The tool body element of the tool
+     * @field
+     * @type HTMLElement
+     * Generated from @see ToolBody
+     */
     toolBodyElement;
+
+    /**
+     * The html element of the tool
+     * @field
+     * @type HTMLElement
+     */
     element;
 
+    /**
+     * Creator of tools
+     * @param {string} name The name of the tool
+     * @param {string} description The description of the tool
+     */
     constructor(name, description) {
         this.name = name;
         this.description = description;
@@ -20,10 +64,20 @@ export class Tool {
         document.head.appendChild(linkToolCSS);
     }
 
+    /**
+     * Check if the tool has a label
+     * @returns {boolean} True if the tool has a label, false otherwise
+     */
     hasLabel() {
         return this.labelElement !== undefined;
     }
 
+    /**
+     * Add a label to the tool
+     * @param {string} text The text to appear on the label. [Defaults to the name of the tool]
+     * @param {string} id The id of the label. [Defaults to the name of the tool]
+     * @returns {boolean} True if the label was added successfully, false otherwise
+     */
     addLabel(text = this.name, id = this.name) {
         if (this.hasLabel()) {
             console.log(
@@ -54,6 +108,10 @@ export class Tool {
         }
     }
 
+    /**
+     * Remove the label from the tool
+     * @returns {boolean} True if the label was removed successfully, false otherwise
+     */
     removeLabel() {
         if (this.hasLabel()) {
             this.element.removeChild(this.labelElement);
@@ -64,10 +122,23 @@ export class Tool {
         return false;
     }
 
+    /**
+     * Check if the tool has a tool body
+     * @returns {boolean} True if the tool has a tool body, false otherwise
+     */
     hasToolBody() {
         return this.toolBodyElement !== undefined;
     }
 
+    /**
+     * Adds a tool body to the tool element.
+     * If the tool already has a tool body and override is not set to true,
+     * the addition is canceled.
+     *
+     * @param {ToolBody} toolBodyElement - The ToolBody element to be added.
+     * @param {boolean} override - A flag indicating whether to override an existing tool body. [Defaults to false].
+     * @returns {boolean} True if the tool body was added successfully, false otherwise.
+     */
     addToolBody(toolBodyElement, override = false) {
         const add = (toolBodyElement) => {
             if (!toolBodyElement || !toolBodyElement instanceof ToolBody) {
@@ -114,6 +185,11 @@ export class Tool {
         }
     }
 
+    /**
+     * Removes the tool body from the tool if it exists.
+     * If the tool does not have a tool body, the method does nothing.
+     * @returns {boolean} True if the tool body was removed successfully, false otherwise.
+     */
     removeToolBody() {
         if (this.hasToolBody()) {
             this.element.removeChild(this.toolBodyElement);
@@ -137,10 +213,19 @@ export class Tool {
         }
     }
 
+    /**
+     * Adds the tool to the document body.
+     *
+     * @deprecated Use addTo() method instead.
+     */
     addToDocumentBody() {
         document.body.appendChild(this.element);
     }
 
+    /**
+     * Removes the tool's element from the document body.
+     * If the tool is not in the document body, the method does nothing.
+     */
     removeFromDocumentBody() {
         document.body.removeChild(this.element);
     }
