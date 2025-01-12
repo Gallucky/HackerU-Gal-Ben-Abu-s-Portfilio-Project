@@ -40,13 +40,22 @@ const firstTest = () => {
 // firstTest();
 
 const secondTest = () => {
-    const elementType = new Tool("element-type", "The type of the created element tool");
+    const elementSize = new Tool("element-type", "The type of the created element tool");
 
-    elementType.addLabel("Size");
-    elementType.addToolBody(ToolBody.sizeElement);
+    elementSize.addLabel("Size:");
+    elementSize.labelElement.style.textDecoration = "underline";
+    elementSize.labelElement.style. = "0.2em";
+    elementSize.addToolBody(ToolBody.sizeElement);
+    elementSize.addTo();
 
-    elementType.addTo();
-    console.log(elementType);
+    console.log(elementSize);
+
+    const elementName = new Tool("element-name", "The name of the created element tool");
+
+    elementName.addLabel("Name:");
+    elementName.addToolBody(ToolBody.inputElement);
+
+    elementName.addTo();
 };
 
 secondTest();
