@@ -1,5 +1,6 @@
 import { Tool } from "./classes/tool.js";
 import { ToolBody } from "./classes/toolBody.js";
+import { ToolBox } from "./classes/toolBox.js";
 
 /**
  * @deprecated
@@ -115,4 +116,48 @@ const secondTest = () => {
     console.log(elementFontFamily);
 };
 
-secondTest();
+// secondTest();
+
+const thirdTest = () => {
+    const toolBox = new ToolBox();
+
+    const elementType = new Tool("element-type", "The type of the created element tool");
+    const elementName = new Tool("element-name", "The name of the created element tool");
+    const elementSize = new Tool("element-size", "The type of the created element tool");
+    const elementText = new Tool("element-text", "The text of the created element tool");
+    const elementBgColor = new Tool(
+        "element-bg-color",
+        "The background color of the created element tool"
+    );
+    const elementFontColor = new Tool(
+        "element-font-color",
+        "The font color of the created element tool"
+    );
+    const elementFontSize = new Tool(
+        "element-font-size",
+        "The font size of the created element tool"
+    );
+    const elementFontFamily = new Tool(
+        "element-font-family",
+        "The font family of the created element tool"
+    );
+
+    toolBox.addTool(elementType);
+    toolBox.addTool(elementName);
+    toolBox.addTool(elementSize);
+    toolBox.addTool(elementText);
+    toolBox.addTool(elementBgColor);
+    toolBox.addTool(elementFontColor);
+    toolBox.addTool(elementFontSize);
+    toolBox.addTool(elementFontFamily);
+
+    console.log(toolBox);
+
+    elementBgColor.addLabel("Background Color:");
+    elementBgColor.addToolBody(ToolBody.colorElement());
+    elementBgColor.addTo();
+
+    console.log(toolBox);
+};
+
+thirdTest();
