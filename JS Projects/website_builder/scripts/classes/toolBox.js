@@ -5,7 +5,7 @@ export class ToolBox {
      * @field
      * The map of all tools in the tool box attached to /
      * mapped with a key equal to the tool's name.
-     * @type {Object.<string, Tool>}
+     * @type {Map<string, Tool>}
      */
     #tools;
 
@@ -38,5 +38,18 @@ export class ToolBox {
 
     getTool(toolName) {
         return this.#tools[toolName];
+    }
+
+    addToolsToToolPanel() {
+        const toolsPanel = document.querySelector(".tools-panel");
+        const tools = Object.values(this.#tools);
+        if (toolsPanel) {
+            for (const tool of tools) {
+                tool.addTo(toolsPanel);
+            }
+            console.log(`The tools were added to the tools panel successfully.`);
+        } else {
+            console.log(`The tools panel element was not found.`);
+        }
     }
 }

@@ -248,4 +248,13 @@ export class Tool {
     removeFromDocumentBody() {
         document.body.removeChild(this.element);
     }
+
+    /**
+     * Gets the type of the tool body if the tool has a tool body.
+     * Returns null if the tool doesn't have a tool body.
+     * @returns {string | null} The type of the tool body.
+     */
+    getToolBodyType() {
+        return ToolBody.getToolBodyTypeOf(this.toolBodyElement);
+    }
 }
