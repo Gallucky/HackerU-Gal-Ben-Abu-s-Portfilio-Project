@@ -1,24 +1,24 @@
-/**
- * `@description`
- * Class for creating tool bodies from a set template.
- * The class contains static methods for ease of access and use.
- *
- * Used by - \@see `Tool`
- */
-export class ToolBody {
-    // Private methods like Math.floor and other methods which are
-    // public methods, here those methods will be hidden.
+import { ToolType } from "./ToolType.js";
 
-    /**
-     * `@description:`
-     * Static method for creating a size element.
-     * Creates an @type {HTMLElement} with width and height number inputs and their titles.
-     * @example @yields
-     * Width: Height:\
-     * [number input] [number input]
-     * @returns {HTMLElement} The created size element.
-     */
-    static sizeElement() {
+export class ToolBody {
+    static #generateInput = () => {
+        const inputElement = document.createElement("input");
+        inputElement.classList.add("input-element");
+
+        inputElement.type = "text";
+        inputElement.placeholder = "Enter text here...";
+
+        return inputElement;
+    };
+
+    static #generateSelect = () => {
+        const select = document.createElement("select");
+        select.classList.add("select-element");
+
+        return select;
+    };
+
+    static #generateSize = () => {
         const sizeElement = document.createElement("div");
         sizeElement.classList.add("size-element");
 
@@ -49,89 +49,71 @@ export class ToolBody {
         sizeElement.appendChild(heightInput);
 
         return sizeElement;
-    }
+    };
 
-    /**
-     * `@description:`
-     * Static method for creating a input element.
-     * Creates an @type {HTMLElement} with a text input element.
-     * @example @yields
-     * [text input]
-     * @returns {HTMLElement} The created text input element.
-     */
-    static inputElement() {
-        const input = document.createElement("input");
-        input.classList.add("input-element");
+    static #generateColor = () => {
+        const colorElement = document.createElement("input");
+        colorElement.classList.add("color-element");
 
-        input.type = "text";
-        input.placeholder = "Enter text here...";
+        colorElement.type = "color";
 
-        return input;
-    }
+        return colorElement;
+    };
 
-    /**
-     * `@description:`
-     * Static method for creating a color element.
-     * Creates an @type {HTMLElement} with a color input element.
-     * @example @yields
-     * [color input]
-     * @returns {HTMLElement} The created color input element.
-     */
-    static colorElement() {
-        const color = document.createElement("input");
-        color.classList.add("color-element");
-
-        color.type = "color";
-
-        return color;
-    }
-
-    /**
-     * `@description:`
-     * Static method for creating a select element.
-     * Creates an @type {HTMLElement} with a select element.
-     * @example @yields
-     * [select]
-     * @returns {HTMLElement} The created select element.
-     */
-    static selectElement() {
-        const select = document.createElement("select");
-        select.classList.add("select-element");
-
-        return select;
-    }
-
-    /**
-     * `@description:`
-     * Static method for creating a textarea element.
-     * Creates an @type {`HTMLElement`} with a textarea element.
-     * `@example`
-     * `@yields`
-     * [textarea]
-     * @returns {`HTMLElement`} The created textarea element.
-     */
-    static textAreaElement() {
+    static #generateTextArea = () => {
         const textArea = document.createElement("textarea");
         textArea.classList.add("text-area-element");
 
         textArea.style.resize = "none";
 
         return textArea;
+    };
+
+    static get input() {
+        return ToolBody.#generateInput();
     }
 
-    static getToolBodyTypeOf(toolBodyElement) {
-        if (!toolBodyElement || !toolBodyElement instanceof HTMLElement) return null;
+    static get select() {
+        return ToolBody.#generateSelect();
+    }
 
-        if (toolBodyElement.classList.contains("size-element")) {
-            return "size";
-        } else if (toolBodyElement.classList.contains("input-element")) {
-            return "input";
-        } else if (toolBodyElement.classList.contains("color-element")) {
-            return "color";
-        } else if (toolBodyElement.classList.contains("select-element")) {
-            return "select";
-        } else {
-            return "HTMLElement";
+    static get size() {
+        return ToolBody.#generateSize();
+    }
+
+    static get color() {
+        return ToolBody.#generateColor();
+    }
+
+    static get textArea() {
+        return ToolBody.#generateTextArea();
+    }
+
+    static validate(toolType) {
+        return toolType instanceof ToolBody;
+    }
+
+    static getType(toolBody) {
+        if (!toolBody) {
+            throw new Error("Tool body was not initialized.");
+        }
+
+        if (!ToolBody instanceof ToolBody) {
+            throw new Error("Tool body is not of type ToolBody.");
+        }
+
+        console.log("toolBody", toolBody);
+
+        if (toolBody.classList.contains("select-element")) {
+            return ToolType.select;
+        } else if (toolBody.classList.contains("input-element")) {
+            return ToolType.input;
+        } else if (toolBody.classList.contains("size-element")) {
+            return ToolType.size;
+        } else if (toolBody.classList.contains("color-element")) {
+            return ToolType.color;
+        } else if (toolBody.classList.contains("text-area-element")) {
+            return ToolType.textArea;
         }
     }
 }
