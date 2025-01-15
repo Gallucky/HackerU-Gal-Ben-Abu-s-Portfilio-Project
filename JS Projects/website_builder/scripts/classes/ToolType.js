@@ -1,3 +1,8 @@
+/**
+ * The type for the tool object.
+ * @static @class
+ * @see Tool
+ */
 export class ToolType {
     static #input = "Input";
     static #select = "Select";
