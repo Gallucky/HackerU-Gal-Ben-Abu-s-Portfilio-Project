@@ -1,4 +1,5 @@
 import { ToolType } from "./ToolType.js";
+import { linkCSSToHTML } from "./helperService.js";
 
 /**
  * Represents a tool in the a toolBox and the tools panel.
@@ -23,7 +24,7 @@ export class Tool {
     /**
      * Constructs a new instance of the Tool class.
      * @param {string} name - The name of the tool.
-     * @param {string} type - The type of the tool.
+     * @param {ToolType} type - The type of the tool.
      * @param {string} [description=""] - An optional description of the tool.
      */
 
@@ -36,8 +37,15 @@ export class Tool {
         this.#toolID = Tool.#id;
 
         this.#element = document.createElement("div");
-        this.#element.classList.add("tool");
-        this.#element.id = `tool-${name}-${this.#toolID}`;
+        this.#element.classList.add("tool", `tool-type-${this.#type.toLowerCase()}`);
+        this.#element.id = `tool-${name.replace(" ", "-")}-${this.#toolID}`;
+
+        ToolType.linkCSS(this.#type);
+
+        // If at least one tool is created then link the tool.css styling.
+        if (Tool.#id > 0) {
+            linkCSSToHTML("./styles/tools/tool.css");
+        }
     }
 
     /**
@@ -97,5 +105,9 @@ export class Tool {
 
     set description(newDescription) {
         this.#description = newDescription;
+    }
+
+    get toolID() {
+        return this.#toolID;
     }
 }

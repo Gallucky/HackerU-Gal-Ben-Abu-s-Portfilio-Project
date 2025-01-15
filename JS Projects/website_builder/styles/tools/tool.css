@@ -5,8 +5,8 @@
 }
 
 .tool {
-    width: fit-content;
-    height: fit-content;
+    width: 100%;
+    height: 1fr;
 
     padding: 1vh 1vw;
     background-color: azure;
@@ -18,5 +18,5 @@
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    gap: 5px;
+    gap: 10%;
 }
