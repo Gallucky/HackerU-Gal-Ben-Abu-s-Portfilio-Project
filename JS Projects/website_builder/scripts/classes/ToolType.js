@@ -1,4 +1,4 @@
-import { linkCSSToHTML } from "./helperService.js";
+import { linkCSSToHTML } from "../services/helperService.js";
 
 /**
  * The type for the tool object.

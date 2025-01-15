@@ -1,0 +1,11 @@
+#tool-element-type {
+    gap: 5px;
+
+    select {
+        border-radius: 4px;
+        font-size: 0.9em;
+        font-family: Rubik;
+
+        outline: none;
+    }
+}

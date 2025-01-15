@@ -5,7 +5,12 @@
 }
 
 .tool {
-    width: 100%;
+    /*
+        Taking to account the left margin and making
+        adjustments for the right side to equalize the
+        margins of the tool element.
+    */
+    width: calc(100% - 20px);
     height: 1fr;
 
     padding: 1vh 1vw;
@@ -18,5 +23,8 @@
     flex-direction: column;
     align-content: center;
     justify-content: center;
+
+    justify-self: self-start;
+    margin-left: 10px;
     gap: 10%;
 }

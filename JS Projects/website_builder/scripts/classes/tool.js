@@ -1,5 +1,5 @@
 import { ToolType } from "./ToolType.js";
-import { linkCSSToHTML } from "./helperService.js";
+import { linkCSSToHTML } from "../services/helperService.js";
 
 /**
  * Represents a tool in the a toolBox and the tools panel.
@@ -38,7 +38,8 @@ export class Tool {
 
         this.#element = document.createElement("div");
         this.#element.classList.add("tool", `tool-type-${this.#type.toLowerCase()}`);
-        this.#element.id = `tool-${name.replace(" ", "-")}-${this.#toolID}`;
+        this.#element.id = `tool-${name.replace(" ", "-").toLowerCase()}`;
+        this.#element.dataset.toolId = this.#toolID;
 
         ToolType.linkCSS(this.#type);
 
