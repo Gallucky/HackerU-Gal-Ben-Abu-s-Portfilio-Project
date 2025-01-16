@@ -1,4 +1,8 @@
-import { populateSelectElementWith, createInformationButton } from "./elementService.js";
+import {
+    populateSelectElementWith,
+    createInformationButton,
+    initializeSupportedElementTypes,
+} from "./elementService.js";
 import { Tool } from "../classes/Tool.js";
 import { ToolType } from "../classes/ToolType.js";
 import { DraggableElement } from "../classes/draggableElements/DraggableElements.js";
@@ -20,6 +24,7 @@ export const createElementTypeTool = () => {
     select.name = "type-selection";
     select.id = "type-selection";
 
+    initializeSupportedElementTypes();
     populateSelectElementWith(select, DraggableElement.subclasses, "Select Type...");
 
     // Adding the child elements.
@@ -267,7 +272,7 @@ export const createElementFontFamilyTool = () => {
 
     const supportedFontNames = getSupportedFontsNames();
     console.log("fontNames:", supportedFontNames);
-    populateSelectElementWith(select, supportedFontNames, "Select Font Family...");
+    populateSelectElementWith(select, supportedFontNames, "Select Font Family...", true);
 
     select.onchange = (e) => {
         e.target.style.fontFamily = e.target.value;

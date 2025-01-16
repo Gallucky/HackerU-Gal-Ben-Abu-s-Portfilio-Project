@@ -25,6 +25,14 @@ export class ToolBox {
     }
 
     /**
+     * Gets the number of tools in the ToolBox.
+     * @returns {number} The number of tools in the ToolBox.
+     */
+    get size() {
+        return this.#tools.size;
+    }
+
+    /**
      * Adds the given tool to the ToolBox.
      * @param {Tool} tool The tool to add.
      */

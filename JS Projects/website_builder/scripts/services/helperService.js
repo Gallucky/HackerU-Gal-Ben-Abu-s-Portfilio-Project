@@ -37,7 +37,7 @@ export const linkCSSToHTML = (link) => {
         document.head.appendChild(linkCSS);
     } catch (err) {
         const msg = `%cLinking '${link}' CSS failed.\n` + `Warn Message:\n` + err.message;
-        console.log(msg, "color: yellow;");
+        console.warn(msg, "color: yellow;");
         return false;
     } finally {
         const msg = `%c${link} CSS linked successfully.`;
@@ -96,7 +96,7 @@ export const populateToolBox = (toolBoxToPopulate) => {
     } finally {
         const msg =
             `%c[helperService.js] - populateToolBox:\n` +
-            `Finished populating the tool box with ${toolBoxToPopulate.tools.length} tools`;
+            `Finished populating the tool box with ${toolBoxToPopulate.size} tools`;
         console.log(msg, "color: green;");
         return true;
     }
