@@ -18,6 +18,11 @@ button {
     user-select: none;
 }
 
+input,
+textarea {
+    text-indent: 3px !important;
+}
+
 .website-builder {
     width: 95vw;
     height: 90vh;

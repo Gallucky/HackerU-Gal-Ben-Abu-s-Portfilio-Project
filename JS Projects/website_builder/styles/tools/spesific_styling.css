@@ -11,9 +11,20 @@
 }
 
 #tool-element-name {
+    label {
+        height: fit-content;
+        line-height: normal;
+    }
+    input {
+        font-size: 0.9em;
+        line-height: normal;
+    }
 }
 
 #tool-element-text {
+    textarea {
+        font-size: 0.9em;
+    }
 }
 
 #tool-element-size {
