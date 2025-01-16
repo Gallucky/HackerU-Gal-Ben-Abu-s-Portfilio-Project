@@ -162,6 +162,18 @@ aside {
             border: 3px groove black;
             border-radius: 8px;
             background-color: teal;
+
+            font-weight: 500;
+            font-size: 1em;
+            font-family: Rubik;
+
+            transition: transform 0.3s ease-in-out;
+        }
+
+        button:hover {
+            color: white;
+            transform: scale(0.95);
+            cursor: url("../../../images/cursor-click_24x24.png"), pointer;
         }
     }
 }

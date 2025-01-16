@@ -58,3 +58,12 @@ export const initializeSupportedElementTypes = () => {
     P.initialize();
     Span.initialize();
 };
+
+export const applyRedBorderToElement = (element) => {
+    const oldBorder = element.style.border;
+    element.style.border = "2px solid red";
+
+    element.onchange = () => {
+        element.style.border = oldBorder;
+    };
+};

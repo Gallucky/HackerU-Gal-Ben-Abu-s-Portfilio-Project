@@ -25,6 +25,13 @@ export const createElementTypeTool = () => {
     select.id = "type-selection";
 
     initializeSupportedElementTypes();
+
+    select.setAttribute("default-value", true);
+    select.onchange = (e) => {
+        select.setAttribute("default-value", false);
+    };
+
+    // Populating the select element with the supported element types.
     populateSelectElementWith(select, DraggableElement.subclasses, "Select Type...");
 
     // Adding the child elements.
@@ -120,6 +127,21 @@ export const createElementSizeTool = () => {
     widthInput.value = "100";
     widthInput.step = "1";
 
+    /**
+     * Ensures that the width input's value is between 50 and 90% of the window's inner width.
+     * If the value is less than 50, it is set to 50.
+     * If the value is greater than 90% of the window's inner width, it is set to 90% of the window's inner width.
+     * @param {InputEvent} e
+     */
+    widthInput.onchange = (e) => {
+        console.log(window.innerWidth);
+
+        if (widthInput.value < 50) widthInput.value = 50;
+        if (widthInput.value > window.innerWidth * 0.9) {
+            widthInput.value = +(window.innerWidth * 0.9).toString().split(".")[0];
+        }
+    };
+
     const widthUnit = document.createElement("span");
     widthUnit.classList.add("unit");
     widthUnit.textContent = "px";
@@ -147,6 +169,22 @@ export const createElementSizeTool = () => {
     heightInput.min = "50";
     heightInput.value = "100";
     heightInput.step = "1";
+
+    /**
+     * onchange event handler of the height input element.
+     * If the given height in the input element is less than 50, it is set to 50.
+     * If the given height is greater than 90% of the window.innerHeight, it is
+     * set to the 90% of the window.innerHeight.
+     * @param {Event} e the onchange event
+     */
+    heightInput.onchange = (e) => {
+        console.log(window.innerHeight);
+
+        if (heightInput.value < 50) heightInput.value = 50;
+        if (heightInput.value > window.innerHeight * 0.9) {
+            heightInput.value = +(window.innerHeight * 0.9).toString().split(".")[0];
+        }
+    };
 
     const heightUnit = document.createElement("span");
     heightUnit.classList.add("unit");
@@ -272,6 +310,11 @@ export const createElementFontFamilyTool = () => {
 
     const supportedFontNames = getSupportedFontsNames();
     console.log("fontNames:", supportedFontNames);
+
+    select.onchange = (e) => {
+        select.setAttribute("default-value", false);
+    };
+    // Populating the select element with the supported font names.
     populateSelectElementWith(select, supportedFontNames, "Select Font Family...", true);
 
     select.onchange = (e) => {
