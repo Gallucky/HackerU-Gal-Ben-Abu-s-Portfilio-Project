@@ -1,5 +1,6 @@
 .color-input {
-    width: 100;
+    width: 100%;
+    margin-top: 5px;
 }
 
 /*
@@ -9,4 +10,9 @@ representing a tool of type input.
 .tool.tool-type-input label {
     width: 100%;
     height: 100%;
+}
+
+.text-area-element {
+    width: 100%;
+    resize: none;
 }

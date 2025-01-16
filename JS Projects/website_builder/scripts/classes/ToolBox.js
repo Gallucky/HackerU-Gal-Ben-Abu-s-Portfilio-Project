@@ -17,8 +17,8 @@ export class ToolBox {
     }
 
     /**
-     * Retrieves the tools stored in the ToolBox.
-     * @returns {Map} A map containing the tools.
+     * Gets an iterator of all the tools in the ToolBox.
+     * @returns {Iterator.<Tool>} An iterator of all the tools in the ToolBox.
      */
     get tools() {
         return this.#tools.values();
@@ -79,8 +79,17 @@ export class ToolBox {
         }
 
         for (const tool of this.#tools.values()) {
+            console.log(tool);
+
             tool.addToolElementTo(toolPanel);
             console.log(`%cAdded '${tool.name}' to tool panel.`, "color: green;");
         }
+    }
+
+    /**
+     * Empties the ToolBox by removing all tools.
+     */
+    empty() {
+        this.#tools = new Map();
     }
 }

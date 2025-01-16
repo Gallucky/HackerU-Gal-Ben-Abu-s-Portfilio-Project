@@ -11,7 +11,7 @@
         margins of the tool element.
     */
     width: calc(100% - 20px);
-    height: 1fr;
+    height: 5rem;
 
     padding: 1vh 1vw;
     background-color: azure;
@@ -27,4 +27,8 @@
     justify-self: self-start;
     margin-left: 10px;
     gap: 10%;
+
+    * {
+        font-family: Rubik;
+    }
 }

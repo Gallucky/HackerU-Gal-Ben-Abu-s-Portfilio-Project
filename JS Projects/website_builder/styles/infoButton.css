@@ -18,3 +18,7 @@ element with the class info-btn.
     background-image: url("../images/information-symbol.png"), none;
     background-position: center center;
 }
+
+.info-btn::after {
+    content: var(--pseudo-after-text);
+}
