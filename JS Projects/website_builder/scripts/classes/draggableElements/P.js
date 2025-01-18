@@ -12,6 +12,6 @@ export class P extends DraggableElement {
     }
 
     static initialize() {
-        new P("P", "100px", "100px", "P", "#fff", "#000", "16px", "Arial");
+        new P("P", "100px", "100px", "P", "#fff", "#000", "16px", "Arial", true);
     }
 }

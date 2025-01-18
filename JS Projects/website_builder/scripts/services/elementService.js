@@ -5,6 +5,13 @@ import { Div } from "../classes/draggableElements/Div.js";
 import { DraggableElement } from "../classes/draggableElements/DraggableElements.js";
 import { Image } from "../classes/draggableElements/Image.js";
 import { A as A } from "../classes/draggableElements/A.js";
+import { H1 } from "../classes/draggableElements/headers/H1.js";
+import { ToolType } from "../classes/ToolType.js";
+import { H2 } from "../classes/draggableElements/headers/H2.js";
+import { H3 } from "../classes/draggableElements/headers/H3.js";
+import { H4 } from "../classes/draggableElements/headers/H4.js";
+import { H5 } from "../classes/draggableElements/headers/H5.js";
+import { H6 } from "../classes/draggableElements/headers/H6.js";
 
 /**
  * Populate a select element with options.
@@ -125,4 +132,193 @@ export const applyRedBorderToElement = (element) => {
     setTimeout(() => {
         element.style.border = oldBorder;
     }, 2000);
+};
+
+export const createDraggableElement = (toolBox) => {
+    let draggableElement = null;
+
+    // Base tools input value.
+    const baseDefaultToolsValues = toolBox.getBaseDefaultTools();
+
+    console.log(baseDefaultToolsValues);
+
+    const elementType = baseDefaultToolsValues.get("Element Type").element;
+    const elementTypeInput = elementType.querySelector("select");
+
+    const elementName = baseDefaultToolsValues.get("Element Name").element;
+    const elementNameInput = elementName.querySelector("input");
+
+    const elementText = baseDefaultToolsValues.get("Element Text").element;
+    const elementTextInput = elementText.querySelector("textarea");
+
+    // Here I found out that the HTMLElements doesn't have getElementById() method.
+    // But they have querySelector and getElementByClassName methods.
+    const elementSize = baseDefaultToolsValues.get("Element Size").element;
+    const elementSizeWidthInput = elementSize.querySelector("#width-input");
+    const elementSizeHeightInput = elementSize.querySelector("#height-input");
+
+    const elementBgColor = baseDefaultToolsValues.get("Element Background Color").element;
+    const elementBgColorInput = elementBgColor.querySelector("input");
+
+    const elementFontColor = baseDefaultToolsValues.get("Element Font Color").element;
+    const elementFontColorInput = elementFontColor.querySelector("input");
+
+    const elementFontSize = baseDefaultToolsValues.get("Element Font Size").element;
+    const elementFontSizeInput = elementFontSize.querySelector("input");
+
+    const elementFontFamily = baseDefaultToolsValues.get("Element Font Family").element;
+    const elementFontFamilyInput = elementFontFamily.querySelector("select");
+
+    console.log("Base default tools values:", baseDefaultToolsValues);
+
+    switch (elementTypeInput.value.toLowerCase()) {
+        case "h1":
+            draggableElement = new H1(
+                elementNameInput.value,
+                elementSizeWidthInput.value,
+                elementSizeHeightInput.value,
+                elementTextInput.value,
+                elementBgColorInput.value,
+                elementFontColorInput.value,
+                elementFontSizeInput.value,
+                elementFontFamilyInput.value
+            );
+            break;
+        case "h2":
+            draggableElement = new H2(
+                elementNameInput.value,
+                elementSizeWidthInput.value,
+                elementSizeHeightInput.value,
+                elementTextInput.value,
+                elementBgColorInput.value,
+                elementFontColorInput.value,
+                elementFontSizeInput.value,
+                elementFontFamilyInput.value
+            );
+            break;
+        case "h3":
+            draggableElement = new H3(
+                elementNameInput.value,
+                elementSizeWidthInput.value,
+                elementSizeHeightInput.value,
+                elementTextInput.value,
+                elementBgColorInput.value,
+                elementFontColorInput.value,
+                elementFontSizeInput.value,
+                elementFontFamilyInput.value
+            );
+            break;
+        case "h4":
+            draggableElement = new H4(
+                elementNameInput.value,
+                elementSizeWidthInput.value,
+                elementSizeHeightInput.value,
+                elementTextInput.value,
+                elementBgColorInput.value,
+                elementFontColorInput.value,
+                elementFontSizeInput.value,
+                elementFontFamilyInput.value
+            );
+            break;
+        case "h5":
+            draggableElement = new H5(
+                elementNameInput.value,
+                elementSizeWidthInput.value,
+                elementSizeHeightInput.value,
+                elementTextInput.value,
+                elementBgColorInput.value,
+                elementFontColorInput.value,
+                elementFontSizeInput.value,
+                elementFontFamilyInput.value
+            );
+            break;
+        case "h6":
+            draggableElement = new H6(
+                elementNameInput.value,
+                elementSizeWidthInput.value,
+                elementSizeHeightInput.value,
+                elementTextInput.value,
+                elementBgColorInput.value,
+                elementFontColorInput.value,
+                elementFontSizeInput.value,
+                elementFontFamilyInput.value
+            );
+            break;
+        case "p":
+            draggableElement = new P(
+                elementNameInput.value,
+                elementSizeWidthInput.value,
+                elementSizeHeightInput.value,
+                elementTextInput.value,
+                elementBgColorInput.value,
+                elementFontColorInput.value,
+                elementFontSizeInput.value,
+                elementFontFamilyInput.value
+            );
+            break;
+        case "div":
+            draggableElement = new Div(
+                elementNameInput.value,
+                elementSizeWidthInput.value,
+                elementSizeHeightInput.value,
+                elementTextInput.value,
+                elementBgColorInput.value,
+                elementFontColorInput.value,
+                elementFontSizeInput.value,
+                elementFontFamilyInput.value
+            );
+            break;
+        case "span":
+            draggableElement = new Span(
+                elementNameInput.value,
+                elementSizeWidthInput.value,
+                elementSizeHeightInput.value,
+                elementTextInput.value,
+                elementBgColorInput.value,
+                elementFontColorInput.value,
+                elementFontSizeInput.value,
+                elementFontFamilyInput.value
+            );
+            break;
+        case "a":
+            const elementLink = toolBox.getToolByName("A URL Link")[0].element;
+            const elementLinkInput = elementLink.querySelector("input");
+
+            // TODO: Add the option to open link in a new tab in the DOM using checkbox.
+            draggableElement = new A(
+                elementNameInput.value,
+                elementSizeWidthInput.value,
+                elementSizeHeightInput.value,
+                elementTextInput.value,
+                elementBgColorInput.value,
+                elementFontColorInput.value,
+                elementFontSizeInput.value,
+                elementFontFamilyInput.value
+            );
+            break;
+        case "image":
+            const elementSrc = toolBox.getToolByName("Image Source")[0].element;
+            const elementSrcInput = elementSrc.querySelector("input");
+
+            const elementAlt = toolBox.getToolByName("Image Alt")[0].element;
+            const elementAltInput = elementAlt.querySelector("input");
+
+            draggableElement = new Image(
+                elementNameInput.value,
+                elementSizeWidthInput.value,
+                elementSizeHeightInput.value,
+                elementTextInput.value,
+                elementBgColorInput.value,
+                elementFontColorInput.value,
+                elementFontSizeInput.value,
+                elementFontFamilyInput.value,
+                elementSrcInput.value,
+                elementAltInput.value
+            );
+            break;
+        default:
+            break;
+    }
+
+    return draggableElement;
 };

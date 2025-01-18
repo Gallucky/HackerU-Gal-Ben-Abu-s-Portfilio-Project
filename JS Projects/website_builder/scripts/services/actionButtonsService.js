@@ -1,5 +1,5 @@
 import { ToolBox } from "../classes/ToolBox.js";
-import { applyRedBorderToElement } from "../services/elementService.js";
+import { applyRedBorderToElement, createDraggableElement } from "../services/elementService.js";
 
 /**
  * Creates an onclick event handler for the "Create" action button.
@@ -19,38 +19,13 @@ export const actionButtonCreateOnClickHandler = (toolBox) => {
 
         if (checkEmptyValues(nameTool, textTool)) {
             console.warn("%cName and Text inputs should not be empty.", "color: yellow;");
-        } else if (validateAndHighlightInputValues(type, fontFamily)) {
+        } else if (validateAndHighlightInputValues(toolBox)) {
             const fontColor = toolBox.getToolByID(5);
             const bgColor = toolBox.getToolByID(6);
 
-            if (!fontColor || !bgColor) {
-                throw new Error(
-                    "One of the following parameters is not defined: fontColor, bgColor."
-                );
-            }
-
-            const fontColorInput = fontColor.element.querySelector("input");
-            const bgColorInput = bgColor.element.querySelector("input");
-
-            if (!fontColorInput || !bgColorInput) {
-                throw new Error(
-                    "One of the following parameters is not defined: fontColorInput, bgColorInput."
-                );
-            }
-
-            if (fontColorInput.value == bgColorInput.value) {
-                console.warn(
-                    "%cIt is recommended to have different font and background colors.",
-                    "color: yellow;"
-                );
-                console.warn("%cFont color:", "color: yellow;");
-                console.warn("Value:", fontColorInput.value);
-                console.warn("%cBackground color:", "color: yellow;");
-                console.warn("Value:", bgColorInput.value);
-            } else {
-                console.log("Font color:", fontColorInput.value);
-                console.log("Background color:", bgColorInput.value);
-            }
+            warnIfFontAndBgColorsAreTheSame(fontColor, bgColor);
+            const draggableElement = createDraggableElement(toolBox);
+            console.log(draggableElement);
         } else {
             console.warn("%cPlease select a type and font family.", "color: yellow;");
         }
@@ -84,7 +59,10 @@ const checkEmptyValues = (elementName, elementText) => {
     return nameInput.value === "" || textInput.value === "";
 };
 
-const validateAndHighlightInputValues = (type, fontFamily) => {
+const validateAndHighlightInputValues = (toolBox) => {
+    const type = toolBox.getToolByID(1);
+    const fontFamily = toolBox.getToolByID(8);
+
     if (!type || !fontFamily) {
         throw new Error("One of the following parameters is not defined: type, size, fontFamily.");
     }
@@ -98,6 +76,7 @@ const validateAndHighlightInputValues = (type, fontFamily) => {
         );
     }
 
+    const typeElement = typeInput.value.toLowerCase();
     let result = true;
 
     if (typeInput.getAttribute("default-value") === "true") {
@@ -111,4 +90,33 @@ const validateAndHighlightInputValues = (type, fontFamily) => {
     }
 
     return result;
+};
+
+const warnIfFontAndBgColorsAreTheSame = (fontColor, bgColor) => {
+    if (!fontColor || !bgColor) {
+        throw new Error("One of the following parameters is not defined: fontColor, bgColor.");
+    }
+
+    const fontColorInput = fontColor.element.querySelector("input");
+    const bgColorInput = bgColor.element.querySelector("input");
+
+    if (!fontColorInput || !bgColorInput) {
+        throw new Error(
+            "One of the following parameters is not defined: fontColorInput, bgColorInput."
+        );
+    }
+
+    if (fontColorInput.value == bgColorInput.value) {
+        console.warn(
+            "%cIt is recommended to have different font and background colors.",
+            "color: yellow;"
+        );
+        console.warn("%cFont color:", "color: yellow;");
+        console.warn("Value:", fontColorInput.value);
+        console.warn("%cBackground color:", "color: yellow;");
+        console.warn("Value:", bgColorInput.value);
+    } else {
+        console.log("Font color:", fontColorInput.value);
+        console.log("Background color:", bgColorInput.value);
+    }
 };

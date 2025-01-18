@@ -15,6 +15,6 @@ export class Span extends DraggableElement {
     }
 
     static initialize() {
-        new Span("Span", "100px", "100px", "Span", "#fff", "#000", "16px", "Arial");
+        new Span("Span", "100px", "100px", "Span", "#fff", "#000", "16px", "Arial", true);
     }
 }

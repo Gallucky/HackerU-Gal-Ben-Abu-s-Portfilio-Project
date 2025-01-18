@@ -13,4 +13,6 @@ populateToolBox(toolBox);
 
 toolBox.addToolsToToolPanel();
 
+console.log(toolBox.tools);
+
 actionButtonCreateOnClickHandler(toolBox);

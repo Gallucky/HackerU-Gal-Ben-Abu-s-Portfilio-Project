@@ -27,6 +27,6 @@ export class Image extends DraggableElement {
     }
 
     static initialize() {
-        new Image("Image", "100px", "100px", "img", "#fff", "#000", "16px", "Arial", "", "");
+        new Image("Image", "100px", "100px", "img", "#fff", "#000", "16px", "Arial", "", "", true);
     }
 }

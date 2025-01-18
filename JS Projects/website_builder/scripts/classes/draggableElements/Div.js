@@ -15,6 +15,6 @@ export class Div extends DraggableElement {
     }
 
     static initialize() {
-        new Div("Div", "100px", "100px", "Div", "#fff", "#000", "16px", "Arial");
+        new Div("Div", "100px", "100px", "Div", "#fff", "#000", "16px", "Arial", true);
     }
 }

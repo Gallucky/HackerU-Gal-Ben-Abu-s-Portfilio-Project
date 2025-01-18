@@ -138,4 +138,14 @@ export class ToolBox {
     empty() {
         this.#tools = new Map();
     }
+
+    getBaseDefaultTools() {
+        const result = new Map();
+        Array.from(this.#tools.values())
+            .filter((tool) => tool.baseDefaultTool)
+            .forEach((tool) => {
+                result.set(tool.name, tool);
+            });
+        return result;
+    }
 }

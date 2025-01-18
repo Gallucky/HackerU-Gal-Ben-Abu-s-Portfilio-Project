@@ -35,6 +35,6 @@ export class A extends DraggableElement {
     }
 
     static initialize() {
-        new A("A", "100px", "100px", "link", "#fff", "#000", "16px", "Arial", "", "");
+        new A("A", "100px", "100px", "link", "#fff", "#000", "16px", "Arial", "", "", true);
     }
 }

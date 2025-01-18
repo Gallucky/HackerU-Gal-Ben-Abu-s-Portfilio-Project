@@ -41,24 +41,24 @@ export const createElementTypeTool = (toolBox) => {
         const selectedOption = select.options[select.selectedIndex].value;
 
         const removeNonDefaultTool = () => {
-            toolBox.removeToolFromPanelByName("Element A Link URL");
-            toolBox.removeToolFromPanelByName("Element Image Source");
-            toolBox.removeToolFromPanelByName("Element Image Alt");
+            toolBox.removeToolFromPanelByName("A URL Link");
+            toolBox.removeToolFromPanelByName("Image Source");
+            toolBox.removeToolFromPanelByName("Image Alt");
         };
 
         switch (selectedOption.toLowerCase()) {
             case "a":
                 console.log("Selected option [a] that needs more tools than the default tools.");
                 removeNonDefaultTool();
-                toolBox.addToolToPanelByName("Element A Link URL");
+                toolBox.addToolToPanelByName("A URL Link");
                 break;
             case "image":
                 console.log(
                     "Selected option [image] that needs more tools than the default tools."
                 );
                 removeNonDefaultTool();
-                toolBox.addToolToPanelByName("Element Image Source");
-                toolBox.addToolToPanelByName("Element Image Alt");
+                toolBox.addToolToPanelByName("Image Source");
+                toolBox.addToolToPanelByName("Image Alt");
                 break;
             default:
                 removeNonDefaultTool();
@@ -371,7 +371,7 @@ export const createElementFontFamilyTool = () => {
 
 export const createElementImageSRCTool = () => {
     const elementImageSRCTool = new Tool(
-        "Element Image Source",
+        "Image Source",
         ToolType.input,
         "The source of the image of the created element."
     );
@@ -395,7 +395,7 @@ export const createElementImageSRCTool = () => {
 
 export const createElementImageAltTool = () => {
     const elementImageAltTool = new Tool(
-        "Element Image Alt",
+        "Image Alt",
         ToolType.input,
         "The alt text of the image of the created element."
     );
@@ -419,7 +419,7 @@ export const createElementImageAltTool = () => {
 
 export const createElementALinkURLTool = () => {
     const elementALinkURLTool = new Tool(
-        "Element A Link URL",
+        "A URL Link",
         ToolType.input,
         "The URL of the link of the created element."
     );
