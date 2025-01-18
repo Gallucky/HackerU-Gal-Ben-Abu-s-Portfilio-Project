@@ -57,11 +57,14 @@ export class Tool {
         parentElement.appendChild(this.#element);
     }
 
+    removeToolElement() {
+        this.#element.remove();
+    }
+
     /**
      * Gets the type of the tool.
      * @returns {string} The type of the tool.
      */
-
     get type() {
         return this.#type;
     }
@@ -70,7 +73,6 @@ export class Tool {
      * Gets the name of the tool.
      * @returns {string} The name of the tool.
      */
-
     get name() {
         return this.#name;
     }

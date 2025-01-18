@@ -7,8 +7,9 @@ import { Tool } from "../classes/Tool.js";
 import { ToolType } from "../classes/ToolType.js";
 import { DraggableElement } from "../classes/draggableElements/DraggableElements.js";
 import { getSupportedFontsNames } from "./supportedFontsService.js";
+import { ToolBox } from "../classes/ToolBox.js";
 
-export const createElementTypeTool = () => {
+export const createElementTypeTool = (toolBox) => {
     const elementType = new Tool(
         "Element Type",
         ToolType.select,
@@ -30,8 +31,39 @@ export const createElementTypeTool = () => {
 
     // Populating the select element with the supported element types.
     populateSelectElementWith(select, DraggableElement.subclasses, "Select Type...", (e) => {
+        // Addition onchange event handler.
         select.setAttribute("default-value", false);
         console.log("Selected Type func()");
+
+        // Getting the string value of the selected option.
+        // The selected option is representing an element type.
+        const selectedOption = select.options[select.selectedIndex].value;
+
+        const removeNonDefaultTool = () => {
+            toolBox.removeToolFromPanelByName("Element A Link URL");
+            toolBox.removeToolFromPanelByName("Element Image Source");
+            toolBox.removeToolFromPanelByName("Element Image Alt");
+        };
+
+        switch (selectedOption.toLowerCase()) {
+            case "a":
+                console.log("Selected option [a] that needs more tools than the default tools.");
+                removeNonDefaultTool();
+                toolBox.addToolToPanelByName("Element A Link URL");
+                break;
+            case "image":
+                console.log(
+                    "Selected option [image] that needs more tools than the default tools."
+                );
+                removeNonDefaultTool();
+                toolBox.addToolToPanelByName("Element Image Source");
+                toolBox.addToolToPanelByName("Element Image Alt");
+                break;
+            default:
+                removeNonDefaultTool();
+                console.log("Default");
+                break;
+        }
     });
 
     // Adding the child elements.

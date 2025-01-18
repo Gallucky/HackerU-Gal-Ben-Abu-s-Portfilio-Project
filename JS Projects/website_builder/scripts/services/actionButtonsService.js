@@ -12,16 +12,16 @@ export const actionButtonCreateOnClickHandler = (toolBox) => {
     const actionButtonCreate = document.getElementById("create-element-btn");
 
     actionButtonCreate.onclick = () => {
-        const type = toolBox.getTool(1);
-        const fontFamily = toolBox.getTool(8);
-        const nameTool = toolBox.getTool(2);
-        const textTool = toolBox.getTool(3);
+        const type = toolBox.getToolByID(1);
+        const fontFamily = toolBox.getToolByID(8);
+        const nameTool = toolBox.getToolByID(2);
+        const textTool = toolBox.getToolByID(3);
 
         if (checkEmptyValues(nameTool, textTool)) {
             console.warn("%cName and Text inputs should not be empty.", "color: yellow;");
         } else if (validateAndHighlightInputValues(type, fontFamily)) {
-            const fontColor = toolBox.getTool(5);
-            const bgColor = toolBox.getTool(6);
+            const fontColor = toolBox.getToolByID(5);
+            const bgColor = toolBox.getToolByID(6);
 
             if (!fontColor || !bgColor) {
                 throw new Error(

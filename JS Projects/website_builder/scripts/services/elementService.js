@@ -83,9 +83,9 @@ export const populateSelectElementWith = (
                 option.classList.remove("selected");
             }
 
-            console.log(
-                `Option ${option.value} is ${option.selected ? "selected" : "not selected"}`
-            );
+            // console.log(
+            //     `Option ${option.value} is ${option.selected ? "selected" : "not selected"}`
+            // );
         });
 
         console.log("select option changed.");

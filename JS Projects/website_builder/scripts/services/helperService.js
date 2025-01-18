@@ -69,7 +69,7 @@ export const populateToolBox = (toolBoxToPopulate) => {
 
     try {
         // Creating the tools.
-        const elementTypeTool = createElementTypeTool();
+        const elementTypeTool = createElementTypeTool(toolBoxToPopulate);
         const elementNameTool = createElementNameTool();
         const elementTextTool = createElementTextTool();
         const elementSizeTool = createElementSizeTool();

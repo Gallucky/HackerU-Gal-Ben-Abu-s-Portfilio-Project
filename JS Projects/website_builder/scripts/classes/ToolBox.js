@@ -47,7 +47,7 @@ export class ToolBox {
      * with the given name, if there is no tool with the name given
      * then an empty array is returned.
      */
-    getTool(toolName) {
+    getToolByName(toolName) {
         const toolWithGivenName = [];
         this.#tools.forEach((tool) => {
             if (tool.name === toolName) {
@@ -63,7 +63,7 @@ export class ToolBox {
      * @param {number} toolID The ID of the tool to retrieve.
      * @returns {Tool} The tool with the given ID, or undefined if no such tool exists.
      */
-    getTool(toolID) {
+    getToolByID(toolID) {
         return this.#tools.get(toolID);
     }
 
@@ -91,6 +91,40 @@ export class ToolBox {
 
             tool.addToolElementTo(toolPanel);
             console.log(`%cAdded '${tool.name}' to tool panel.`, "color: green;");
+        }
+    }
+
+    removeToolFromPanelByName(toolName) {
+        const tool = this.getToolByName(toolName)[0];
+        const panel = document.querySelector(".tools-panel");
+        if (tool) {
+            tool.removeToolElement();
+        }
+    }
+
+    removeToolFromPanelByID(toolID) {
+        const tool = this.getToolByID(toolID);
+
+        if (tool) {
+            tool.removeToolElement();
+        }
+    }
+
+    addToolToPanelByName(toolName) {
+        const tool = this.getToolByName(toolName)[0];
+
+        if (tool) {
+            const toolPanel = document.querySelector(".tools-panel");
+            tool.addToolElementTo(toolPanel);
+        }
+    }
+
+    addToolToPanelByID(toolID) {
+        const tool = this.getToolByID(toolID);
+
+        if (tool) {
+            const toolPanel = document.querySelector(".tools-panel");
+            tool.addToolElementTo(toolPanel);
         }
     }
 
