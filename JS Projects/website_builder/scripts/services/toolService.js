@@ -13,7 +13,8 @@ export const createElementTypeTool = (toolBox) => {
     const elementType = new Tool(
         "Element Type",
         ToolType.select,
-        "The type / tag of the created element."
+        "The type / tag of the created element.",
+        true
     );
     console.log(elementType.element.id);
 
@@ -77,7 +78,8 @@ export const createElementNameTool = () => {
     const elementNameTool = new Tool(
         "Element Name",
         ToolType.input,
-        "The name of the created element."
+        "The name of the created element.",
+        true
     );
 
     const label = document.createElement("label");
@@ -104,7 +106,8 @@ export const createElementTextTool = () => {
     const elementTextTool = new Tool(
         "Element Text",
         ToolType.textArea,
-        "The text of the created element."
+        "The text of the created element.",
+        true
     );
 
     const label = document.createElement("label");
@@ -127,7 +130,8 @@ export const createElementSizeTool = () => {
     const elementSizeTool = new Tool(
         "Element Size",
         ToolType.size,
-        "The size of the created element."
+        "The size of the created element.",
+        true
     );
 
     const label = document.createElement("label");
@@ -243,7 +247,8 @@ export const createElementBgColorTool = () => {
     const elementBgColorTool = new Tool(
         "Element Background Color",
         ToolType.color,
-        "The background color of the created element."
+        "The background color of the created element.",
+        true
     );
 
     const label = document.createElement("label");
@@ -268,7 +273,8 @@ export const createElementFontColorTool = () => {
     const elementFontColorTool = new Tool(
         "Element Font Color",
         ToolType.color,
-        "The font color of the created element."
+        "The font color of the created element.",
+        true
     );
 
     const label = document.createElement("label");
@@ -293,7 +299,8 @@ export const createElementFontSizeTool = () => {
     const elementFontSizeTool = new Tool(
         "Element Font Size",
         ToolType.size,
-        "The font size of the created element."
+        "The font size of the created element.",
+        true
     );
 
     const label = document.createElement("label");
@@ -329,7 +336,8 @@ export const createElementFontFamilyTool = () => {
     const elementFontFamilyTool = new Tool(
         "Element Font Family",
         ToolType.select,
-        "The font family of the created element."
+        "The font family of the created element.",
+        true
     );
 
     const label = document.createElement("label");

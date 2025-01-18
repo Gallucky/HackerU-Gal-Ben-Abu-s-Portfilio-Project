@@ -18,6 +18,7 @@ export class Tool {
     #type;
     #element;
     #toolID;
+    #baseDefaultTool;
 
     static #id = 0;
 
@@ -28,10 +29,11 @@ export class Tool {
      * @param {string} [description=""] - An optional description of the tool.
      */
 
-    constructor(name, type, description = "") {
+    constructor(name, type, description = "", baseDefaultTool = false) {
         this.#name = name;
         this.#type = type;
         this.#description = description;
+        this.#baseDefaultTool = baseDefaultTool;
 
         Tool.#id++;
         this.#toolID = Tool.#id;
@@ -93,6 +95,14 @@ export class Tool {
         return this.#element;
     }
 
+    get toolID() {
+        return this.#toolID;
+    }
+
+    get baseDefaultTool() {
+        return this.#baseDefaultTool;
+    }
+
     /**
      * Sets the name of the tool.
      * @param {string} newName The new name of the tool.
@@ -108,9 +118,5 @@ export class Tool {
 
     set description(newDescription) {
         this.#description = newDescription;
-    }
-
-    get toolID() {
-        return this.#toolID;
     }
 }

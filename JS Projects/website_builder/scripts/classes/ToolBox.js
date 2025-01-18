@@ -86,7 +86,11 @@ export class ToolBox {
             throw new Error("No tools found.");
         }
 
-        for (const tool of this.#tools.values()) {
+        const baseDefaultTools = Array.from(this.#tools.values()).filter(
+            (tool) => tool.baseDefaultTool
+        );
+
+        for (const tool of baseDefaultTools) {
             console.log(tool);
 
             tool.addToolElementTo(toolPanel);
