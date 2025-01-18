@@ -40,11 +40,18 @@ export const populateFontFamilySelectionOptions = (selectionFontFamily) => {
 
 export const getFontFamilySelectionOnValueChangeListenerHandler = (selectionFontFamily) => {
     selectionFontFamily.onchange = (e) => {
+        Array.from(selectionFontFamily.children).forEach((option) => {
+            if (option instanceof HTMLOptionElement) {
+                option.selected = false;
+            }
+        });
+
         console.log(e.target.value);
         if (e.target.value === "") {
             selectionFontFamily.style.fontFamily = "Rubik";
         } else {
             selectionFontFamily.style.fontFamily = e.target.value;
+            console.log(e);
         }
     };
 };

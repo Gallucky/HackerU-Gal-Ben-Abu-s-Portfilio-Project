@@ -14,10 +14,74 @@ export const actionButtonCreateOnClickHandler = (toolBox) => {
     actionButtonCreate.onclick = () => {
         const type = toolBox.getTool(1);
         const fontFamily = toolBox.getTool(8);
+        const nameTool = toolBox.getTool(2);
+        const textTool = toolBox.getTool(3);
 
-        if (validateAndHighlightInputValues(type, fontFamily)) {
+        if (checkEmptyValues(nameTool, textTool)) {
+            console.warn("%cName and Text inputs should not be empty.", "color: yellow;");
+        } else if (validateAndHighlightInputValues(type, fontFamily)) {
+            const fontColor = toolBox.getTool(5);
+            const bgColor = toolBox.getTool(6);
+
+            if (!fontColor || !bgColor) {
+                throw new Error(
+                    "One of the following parameters is not defined: fontColor, bgColor."
+                );
+            }
+
+            const fontColorInput = fontColor.element.querySelector("input");
+            const bgColorInput = bgColor.element.querySelector("input");
+
+            if (!fontColorInput || !bgColorInput) {
+                throw new Error(
+                    "One of the following parameters is not defined: fontColorInput, bgColorInput."
+                );
+            }
+
+            if (fontColorInput.value == bgColorInput.value) {
+                console.warn(
+                    "%cIt is recommended to have different font and background colors.",
+                    "color: yellow;"
+                );
+                console.warn("%cFont color:", "color: yellow;");
+                console.warn("Value:", fontColorInput.value);
+                console.warn("%cBackground color:", "color: yellow;");
+                console.warn("Value:", bgColorInput.value);
+            } else {
+                console.log("Font color:", fontColorInput.value);
+                console.log("Background color:", bgColorInput.value);
+            }
+        } else {
+            console.warn("%cPlease select a type and font family.", "color: yellow;");
         }
     };
+};
+
+const checkEmptyValues = (elementName, elementText) => {
+    if (!elementName || !elementText) {
+        throw new Error("One of the following parameters is not defined: name, text.");
+    }
+
+    const nameInput = elementName.element.querySelector("input");
+    const textInput = elementText.element.querySelector("textarea");
+
+    if (!nameInput || !textInput) {
+        console.error("%cElement Name:", "color: red;");
+        console.error(elementName.element);
+        console.error("%cElement Text:", "color: red;");
+        console.error(elementText.element);
+
+        console.log();
+
+        console.error("%cName Input:", "color: red;");
+        console.error(nameInput);
+        console.error("%cText Input:", "color: red;");
+        console.error(textInput);
+
+        throw new Error("One of the following parameters is not defined: nameInput, textInput.");
+    }
+
+    return nameInput.value === "" || textInput.value === "";
 };
 
 const validateAndHighlightInputValues = (type, fontFamily) => {
@@ -45,4 +109,6 @@ const validateAndHighlightInputValues = (type, fontFamily) => {
         applyRedBorderToElement(fontFamilyInput);
         result = false;
     }
+
+    return result;
 };

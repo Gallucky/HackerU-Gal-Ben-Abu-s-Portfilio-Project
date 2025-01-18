@@ -50,4 +50,12 @@ export class DraggableElement {
     updateDraggableElement() {
         Object.assign(this.element.style, this.style);
     }
+
+    /**
+     * Sorts the subclasses of DraggableElement in alphabetical order.
+     * Updates the static set of subclasses with the sorted order.
+     */
+    static sortSubclasses() {
+        DraggableElement.#subclasses = new Set(Array.from(this.#subclasses).sort());
+    }
 }

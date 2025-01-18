@@ -27,12 +27,12 @@ export const createElementTypeTool = () => {
     initializeSupportedElementTypes();
 
     select.setAttribute("default-value", true);
-    select.onchange = (e) => {
-        select.setAttribute("default-value", false);
-    };
 
     // Populating the select element with the supported element types.
-    populateSelectElementWith(select, DraggableElement.subclasses, "Select Type...");
+    populateSelectElementWith(select, DraggableElement.subclasses, "Select Type...", (e) => {
+        select.setAttribute("default-value", false);
+        console.log("Selected Type func()");
+    });
 
     // Adding the child elements.
     elementType.element.appendChild(label);
@@ -311,19 +311,92 @@ export const createElementFontFamilyTool = () => {
     const supportedFontNames = getSupportedFontsNames();
     console.log("fontNames:", supportedFontNames);
 
-    select.onchange = (e) => {
-        select.setAttribute("default-value", false);
-    };
     // Populating the select element with the supported font names.
-    populateSelectElementWith(select, supportedFontNames, "Select Font Family...", true);
-
-    select.onchange = (e) => {
+    populateSelectElementWith(select, supportedFontNames, "Select Font Family...", true, (e) => {
         e.target.style.fontFamily = e.target.value;
-    };
+        select.setAttribute("default-value", false);
+
+        console.log("Font family func()");
+    });
+
+    // This flag boolean attribute is used to determine if the user has selected a font family or not.
+    select.setAttribute("default-value", true);
 
     // Adding the child elements.
     elementFontFamilyTool.element.appendChild(label);
     elementFontFamilyTool.element.appendChild(select);
 
     return elementFontFamilyTool;
+};
+
+export const createElementImageSRCTool = () => {
+    const elementImageSRCTool = new Tool(
+        "Element Image Source",
+        ToolType.input,
+        "The source of the image of the created element."
+    );
+
+    const label = document.createElement("label");
+    label.for = "image-src-input";
+    label.textContent = "Image Source:";
+
+    const input = document.createElement("input");
+    input.id = "image-src-input";
+    input.name = "image-src-input";
+    input.type = "url";
+    input.placeholder = "Path/To/Your/Image";
+
+    // Adding the child elements.
+    elementImageSRCTool.element.appendChild(label);
+    elementImageSRCTool.element.appendChild(input);
+
+    return elementImageSRCTool;
+};
+
+export const createElementImageAltTool = () => {
+    const elementImageAltTool = new Tool(
+        "Element Image Alt",
+        ToolType.input,
+        "The alt text of the image of the created element."
+    );
+
+    const label = document.createElement("label");
+    label.for = "image-alt-input";
+    label.textContent = "Image Alt:";
+
+    const input = document.createElement("input");
+    input.id = "image-alt-input";
+    input.name = "image-alt-input";
+    input.type = "text";
+    input.placeholder = "Description text for the image";
+
+    // Adding the child elements.
+    elementImageAltTool.element.appendChild(label);
+    elementImageAltTool.element.appendChild(input);
+
+    return elementImageAltTool;
+};
+
+export const createElementALinkURLTool = () => {
+    const elementALinkURLTool = new Tool(
+        "Element A Link URL",
+        ToolType.input,
+        "The URL of the link of the created element."
+    );
+
+    const label = document.createElement("label");
+    label.for = "a-link-url-input";
+    label.textContent = "Link URL:";
+
+    const input = document.createElement("input");
+    input.id = "a-link-url-input";
+    input.name = "a-link-url-input";
+    input.type = "url";
+    input.placeholder = "https://...";
+
+    // Adding the child elements.
+    elementALinkURLTool.element.appendChild(label);
+    elementALinkURLTool.element.appendChild(input);
+
+    return elementALinkURLTool;
 };

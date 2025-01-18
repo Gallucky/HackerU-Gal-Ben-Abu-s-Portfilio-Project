@@ -12,6 +12,9 @@ import {
     createElementFontColorTool,
     createElementFontSizeTool,
     createElementFontFamilyTool,
+    createElementImageSRCTool,
+    createElementImageAltTool,
+    createElementALinkURLTool,
 } from "./toolService.js";
 
 const dynamicLinkedCSSFiles = [];
@@ -74,6 +77,9 @@ export const populateToolBox = (toolBoxToPopulate) => {
         const elementFontColorTool = createElementFontColorTool();
         const elementFontSizeTool = createElementFontSizeTool();
         const elementFontFamilyTool = createElementFontFamilyTool();
+        const elementImageSRCTool = createElementImageSRCTool();
+        const elementImageAltTool = createElementImageAltTool();
+        const elementALinkURLTool = createElementALinkURLTool();
 
         // Adding the tools to the tool box.
         toolBoxToPopulate.addTool(elementTypeTool);
@@ -84,6 +90,9 @@ export const populateToolBox = (toolBoxToPopulate) => {
         toolBoxToPopulate.addTool(elementFontColorTool);
         toolBoxToPopulate.addTool(elementFontSizeTool);
         toolBoxToPopulate.addTool(elementFontFamilyTool);
+        toolBoxToPopulate.addTool(elementImageSRCTool);
+        toolBoxToPopulate.addTool(elementImageAltTool);
+        toolBoxToPopulate.addTool(elementALinkURLTool);
     } catch (err) {
         const msg =
             `%c[helperService.js] - populateToolBox:\n` +

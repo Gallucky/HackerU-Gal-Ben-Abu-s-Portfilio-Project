@@ -3,5 +3,5 @@ export const getSupportedFontsNames = () => {
     const fontNames = Array.from(document.fonts).map((font) => font.family);
 
     // Returning a new array containing unique font names / with no duplicates.
-    return [...new Set(fontNames)];
+    return [...new Set(fontNames)].sort();
 };

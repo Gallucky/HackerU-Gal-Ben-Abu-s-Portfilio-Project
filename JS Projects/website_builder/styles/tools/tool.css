@@ -31,4 +31,9 @@
     * {
         font-family: Rubik;
     }
+
+    label {
+        width: 100%;
+        height: fit-content !important;
+    }
 }
