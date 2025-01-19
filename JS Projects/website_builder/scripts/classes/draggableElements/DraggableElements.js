@@ -1,3 +1,5 @@
+import { dragElement } from "../../services/dragService.js";
+
 export class DraggableElement {
     static #subclasses = new Set();
     static #id = 0;
@@ -33,8 +35,8 @@ export class DraggableElement {
 
         this.name = name.toLowerCase().replace(" ", "-");
         this.style = {
-            width: width,
-            height: height,
+            width: width + "px",
+            height: height + "px",
             textContent: text,
             backgroundColor: bgColor,
             color: textColor,
@@ -49,6 +51,19 @@ export class DraggableElement {
 
     updateDraggableElement() {
         Object.assign(this.element.style, this.style);
+        this.element.style.zIndex = 1;
+        this.element.dataset.draggable = "true";
+        this.element.textContent = this.style.textContent;
+        this.element.style.userSelect = "none";
+
+        this.element.style.position = "absolute";
+        this.element.style.left = `${this.locationX}px`;
+        this.element.style.top = `${this.locationY}px`;
+
+        // Making sure the center of the element is in the (locationX, locationY) point.
+        // this.element.style.transform = "translate(-50%, -50%)";
+
+        dragElement(this.element);
     }
 
     /**

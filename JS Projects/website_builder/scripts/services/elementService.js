@@ -12,6 +12,7 @@ import { H3 } from "../classes/draggableElements/headers/H3.js";
 import { H4 } from "../classes/draggableElements/headers/H4.js";
 import { H5 } from "../classes/draggableElements/headers/H5.js";
 import { H6 } from "../classes/draggableElements/headers/H6.js";
+import { getDraggableElements } from "./storageService.js";
 
 /**
  * Populate a select element with options.
@@ -284,7 +285,6 @@ export const createDraggableElement = (toolBox) => {
             const elementLink = toolBox.getToolByName("A URL Link")[0].element;
             const elementLinkInput = elementLink.querySelector("input");
 
-            // TODO: Add the option to open link in a new tab in the DOM using checkbox.
             draggableElement = new A(
                 elementNameInput.value,
                 elementSizeWidthInput.value,
@@ -293,7 +293,8 @@ export const createDraggableElement = (toolBox) => {
                 elementBgColorInput.value,
                 elementFontColorInput.value,
                 elementFontSizeInput.value,
-                elementFontFamilyInput.value
+                elementFontFamilyInput.value,
+                elementLinkInput.value
             );
             break;
         case "image":
@@ -321,4 +322,29 @@ export const createDraggableElement = (toolBox) => {
     }
 
     return draggableElement;
+};
+
+export const addDraggableElementToDOM = (draggableElement) => {
+    const workspace = document.getElementById("workspace");
+
+    workspace.appendChild(draggableElement.element);
+    console.log("Draggable element added to DOM.");
+    console.log("Workspace:\n", workspace);
+};
+
+export const createDraggableElements = (draggableElements) => {
+    draggableElements.forEach((draggableElement) => {
+        // Todo: Add the draggable element to the DOM.
+    });
+};
+
+export const addDraggableElementsFromLocalStorageToDOM = () => {
+    const draggableElements = getDraggableElements();
+
+    for (const draggableElement of draggableElements.values()) {
+        console.log(draggableElement);
+        console.log(draggableElement.element);
+
+        addDraggableElementToDOM(draggableElement);
+    }
 };

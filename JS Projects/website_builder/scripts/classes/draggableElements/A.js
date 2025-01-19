@@ -4,21 +4,11 @@ export class A extends DraggableElement {
     url;
     newTab;
 
-    constructor(
-        name,
-        width,
-        height,
-        text,
-        bgColor,
-        textColor,
-        fontSize,
-        fontFamily,
-        url,
-        newTab = false
-    ) {
+    constructor(name, width, height, text, bgColor, textColor, fontSize, fontFamily, url) {
         super(name, width, height, text, bgColor, textColor, fontSize, fontFamily);
 
         this.element = document.createElement("a");
+        this.element.classList.add("draggable-link");
         this.element.style.id =
             "created-draggable-element-a-" + `${this.createdElementID}-` + this.name.toLowerCase();
 
@@ -27,11 +17,14 @@ export class A extends DraggableElement {
         this.updateDraggableElement();
 
         this.element.href = this.url;
-        this.newTab = newTab;
+        this.element.target = "_blank";
 
-        if (this.newTab) {
-            this.element.target = "_blank";
-        }
+        this.element.textContent = "";
+
+        const span = document.createElement("span");
+        span.textContent = text;
+
+        this.element.appendChild(span);
     }
 
     static initialize() {

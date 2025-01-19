@@ -1,5 +1,15 @@
 import { ToolBox } from "../classes/ToolBox.js";
-import { applyRedBorderToElement, createDraggableElement } from "../services/elementService.js";
+import {
+    applyRedBorderToElement,
+    createDraggableElement,
+    addDraggableElementToDOM,
+} from "../services/elementService.js";
+import {
+    getDraggableElements,
+    addDraggableElement,
+    removeDraggableElement,
+    saveDraggableElementsToLocalStorage,
+} from "../services/storageService.js";
 
 /**
  * Creates an onclick event handler for the "Create" action button.
@@ -24,7 +34,13 @@ export const actionButtonCreateOnClickHandler = (toolBox) => {
             const bgColor = toolBox.getToolByID(6);
 
             warnIfFontAndBgColorsAreTheSame(fontColor, bgColor);
+
             const draggableElement = createDraggableElement(toolBox);
+            addDraggableElement(draggableElement);
+            console.log("Draggable Elements Map:", getDraggableElements());
+
+            addDraggableElementToDOM(draggableElement);
+
             console.log(draggableElement);
         } else {
             console.warn("%cPlease select a type and font family.", "color: yellow;");
@@ -119,4 +135,23 @@ const warnIfFontAndBgColorsAreTheSame = (fontColor, bgColor) => {
         console.log("Font color:", fontColorInput.value);
         console.log("Background color:", bgColorInput.value);
     }
+};
+
+export const actionButtonSaveOnClickHandler = () => {
+    const saveBtn = document.getElementById("save-workspace-btn");
+
+    saveBtn.onclick = () => {
+        const draggableElements = getDraggableElements();
+
+        for (const draggableElement of draggableElements.values()) {
+            draggableElement.locationX = draggableElement.element.style.left.replace("px", "");
+            draggableElement.locationY = draggableElement.element.style.top.replace("px", "");
+
+            console.log("updated locationX and locationY");
+        }
+
+        saveDraggableElementsToLocalStorage();
+
+        console.log("Saved Draggable Elements to Local Storage.");
+    };
 };

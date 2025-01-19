@@ -3,5 +3,6 @@
     "editor.unicodeHighlight.ambiguousCharacters": false,
     "liveServer.settings.port": 3001,
     "cSpell.words": ["Amatic", "Bebas", "Merriweather", "Neue", "Playfair", "Ruhl", "Varela"],
-    "nodeuml.nodemda.status": "Not installed"
+    "nodeuml.nodemda.status": "Not installed",
+    "editor.cursorBlinking": "expand"
 }
