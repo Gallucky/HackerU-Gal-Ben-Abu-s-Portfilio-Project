@@ -28,3 +28,10 @@ console.log(toolBox.tools);
 
 actionButtonCreateOnClickHandler(toolBox);
 actionButtonSaveOnClickHandler();
+
+const floatingButton = document.getElementById("floating-btn");
+const aside = document.querySelector("aside");
+
+floatingButton.onclick = () => {
+    aside.classList.toggle("open");
+};

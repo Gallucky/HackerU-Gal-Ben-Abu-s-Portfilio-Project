@@ -23,3 +23,10 @@
 .tool-size-height-input {
     grid-area: height;
 }
+
+/* Mobile Support */
+@media (max-width: 768px) {
+    .outer-wrapper {
+        width: 90% !important;
+    }
+}

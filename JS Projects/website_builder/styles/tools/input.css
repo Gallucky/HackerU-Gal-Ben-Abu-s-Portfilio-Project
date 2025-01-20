@@ -16,3 +16,10 @@ representing a tool of type input.
     width: 100%;
     resize: none;
 }
+
+/* Mobile Support */
+@media (max-width: 768px) {
+    .tool.tool-type-input label {
+        width: 90%;
+    }
+}

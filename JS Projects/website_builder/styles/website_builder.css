@@ -200,20 +200,44 @@ aside {
     border-bottom-left-radius: 16px;
 }
 
+#floating-btn {
+    width: 50px;
+    height: 50px;
+
+    display: block;
+    position: absolute;
+    bottom: 2.5%;
+    right: 5%;
+
+    background: teal;
+    border-radius: 50%;
+    border: 1px solid black;
+
+    z-index: 100;
+}
+
 /* Mobile Support */
 @media (max-width: 768px) {
     .website-builder {
         width: 95%;
-        height: 80vh;
+        height: 90vh;
 
-        grid-template-columns: 30% 1fr;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 
         font-size: 0.75rem;
     }
 
     aside {
-        width: 90%;
-        height: 85%;
+        width: 80%;
+        height: 70%;
+
+        transform: translate(-100%);
+        transition: transform 1s ease-in-out;
+
+        z-index: 10;
 
         margin-top: 10%;
         margin-bottom: 5%;
@@ -269,6 +293,19 @@ aside {
             }
         }
     }
+
+    aside.open {
+        transform: translate(0);
+    }
+
+    #workspace {
+        width: 95%;
+        height: 95%;
+    }
+
+    #floating-btn {
+        display: flex;
+    }
 }
 
 .draggable-link {
@@ -290,4 +327,8 @@ aside {
     width: 100px;
     height: 100px;
     background-color: white;
+}
+
+*[data-draggable] {
+    line-break: anywhere;
 }

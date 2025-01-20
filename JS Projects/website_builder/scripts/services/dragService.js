@@ -58,10 +58,14 @@ export const dragElement = (element) => {
     const elementBorder = element.style.border;
 
     const moveElement = (e) => {
-        mouseXPos = elementXPos - e.clientX;
-        mouseYPos = elementYPos - e.clientY;
-        elementXPos = e.clientX;
-        elementYPos = e.clientY;
+        // Checking if the user touches the screen in mobile mode.
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+        mouseXPos = elementXPos - clientX;
+        mouseYPos = elementYPos - clientY;
+        elementXPos = clientX;
+        elementYPos = clientY;
 
         const paddingForBorders = 4;
 
@@ -116,17 +120,24 @@ export const dragElement = (element) => {
 
     const startDragging = (e) => {
         e.preventDefault(); // Add this to prevent any default behaviors
-        elementXPos = e.clientX;
-        elementYPos = e.clientY;
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-        window.addEventListener("mousemove", moveElement); // Change to window
-        window.addEventListener("mouseup", stopDragging, { once: true }); // Add once: true
+        elementXPos = clientX;
+        elementYPos = clientY;
+
+        const moveEvent = e.touches ? "touchmove" : "mousemove";
+        const stopEvent = e.touches ? "touchend" : "mouseup";
+
+        window.addEventListener(moveEvent, moveElement); // Change to window
+        window.addEventListener(stopEvent, stopDragging, { once: true }); // Add once: true
         element.style.cursor = "grabbing";
         element.style.border = "3px groove teal";
     };
 
     const stopDragging = () => {
         window.removeEventListener("mousemove", moveElement);
+        window.removeEventListener("touchmove", moveElement);
         element.style.cursor = "grab";
         element.style.border = elementBorder;
     };
@@ -135,6 +146,9 @@ export const dragElement = (element) => {
     element.style.cursor = "grab";
     element.style.position = "absolute"; // Ensure element is positioned
     element.addEventListener("mousedown", startDragging);
+    // Using the '{ passive: false }' with the touchstart event to
+    // prevent touch scrolling
+    element.addEventListener("touchstart", startDragging, { passive: false });
 };
 
 export const updateDraggableElements = () => {
