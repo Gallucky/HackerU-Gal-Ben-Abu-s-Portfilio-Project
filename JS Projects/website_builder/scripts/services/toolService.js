@@ -170,11 +170,12 @@ export const createElementSizeTool = () => {
      * @param {InputEvent} e
      */
     widthInput.onchange = (e) => {
-        console.log(window.innerWidth);
+        const workspace = document.getElementById("workspace");
+        console.log("Workspace Width:", workspace.clientWidth);
 
         if (widthInput.value < 50) widthInput.value = 50;
-        if (widthInput.value > window.innerWidth * 0.9) {
-            widthInput.value = +(window.innerWidth * 0.9).toString().split(".")[0];
+        if (widthInput.value > workspace.clientWidth * 0.9) {
+            widthInput.value = +(workspace.clientWidth * 0.9).toString().split(".")[0];
         }
     };
 
@@ -214,11 +215,12 @@ export const createElementSizeTool = () => {
      * @param {Event} e the onchange event
      */
     heightInput.onchange = (e) => {
-        console.log(window.innerHeight);
+        const workspace = document.getElementById("workspace");
+        console.log("Workspace Height:", workspace.clientHeight);
 
         if (heightInput.value < 50) heightInput.value = 50;
-        if (heightInput.value > window.innerHeight * 0.9) {
-            heightInput.value = +(window.innerHeight * 0.9).toString().split(".")[0];
+        if (heightInput.value > workspace.clientHeight * 0.9) {
+            heightInput.value = +(workspace.clientHeight * 0.9).toString().split(".")[0];
         }
     };
 

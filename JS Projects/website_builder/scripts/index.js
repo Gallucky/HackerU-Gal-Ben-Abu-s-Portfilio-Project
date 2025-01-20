@@ -31,7 +31,22 @@ actionButtonSaveOnClickHandler();
 
 const floatingButton = document.getElementById("floating-btn");
 const aside = document.querySelector("aside");
+const overlay = document.querySelector(".overlay");
 
 floatingButton.onclick = () => {
+    if (aside.classList.contains("open")) {
+        overlay.style.zIndex = -1;
+    } else {
+        overlay.style.zIndex = 9;
+    }
+    aside.classList.toggle("open");
+};
+
+overlay.onclick = () => {
+    if (aside.classList.contains("open")) {
+        overlay.style.zIndex = -1;
+    } else {
+        overlay.style.zIndex = 9;
+    }
     aside.classList.toggle("open");
 };
