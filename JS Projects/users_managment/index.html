@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Users Management</title>
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <div class="users-management">
+            <form action="" id="registration-form">
+                <h2>Registration:</h2>
+                <div class="form-control">
+                    <label for="register-first-name">First Name:</label>
+                    <input type="text" id="register-first-name" />
+                </div>
+                <div class="form-control">
+                    <label for="register-last-name">Last Name:</label>
+                    <input type="text" id="register-last-name" />
+                </div>
+                <div class="form-control">
+                    <label for="register-email">Email:</label>
+                    <input type="email" id="register-email" />
+                </div>
+                <div class="form-control">
+                    <label for="register-password">Password:</label>
+                    <input type="password" id="register-password" />
+                </div>
+                <button type="submit" class="shiny-button">Register</button>
+            </form>
+            <form action="" id="login-form">
+                <h2>Login:</h2>
+                <div class="form-control">
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" />
+                </div>
+                <div class="form-control">
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" />
+                </div>
+                <button type="submit" class="shiny-button">Login</button>
+            </form>
+            <form action="" id="users-management-form">
+                <h2>Users Management Screen</h2>
+                <table>
+                    <header>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </header>
+                    <tbody id="users-table"></tbody>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>
