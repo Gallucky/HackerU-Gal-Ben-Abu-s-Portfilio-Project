@@ -4,7 +4,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Users Management</title>
+        <link rel="stylesheet" href="../../styles/globals/general.css" />
         <link rel="stylesheet" href="./style.css" />
+        <script src="./script.js" defer></script>
     </head>
     <body>
         <div class="users-management">
@@ -12,33 +14,41 @@
                 <h2>Registration:</h2>
                 <div class="form-control">
                     <label for="register-first-name">First Name:</label>
-                    <input type="text" id="register-first-name" />
+                    <input type="text" id="register-first-name" class="error" />
+                    <p id="register-first-name-helper"></p>
                 </div>
                 <div class="form-control">
                     <label for="register-last-name">Last Name:</label>
-                    <input type="text" id="register-last-name" />
+                    <input type="text" id="register-last-name" class="error" />
+                    <p id="register-last-name-helper"></p>
                 </div>
                 <div class="form-control">
                     <label for="register-email">Email:</label>
-                    <input type="email" id="register-email" />
+                    <input type="email" id="register-email" class="error" />
+                    <p id="register-email-helper"></p>
                 </div>
                 <div class="form-control">
                     <label for="register-password">Password:</label>
-                    <input type="password" id="register-password" />
+                    <input type="password" id="register-password" class="error" />
+                    <p id="register-password-helper"></p>
                 </div>
-                <button type="submit" class="shiny-button">Register</button>
+                <button type="submit" class="shiny-button disabled" id="register-btn" disabled>
+                    Register
+                </button>
             </form>
             <form action="" id="login-form">
                 <h2>Login:</h2>
-                <div class="form-control">
-                    <label for="login-email">Email:</label>
-                    <input type="email" id="login-email" />
+                <div id="login-wrapper">
+                    <div class="form-control">
+                        <label for="login-email">Email:</label>
+                        <input type="email" id="login-email" />
+                    </div>
+                    <div class="form-control">
+                        <label for="login-password">Password:</label>
+                        <input type="password" id="login-password" />
+                    </div>
+                    <button type="submit" class="shiny-button">Login</button>
                 </div>
-                <div class="form-control">
-                    <label for="login-password">Password:</label>
-                    <input type="password" id="login-password" />
-                </div>
-                <button type="submit" class="shiny-button">Login</button>
             </form>
             <form action="" id="users-management-form">
                 <h2>Users Management Screen</h2>

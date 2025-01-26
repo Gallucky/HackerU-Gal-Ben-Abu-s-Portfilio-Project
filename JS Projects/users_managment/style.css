@@ -1,9 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 
     font-family: Rubik;
+}
+
+label {
+    cursor: url("../../images/select-cursor_24x24.png"), text;
+}
+
+button[type="submit"]:hover {
+    cursor: url("../../images/cursor-click_24x24.png"), pointer;
+}
+
+.disabled {
+    cursor: not-allowed !important;
+    background-color: grey !important;
+    border-color: silver !important;
 }
 
 .users-management {
@@ -25,6 +41,10 @@
     }
 }
 
+.error {
+    border: 2px groove red !important;
+}
+
 #registration-form {
     width: 50%;
 
@@ -38,7 +58,7 @@
     background-color: aquamarine;
 
     input {
-        width: 275%;
+        width: 100% !important;
 
         outline: none;
         border: none;
@@ -46,18 +66,56 @@
 
         text-indent: 0.5rem;
     }
+
+    button {
+        margin-block: auto;
+    }
 }
 
 #login-form {
+    height: fit-content;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: 10px;
 
     background-color: blueviolet;
+
+    h2 {
+        align-self: flex-start;
+        margin-left: 1rem;
+        margin-bottom: 0;
+    }
+
+    #login-wrapper {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 20px;
+
+        padding: 1rem;
+
+        input {
+            width: 75% !important;
+
+            outline: none;
+            border: none;
+            background: rgb(212, 212, 212);
+
+            text-indent: 0.5rem;
+        }
+
+        button {
+            width: 150px;
+            height: 50%;
+            margin-left: auto;
+        }
+    }
 }
 
 .form-control {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
