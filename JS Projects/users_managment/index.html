@@ -6,7 +6,7 @@
         <title>Users Management</title>
         <link rel="stylesheet" href="../../styles/globals/general.css" />
         <link rel="stylesheet" href="./style.css" />
-        <script src="./script.js" defer></script>
+        <script type="module" src="./script.js" defer></script>
     </head>
     <body>
         <div class="users-management">
@@ -41,13 +41,17 @@
                 <div id="login-wrapper">
                     <div class="form-control">
                         <label for="login-email">Email:</label>
-                        <input type="email" id="login-email" />
+                        <input type="email" id="login-email" class="error" />
+                        <p id="login-email-helper"></p>
                     </div>
                     <div class="form-control">
                         <label for="login-password">Password:</label>
-                        <input type="password" id="login-password" />
+                        <input type="password" id="login-password" class="error" />
+                        <p id="login-password-helper"></p>
                     </div>
-                    <button type="submit" class="shiny-button">Login</button>
+                    <button type="submit" class="shiny-button disabled" id="login-btn" disabled>
+                        Login
+                    </button>
                 </div>
             </form>
             <form action="" id="users-management-form">
