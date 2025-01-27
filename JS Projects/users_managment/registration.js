@@ -1,21 +1,24 @@
-import { User } from "./User.js";
-import { addUserToLocalStorage } from "./localStorageService.js";
-
 // The registration process.
+import { User } from "./User.js";
 
-let onclickLogic = null;
+const registerForm = document.getElementById("registration-form");
+let submitLogic = null;
 
 export const initializeRegistrationLogic = () => {
-    // Registration inputs.
-    const registerFirstName = document.getElementById("register-first-name");
-    const registerLastName = document.getElementById("register-last-name");
-    const registerEmail = document.getElementById("register-email");
-    const registerPassword = document.getElementById("register-password");
-    const registerButton = document.getElementById("register-btn");
-
-    // Setting up the registration button onclick logic.
-    registerButton.onclick = (e) => {
+    // Setting up the registration button onsubmit logic.
+    registerForm.addEventListener("submit", (e) => {
         e.preventDefault();
+        // Registration inputs.
+        const registerFirstName = e.target.querySelector("#register-first-name");
+        const registerLastName = e.target.querySelector("#register-last-name");
+        const registerEmail = e.target.querySelector("#register-email");
+        const registerPassword = e.target.querySelector("#register-password");
+
+        console.log("Registering user...\n", e);
+        console.log("registerFirstName:", registerFirstName);
+        console.log("registerLastName:", registerLastName);
+        console.log("registerEmail:", registerEmail);
+        console.log("registerPassword:", registerPassword);
 
         // Getting the input values.
         const firstName = registerFirstName.value.trim();
@@ -24,13 +27,13 @@ export const initializeRegistrationLogic = () => {
         const password = registerPassword.value.trim();
 
         const user = new User(firstName, lastName, email, password);
-        addUserToLocalStorage(user);
         console.log("User registered successfully.");
-    };
+        console.log("The user:\n", user);
+    });
 
-    onclickLogic = registerButton.onclick;
+    submitLogic = registerForm.onsubmit;
 };
 
 export const getRegistrationOnclickLogic = () => {
-    return onclickLogic;
+    return submitLogic;
 };

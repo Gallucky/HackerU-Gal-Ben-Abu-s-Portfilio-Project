@@ -1,16 +1,13 @@
 import { User } from "./User.js";
-import { initializeLocalStorage } from "./localStorageService.js";
 import { initializeRegex } from "./regex.js";
 import { initializeRegistrationLogic } from "./registration.js";
+import { initializeTable } from "./domService.js";
 
-// Local storage setup.
-initializeLocalStorage();
+// Initialize table.
+initializeTable(User.users);
 
 // Initialize registration logic.
 initializeRegistrationLogic();
 
 // Initialize regex.
 initializeRegex();
-
-// Users Management.
-const usersList = document.getElementById("users-list");

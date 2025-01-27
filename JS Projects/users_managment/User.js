@@ -1,44 +1,37 @@
-export class User {
-    static #id = 0;
+import { addRow, removeRow, updateRow } from "./domService.js";
 
-    #firstName;
-    #lastName;
-    #email;
-    #password;
-    #isLoggedIn;
-    #userID;
+export class User {
+    static users = localStorage.getItem("users") ? JSON.parse(localStorage.getItem("users")) : [];
+    static count = 0;
+
+    id;
+    firstName;
+    lastName;
+    email;
+    password;
+    isLoggedIn;
 
     constructor(firstName, lastName, email, password) {
-        this.#firstName = firstName;
-        this.#lastName = lastName;
-        this.#email = email;
-        this.#password = password;
-        this.#isLoggedIn = false;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.isLoggedIn = false;
+        this.id = User.users.length + 1;
 
-        User.#id++;
-        this.#userID = User.#id;
-    }
-
-    get firstName() {
-        return this.#firstName;
-    }
-
-    get lastName() {
-        return this.#lastName;
-    }
-
-    get email() {
-        return this.#email;
+        addRow(this);
+        User.users.push(this);
+        localStorage.setItem("users", JSON.stringify(User.users));
     }
 
     setNewName(firstName, lastName) {
-        this.#firstName = firstName;
-        this.#lastName = lastName;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     changePassword(email, currentPassword, newPassword) {
-        if (email === this.#email && currentPassword === this.#password) {
-            this.#password = newPassword;
+        if (email === this.email && currentPassword === this.password) {
+            this.password = newPassword;
             console.log("Password changed successfully.");
         } else {
             console.log("Failed to change password.");
@@ -46,50 +39,31 @@ export class User {
     }
 
     isLoggedIn() {
-        return this.#isLoggedIn;
+        return this.isLoggedIn;
     }
 
-    login(email, password) {
-        if (this.#email === email && this.#password === password) {
-            this.#isLoggedIn = true;
-            console.log("Logged in successfully.");
-            return true;
-        }
-
-        console.log("Failed to log in.");
-        return false;
+    static removeUserById(id) {
+        User.users = User.users.filter((user) => user.id !== id);
+        console.log("User removed successfully.");
+        localStorage.setItem("users", JSON.stringify(User.users));
+        removeRow(id);
     }
 
-    updateUser(updatedUser) {
-        this.#firstName = updatedUser.firstName;
-        this.#lastName = updatedUser.lastName;
-        this.#email = updatedUser.email;
-        this.#password = updatedUser.password;
-        this.#isLoggedIn = updatedUser.isLoggedIn;
+    static login(id) {
+        const user = User.#getUserById(id);
+        user.isLoggedIn = true;
+        localStorage.setItem("users", JSON.stringify(User.users));
+        updateRow(user);
     }
 
-    // Serialization: Convert to plain object
-    toPlainObject() {
-        return {
-            firstName: this.#firstName,
-            lastName: this.#lastName,
-            email: this.#email,
-            isLoggedIn: this.#isLoggedIn,
-            userID: this.#userID,
-        };
+    static logout(id) {
+        const user = User.#getUserById(id);
+        user.isLoggedIn = false;
+        localStorage.setItem("users", JSON.stringify(User.users));
+        updateRow(user);
     }
 
-    // Static method: Create a User instance from a plain object
-    static fromPlainObject(obj) {
-        const user = new User(obj.firstName, obj.lastName, obj.email, "");
-        user.#isLoggedIn = obj.isLoggedIn;
-        user.#userID = obj.userID;
-
-        // Ensure the static ID is up-to-date
-        if (obj.userID >= User.#id) {
-            User.#id = obj.userID + 1;
-        }
-
-        return user;
+    static #getUserById(id) {
+        return User.users.find((user) => user.id === id);
     }
 }

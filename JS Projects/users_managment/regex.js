@@ -1,4 +1,5 @@
 import { getRegistrationOnclickLogic } from "./registration.js";
+import { emailIsTaken } from "./domService.js";
 
 export const initializeRegex = () => {
     // Registration.
@@ -24,11 +25,11 @@ export const initializeRegex = () => {
         const registrationFunctionality = getRegistrationOnclickLogic();
 
         if (isFirstNameValid && isLastNameValid && isEmailValid && isPasswordValid) {
-            registerButton.onclick = registrationFunctionality;
+            registerButton.onsubmit = registrationFunctionality;
             registerButton.classList.remove("disabled");
             registerButton.disabled = false;
         } else {
-            registerButton.onclick = (e) => {
+            registerButton.onsubmit = (e) => {
                 e.preventDefault();
                 console.log(
                     "%cRegister button is disabled until all fields are valid.",
@@ -80,6 +81,11 @@ export const initializeRegex = () => {
 
         if (!emailRegex.test(value)) {
             registerEmailHelper.innerText = "Email must be a valid email address";
+            if (!registerEmail.classList.contains("error")) {
+                registerEmail.classList.add("error");
+            }
+        } else if (emailIsTaken(value)) {
+            registerEmailHelper.innerText = "There is already an account with said email";
             if (!registerEmail.classList.contains("error")) {
                 registerEmail.classList.add("error");
             }

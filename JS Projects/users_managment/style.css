@@ -20,6 +20,7 @@ button[type="submit"]:hover {
     cursor: not-allowed !important;
     background-color: grey !important;
     border-color: silver !important;
+    border: #8b0000;
 }
 
 .users-management {
@@ -217,6 +218,23 @@ input {
         th {
             font-weight: 500;
         }
+    }
+}
+
+.user-id {
+    width: 1rem !important;
+}
+
+.action-buttons {
+    width: fit-content;
+    display: flex;
+    gap: 5px;
+
+    * {
+        width: fit-content;
+        height: fit-content;
+
+        padding: 0.25rem 2rem;
     }
 }
 
