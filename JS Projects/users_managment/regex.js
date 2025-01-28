@@ -1,5 +1,6 @@
-import { getRegistrationOnclickLogic } from "./registration.js";
+import { getRegistrationLogic } from "./registration.js";
 import { emailIsTaken } from "./domService.js";
+import { getLoginLogic } from "./login.js";
 
 export const initializeRegex = () => {
     // Registration.
@@ -22,7 +23,7 @@ export const initializeRegex = () => {
         const isPasswordValid = !registerPassword.classList.contains("error");
 
         // Save functionality.
-        const registrationFunctionality = getRegistrationOnclickLogic();
+        const registrationFunctionality = getRegistrationLogic();
 
         if (isFirstNameValid && isLastNameValid && isEmailValid && isPasswordValid) {
             registerButton.onsubmit = registrationFunctionality;
@@ -135,14 +136,14 @@ export const initializeRegex = () => {
         const isPasswordValid = !loginPassword.classList.contains("error");
 
         // Save functionality.
-        const loginFunctionality = loginButton.onclick;
+        const loginFunctionality = getLoginLogic();
 
         if (isEmailValid && isPasswordValid) {
-            loginButton.onclick = loginFunctionality;
+            loginButton.onsubmit = loginFunctionality;
             loginButton.classList.remove("disabled");
             loginButton.disabled = false;
         } else {
-            loginButton.onclick = (e) => {
+            loginButton.onsubmit = (e) => {
                 e.preventDefault();
                 console.log(
                     "%cLogin button is disabled until all fields are valid.",
@@ -181,14 +182,7 @@ export const initializeRegex = () => {
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])(?!.*[^a-zA-Z\d!@#$%^&*]).{8,}$/;
 
         if (!passwordRegex.test(value)) {
-            loginPasswordHelper.innerText =
-                "Password must follow the following rules:\n" +
-                "at least 8 characters\n" +
-                "at least one uppercase letter\n" +
-                "at least one lowercase letter\n" +
-                "at least one digit\n" +
-                "at least one special character (e.g. !@#$%^&)\n" +
-                "english characters only";
+            loginPasswordHelper.innerText = "Password does not follow the rules.";
             if (!loginPassword.classList.contains("error")) {
                 loginPassword.classList.add("error");
             }

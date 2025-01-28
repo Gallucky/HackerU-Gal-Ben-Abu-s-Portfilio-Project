@@ -34,6 +34,6 @@ export const initializeRegistrationLogic = () => {
     submitLogic = registerForm.onsubmit;
 };
 
-export const getRegistrationOnclickLogic = () => {
+export const getRegistrationLogic = () => {
     return submitLogic;
 };

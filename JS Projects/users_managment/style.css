@@ -124,6 +124,11 @@ button[type="submit"]:hover {
     gap: 5px;
 }
 
+.helper {
+    color: red;
+    font-size: 0.8rem;
+}
+
 button[type="submit"] {
     height: 2rem;
 

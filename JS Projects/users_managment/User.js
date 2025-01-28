@@ -9,7 +9,7 @@ export class User {
     lastName;
     email;
     password;
-    isLoggedIn;
+    status;
 
     constructor(firstName, lastName, email, password) {
         this.firstName = firstName;
@@ -39,7 +39,7 @@ export class User {
     }
 
     isLoggedIn() {
-        return this.isLoggedIn;
+        return this.status;
     }
 
     static removeUserById(id) {
@@ -51,7 +51,7 @@ export class User {
 
     static login(id) {
         const user = User.#getUserById(id);
-        user.isLoggedIn = true;
+        user.status = true;
         localStorage.setItem("users", JSON.stringify(User.users));
         updateRow(user);
     }
@@ -61,6 +61,19 @@ export class User {
         user.isLoggedIn = false;
         localStorage.setItem("users", JSON.stringify(User.users));
         updateRow(user);
+    }
+
+    static validateCredentials(email, password) {
+        return User.users.reduce((acc, user) => {
+            if (user.email === email && user.password === password) {
+                return user.id;
+            }
+            // Default Value.
+            acc = false;
+            return acc;
+        });
+
+        return false;
     }
 
     static #getUserById(id) {
