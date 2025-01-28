@@ -8,6 +8,14 @@
     font-family: Rubik;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
 label {
     cursor: url("../../images/select-cursor_24x24.png"), text;
 }
@@ -24,8 +32,9 @@ button[type="submit"]:hover {
 }
 
 .users-management {
-    width: fit-content;
-    height: 90vh;
+    width: min(95%, 1200px);
+    min-height: 90vh;
+    height: auto;
 
     display: grid;
     grid-template-areas: "registration" "login" "users-management";
@@ -47,13 +56,12 @@ button[type="submit"]:hover {
 }
 
 #registration-form {
-    width: 50%;
+    width: clamp(280px, 90%, 600px);
 
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    justify-self: center;
+
+    margin: auto;
     gap: 10px;
 
     background-color: aquamarine;
@@ -74,7 +82,11 @@ button[type="submit"]:hover {
 }
 
 #login-form {
+    width: clamp(280px, 90%, 600px);
     height: fit-content;
+
+    margin: auto;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -197,38 +209,68 @@ input {
 }
 
 #users-management-form {
+    width: clamp(500px, 90%, 1200px);
     background-color: brown;
+    justify-self: center;
+
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 
     h2 {
         text-decoration: underline;
     }
 
     table {
-        margin-top: 0.5rem;
-        border-collapse: collapse;
+        width: 90%;
 
-        tr,
-        th,
-        td {
-            width: 10rem;
-            padding: 0.5rem;
+        margin: auto;
+        margin-top: 0.5rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        background: white;
+        text-align: center;
+
+        thead {
             border: 1px solid black;
+            background-color: green;
+            border-radius: 8px;
         }
 
-        th {
-            font-weight: 500;
+        tbody {
+            border: 1px solid black;
+            background-color: red;
+            border-radius: 8px;
+        }
+
+        th,
+        td {
+            width: 5rem;
+
+            margin-block: 0.5rem;
+            justify-self: center;
+        }
+
+        td.action-buttons {
+            width: max(5rem, 250px);
         }
     }
 }
 
 .user-id {
-    width: 1rem !important;
+    width: 30px !important;
 }
 
 .action-buttons {
-    width: fit-content;
+    width: clamp(100px, 10%, 1fr);
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 5px;
+    padding: 0.5rem 1rem;
 
     * {
         width: fit-content;
@@ -253,5 +295,48 @@ https://uiverse.io/satyamchaudharydev/rude-wolverine-24
 
     to {
         left: 100%;
+    }
+}
+
+/* Mobile Support */
+@media (max-width: 768px) {
+    #registration-form {
+        justify-self: center;
+    }
+
+    #login-form,
+    #registration-form {
+        font-size: 1.5rem;
+    }
+
+    .action-buttons {
+        width: max(5%, 100px) !important;
+        display: flex;
+        flex-direction: column;
+
+        button {
+            width: 5% !important;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .users-management {
+        width: 100%;
+        padding: 0.5rem;
+        gap: 10px;
+    }
+
+    #login-form,
+    #registration-form {
+        width: min(95%, 1200px);
+        margin: 0 auto;
+        font-size: 1rem;
+    }
+
+    #users-management-form {
+        width: min(95%, 1200px);
+        margin: 0 auto;
+        font-size: var(width);
     }
 }

@@ -23,7 +23,7 @@ export const addRow = (user) => {
 
     const logoutButton = document.createElement("button");
     logoutButton.innerText = "Logout";
-    logoutButton.id = `login-button-${user.id}`;
+    logoutButton.id = `logout-button-${user.id}`;
     logoutButton.classList.add("shiny-button");
     logoutButton.style.backgroundColor = "lime";
     logoutButton.style.borderColor = "limegreen";
@@ -85,14 +85,8 @@ export const updateRow = (user) => {
     row.children[3].innerText = user.email;
     row.children[4].innerText = user.password;
     row.children[5].innerText = user.isLoggedIn ? "Logged In" : "Logged Out";
+    row.children[6].children[0].innerText = "Logout";
 
-    if (user.isLoggedIn) {
-        row.children[6].children[0].innerText = "Logout";
-        console.log("Now Logout");
-    } else {
-        row.children[6].children[0].innerText = "Login";
-        console.log("Now Login");
-    }
     console.log(row.children[6].children[0].innerText);
     console.log(user.isLoggedIn);
 };
