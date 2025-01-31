@@ -2,11 +2,17 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="viewport"
+            content="width=device-width, height=device-height, initial-scale=1.0" />
         <title>Users Management</title>
         <link rel="stylesheet" href="../../styles/globals/general.css" />
-        <link rel="stylesheet" href="./style.css" />
-        <script type="module" src="./script.js" defer></script>
+        <link rel="stylesheet" href="./styles/style.css" />
+        <link rel="stylesheet" href="./styles/shiny_button.css" />
+        <link rel="stylesheet" href="./styles/registration_form.css" />
+        <link rel="stylesheet" href="./styles/login_form.css" />
+        <link rel="stylesheet" href="./styles/users_management_area.css" />
+        <script type="module" src="./scripts/script.js" defer></script>
     </head>
     <body>
         <div class="users-management">
@@ -65,12 +71,45 @@
                             <th>Email</th>
                             <th>Password</th>
                             <th>Status</th>
-                            <th>Actions</th>
+                            <th colspan="3">Actions</th>
                         </tr>
                     </thead>
                     <tbody id="users-table"></tbody>
                 </table>
             </form>
+            <footer>
+                <h3>
+                    The following icons are from <a href="https://www.flaticon.com">flaticon.com</a>
+                </h3>
+                <ul>
+                    <li>
+                        <a
+                            href="https://www.flaticon.com/free-icons/logout"
+                            target="_blank"
+                            title="logout icons"
+                            >Logout icons created by Freepik</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://www.flaticon.com/free-icons/trash"
+                            target="_blank"
+                            title="trash icons"
+                            >Delete icons created by Freepik</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://www.flaticon.com/free-icons/edit"
+                            target="_blank"
+                            title="edit icons"
+                            >Edit icons created by inkubators</a
+                        >
+                    </li>
+                </ul>
+            </footer>
         </div>
+
+        <!-- <div class="test"></div> -->
     </body>
 </html>

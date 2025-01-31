@@ -16,7 +16,7 @@ export class User {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.isLoggedIn = false;
+        this.status = false;
         this.id = User.users.length + 1;
 
         addRow(this);
@@ -38,7 +38,7 @@ export class User {
         }
     }
 
-    isLoggedIn() {
+    getStatus() {
         return this.status;
     }
 
@@ -51,32 +51,44 @@ export class User {
 
     static login(id) {
         const user = User.#getUserById(id);
-        user.status = true;
-        localStorage.setItem("users", JSON.stringify(User.users));
-        updateRow(user);
+
+        if (user) {
+            user.status = true;
+            localStorage.setItem("users", JSON.stringify(User.users));
+            updateRow(user);
+            console.log("The updated users list:\n", localStorage.getItem("users"));
+        } else {
+            console.error("User is not found.");
+        }
     }
 
     static logout(id) {
         const user = User.#getUserById(id);
-        user.isLoggedIn = false;
+        user.status = false;
         localStorage.setItem("users", JSON.stringify(User.users));
         updateRow(user);
     }
 
     static validateCredentials(email, password) {
-        return User.users.reduce((acc, user) => {
+        let userID = null;
+
+        User.users.forEach((user) => {
             if (user.email === email && user.password === password) {
-                return user.id;
+                userID = user.id;
             }
-            // Default Value.
-            acc = false;
-            return acc;
         });
 
-        return false;
+        return userID;
     }
 
     static #getUserById(id) {
-        return User.users.find((user) => user.id === id);
+        let foundUser = null;
+        User.users.forEach((user) => {
+            if (user.id === id) {
+                foundUser = user;
+            }
+        });
+
+        return foundUser;
     }
 }

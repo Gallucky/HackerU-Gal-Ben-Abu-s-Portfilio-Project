@@ -13,12 +13,12 @@ export const initializeLoginLogic = () => {
         const email = loginEmail.value.trim();
         const password = loginPassword.value.trim();
 
-        const res = User.validateCredentials(email, password);
+        const userID = User.validateCredentials(email, password);
 
-        if (res) {
-            console.log("Found user with id:", res);
+        if (userID) {
+            console.log("Found user with id:", userID);
 
-            User.login(email.password);
+            User.login(userID);
         } else {
             console.log("Failed to login.");
         }

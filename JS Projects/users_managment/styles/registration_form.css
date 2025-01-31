@@ -1,0 +1,28 @@
+#registration-form {
+    width: clamp(280px, 90%, 600px);
+    height: 1fr;
+
+    display: flex;
+    flex-direction: column;
+
+    margin: auto;
+    margin-block: 1%;
+    gap: 10px;
+
+    border-radius: 8px;
+    background-color: aquamarine;
+
+    input {
+        width: 100% !important;
+
+        outline: none;
+        border: none;
+        background: rgb(212, 212, 212);
+
+        text-indent: 0.5rem;
+    }
+
+    button {
+        margin-block: auto;
+    }
+}

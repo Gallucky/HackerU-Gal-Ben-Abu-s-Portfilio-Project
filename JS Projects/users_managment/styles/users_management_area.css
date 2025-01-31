@@ -1,0 +1,125 @@
+#users-management-form {
+    min-width: min-content;
+    height: 1fr;
+
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    align-self: center;
+    background-color: brown;
+
+    border-radius: 8px;
+
+    h2 {
+        text-decoration: underline;
+    }
+
+    table {
+        /* width: clamp(250px, 50%, 500px) !important; */
+        width: 100%;
+
+        margin-top: 0.5rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        background: white;
+        text-align: center;
+        border-collapse: collapse;
+
+        th,
+        td {
+            width: 5rem;
+            height: 100%;
+            justify-self: center;
+            border: 1px solid black;
+            padding: 0.5rem;
+
+            background: blue;
+        }
+
+        .action-btn-logout {
+            border-right: none;
+        }
+
+        .action-btn-delete {
+            border: none !important;
+            border-bottom: 1px solid black !important;
+        }
+
+        .action-btn-edit {
+            border-left: none;
+        }
+
+        .text-logout {
+            display: block;
+        }
+
+        .icon-logout {
+            display: none;
+            background-image: url("../images/logout.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .text-delete {
+            display: block;
+        }
+
+        .icon-delete {
+            display: none;
+            background-image: url("../images/delete.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .text-edit {
+            display: block;
+        }
+
+        .icon-edit {
+            display: none;
+            background-image: url("../images/edit.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+    }
+}
+
+.user-id {
+    width: 30px !important;
+}
+
+@media screen and (max-width: 720px) {
+    table {
+        width: min(100%, 500px);
+        border-collapse: collapse;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+    }
+
+    th {
+        text-wrap: nowrap;
+        background-color: aliceblue;
+    }
+
+    th,
+    td {
+        padding: 8px !important;
+        text-align: left;
+        font-size: 0.8rem;
+        max-width: 100px;
+    }
+
+    .action-btn-logout::before,
+    .action-btn-delete::before,
+    .action-btn-edit::before {
+        content: "";
+    }
+
+    .action-btn-logout {
+        background-image: url();
+    }
+}

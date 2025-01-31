@@ -1,0 +1,46 @@
+#login-form {
+    width: clamp(280px, 90%, 600px);
+    height: 1fr;
+
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    border-radius: 8px;
+    background-color: blueviolet;
+
+    h2 {
+        align-self: flex-start;
+        margin-left: 1rem;
+        margin-bottom: 0;
+    }
+
+    #login-wrapper {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 20px;
+
+        padding: 1rem;
+
+        input {
+            width: 75% !important;
+
+            outline: none;
+            border: none;
+            background: rgb(212, 212, 212);
+
+            text-indent: 0.5rem;
+        }
+
+        button {
+            width: 150px;
+            height: 50%;
+            margin-left: auto;
+        }
+    }
+}
