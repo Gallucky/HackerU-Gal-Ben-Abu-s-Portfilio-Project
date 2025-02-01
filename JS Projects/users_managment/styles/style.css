@@ -21,6 +21,7 @@ label {
 
 .users-management {
     width: 100%;
+    height: 100%;
 
     position: absolute;
     bottom: 0;
@@ -40,8 +41,11 @@ label {
     /* For each direct child of this element do the following. */
     & > * {
         padding: 0.55rem 1rem;
-        height: 1fr !important;
     }
+}
+
+.hidden {
+    display: none;
 }
 
 .error {
@@ -89,8 +93,94 @@ footer {
     }
 }
 
+#edit-dialog {
+    width: fit-content;
+    height: fit-content;
+
+    opacity: 0;
+    padding: 1vw;
+    gap: 1vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    border-radius: 8px;
+    background-color: tomato;
+    border: 1px solid brown;
+    z-index: 100;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    transition: all 0.5s ease-in-out;
+
+    h2 {
+        color: blueviolet;
+        font-size: 2rem;
+    }
+
+    .data {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 0.75vh;
+
+        margin-block: 2vh;
+        margin-inline: auto;
+    }
+
+    label {
+        color: darkturquoise;
+        font-size: 1rem;
+    }
+
+    button {
+        width: 7rem;
+        height: 2rem;
+    }
+
+    .buttons {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: flex-end;
+        gap: 1vw;
+    }
+
+    .form-control.horizontal {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5vw;
+    }
+
+    input {
+        outline: none;
+        text-indent: 1.5px;
+    }
+}
+
+#edit-dialog.shown {
+    opacity: 1;
+}
+
+input:read-only {
+    background-color: lightgray;
+    color: black;
+    cursor: url("../../../images/unavailable-cursor_24x24.png"), not-allowed;
+    outline: none;
+    user-select: none;
+}
+
 @media (max-width: 768px) {
     body {
+        width: 100svw !important;
         height: 100svh !important;
     }
 }

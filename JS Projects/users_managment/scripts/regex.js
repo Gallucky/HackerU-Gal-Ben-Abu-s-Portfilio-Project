@@ -192,4 +192,73 @@ export const initializeRegex = () => {
         }
         checkLoginFormIsValid();
     });
+
+    // Edit.
+    const editEmail = document.getElementById("edit-user-email");
+    const editPassword = document.getElementById("edit-user-password");
+    const editSaveButton = document.getElementById("edit-save-btn");
+    const editCancelButton = document.getElementById("edit-cancel-btn");
+
+    // ~~~ Helpers ~~~ //
+    const editEmailHelper = document.getElementById("edit-user-email-helper");
+    const editPasswordHelper = document.getElementById("edit-user-password-helper");
+
+    editEmail.addEventListener("input", (e) => {
+        const value = e.target.value.trim();
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+        if (!emailRegex.test(value)) {
+            editEmailHelper.innerText = "Email must be a valid email address";
+            if (!editEmail.classList.contains("error")) {
+                editEmail.classList.add("error");
+            }
+        } else {
+            editEmailHelper.innerText = "";
+            editEmail.classList.remove("error");
+        }
+
+        checkEditFormIsValid();
+    });
+
+    editPassword.addEventListener("input", (e) => {
+        const value = e.target.value.trim();
+        const passwordRegex =
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])(?!.*[^a-zA-Z\d!@#$%^&*]).{8,}$/;
+
+        if (!passwordRegex.test(value)) {
+            editPasswordHelper.innerText = "Password does not follow the rules.";
+            if (!editPassword.classList.contains("error")) {
+                editPassword.classList.add("error");
+            }
+        } else {
+            editPasswordHelper.innerText = "";
+            editPassword.classList.remove("error");
+        }
+        checkEditFormIsValid();
+    });
+
+    const checkEditFormIsValid = () => {
+        const isEmailValid = !editEmail.classList.contains("error");
+        const isPasswordValid = !editPassword.classList.contains("error");
+
+        // Save functionality.
+        const editFunctionality = getRegistrationLogic();
+
+        if (isEmailValid && isPasswordValid) {
+            editSaveButton.onsubmit = editFunctionality;
+            editSaveButton.classList.remove("disabled");
+            editSaveButton.disabled = false;
+        } else {
+            editSaveButton.onsubmit = (e) => {
+                e.preventDefault();
+                console.log("%cEdit button is disabled until all fields are valid", "color: red;");
+            };
+
+            if (!editSaveButton.classList.contains("disabled")) {
+                editSaveButton.classList.add("disabled");
+            }
+
+            editSaveButton.disabled = true;
+        }
+    };
 };

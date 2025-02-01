@@ -26,13 +26,13 @@ export const addRow = (user) => {
     isLoggedIn.innerText = user.status ? "Logged In" : "Logged Out";
 
     const logoutButton = document.createElement("button");
-    const text = document.createElement("span");
-    const icon = document.createElement("div");
+    const logoutText = document.createElement("span");
+    const logoutIcon = document.createElement("div");
 
-    text.innerText = "Logout";
-    text.className = "text-logout";
+    logoutText.innerText = "Logout";
+    logoutText.className = "text-logout";
 
-    icon.className = "icon-logout";
+    logoutIcon.className = "icon-logout";
 
     logoutButton.id = `logout-button-${user.id}`;
     logoutButton.classList.add("shiny-button");
@@ -44,11 +44,18 @@ export const addRow = (user) => {
         User.logout(user.id);
     };
 
-    logoutButton.appendChild(text);
-    logoutButton.appendChild(icon);
+    logoutButton.appendChild(logoutText);
+    logoutButton.appendChild(logoutIcon);
 
     const deleteButton = document.createElement("button");
-    deleteButton.innerText = "Delete";
+    const deleteText = document.createElement("span");
+    const deleteIcon = document.createElement("div");
+
+    deleteText.innerText = "Delete";
+    deleteText.className = "text-delete";
+
+    deleteIcon.className = "icon-delete";
+
     deleteButton.id = `delete-button-${user.id}`;
     deleteButton.classList.add("shiny-button");
     deleteButton.style.backgroundColor = "red";
@@ -59,8 +66,17 @@ export const addRow = (user) => {
         User.removeUserById(user.id);
     };
 
+    deleteButton.appendChild(deleteText);
+    deleteButton.appendChild(deleteIcon);
+
     const editButton = document.createElement("button");
-    editButton.innerText = "Edit";
+    const editText = document.createElement("span");
+    const editIcon = document.createElement("div");
+
+    editText.innerText = "Edit";
+    editText.className = "text-edit";
+
+    editIcon.className = "icon-edit";
 
     editButton.id = `edit-button-${user.id}`;
     editButton.classList.add("shiny-button");
@@ -71,6 +87,9 @@ export const addRow = (user) => {
         e.preventDefault();
         User.editUserById(user.id);
     };
+
+    editButton.appendChild(editText);
+    editButton.appendChild(editIcon);
 
     actionBtnLogout.appendChild(logoutButton);
     actionBtnDelete.appendChild(deleteButton);

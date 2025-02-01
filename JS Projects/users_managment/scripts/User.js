@@ -29,17 +29,26 @@ export class User {
         this.lastName = lastName;
     }
 
-    changePassword(email, currentPassword, newPassword) {
-        if (email === this.email && currentPassword === this.password) {
-            this.password = newPassword;
-            console.log("Password changed successfully.");
-        } else {
-            console.log("Failed to change password.");
+    getStatus() {
+        return this.status;
+    }
+
+    static changeUserPassword(id, email, oldPassword, newPassword) {
+        const user = User.#getUserById(id);
+        if (user && user.email === email && user.password === oldPassword) {
+            user.password = newPassword;
+            localStorage.setItem("users", JSON.stringify(User.users));
+            updateRow(user);
         }
     }
 
-    getStatus() {
-        return this.status;
+    static changeUserEmail(id, oldEmail, newEmail, password) {
+        const user = User.#getUserById(id);
+        if (user && user.email === oldEmail && user.password === password) {
+            user.email = newEmail;
+            localStorage.setItem("users", JSON.stringify(User.users));
+            updateRow(user);
+        }
     }
 
     static removeUserById(id) {
@@ -81,6 +90,14 @@ export class User {
         return userID;
     }
 
+    static editUserById(id) {
+        const user = User.#getUserById(id);
+
+        if (user) {
+            User.#openEditDialog(id);
+        }
+    }
+
     static #getUserById(id) {
         let foundUser = null;
         User.users.forEach((user) => {
@@ -90,5 +107,37 @@ export class User {
         });
 
         return foundUser;
+    }
+
+    static #openEditDialog(id) {
+        const user = User.#getUserById(id);
+
+        const editDialog = document.getElementById("edit-dialog");
+        editDialog.classList.add("shown");
+
+        const userID = document.getElementById("non-editable-user-id");
+        const userEmail = document.getElementById("edit-user-email");
+        const userPassword = document.getElementById("edit-user-password");
+
+        userID.value = user.id;
+        userEmail.value = user.email;
+        userPassword.value = user.password;
+
+        const saveButton = document.getElementById("edit-save-btn");
+        saveButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            const email = userEmail.value.trim();
+            const password = userPassword.value.trim();
+
+            User.changeUserPassword(user.id, user.email, user.password, password);
+            User.changeUserEmail(user.id, user.email, email, password);
+            editDialog.classList.remove("shown");
+        });
+
+        const cancelButton = document.getElementById("edit-cancel-btn");
+        cancelButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            editDialog.classList.remove("shown");
+        });
     }
 }
