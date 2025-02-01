@@ -1,0 +1,271 @@
+{
+    // Editor
+    "editor.tabSize": 4,
+    "editor.fontLigatures": true,
+    "editor.snippetSuggestions": "bottom",
+    "editor.suggestSelection": "first",
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.mouseWheelZoom": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.fontFamily": "JetBrains Mono, Heebo",
+    "editor.formatOnPaste": true,
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.minimap.enabled": false,
+    "editor.linkedEditing": true,
+
+    // Workbench
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.editor.empty.hint": "hidden",
+    "workbench.startupEditor": "none",
+    "workbench.colorTheme": "Default Dark+",
+
+    // Prettier
+    "prettier.tabWidth": 4,
+    "prettier.printWidth": 100,
+    "prettier.proseWrap": "never",
+    "prettier.bracketSameLine": true,
+    "prettier.htmlWhitespaceSensitivity": "css",
+
+    // Emmet
+    "emmet.showSuggestionsAsSnippets": true,
+    "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
+    "emmet.includeLanguages": {
+        "javascript": "html",
+        "php": "html",
+        "plaintext": "html"
+    },
+
+    // Git
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+
+    // Languages:
+
+    // JavaScript
+    "[javascript]": {
+        "html.suggest.html5": true,
+        "editor.suggest.showKeywords": true,
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": false
+        },
+
+        "editor.snippetSuggestions": "bottom",
+        "editor.suggestSelection": "first",
+        "editor.autoClosingBrackets": "never",
+        "editor.autoClosingQuotes": "never",
+        "editor.autoClosingComments": "never",
+        "editor.formatOnSave": true,
+        "editor.cursorBlinking": "smooth",
+        "editor.cursorSmoothCaretAnimation": "on",
+        "editor.foldingStrategy": "indentation",
+        "editor.suggest.preview": true,
+        "editor.quickSuggestionsDelay": 1
+    },
+
+    // CSS
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "css.format.spaceAroundSelectorSeparator": true,
+
+    // HTML
+    "html.autoClosingTags": false,
+
+    // JSON
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    // Powershell
+    "[powershell]": {
+        "editor.defaultFormatter": "ms-vscode.powershell"
+    },
+    "powershell.suppressAdditionalExeNotFoundWarning": true,
+    "powershell.codeFormatting.useCorrectCasing": true,
+    "powershell.scriptAnalysis.enable": false,
+
+    // Miscillaneous
+    "better-comments.tags": [
+        // My custom tags for better comments
+        {
+            "tag": "/* |",
+            "color": "#329629",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "#3296291A",
+            "bold": true,
+            "italic": false
+        },
+        {
+            "tag": "/* #region ⤷ ",
+            "color": "#8929dc",
+            "backgroundColor": "#a971bf10",
+            "bold": true,
+            "italic": false
+        },
+        {
+            "tag": "/* #region | ",
+            "color": "#008080",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "#00B5AD10",
+            "bold": true,
+            "italic": false
+        },
+        {
+            "tag": "/* #region",
+            "color": "#008080",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": true,
+            "italic": false
+        },
+        {
+            "tag": "/* #endregion",
+            "color": "#008080",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": true,
+            "italic": false
+        },
+        {
+            "tag": "/*",
+            "color": "#329629",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "\t",
+            "color": "#329629",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "\n*",
+            "color": "#329629",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "*",
+            "color": "#329629",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+
+        // Default tags
+        {
+            "tag": "!",
+            "color": "#FF2D00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "?",
+            "color": "#3498DB",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "//",
+            "color": "#474747",
+            "strikethrough": true,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "todo",
+            "color": "#FF8C00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        }
+    ],
+
+    // "cSpell.enableFiletypes": ["!html"],
+    "cSpell.language": "en,he,lorem",
+    "cSpell.userWords": [
+        "Abu's",
+        "Amirim",
+        "Arimo",
+        "Atuda",
+        "curr",
+        "divs",
+        "Eilat",
+        "endregion",
+        "gallucky",
+        "Heebo",
+        "Lato",
+        "Lavi",
+        "Magshimim",
+        "moshe",
+        "multiplatform",
+        "Pacifico",
+        "pokemons",
+        "Stylesheet",
+        "Uiverse",
+        "Unfocus",
+        "unneccery",
+        "איזור",
+        "הפורטפוליו",
+        "הפיצ'ר",
+        "וסקריפטים",
+        "סיסמא",
+        "סיסמה",
+        "פיצ'ר",
+        "פיצ'רים"
+    ],
+
+    "files.autoSave": "onFocusChange",
+    "terminal.integrated.enablePersistentSessions": false,
+
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveServer.settings.port": 3000,
+    "liveServer.settings.host": "localhost",
+    "liveServer.settings.CustomBrowser": "brave",
+
+    // Here you can add custom styles and script to modify VS Code further.
+    "vscode_custom_css.imports": [
+        "file:${userHome}/.vscode/VSCode_Customizations/supported_google_fonts.css",
+        "file:${userHome}/.vscode/VSCode_Customizations/custom-vscode.css",
+        "file:${userHome}/.vscode/VSCode_Customizations/custom-vscode.js"
+    ],
+
+    "security.workspace.trust.untrustedFiles": "open",
+    "iconify.excludes": ["fa"],
+    "codeium.enableConfig": {
+        "*": true,
+        "plaintext": true
+    },
+    "hediet.vscode-drawio.resizeImages": null,
+    "nodeuml.nodemda.status": "Not installed",
+    "editor.cursorBlinking": "expand"
+}

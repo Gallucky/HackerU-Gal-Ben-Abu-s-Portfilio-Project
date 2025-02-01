@@ -1,0 +1,174 @@
+// Place your key bindings in this file to override the defaults
+[
+    // Editor.
+    {
+        "key": "alt+f",
+        "command": "editor.toggleFold"
+    },
+    {
+        "key": "ctrl+-",
+        "command": "editor.fold",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "ctrl+shift+[",
+        "command": "-editor.fold",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "ctrl+shift+-",
+        "command": "editor.foldAll",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "ctrl+k ctrl+0",
+        "command": "-editor.foldAll",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "ctrl+=",
+        "command": "editor.unfold",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "ctrl+shift+]",
+        "command": "-editor.unfold",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "ctrl+shift+=",
+        "command": "editor.unfoldAll",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "ctrl+k ctrl+j",
+        "command": "-editor.unfoldAll",
+        "when": "editorTextFocus && foldingEnabled"
+    },
+    {
+        "key": "alt+. d",
+        "command": "workbench.files.action.createFolderFromExplorer"
+    },
+    {
+        "key": "alt+. f",
+        "command": "workbench.files.action.createFileFromExplorer"
+    },
+    {
+        "key": "ctrl+n ctrl+f",
+        "command": "explorer.newFile"
+    },
+    {
+        "key": "ctrl+n ctrl+d",
+        "command": "explorer.newFolder"
+    },
+    {
+        "key": "alt+b alt+l",
+        "command": "bookmarks.toggleLabeled"
+    },
+    {
+        "key": "alt+b alt+p",
+        "command": "bookmarks.jumpToPrevious",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+b alt+n",
+        "command": "bookmarks.jumpToNext",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+b alt+v",
+        "command": "workbench.view.extension.bookmarks"
+    },
+    {
+        "key": "ctrl+\\",
+        "command": "-workbench.action.splitEditor"
+    },
+    {
+        "key": "ctrl+\\",
+        "command": "workbench.action.chat.openInSidebar"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+shift+p",
+        "command": "lorem-ipsum.paragraph",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+w",
+        "command": "-workbench.action.terminal.toggleFindWholeWord",
+        "when": "terminalFindVisible && terminalHasBeenCreated || terminalFindVisible && terminalProcessSupported"
+    },
+    {
+        "key": "alt+w",
+        "command": "-toggleSearchEditorWholeWord",
+        "when": "inSearchEditor && searchInputBoxFocus"
+    },
+    {
+        "key": "alt+w",
+        "command": "-toggleFindWholeWord",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+w",
+        "command": "-toggleSearchWholeWord",
+        "when": "searchViewletFocus"
+    },
+    {
+        "key": "alt+w",
+        "command": "editor.emmet.action.wrapWithAbbreviation"
+    },
+    {
+        "key": "ctrl+numpad_subtract",
+        "command": "-workbench.action.zoomOut"
+    },
+    {
+        "key": "ctrl+numpad_subtract",
+        "command": "editor.emmet.action.decrementNumberByOneTenth"
+    },
+    {
+        "key": "numpad_subtract",
+        "command": "editor.emmet.action.decrementNumberByOne"
+    },
+    {
+        "key": "shift+numpad_subtract",
+        "command": "editor.emmet.action.decrementNumberByTen"
+    },
+    {
+        "key": "ctrl+numpad_add",
+        "command": "-workbench.action.zoomIn"
+    },
+    {
+        "key": "ctrl+numpad_add",
+        "command": "editor.emmet.action.incrementNumberByOneTenth"
+    },
+    {
+        "key": "numpad_add",
+        "command": "editor.emmet.action.incrementNumberByOne"
+    },
+    {
+        "key": "shift+numpad_add",
+        "command": "editor.emmet.action.incrementNumberByTen"
+    },
+    {
+        "key": "alt+i",
+        "command": "-commentStyler.italic",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+up",
+        "command": "editor.action.showHover",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+k ctrl+i",
+        "command": "-editor.action.showHover",
+        "when": "editorTextFocus"
+    }
+]
