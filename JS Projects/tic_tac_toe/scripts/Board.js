@@ -11,8 +11,55 @@ export class Board {
     }
 
     checkWinColumn() {
-        for (let i = 0; i < this.boardSize; i++) {
-            for (let j = 0; j < this)
+        for (let col = 0; col < this.boardSize; col++) {
+            const sequence = [];
+            for (let row = 0; row < this.boardSize; row++) {
+                sequence.push(this.board[row][col]);
+            }
+
+            if (Board.#sequenceSameCharacter(sequence, "X")) {
+                return "X";
+            } else if (Board.#sequenceSameCharacter(sequence, "O")) {
+                return "O";
+            }
+            console.log("sequence:", sequence);
         }
+        return false;
+    }
+
+    checkWinRow() {
+        for (let row = 0; row < this.boardSize; row++) {
+            const sequence = this.board[row];
+            if (Board.#sequenceSameCharacter(sequence, "X")) {
+                return "X";
+            } else if (Board.#sequenceSameCharacter(sequence, "O")) {
+                return "O";
+            }
+        }
+
+        return false;
+    }
+
+    checkWinDiagonal() {
+        for (let row = 0; row < this.boardSize; row++) {
+            const sequence = [];
+            for (let col = 0; col < this.boardSize; col++) {
+                if (row === col) {
+                    sequence.push(this.board[row][col]);
+                }
+            }
+
+            if (Board.#sequenceSameCharacter(sequence, "X")) {
+                return "X";
+            } else if (Board.#sequenceSameCharacter(sequence, "O")) {
+                return "O";
+            }
+        }
+        return false;
+    }
+
+    // Helper method:
+    static #sequenceSameCharacter(seq, char) {
+        return seq.every((cell) => cell === char);
     }
 }
