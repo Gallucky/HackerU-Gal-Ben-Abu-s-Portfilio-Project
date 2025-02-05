@@ -37,9 +37,15 @@ export class Board {
             }
 
             if (Board.#sequenceSameCharacter(sequence, "X")) {
-                return "X";
+                return {
+                    winner: "X",
+                    winningCells: sequence.map((val, row) => [row, col]),
+                };
             } else if (Board.#sequenceSameCharacter(sequence, "O")) {
-                return "O";
+                return {
+                    winner: "O",
+                    winningCells: sequence.map((val, row) => [row, col]),
+                };
             }
         }
         return false;
@@ -49,9 +55,15 @@ export class Board {
         for (let row = 0; row < this.#boardSize; row++) {
             const sequence = this.#board[row];
             if (Board.#sequenceSameCharacter(sequence, "X")) {
-                return "X";
+                return {
+                    winner: "X",
+                    winningCells: sequence.map((val, col) => [row, col]),
+                };
             } else if (Board.#sequenceSameCharacter(sequence, "O")) {
-                return "O";
+                return {
+                    winner: "O",
+                    winningCells: sequence.map((val, col) => [row, col]),
+                };
             }
         }
 
@@ -60,30 +72,43 @@ export class Board {
 
     checkWinDiagonal() {
         const sequence = [];
+        const cellsIndexes = [];
+
         for (let row = 0, col = 0; row < this.#boardSize && col < this.#boardSize; row++, col++) {
             sequence.push(this.#board[row][col]);
+            cellsIndexes.push([row, col]);
         }
+
         if (sequence.length !== this.#boardSize) {
             console.error("sequence is not the same length as boardSize.");
             return false;
         }
 
         if (Board.#sequenceSameCharacter(sequence, "X")) {
-            return "X";
+            return {
+                winner: "X",
+                winningCells: cellsIndexes,
+            };
         } else if (Board.#sequenceSameCharacter(sequence, "O")) {
-            return "O";
+            return {
+                winner: "O",
+                winningCells: cellsIndexes,
+            };
         }
         return false;
     }
 
     checkWinReverseDiagonal() {
         const sequence = [];
+        const cellsIndexes = [];
+
         for (
             let row = 0, col = this.#boardSize - 1;
             row < this.#boardSize && col >= 0;
             row++, col--
         ) {
             sequence.push(this.#board[row][col]);
+            cellsIndexes.push([row, col]);
         }
 
         if (sequence.length !== this.#boardSize) {
@@ -92,9 +117,15 @@ export class Board {
         }
 
         if (Board.#sequenceSameCharacter(sequence, "X")) {
-            return "X";
+            return {
+                winner: "X",
+                winningCells: cellsIndexes,
+            };
         } else if (Board.#sequenceSameCharacter(sequence, "O")) {
-            return "O";
+            return {
+                winner: "O",
+                winningCells: cellsIndexes,
+            };
         }
 
         return false;
@@ -118,7 +149,12 @@ export class Board {
             return "Draw";
         }
 
-        return columnWin || rowWin || diagonalWin || reverseDiagonalWin;
+        if (columnWin) return columnWin.winner;
+        if (rowWin) return rowWin.winner;
+        if (diagonalWin) return diagonalWin.winner;
+        if (reverseDiagonalWin) return reverseDiagonalWin.winner;
+
+        return false;
     }
 
     makeMove(row, col) {
@@ -131,16 +167,17 @@ export class Board {
             console.log("Board:", this.#board);
 
             const boardState = this.checkWin();
+            console.log("Board state:", boardState);
 
             // If the game is over after this successful move.
             if (boardState === "Draw") {
-                gameOverEventListener("Draw");
+                gameOverEventListener("Draw", this);
                 console.log("Draw.");
             } else if (boardState === "X") {
-                gameOverEventListener("X");
+                gameOverEventListener("X", this);
                 console.log("X wins.");
             } else if (boardState === "O") {
-                gameOverEventListener("O");
+                gameOverEventListener("O", this);
                 console.log("O wins.");
             }
             return true;

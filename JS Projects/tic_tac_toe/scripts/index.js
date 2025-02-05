@@ -1,5 +1,5 @@
 import { Board } from "./Board.js";
-import { drawBoard, addOnCellElementClickLogic } from "./domService.js";
+import { drawBoard, addOnCellElementClickLogic, drawWinningLine } from "./domService.js";
 
 const board = new Board(3);
 
@@ -34,7 +34,9 @@ const test2 = () => {
 
 // Starting the listening for game over event.
 document.addEventListener("GameOver", (e) => {
-    console.log(e.detail);
+    if (e.detail.winOccurred) {
+        drawWinningLine(e.detail.board, e.detail.res);
+    }
 });
 
 const boardCellsElements = drawBoard(board);

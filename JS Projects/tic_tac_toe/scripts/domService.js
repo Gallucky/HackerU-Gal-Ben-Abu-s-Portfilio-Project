@@ -1,3 +1,5 @@
+import { Board } from "./Board.js";
+
 export const drawBoard = (board) => {
     const boardDiv = document.getElementById("board");
     const boardCells = [];
@@ -77,7 +79,39 @@ export const addOnCellElementClickLogic = (boardCellsElements, board) => {
     });
 };
 
-export const gameOverEventListener = (result) => {
-    const event = new CustomEvent("GameOver", { detail: result });
+export const gameOverEventListener = (result, board) => {
+    const event = new CustomEvent("GameOver", {
+        detail: { res: result, board: board, winOccurred: result === "X" || result === "O" },
+    });
     document.dispatchEvent(event);
+};
+
+/**
+ * Draws a winning line on the board.
+ *
+ * The function takes in a board and a player as arguments.
+ * It checks the board for a win in all four directions (column, row, diagonal, and reverse diagonal).
+ * If a win is found in any of the directions, it draws a winning line accordingly.
+ *
+ * @param {Board} board The board to check for a win.
+ * @param {String} player The player that won the game.
+ */
+export const drawWinningLine = (board, player) => {
+    console.log(board);
+    console.log(typeof board);
+
+    const winByColumn = board.checkWinColumn();
+    const winByRow = board.checkWinRow();
+    const winByDiagonal = board.checkWinDiagonal();
+    const winByReverseDiagonal = board.checkWinReverseDiagonal();
+
+    if (winByColumn) {
+        console.log("win by column", winByColumn);
+    } else if (winByRow) {
+        console.log("win by row", winByRow);
+    } else if (winByDiagonal) {
+        console.log("win by diagonal", winByDiagonal);
+    } else if (winByReverseDiagonal) {
+        console.log("win by reverse diagonal", winByReverseDiagonal);
+    }
 };
