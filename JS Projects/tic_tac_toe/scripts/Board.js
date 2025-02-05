@@ -1,3 +1,5 @@
+import { gameOverEventListener } from "./domService.js";
+
 export class Board {
     #board;
     #boardSize;
@@ -127,6 +129,20 @@ export class Board {
             this.#player = this.#player === "X" ? "O" : "X";
 
             console.log("Board:", this.#board);
+
+            const boardState = this.checkWin();
+
+            // If the game is over after this successful move.
+            if (boardState === "Draw") {
+                gameOverEventListener("Draw");
+                console.log("Draw.");
+            } else if (boardState === "X") {
+                gameOverEventListener("X");
+                console.log("X wins.");
+            } else if (boardState === "O") {
+                gameOverEventListener("O");
+                console.log("O wins.");
+            }
             return true;
         }
 

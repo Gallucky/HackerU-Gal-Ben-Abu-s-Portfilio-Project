@@ -71,11 +71,11 @@
 }
 
 .cell-taken-by-x {
-    background-image: url("../images/X.svg") !important;
+    background-image: url("../images/X.svg");
 }
 
 .cell-taken-by-o {
-    background-image: url("../images/O.svg") !important;
+    background-image: url("../images/O.svg");
 }
 
 @media (max-width: 768px) {

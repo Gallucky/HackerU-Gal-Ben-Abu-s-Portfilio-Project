@@ -1,7 +1,7 @@
 import { Board } from "./Board.js";
 import { drawBoard, addOnCellElementClickLogic } from "./domService.js";
 
-const board = new Board(10);
+const board = new Board(3);
 
 const test1 = () => {
     console.log(board);
@@ -31,6 +31,11 @@ const test2 = () => {
     console.log(board.makeMove("X", 0, 0));
     console.log(board);
 };
+
+// Starting the listening for game over event.
+document.addEventListener("GameOver", (e) => {
+    console.log(e.detail);
+});
 
 const boardCellsElements = drawBoard(board);
 addOnCellElementClickLogic(boardCellsElements, board);

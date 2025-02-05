@@ -59,14 +59,25 @@ export const addOnCellElementClickLogic = (boardCellsElements, board) => {
     boardCellsElements.forEach((row, rowIndex) => {
         row.forEach((cell, cellIndex) => {
             cell.addEventListener("click", () => {
-                const currentPlayer = board.getPlayer().toLowerCase();
-                const res = board.makeMove(rowIndex, cellIndex);
-                // If the move was valid then...
-                if (res) {
-                    cell.classList.add(`cell-taken-by-${currentPlayer}`);
-                    console.log("move successful - ", `cell-taken-by-${currentPlayer}`);
+                const boardState = board.checkWin();
+
+                // If the game is still in progress.
+                if (!boardState) {
+                    const currentPlayer = board.getPlayer().toLowerCase();
+                    const res = board.makeMove(rowIndex, cellIndex);
+                    // If the move was valid then...
+                    if (res) {
+                        cell.classList.add(`cell-taken-by-${currentPlayer}`);
+                        console.log("move successful - ", `cell-taken-by-${currentPlayer}`);
+                    }
+                } else {
                 }
             });
         });
     });
+};
+
+export const gameOverEventListener = (result) => {
+    const event = new CustomEvent("GameOver", { detail: result });
+    document.dispatchEvent(event);
 };
