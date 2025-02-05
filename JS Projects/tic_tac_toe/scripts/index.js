@@ -1,7 +1,7 @@
 import { Board } from "./Board.js";
 import { drawBoard } from "./domService.js";
 
-const board = new Board(5);
+const board = new Board(10);
 
 const test1 = () => {
     console.log(board);

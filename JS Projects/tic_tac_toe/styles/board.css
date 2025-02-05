@@ -5,8 +5,8 @@
 }
 
 #board {
-    width: 50vw;
-    height: 50vw;
+    width: 50vh;
+    height: 50vh;
 
     position: absolute;
     top: 50%;
@@ -28,6 +28,11 @@
     aspect-ratio: 1;
     background-color: gainsboro;
     border: 1px solid black;
+
+    background-image: url("../images/X.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 
     .top-left {
         border-left: none;
@@ -63,5 +68,12 @@
 
     .in-last-column {
         border-right: none;
+    }
+}
+
+@media (max-width: 768px) {
+    #board {
+        width: 75vw;
+        height: 75vw;
     }
 }

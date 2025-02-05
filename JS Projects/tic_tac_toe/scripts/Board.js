@@ -2,7 +2,21 @@ export class Board {
     #board;
     #boardSize;
 
+    /**
+     * Initializes a new board for the Tic Tac Toe game.
+     *
+     * @param {number} boardSize - The size of the board, defaults to 3.
+     *                             The board size is constrained between 3 and 16.
+     *                             If a value less than 3 is provided, it defaults to 3.
+     *                             If a value greater than 16 is provided, it defaults to 16.
+     */
     constructor(boardSize = 3) {
+        if (boardSize < 3) {
+            boardSize = 3;
+        } else if (boardSize > 16) {
+            boardSize = 16;
+        }
+
         this.#board = [];
         for (let i = 0; i < boardSize; i++) {
             this.#board[i] = new Array(boardSize).fill("");
