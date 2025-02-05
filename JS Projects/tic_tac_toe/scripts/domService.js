@@ -51,4 +51,22 @@ export const drawBoard = (board) => {
         boardDiv.appendChild(rowDiv);
         boardCells.push(rowCells);
     });
+
+    return boardCells;
+};
+
+export const addOnCellElementClickLogic = (boardCellsElements, board) => {
+    boardCellsElements.forEach((row, rowIndex) => {
+        row.forEach((cell, cellIndex) => {
+            cell.addEventListener("click", () => {
+                const currentPlayer = board.getPlayer().toLowerCase();
+                const res = board.makeMove(rowIndex, cellIndex);
+                // If the move was valid then...
+                if (res) {
+                    cell.classList.add(`cell-taken-by-${currentPlayer}`);
+                    console.log("move successful - ", `cell-taken-by-${currentPlayer}`);
+                }
+            });
+        });
+    });
 };

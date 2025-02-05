@@ -1,6 +1,7 @@
 export class Board {
     #board;
     #boardSize;
+    #player;
 
     /**
      * Initializes a new board for the Tic Tac Toe game.
@@ -22,6 +23,8 @@ export class Board {
             this.#board[i] = new Array(boardSize).fill("");
         }
         this.#boardSize = boardSize;
+        // The starting player plays as 'X'.
+        this.#player = "X";
     }
 
     checkWinColumn() {
@@ -116,11 +119,19 @@ export class Board {
         return columnWin || rowWin || diagonalWin || reverseDiagonalWin;
     }
 
-    makeMove(player, row, col) {
+    makeMove(row, col) {
         if (this.#board[row][col] === "") {
-            this.#board[row][col] = player;
+            this.#board[row][col] = this.#player;
+
+            // Switching the turn to the next player.
+            this.#player = this.#player === "X" ? "O" : "X";
+
+            console.log("Board:", this.#board);
             return true;
         }
+
+        console.warn("%cThis cell is already taken. Please select another cell.", "color:yellow");
+
         return false;
     }
 
@@ -130,6 +141,10 @@ export class Board {
 
     getBoardSize() {
         return this.#boardSize;
+    }
+
+    getPlayer() {
+        return this.#player;
     }
 
     // Helper method:

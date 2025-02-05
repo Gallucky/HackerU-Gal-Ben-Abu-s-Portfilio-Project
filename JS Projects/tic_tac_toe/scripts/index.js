@@ -1,5 +1,5 @@
 import { Board } from "./Board.js";
-import { drawBoard } from "./domService.js";
+import { drawBoard, addOnCellElementClickLogic } from "./domService.js";
 
 const board = new Board(10);
 
@@ -32,4 +32,5 @@ const test2 = () => {
     console.log(board);
 };
 
-drawBoard(board);
+const boardCellsElements = drawBoard(board);
+addOnCellElementClickLogic(boardCellsElements, board);

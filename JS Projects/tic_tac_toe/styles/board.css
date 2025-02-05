@@ -29,7 +29,6 @@
     background-color: gainsboro;
     border: 1px solid black;
 
-    background-image: url("../images/X.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -69,6 +68,14 @@
     .in-last-column {
         border-right: none;
     }
+}
+
+.cell-taken-by-x {
+    background-image: url("../images/X.svg") !important;
+}
+
+.cell-taken-by-o {
+    background-image: url("../images/O.svg") !important;
 }
 
 @media (max-width: 768px) {
