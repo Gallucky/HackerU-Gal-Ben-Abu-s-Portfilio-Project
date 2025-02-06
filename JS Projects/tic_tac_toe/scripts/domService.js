@@ -149,9 +149,14 @@ export const drawWinningLine = (boardCellsElements, board) => {
 
     const offset = 10;
 
+    // Calculating the cell size based on the board size.
+    const boardSize = board.getBoardSize();
+    const dynamicCellWidth = canvas.width / boardSize;
+    const dynamicCellHeight = canvas.height / boardSize;
+
     if (winByColumn) {
         const startingColumn = winByColumn.winningCells[0][1];
-        startX = startingColumn * cellWidth + 0.51 * cellWidth;
+        startX = (startingColumn + 0.5) * dynamicCellWidth;
         startY = offset;
         endX = startX;
         endY = canvas.height - offset;
@@ -160,7 +165,7 @@ export const drawWinningLine = (boardCellsElements, board) => {
         const startingRow = winByRow.winningCells[0][0];
         startX = offset;
         endX = canvas.width - offset;
-        startY = startingRow * cellHeight + 0.51 * cellHeight;
+        startY = (startingRow + 0.5) * dynamicCellHeight;
         endY = startY;
         console.log("win by row", winByRow);
     } else if (winByDiagonal) {
@@ -182,19 +187,51 @@ export const drawWinningLine = (boardCellsElements, board) => {
         console.log("win by reverse diagonal", winByReverseDiagonal);
     }
 
-    // Setting the starting point.
-    ctx.moveTo(startX, startY);
-    // Setting the ending point.
-    ctx.lineTo(endX, endY);
-
-    // Line color.
-    ctx.strokeStyle = "red";
-    ctx.lineCap = "round";
-
-    // Drawing the line.
-    ctx.stroke();
-
     canvas.style.zIndex = 999;
+
+    drawAnimatedLine(startX, startY, endX, endY);
+};
+
+const drawAnimatedLine = (startX, startY, endX, endY) => {
+    const canvas = document.querySelector("canvas");
+    const ctx = canvas.getContext("2d");
+
+    // Variables for tracking the progress of the animation of the line.
+    let progress = 0;
+    // The duration of the animation in milliseconds.
+    const lineDuration = 1000;
+    const startTime = Date.now();
+
+    // Local helper function.
+    const animateLine = () => {
+        const currentTime = Date.now();
+        progress = (currentTime - startTime) / lineDuration;
+
+        if (progress < 1) {
+            // Clearing the canvas for redrawing.
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Calculating the current position of the line.
+            // Adding the remaining progress times the progress time value.
+            const currentX = startX + (endX - startX) * progress;
+            const currentY = startY + (endY - startY) * progress;
+
+            // Drawing the line incrementally - step by step.
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(currentX, currentY);
+            ctx.strokeStyle = "red";
+            ctx.lineCap = "round";
+            ctx.lineWidth = 10;
+            ctx.stroke();
+
+            // Requesting the next frame to continue the animation.
+            requestAnimationFrame(animateLine);
+        }
+    };
+
+    // Starting the animation.
+    animateLine();
 };
 
 /**

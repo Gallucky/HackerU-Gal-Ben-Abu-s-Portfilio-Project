@@ -6,7 +6,7 @@ import {
     canvasResizer,
 } from "./domService.js";
 
-const board = new Board(3);
+const board = new Board(13);
 
 const test1 = () => {
     console.log(board);
