@@ -90,6 +90,15 @@ export const gameOverEventListener = (result, board) => {
     document.dispatchEvent(event);
 };
 
+export const canvasResizer = () => {
+    const board = document.getElementById("board");
+    const canvas = document.querySelector("canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = board.clientWidth;
+    canvas.height = board.clientHeight;
+};
+
 /**
  * Draws a winning line on the board.
  *
@@ -104,7 +113,7 @@ export const gameOverEventListener = (result, board) => {
  * @param {Board} board The board.
  * @param {String} player The player who won.
  */
-export const drawWinningLine = (boardCellsElements, board, player) => {
+export const drawWinningLine = (boardCellsElements, board) => {
     console.log(board);
     console.log(typeof board);
 
@@ -115,25 +124,77 @@ export const drawWinningLine = (boardCellsElements, board, player) => {
 
     console.log("Board Matrix\n", boardCellsElementsMatrix);
 
+    const cell = document.querySelector(".cell");
+    const cellWidth = cell.clientWidth;
+    const cellHeight = cell.clientHeight;
+
     const winByColumn = board.checkWinColumn();
     const winByRow = board.checkWinRow();
     const winByDiagonal = board.checkWinDiagonal();
     const winByReverseDiagonal = board.checkWinReverseDiagonal();
 
-    const cellElement = document.querySelector(".cell");
-    console.log("Width:", cellElement.clientWidth, "Height:", cellElement.clientHeight);
+    const canvas = document.querySelector("canvas");
+    const ctx = canvas.getContext("2d");
 
-    const winningLine = document.createElement("div");
+    // Initializing the canvas context.
+    ctx.beginPath();
+
+    // Line thickness / width.
+    ctx.lineWidth = 10;
+
+    let startX = 0;
+    let startY = 0;
+    let endX = 0;
+    let endY = 0;
+
+    const offset = 10;
 
     if (winByColumn) {
-        console.log("Player", player, "won by column", winByColumn);
+        const startingColumn = winByColumn.winningCells[0][1];
+        startX = startingColumn * cellWidth + 0.51 * cellWidth;
+        startY = offset;
+        endX = startX;
+        endY = canvas.height - offset;
+        console.log("win by column", winByColumn);
     } else if (winByRow) {
-        console.log("Player", player, "won by row", winByRow);
+        const startingRow = winByRow.winningCells[0][0];
+        startX = offset;
+        endX = canvas.width - offset;
+        startY = startingRow * cellHeight + 0.51 * cellHeight;
+        endY = startY;
+        console.log("win by row", winByRow);
     } else if (winByDiagonal) {
-        console.log("Player", player, "won by diagonal", winByDiagonal);
+        startX = offset;
+        startY = offset;
+        endX = canvas.width - offset;
+        endY = canvas.height - offset;
+
+        // Reducing the line thickness.
+        ctx.lineWidth = 5;
+        console.log("win by diagonal", winByDiagonal);
     } else if (winByReverseDiagonal) {
-        console.log("Player", player, "won by reverse diagonal", winByReverseDiagonal);
+        startX = offset;
+        startY = canvas.height - offset;
+        endX = canvas.width - offset;
+        endY = offset;
+        // Reducing the line thickness.
+        ctx.lineWidth = 5;
+        console.log("win by reverse diagonal", winByReverseDiagonal);
     }
+
+    // Setting the starting point.
+    ctx.moveTo(startX, startY);
+    // Setting the ending point.
+    ctx.lineTo(endX, endY);
+
+    // Line color.
+    ctx.strokeStyle = "red";
+    ctx.lineCap = "round";
+
+    // Drawing the line.
+    ctx.stroke();
+
+    canvas.style.zIndex = 999;
 };
 
 /**

@@ -1,5 +1,10 @@
 import { Board } from "./Board.js";
-import { drawBoard, addOnCellElementClickLogic, drawWinningLine } from "./domService.js";
+import {
+    drawBoard,
+    addOnCellElementClickLogic,
+    drawWinningLine,
+    canvasResizer,
+} from "./domService.js";
 
 const board = new Board(3);
 
@@ -32,11 +37,16 @@ const test2 = () => {
     console.log(board);
 };
 
+// Listening for window resize.
+window.addEventListener("resize", canvasResizer);
+// Initializing the canvas.
+canvasResizer();
+
 // Starting the listening for game over event.
 document.addEventListener("GameOver", (e) => {
     if (e.detail.winOccurred) {
         const cellElements = document.getElementById("board").querySelectorAll(".cell");
-        drawWinningLine(cellElements, e.detail.board, e.detail.res, e.detail.winningCells);
+        drawWinningLine(cellElements, e.detail.board);
     }
 });
 
