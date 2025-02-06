@@ -35,7 +35,8 @@ const test2 = () => {
 // Starting the listening for game over event.
 document.addEventListener("GameOver", (e) => {
     if (e.detail.winOccurred) {
-        drawWinningLine(e.detail.board, e.detail.res);
+        const cellElements = document.getElementById("board").querySelectorAll(".cell");
+        drawWinningLine(cellElements, e.detail.board, e.detail.res, e.detail.winningCells);
     }
 });
 

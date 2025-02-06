@@ -81,7 +81,11 @@ export const addOnCellElementClickLogic = (boardCellsElements, board) => {
 
 export const gameOverEventListener = (result, board) => {
     const event = new CustomEvent("GameOver", {
-        detail: { res: result, board: board, winOccurred: result === "X" || result === "O" },
+        detail: {
+            res: result,
+            board: board,
+            winOccurred: result === "X" || result === "O",
+        },
     });
     document.dispatchEvent(event);
 };
@@ -89,29 +93,83 @@ export const gameOverEventListener = (result, board) => {
 /**
  * Draws a winning line on the board.
  *
- * The function takes in a board and a player as arguments.
- * It checks the board for a win in all four directions (column, row, diagonal, and reverse diagonal).
- * If a win is found in any of the directions, it draws a winning line accordingly.
+ * It takes in the board cells elements, the board, and the player who won as arguments.
+ * It first converts the board cells elements into a matrix, then checks if the player won by
+ * column, row, diagonal, or reverse diagonal.
  *
- * @param {Board} board The board to check for a win.
- * @param {String} player The player that won the game.
+ * By checking in which way the player has won,
+ * it creates a line according to the winning cells positions.
+ *
+ * @param {HTMLCollection} boardCellsElements The collection of cell elements.
+ * @param {Board} board The board.
+ * @param {String} player The player who won.
  */
-export const drawWinningLine = (board, player) => {
+export const drawWinningLine = (boardCellsElements, board, player) => {
     console.log(board);
     console.log(typeof board);
+
+    const boardCellsElementsMatrix = convertBoardCellsElementsToMatrix(
+        boardCellsElements,
+        board.getBoardSize()
+    );
+
+    console.log("Board Matrix\n", boardCellsElementsMatrix);
 
     const winByColumn = board.checkWinColumn();
     const winByRow = board.checkWinRow();
     const winByDiagonal = board.checkWinDiagonal();
     const winByReverseDiagonal = board.checkWinReverseDiagonal();
 
+    const cellElement = document.querySelector(".cell");
+    console.log("Width:", cellElement.clientWidth, "Height:", cellElement.clientHeight);
+
+    const winningLine = document.createElement("div");
+
     if (winByColumn) {
-        console.log("win by column", winByColumn);
+        console.log("Player", player, "won by column", winByColumn);
     } else if (winByRow) {
-        console.log("win by row", winByRow);
+        console.log("Player", player, "won by row", winByRow);
     } else if (winByDiagonal) {
-        console.log("win by diagonal", winByDiagonal);
+        console.log("Player", player, "won by diagonal", winByDiagonal);
     } else if (winByReverseDiagonal) {
-        console.log("win by reverse diagonal", winByReverseDiagonal);
+        console.log("Player", player, "won by reverse diagonal", winByReverseDiagonal);
     }
+};
+
+/**
+ * Converts a collection of cell elements into a matrix.
+ *
+ * The function takes in a collection of cell elements and the size of the board as arguments.
+ * It converts the collection into a matrix and returns it.
+ *
+ * @param {HTMLCollection} boardCellsElements The collection of cell elements.
+ * @param {Number} boardSize The size of the board.
+ * @return {Array<Array>} The matrix (array that contains arrays) of cell elements.
+ */
+const convertBoardCellsElementsToMatrix = (boardCellsElements, boardSize) => {
+    const boardCellsElementsArray = Array.from(boardCellsElements);
+
+    // Creating and returning the matrix.
+    const customMatrixObject = boardCellsElementsArray.reduce(
+        (acc, cell) => {
+            // Firstly push the cell into the acc.array.
+            // To insure that the final cells will be pushed as an array into the matrix.
+            acc.array.push(cell);
+
+            if (acc.array.length === boardSize) {
+                acc.matrix.push(acc.array);
+                acc.array = [];
+            }
+
+            return acc;
+        },
+        // Initial acc values.
+        {
+            matrix: [],
+            array: [],
+        }
+    );
+
+    // Returning only the matrix.
+    return customMatrixObject.matrix;
 };
