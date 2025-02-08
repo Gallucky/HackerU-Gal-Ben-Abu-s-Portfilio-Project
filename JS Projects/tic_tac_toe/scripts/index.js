@@ -4,51 +4,37 @@ import {
     addOnCellElementClickLogic,
     drawWinningLine,
     canvasResizer,
+    showStartingMenu,
+    showEndMenu,
 } from "./domService.js";
 
-const board = new Board(13);
+showStartingMenu();
 
-const test1 = () => {
-    console.log(board);
-    console.log(board.board);
-    board.board = [
-        ["", "", "O"],
-        ["", "O", ""],
-        ["O", "", ""],
-    ];
-    console.log(board.board[0]);
-    console.log(board.board[1]);
-    console.log(board.board[2]);
-    console.log("column win:", board.checkWinColumn());
-    console.log("row win:", board.checkWinRow());
-    console.log("diagonal win:", board.checkWinDiagonal());
-    console.log("reverse diagonal win:", board.checkWinReverseDiagonal());
+export const startGame = (boardSize) => {
+    console.log(boardSize);
 
-    console.log("check win:", board.checkWin());
+    const board = new Board(+boardSize);
+    document.body.innerHTML = `
+        <div id="board">
+            <canvas></canvas>
+        </div>
+    `;
+
+    // Listening for window resize.
+    window.addEventListener("resize", canvasResizer);
+    // Initializing the canvas.
+    canvasResizer();
+
+    // Starting the listening for game over event.
+    document.addEventListener("GameOver", (e) => {
+        if (e.detail.winOccurred) {
+            const cellElements = document.getElementById("board").querySelectorAll(".cell");
+            drawWinningLine(cellElements, e.detail.board);
+
+            showEndMenu();
+        }
+    });
+
+    const boardCellsElements = drawBoard(board);
+    addOnCellElementClickLogic(boardCellsElements, board);
 };
-
-const test2 = () => {
-    console.log(board);
-    console.log(board.makeMove("X", 0, 0));
-    console.log(board);
-    console.log(board.makeMove("O", 0, 0));
-    console.log(board);
-    console.log(board.makeMove("X", 0, 0));
-    console.log(board);
-};
-
-// Listening for window resize.
-window.addEventListener("resize", canvasResizer);
-// Initializing the canvas.
-canvasResizer();
-
-// Starting the listening for game over event.
-document.addEventListener("GameOver", (e) => {
-    if (e.detail.winOccurred) {
-        const cellElements = document.getElementById("board").querySelectorAll(".cell");
-        drawWinningLine(cellElements, e.detail.board);
-    }
-});
-
-const boardCellsElements = drawBoard(board);
-addOnCellElementClickLogic(boardCellsElements, board);

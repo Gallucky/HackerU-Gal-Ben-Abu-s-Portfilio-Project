@@ -1,4 +1,5 @@
 import { Board } from "./Board.js";
+import { startGame } from "./index.js";
 
 export const drawBoard = (board) => {
     const boardDiv = document.getElementById("board");
@@ -271,3 +272,45 @@ const convertBoardCellsElementsToMatrix = (boardCellsElements, boardSize) => {
     // Returning only the matrix.
     return customMatrixObject.matrix;
 };
+
+export const showStartingMenu = () => {
+    document.body.innerHTML = ``;
+
+    const startMenu = document.createElement("div");
+    startMenu.classList.add("start-menu");
+
+    const title = document.createElement("h1");
+    title.textContent = "Tic Tac Toe";
+
+    const select = document.createElement("select");
+    select.id = "board-size-select";
+    select.value = 3;
+    select.selectedIndex = 0;
+
+    for (let i = 3; i <= 16; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = `${i}x${i}`;
+        select.appendChild(option);
+    }
+
+    select.onchange = (e) => {
+        console.log(e.target.value);
+        select.value = e.target.value;
+    };
+
+    const startGameButton = document.createElement("button");
+    startGameButton.textContent = "Start Game";
+    startGameButton.id = "start-game-btn";
+
+    startGameButton.onclick = () => {
+        startGame(select.value);
+    };
+
+    startMenu.appendChild(title);
+    startMenu.appendChild(select);
+    startMenu.appendChild(startGameButton);
+    document.body.appendChild(startMenu);
+};
+
+export const showEndMenu = () => {};
