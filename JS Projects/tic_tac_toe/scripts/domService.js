@@ -314,6 +314,12 @@ export const showStartingMenu = () => {
 };
 
 export const showEndMenu = (winner) => {
+    const alreadyCreatedEndMenu = document.querySelector(".end-menu");
+
+    if (alreadyCreatedEndMenu) {
+        alreadyCreatedEndMenu.remove();
+    }
+
     const endMenu = document.createElement("div");
     endMenu.classList.add("end-menu");
 
