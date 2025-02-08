@@ -31,7 +31,7 @@ export const startGame = (boardSize) => {
             const cellElements = document.getElementById("board").querySelectorAll(".cell");
             drawWinningLine(cellElements, e.detail.board);
 
-            showEndMenu();
+            showEndMenu(e.detail.res);
         }
     });
 

@@ -313,4 +313,33 @@ export const showStartingMenu = () => {
     document.body.appendChild(startMenu);
 };
 
-export const showEndMenu = () => {};
+export const showEndMenu = (winner) => {
+    const endMenu = document.createElement("div");
+    endMenu.classList.add("end-menu");
+
+    const title = document.createElement("h2");
+    title.textContent = "Game Over!";
+
+    const p = document.createElement("p");
+    p.textContent = `${winner.toUpperCase()} won the game!`;
+    p.id = `winning-message`;
+
+    const restartButton = document.createElement("button");
+    restartButton.textContent = "Restart Game";
+    restartButton.id = "restart-game-btn";
+
+    restartButton.onclick = () => {
+        showStartingMenu();
+    };
+
+    endMenu.appendChild(title);
+    endMenu.appendChild(p);
+    endMenu.appendChild(restartButton);
+
+    document.body.appendChild(endMenu);
+
+    // Delaying the fade-in effect.
+    setTimeout(() => {
+        endMenu.classList.add("shown");
+    }, 750);
+};
