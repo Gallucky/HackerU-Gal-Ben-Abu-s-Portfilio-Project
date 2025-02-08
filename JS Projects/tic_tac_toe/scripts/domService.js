@@ -327,7 +327,11 @@ export const showEndMenu = (winner) => {
     title.textContent = "Game Over!";
 
     const p = document.createElement("p");
-    p.textContent = `${winner.toUpperCase()} won the game!`;
+    if (winner.toLowerCase() === "draw") {
+        p.textContent = "It's a draw!";
+    } else {
+        p.textContent = `${winner.toUpperCase()} won the game!`;
+    }
     p.id = `winning-message`;
 
     const restartButton = document.createElement("button");

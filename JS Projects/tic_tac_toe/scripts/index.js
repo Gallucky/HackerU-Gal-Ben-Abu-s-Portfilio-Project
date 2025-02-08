@@ -30,9 +30,8 @@ export const startGame = (boardSize) => {
         if (e.detail.winOccurred) {
             const cellElements = document.getElementById("board").querySelectorAll(".cell");
             drawWinningLine(cellElements, e.detail.board);
-
-            showEndMenu(e.detail.res);
         }
+        showEndMenu(e.detail.res);
     });
 
     const boardCellsElements = drawBoard(board);
