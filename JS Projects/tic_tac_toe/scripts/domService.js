@@ -58,11 +58,16 @@ export const drawBoard = (board) => {
     return boardCells;
 };
 
-export const addOnCellElementClickLogic = (boardCellsElements, board) => {
+export const addOnCellElementClickLogic = (boardCellsElements, board, difficulty = "easy") => {
+    const boardCellsElementsMatrix = convertBoardCellsElementsToMatrix(
+        boardCellsElements,
+        board.getBoardSize()
+    )[0];
+
     boardCellsElements.forEach((row, rowIndex) => {
         row.forEach((cell, cellIndex) => {
             cell.addEventListener("click", () => {
-                const boardState = board.checkWin();
+                let boardState = board.checkWin();
 
                 // If the game is still in progress.
                 if (!boardState) {
@@ -73,7 +78,38 @@ export const addOnCellElementClickLogic = (boardCellsElements, board) => {
                         cell.classList.add(`cell-taken-by-${currentPlayer}`);
                         console.log("move successful - ", `cell-taken-by-${currentPlayer}`);
                     }
-                } else {
+                }
+
+                boardState = board.checkWin();
+
+                // If the game is still in progress.
+                if (!boardState) {
+                    // Making the computer move.
+                    const currentPlayer = board.getPlayer().toLowerCase();
+                    const res = board.makeComputerMove(difficulty);
+                    // If the move was valid then...
+                    if (res) {
+                        const rowIndex = res[0];
+                        const colIndex = res[1];
+
+                        console.log(
+                            "Computer Move:\n",
+                            "Row index:",
+                            rowIndex,
+                            "Column index:",
+                            colIndex
+                        );
+
+                        console.log("Res:", res);
+                        console.log("Typeof Res:", typeof res);
+
+                        const computerMoveCell = boardCellsElementsMatrix[rowIndex][colIndex];
+                        console.log("Computer move cell:", computerMoveCell);
+                        console.log("Elements Matrix:", boardCellsElementsMatrix);
+
+                        computerMoveCell.classList.add(`cell-taken-by-${currentPlayer}`);
+                        console.log("move successful - ", `cell-taken-by-${currentPlayer}`);
+                    }
                 }
             });
         });
@@ -299,16 +335,43 @@ export const showStartingMenu = () => {
         select.value = e.target.value;
     };
 
+    const difficultySelection = document.createElement("select");
+    difficultySelection.id = "difficulty-selection";
+    difficultySelection.value = "easy";
+    difficultySelection.selectedIndex = 0;
+
+    const optionEasy = document.createElement("option");
+    optionEasy.value = "easy";
+    optionEasy.textContent = "Easy";
+
+    const optionMedium = document.createElement("option");
+    optionMedium.value = "medium";
+    optionMedium.textContent = "Medium";
+
+    const optionHard = document.createElement("option");
+    optionHard.value = "hard";
+    optionHard.textContent = "Hard";
+
+    difficultySelection.appendChild(optionEasy);
+    difficultySelection.appendChild(optionMedium);
+    difficultySelection.appendChild(optionHard);
+
+    difficultySelection.onchange = (e) => {
+        console.log(e.target.value);
+        difficultySelection.value = e.target.value;
+    };
+
     const startGameButton = document.createElement("button");
     startGameButton.textContent = "Start Game";
     startGameButton.id = "start-game-btn";
 
     startGameButton.onclick = () => {
-        startGame(select.value);
+        startGame(select.value, difficultySelection.value);
     };
 
     startMenu.appendChild(title);
     startMenu.appendChild(select);
+    startMenu.appendChild(difficultySelection);
     startMenu.appendChild(startGameButton);
     document.body.appendChild(startMenu);
 };

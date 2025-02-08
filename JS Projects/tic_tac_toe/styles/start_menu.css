@@ -33,6 +33,15 @@
         background-color: rgba(2, 185, 185, 0.75);
     }
 
+    #difficulty-selection {
+        font-family: Rubik;
+        padding: 0.1rem;
+        border-radius: 16px;
+        outline: none;
+        border: 3px groove black;
+        background-color: rgba(255, 149, 0, 0.75);
+    }
+
     #start-game-btn {
         font-family: Rubik;
         padding: 0.1rem 0.5rem;

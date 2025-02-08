@@ -188,6 +188,66 @@ export class Board {
         return false;
     }
 
+    makeComputerMove(difficulty = "easy") {
+        const makeRandomMove = () => {
+            const emptyCellsIndexes = [];
+
+            for (let row = 0; row < this.#boardSize; row++) {
+                for (let col = 0; col < this.#boardSize; col++) {
+                    if (this.#board[row][col] === "") {
+                        // If the cell is empty add it's indexes to the emptyCellsIndexes array.
+                        emptyCellsIndexes.push([row, col]);
+                    }
+                }
+            }
+
+            const randomIndexes = Math.floor(Math.random() * (emptyCellsIndexes.length - 1));
+            console.log("Random indexes:", randomIndexes);
+            console.log("Empty cells indexes:", emptyCellsIndexes);
+            console.log(emptyCellsIndexes[randomIndexes][0], emptyCellsIndexes[randomIndexes][1]);
+
+            const res = this.makeMove(
+                emptyCellsIndexes[randomIndexes][0],
+                emptyCellsIndexes[randomIndexes][1]
+            );
+
+            if (res) {
+                console.log("Returning ", emptyCellsIndexes[randomIndexes]);
+                return emptyCellsIndexes[randomIndexes];
+            }
+        };
+        const makeBlockPlayerWinMove = () => {};
+        const makeWinMove = () => {};
+
+        console.log("Difficulty:", difficulty);
+
+        if (difficulty.toLowerCase() === "easy") {
+            // Easy difficulty - random move.
+            // console.log("Making random move.");
+            return makeRandomMove();
+        } else if (difficulty.toLowerCase() === "medium") {
+            // Medium difficulty - block player win move.
+            const playerHasOneMoveToWin = false;
+            if (playerHasOneMoveToWin) {
+                return makeBlockPlayerWinMove();
+            }
+            return makeRandomMove();
+        } else if (difficulty.toLowerCase() === "hard") {
+            // Hard difficulty - win move.
+            const hasOneMoveToWin = false;
+            const playerHasOneMoveToWin = false;
+
+            if (hasOneMoveToWin) {
+                return makeWinMove();
+            } else if (playerHasOneMoveToWin) {
+                return makeBlockPlayerWinMove();
+            }
+            return makeRandomMove();
+        }
+
+        return null;
+    }
+
     getBoard() {
         return this.#board;
     }

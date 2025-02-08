@@ -10,7 +10,7 @@ import {
 
 showStartingMenu();
 
-export const startGame = (boardSize) => {
+export const startGame = (boardSize, difficulty) => {
     console.log(boardSize);
 
     const board = new Board(+boardSize);
@@ -35,5 +35,5 @@ export const startGame = (boardSize) => {
     });
 
     const boardCellsElements = drawBoard(board);
-    addOnCellElementClickLogic(boardCellsElements, board);
+    addOnCellElementClickLogic(boardCellsElements, board, difficulty);
 };
