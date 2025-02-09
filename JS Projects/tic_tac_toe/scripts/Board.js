@@ -188,6 +188,33 @@ export class Board {
         return false;
     }
 
+    #winMoveForPlayer = (playerCharacter, sequence) => {
+        let playerCount = 0;
+        let emptyCell = null;
+        sequence.forEach((cell) => {
+            if (cell.player === playerCharacter) {
+                playerCount++;
+            } else if (cell.player === "") {
+                emptyCell = cell;
+            }
+        });
+
+        return playerCount === this.#boardSize - 1 && emptyCell ? emptyCell : null;
+    };
+
+    #applyComputerAction = (emptyCell) => {
+        if (emptyCell) {
+            // If the player has one move to win in this row,
+            // make a move in this row.
+            const res = this.makeMove(emptyCell.rowIndex, emptyCell.columnIndex);
+            if (res) {
+                return [emptyCell.rowIndex, emptyCell.columnIndex];
+            }
+        }
+
+        return null;
+    };
+
     makeComputerMove(difficulty = "easy") {
         // Helping local functions.
         const makeRandomMove = () => {
@@ -218,35 +245,9 @@ export class Board {
             }
         };
 
-        const makeBlockPlayerWinMove = () => {
-            const playerCharacter = "X";
-
-            const blockAvailable = (sequence) => {
-                let playerCount = 0;
-                let emptyCell = null;
-                sequence.forEach((cell) => {
-                    if (cell.player === playerCharacter) {
-                        playerCount++;
-                    } else if (cell.player === "") {
-                        emptyCell = cell;
-                    }
-                });
-
-                return playerCount === this.#boardSize - 1 && emptyCell ? emptyCell : null;
-            };
-
-            const applyBlock = (emptyCell) => {
-                if (emptyCell) {
-                    // If the player has one move to win in this row,
-                    // make a move in this row.
-                    const res = this.makeMove(emptyCell.rowIndex, emptyCell.columnIndex);
-                    if (res) {
-                        return [emptyCell.rowIndex, emptyCell.columnIndex];
-                    }
-                }
-
-                return null;
-            };
+        const blockPlayerOrPlayWinMove = (mode = "block player") => {
+            // Default fallback value fo player character.
+            let playerCharacter = mode === "win move" ? "O" : "X";
 
             // Block player column win move.
             for (let col = 0; col < this.#boardSize; col++) {
@@ -259,8 +260,8 @@ export class Board {
                     });
                 }
 
-                const emptyCell = blockAvailable(sequence);
-                const res = applyBlock(emptyCell);
+                const emptyCell = this.#winMoveForPlayer(playerCharacter, sequence);
+                const res = this.#applyComputerAction(emptyCell);
 
                 // Return only if there is a move to make.
                 // Otherwise continue checking...
@@ -278,8 +279,8 @@ export class Board {
                     });
                 }
 
-                const emptyCell = blockAvailable(sequence);
-                const res = applyBlock(emptyCell);
+                const emptyCell = this.#winMoveForPlayer(playerCharacter, sequence);
+                const res = this.#applyComputerAction(emptyCell);
 
                 // Return only if there is a move to make.
                 // Otherwise continue checking...
@@ -306,8 +307,8 @@ export class Board {
                 });
             }
 
-            let emptyCell = blockAvailable(sequence);
-            let res = applyBlock(emptyCell);
+            let emptyCell = this.#winMoveForPlayer(playerCharacter, sequence);
+            let res = this.#applyComputerAction(emptyCell);
 
             // Return only if there is a move to make.
             // Otherwise continue checking...
@@ -328,10 +329,9 @@ export class Board {
                 });
             }
 
-            emptyCell = blockAvailable(sequence);
-            return applyBlock(emptyCell);
+            emptyCell = this.#winMoveForPlayer(playerCharacter, sequence);
+            return this.#applyComputerAction(emptyCell);
         };
-        const makeWinMove = () => {};
 
         console.log("Difficulty:", difficulty);
 
@@ -341,19 +341,20 @@ export class Board {
             return makeRandomMove();
         } else if (difficulty.toLowerCase() === "medium") {
             // Medium difficulty - block player win move.
-            const playerHasOneMoveToWin = makeBlockPlayerWinMove();
+            const playerHasOneMoveToWin = blockPlayerOrPlayWinMove();
             if (playerHasOneMoveToWin) {
                 return playerHasOneMoveToWin;
             }
             return makeRandomMove();
         } else if (difficulty.toLowerCase() === "hard") {
             // Hard difficulty - win move.
-            const hasOneMoveToWin = makeWinMove();
-            const playerHasOneMoveToWin = makeBlockPlayerWinMove();
-
+            const hasOneMoveToWin = blockPlayerOrPlayWinMove("win move");
             if (hasOneMoveToWin) {
                 return hasOneMoveToWin;
-            } else if (playerHasOneMoveToWin) {
+            }
+
+            const playerHasOneMoveToWin = blockPlayerOrPlayWinMove();
+            if (playerHasOneMoveToWin) {
                 return playerHasOneMoveToWin;
             }
             return makeRandomMove();
