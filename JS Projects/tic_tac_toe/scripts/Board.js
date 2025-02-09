@@ -189,6 +189,7 @@ export class Board {
     }
 
     makeComputerMove(difficulty = "easy") {
+        // Helping local functions.
         const makeRandomMove = () => {
             const emptyCellsIndexes = [];
 
@@ -216,7 +217,120 @@ export class Board {
                 return emptyCellsIndexes[randomIndexes];
             }
         };
-        const makeBlockPlayerWinMove = () => {};
+
+        const makeBlockPlayerWinMove = () => {
+            const playerCharacter = "X";
+
+            const blockAvailable = (sequence) => {
+                let playerCount = 0;
+                let emptyCell = null;
+                sequence.forEach((cell) => {
+                    if (cell.player === playerCharacter) {
+                        playerCount++;
+                    } else if (cell.player === "") {
+                        emptyCell = cell;
+                    }
+                });
+
+                return playerCount === this.#boardSize - 1 && emptyCell ? emptyCell : null;
+            };
+
+            const applyBlock = (emptyCell) => {
+                if (emptyCell) {
+                    // If the player has one move to win in this row,
+                    // make a move in this row.
+                    const res = this.makeMove(emptyCell.rowIndex, emptyCell.columnIndex);
+                    if (res) {
+                        return [emptyCell.rowIndex, emptyCell.columnIndex];
+                    }
+                }
+
+                return null;
+            };
+
+            // Block player column win move.
+            for (let col = 0; col < this.#boardSize; col++) {
+                const sequence = [];
+                for (let row = 0; row < this.#boardSize; row++) {
+                    sequence.push({
+                        player: this.#board[row][col],
+                        rowIndex: row,
+                        columnIndex: col,
+                    });
+                }
+
+                const emptyCell = blockAvailable(sequence);
+                const res = applyBlock(emptyCell);
+
+                // Return only if there is a move to make.
+                // Otherwise continue checking...
+                if (res) return res;
+            }
+
+            // Block player row win move.
+            for (let row = 0; row < this.#boardSize; row++) {
+                const sequence = [];
+                for (let col = 0; col < this.#boardSize; col++) {
+                    sequence.push({
+                        player: this.#board[row][col],
+                        rowIndex: row,
+                        columnIndex: col,
+                    });
+                }
+
+                const emptyCell = blockAvailable(sequence);
+                const res = applyBlock(emptyCell);
+
+                // Return only if there is a move to make.
+                // Otherwise continue checking...
+                if (res) return res;
+            }
+
+            // Outside the for loops's scope,
+            // while checking the diagonals using
+            // this function's (local) scope variables.
+            // Therefore using let instead of const.
+
+            // Block player diagonal win move.
+            let sequence = [];
+
+            for (
+                let row = 0, col = 0;
+                row < this.#boardSize && col < this.#boardSize;
+                row++, col++
+            ) {
+                sequence.push({
+                    player: this.#board[row][col],
+                    rowIndex: row,
+                    columnIndex: col,
+                });
+            }
+
+            let emptyCell = blockAvailable(sequence);
+            let res = applyBlock(emptyCell);
+
+            // Return only if there is a move to make.
+            // Otherwise continue checking...
+            if (res) return res;
+
+            // Block player reverse diagonal win move.
+            sequence = [];
+
+            for (
+                let row = 0, col = this.#boardSize - 1;
+                row < this.#boardSize && col >= 0;
+                row++, col--
+            ) {
+                sequence.push({
+                    player: this.#board[row][col],
+                    rowIndex: row,
+                    columnIndex: col,
+                });
+            }
+
+            emptyCell = blockAvailable(sequence);
+            return applyBlock(emptyCell);
+        };
         const makeWinMove = () => {};
 
         console.log("Difficulty:", difficulty);
@@ -227,20 +341,20 @@ export class Board {
             return makeRandomMove();
         } else if (difficulty.toLowerCase() === "medium") {
             // Medium difficulty - block player win move.
-            const playerHasOneMoveToWin = false;
+            const playerHasOneMoveToWin = makeBlockPlayerWinMove();
             if (playerHasOneMoveToWin) {
-                return makeBlockPlayerWinMove();
+                return playerHasOneMoveToWin;
             }
             return makeRandomMove();
         } else if (difficulty.toLowerCase() === "hard") {
             // Hard difficulty - win move.
-            const hasOneMoveToWin = false;
-            const playerHasOneMoveToWin = false;
+            const hasOneMoveToWin = makeWinMove();
+            const playerHasOneMoveToWin = makeBlockPlayerWinMove();
 
             if (hasOneMoveToWin) {
-                return makeWinMove();
+                return hasOneMoveToWin;
             } else if (playerHasOneMoveToWin) {
-                return makeBlockPlayerWinMove();
+                return playerHasOneMoveToWin;
             }
             return makeRandomMove();
         }
