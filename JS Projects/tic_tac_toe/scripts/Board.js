@@ -184,7 +184,6 @@ export class Board {
         }
 
         console.warn("%cThis cell is already taken. Please select another cell.", "color:yellow");
-
         return false;
     }
 

@@ -77,38 +77,39 @@ export const addOnCellElementClickLogic = (boardCellsElements, board, difficulty
                     if (res) {
                         cell.classList.add(`cell-taken-by-${currentPlayer}`);
                         console.log("move successful - ", `cell-taken-by-${currentPlayer}`);
-                    }
-                }
 
-                boardState = board.checkWin();
+                        boardState = board.checkWin();
 
-                // If the game is still in progress.
-                if (!boardState) {
-                    // Making the computer move.
-                    const currentPlayer = board.getPlayer().toLowerCase();
-                    const res = board.makeComputerMove(difficulty);
-                    // If the move was valid then...
-                    if (res) {
-                        const rowIndex = res[0];
-                        const colIndex = res[1];
+                        // If the game is still in progress.
+                        if (!boardState) {
+                            // Making the computer move.
+                            const currentPlayer = board.getPlayer().toLowerCase();
+                            const res = board.makeComputerMove(difficulty);
+                            // If the move was valid then...
+                            if (res) {
+                                const rowIndex = res[0];
+                                const colIndex = res[1];
 
-                        console.log(
-                            "Computer Move:\n",
-                            "Row index:",
-                            rowIndex,
-                            "Column index:",
-                            colIndex
-                        );
+                                console.log(
+                                    "Computer Move:\n",
+                                    "Row index:",
+                                    rowIndex,
+                                    "Column index:",
+                                    colIndex
+                                );
 
-                        console.log("Res:", res);
-                        console.log("Typeof Res:", typeof res);
+                                console.log("Res:", res);
+                                console.log("Typeof Res:", typeof res);
 
-                        const computerMoveCell = boardCellsElementsMatrix[rowIndex][colIndex];
-                        console.log("Computer move cell:", computerMoveCell);
-                        console.log("Elements Matrix:", boardCellsElementsMatrix);
+                                const computerMoveCell =
+                                    boardCellsElementsMatrix[rowIndex][colIndex];
+                                console.log("Computer move cell:", computerMoveCell);
+                                console.log("Elements Matrix:", boardCellsElementsMatrix);
 
-                        computerMoveCell.classList.add(`cell-taken-by-${currentPlayer}`);
-                        console.log("move successful - ", `cell-taken-by-${currentPlayer}`);
+                                computerMoveCell.classList.add(`cell-taken-by-${currentPlayer}`);
+                                console.log("move successful - ", `cell-taken-by-${currentPlayer}`);
+                            }
+                        }
                     }
                 }
             });
