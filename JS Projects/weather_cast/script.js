@@ -10,9 +10,9 @@ const weatherIcon = document.getElementById("weather-icon");
 const errorMessage = document.getElementById("error-message");
 
 const lowsAndHighsTemperatures = document.getElementById("lows-and-highs");
-const feelsLike = document.getElementById("feels-like");
+const feelsLikeText = document.querySelector("#feels-like > .text");
+const feelsLikeInfo = document.getElementById("feels-like-info");
 const humidity = document.getElementById("humidity");
-const uviIndex = document.getElementById("uvi-index");
 const windSpeed = document.getElementById("wind-speed");
 
 const sunrise = document.getElementById("sunrise");
@@ -32,6 +32,30 @@ const displayWeather = (weatherData) => {
         description.innerText = weatherData.weather[0].description;
         weatherIcon.src = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
         weatherIcon.alt = weatherData.name;
+        lowsAndHighsTemperatures.innerText =
+            "Lows: " +
+            Math.round(weatherData.main.temp_min) +
+            "ºC | " +
+            "Highs: " +
+            Math.round(weatherData.main.temp_max) +
+            "ºC";
+        feelsLikeText.innerText = "Feels like: " + Math.round(weatherData.main.feels_like) + "°C";
+        feelsLikeInfo.src = "./images/info24px.png";
+        feelsLikeInfo.alt = "";
+        humidity.innerText = "Humidity: " + weatherData.main.humidity + "%";
+        windSpeed.innerText = "Wind Speed: " + Math.round(weatherData.wind.speed) + "m/s";
+        sunrise.innerText =
+            "Sunrise: " +
+            new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+            });
+        sunset.innerText =
+            "Sunset: " +
+            new Date(weatherData.sys.sunset * 1000).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+            });
         console.log(weatherData);
     } else {
         cityTitle.innerText = "";
@@ -39,6 +63,14 @@ const displayWeather = (weatherData) => {
         description.innerText = "";
         weatherIcon.src = "";
         weatherIcon.alt = "";
+        lowsAndHighsTemperatures.innerText = "";
+        feelsLikeText.innerText = "";
+        feelsLikeInfo.src = "";
+        feelsLikeInfo.alt = "";
+        humidity.innerText = "";
+        windSpeed.innerText = "";
+        sunrise.innerText = "";
+        sunset.innerText = "";
         errorMessage.innerText = "City not found";
     }
 };
