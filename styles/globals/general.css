@@ -135,7 +135,8 @@ body {
         calc(-1 * var(--outline-thickness)) 0 0 var(--outline-color);
 }
 
-a {
+a,
+button {
     cursor: url("../../images/cursor-click_24x24.png"), pointer;
 }
 

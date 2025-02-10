@@ -9,6 +9,15 @@ const description = document.getElementById("description");
 const weatherIcon = document.getElementById("weather-icon");
 const errorMessage = document.getElementById("error-message");
 
+const lowsAndHighsTemperatures = document.getElementById("lows-and-highs");
+const feelsLike = document.getElementById("feels-like");
+const humidity = document.getElementById("humidity");
+const uviIndex = document.getElementById("uvi-index");
+const windSpeed = document.getElementById("wind-speed");
+
+const sunrise = document.getElementById("sunrise");
+const sunset = document.getElementById("sunset");
+
 const getWeather = async (city) => {
     const response = await fetch(URL + city);
     const data = await response.json();
