@@ -121,12 +121,29 @@ button {
 
         user-select: none;
 
-        z-index: 999;
+        z-index: 998;
         border-radius: 50%;
         background-color: rgb(20, 168, 168);
         translate: -50% -50%;
 
         scale: 1.2;
+    }
+
+    #feels-like-info:after {
+        width: 32px;
+        height: 32px;
+        content: "";
+
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        background: red;
+
+        z-index: 999;
+
+        transform: translate(-50%, -50%) scale(1.2);
     }
 }
 
@@ -142,22 +159,47 @@ button {
 
 #sunrise-and-sunset {
     display: flex;
-    justify-content: space-evenly;
-    margin-top: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 3rem;
     font-size: 1.1rem;
+
+    position: relative;
 }
 
-#sunrise {
+#sunrise,
+#sunset {
+    width: 1fr;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: red;
+    font-size: 0.75rem;
 }
 
-#sunrise img {
+#sunrise img,
+#sunset img {
     width: 32px;
     height: 32px;
 
-    border: 1px solid black;
+    font-size: 0.5rem;
+}
+
+.top-circle-arch {
+    width: 75%;
+    height: 100%;
+
+    position: absolute;
+    top: 0%;
+    left: 50%;
+
+    border-radius: 50%;
+    border: none;
+    border-top: 2px dashed black;
+
+    transform: translate(-50%, -50%);
+}
+
+.hidden {
+    display: none;
 }
