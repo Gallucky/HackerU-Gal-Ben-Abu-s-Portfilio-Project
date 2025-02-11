@@ -119,6 +119,8 @@ button {
         top: 12.5%;
         left: 10%;
 
+        user-select: none;
+
         z-index: 999;
         border-radius: 50%;
         background-color: rgb(20, 168, 168);
@@ -139,16 +141,23 @@ button {
 }
 
 #sunrise-and-sunset {
-    background-color: red;
     display: flex;
     justify-content: space-evenly;
     margin-top: 10px;
     font-size: 1.1rem;
+}
 
-    #sunrise {
-        display: flex;
-    }
+#sunrise {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+}
 
-    #sunset {
-    }
+#sunrise img {
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid black;
 }

@@ -15,8 +15,13 @@ const feelsLikeInfo = document.getElementById("feels-like-info");
 const humidity = document.getElementById("humidity");
 const windSpeed = document.getElementById("wind-speed");
 
-const sunrise = document.getElementById("sunrise");
-const sunset = document.getElementById("sunset");
+const sunriseText = document.querySelector("sunrise > .text");
+const sunriseTitle = document.querySelector("sunrise > .title");
+const sunriseImg = document.querySelector("sunrise > img");
+
+const sunsetText = document.querySelector("sunset > .text");
+const sunsetTitle = document.querySelector("sunset > .title");
+const sunsetImg = document.querySelector("sunset > img");
 
 const getWeather = async (city) => {
     const response = await fetch(URL + city);
@@ -44,18 +49,14 @@ const displayWeather = (weatherData) => {
         feelsLikeInfo.alt = "";
         humidity.innerText = "Humidity: " + weatherData.main.humidity + "%";
         windSpeed.innerText = "Wind Speed: " + Math.round(weatherData.wind.speed) + "m/s";
-        sunrise.innerText =
-            "Sunrise: " +
-            new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-            });
-        sunset.innerText =
-            "Sunset: " +
-            new Date(weatherData.sys.sunset * 1000).toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-            });
+        sunriseText.innerText = new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+        });
+        sunsetText.innerText = new Date(weatherData.sys.sunset * 1000).toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+        });
         console.log(weatherData);
     } else {
         cityTitle.innerText = "";
@@ -69,8 +70,11 @@ const displayWeather = (weatherData) => {
         feelsLikeInfo.alt = "";
         humidity.innerText = "";
         windSpeed.innerText = "";
-        sunrise.innerText = "";
-        sunset.innerText = "";
+
+        sunriseText.innerText = "";
+        sunriseTitle.innerText = "";
+        sunsetText.innerText = "";
+
         errorMessage.innerText = "City not found";
     }
 };
