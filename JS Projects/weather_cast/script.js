@@ -48,8 +48,6 @@ const displayWeather = (weatherData) => {
             Math.round(weatherData.main.temp_max) +
             "ºC";
         feelsLikeText.innerText = "Feels like: " + Math.round(weatherData.main.feels_like) + "°C";
-        feelsLikeInfo.src = "./images/info24px.png";
-        feelsLikeInfo.alt = "";
         feelsLikeInfo.classList.remove("hidden");
         humidity.innerText = "Humidity: " + weatherData.main.humidity + "%";
         windSpeed.innerText = "Wind Speed: " + Math.round(weatherData.wind.speed) + "m/s";
@@ -83,8 +81,6 @@ const displayWeather = (weatherData) => {
 
         lowsAndHighsTemperatures.innerText = "";
         feelsLikeText.innerText = "";
-        feelsLikeInfo.src = "";
-        feelsLikeInfo.alt = "";
         feelsLikeInfo.classList.add("hidden");
         humidity.innerText = "";
         windSpeed.innerText = "";
