@@ -20,23 +20,30 @@ body {
 }
 
 nav {
-    display: flex;
+    display: grid;
+    align-items: center;
     gap: 20px;
     background-color: rgb(37, 37, 37);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 1rem;
+    padding: 0.5rem 1rem;
+
+    grid-template-areas: "links spacer profile";
 }
 
 nav ul {
     list-style: none;
     display: flex;
     gap: 10px;
+    border: 1px solid red;
+    grid-area: links;
 }
 
 nav #rest-of-navbar {
     display: flex;
+    flex-direction: row-reverse;
     gap: 20px;
-    margin-inline-start: auto;
+    grid-area: profile;
+    border: 1px solid red;
 }
 
 nav a,
@@ -52,4 +59,49 @@ nav ul li a:hover {
 nav .active-link {
     color: teal;
     border-bottom: 3px solid teal;
+}
+
+.supported-languages {
+    display: none;
+}
+
+/* In rest-of-navbar */
+.profile-area {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 10px;
+
+    border: 1px solid red;
+}
+
+.profile-area #profile-image {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 3px groove black;
+}
+
+/* In rest-of-navbar */
+.extra-features {
+    width: fit-content;
+    display: flex;
+
+    gap: 0;
+    align-items: center;
+
+    img {
+        scale: 0.75;
+    }
+}
+
+#profile-name {
+    width: 150px;
+    height: 75%;
+
+    border: 1px solid black;
+    scale: 1.25;
+}
+
+.extra-features #language-change {
 }
