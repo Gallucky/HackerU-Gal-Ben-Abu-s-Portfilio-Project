@@ -30,11 +30,6 @@ body {
     background-color: var(--color-palette-dominant);
     font-family: "Rubik";
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
     /* 
         Styling the main Y Scrollbar
         Helping website:

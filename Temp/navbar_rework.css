@@ -7,16 +7,12 @@
 }
 
 body {
-    min-height: 100vh;
-
     /*
     If Dynamic Virtual Height (DVH)
     is not supported / not working revet back to 100vh
     */
+    min-height: 100vh;
     min-height: 100dvh;
-
-    background-color: rgb(37, 37, 37);
-    font-family: Rubik;
 }
 
 nav {
@@ -34,22 +30,21 @@ nav ul {
     list-style: none;
     display: flex;
     gap: 10px;
-    border: 1px solid red;
     grid-area: links;
 }
 
 nav #rest-of-navbar {
     display: flex;
     flex-direction: row-reverse;
-    gap: 20px;
+    gap: 0px;
     grid-area: profile;
-    border: 1px solid red;
 }
 
 nav a,
 abbr {
     color: white;
     text-decoration: none;
+    font-size: 1.1rem;
 }
 
 nav ul li a:hover {
@@ -57,18 +52,25 @@ nav ul li a:hover {
 }
 
 nav .active-link {
-    color: teal;
     position: relative;
+    font-weight: 500;
+}
+
+nav .active-link a {
+    color: teal;
 }
 
 nav .active-link::after {
     width: 100%;
     height: 3px;
     content: "";
-}
 
-.supported-languages {
-    display: none;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+
+    background: teal;
+    border-radius: 8px;
 }
 
 /* In rest-of-navbar */
@@ -77,15 +79,6 @@ nav .active-link::after {
     flex-direction: row-reverse;
     align-items: center;
     gap: 10px;
-
-    border: 1px solid red;
-}
-
-.profile-area #profile-image {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 3px groove black;
 }
 
 /* In rest-of-navbar */
@@ -93,21 +86,94 @@ nav .active-link::after {
     width: fit-content;
     display: flex;
 
-    gap: 0;
+    gap: 10px;
     align-items: center;
 
     img {
-        scale: 0.75;
+        width: 70%;
+        height: 70%;
+        justify-self: center;
     }
+}
+
+#profile-image {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+    border: 3px groove black;
+
+    background-image: url("../images/profile.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 #profile-name {
     width: 150px;
     height: 75%;
-
-    border: 1px solid black;
     scale: 1.25;
 }
 
-.extra-features #language-change {
+#language-change {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.supported-languages {
+    width: fit-content;
+    opacity: 0;
+
+    padding: 5px;
+
+    border-radius: 8px;
+    border: 3px groove black;
+    background: teal;
+
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+
+    transform: translate(-50%);
+    transition: bottom 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+
+    text-align: center;
+
+    a {
+        text-decoration: underline;
+        color: var(--color-palette-light-neutral);
+        transition: all 1s ease;
+    }
+
+    span {
+        cursor: url("../../images/cursor_24x24.png"), default;
+        color: var(--color-palette-additional-accent);
+        filter: brightness(2);
+    }
+}
+
+.supported-languages::before {
+    width: 100%;
+    height: 10px;
+    content: "";
+
+    position: absolute;
+    top: -10px;
+    left: 0;
+
+    background: transparent;
+}
+
+#language-change:hover .supported-languages,
+.supported-languages:hover {
+    bottom: -175%;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#settings-features {
+    cursor: url("../../images/cursor_24x24.png"), pointer !important;
 }
