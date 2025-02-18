@@ -58,7 +58,13 @@ nav ul li a:hover {
 
 nav .active-link {
     color: teal;
-    border-bottom: 3px solid teal;
+    position: relative;
+}
+
+nav .active-link::after {
+    width: 100%;
+    height: 3px;
+    content: "";
 }
 
 .supported-languages {
