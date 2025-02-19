@@ -187,7 +187,12 @@ nav .active-link a::after {
 
 @media (max-width: 768px) {
     nav {
+        width: 100vw;
         height: min(2rem, 75px);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         margin: 0;
         padding: 0;
@@ -221,10 +226,36 @@ nav .active-link a::after {
         left: 0;
     }
 
+    .overlay {
+        width: 100vw;
+        height: 100vh;
+
+        display: none;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        background-color: rgba(255, 0, 0, 0.5);
+    }
+
+    .overlay.active {
+        display: block;
+        z-index: 9;
+    }
+
+    ul :first-child {
+        margin-top: 30px;
+    }
+
+    ul li {
+        margin-top: 10px;
+    }
+
     ul a {
         height: 1fr;
         padding: 0.5rem 1rem;
-        font-size: 0.75rem;
+        font-size: 1.3rem;
     }
 
     ul .active-link a::after {
@@ -245,10 +276,29 @@ nav .active-link a::after {
         align-items: center;
         justify-content: center;
 
-        position: absolute;
-        left: 10px;
+        margin-left: 10px;
 
         mask-image: url("../images/hamburger-menu.png");
+        mask-repeat: no-repeat;
+        mask-size: contain;
+        mask-position: center center;
+
+        background-color: var(--color-palette-accent);
+    }
+
+    #links-mobile-close-btn {
+        width: 24px;
+        height: 24px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: absolute;
+        top: 10px;
+        right: 10px;
+
+        mask-image: url("../images/close_24px.png");
         mask-repeat: no-repeat;
         mask-size: contain;
         mask-position: center center;
@@ -273,6 +323,7 @@ nav .active-link a::after {
     }
 
     .extra-features {
+        display: flex;
         gap: 0;
     }
 
@@ -283,7 +334,8 @@ nav .active-link a::after {
         justify-content: center;
     }
 
-    #settings-features {
+    #settings-features,
+    #language-change {
         scale: 0.75;
     }
 
