@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+:root {
+    --navbar-color: rgb(37, 37, 37);
+}
+
 body {
     /*
     If Dynamic Virtual Height (DVH)
@@ -19,7 +23,7 @@ nav {
     display: grid;
     align-items: center;
     gap: 20px;
-    background-color: rgb(37, 37, 37);
+    background-color: var(--navbar-color);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding: 0.5rem 1rem;
 
@@ -58,9 +62,10 @@ nav .active-link {
 
 nav .active-link a {
     color: teal;
+    position: relative;
 }
 
-nav .active-link::after {
+nav .active-link a::after {
     width: 100%;
     height: 3px;
     content: "";
@@ -71,6 +76,8 @@ nav .active-link::after {
 
     background: teal;
     border-radius: 8px;
+    transition: transform 0.4s ease-in-out;
+    animation: active-link-changed 0.4s ease-in-out;
 }
 
 /* In rest-of-navbar */
@@ -176,4 +183,148 @@ nav .active-link::after {
 
 #settings-features {
     cursor: url("../../images/cursor_24x24.png"), pointer !important;
+}
+
+@media (max-width: 768px) {
+    nav {
+        height: min(2rem, 75px);
+
+        margin: 0;
+        padding: 0;
+
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+
+    ul {
+        width: 40vw;
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        padding-block: 10px;
+
+        background: var(--navbar-color);
+
+        position: fixed;
+        top: 0;
+        left: -100%;
+
+        z-index: 10;
+
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        transition: left 0.4s ease-in-out;
+    }
+
+    ul.open {
+        left: 0;
+    }
+
+    ul a {
+        height: 1fr;
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+    }
+
+    ul .active-link a::after {
+        width: 3px;
+        height: 100%;
+
+        top: 0;
+        left: 5px;
+
+        animation: active-link-changed-mobile 0.4s ease-in-out;
+    }
+
+    #links-hamburger-menu {
+        width: 24px;
+        height: 24px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: absolute;
+        left: 10px;
+
+        mask-image: url("../images/hamburger-menu.png");
+        mask-repeat: no-repeat;
+        mask-size: contain;
+        mask-position: center center;
+
+        background-color: var(--color-palette-accent);
+    }
+
+    .profile-area {
+        width: 75vw;
+        height: min(2em, 75px);
+    }
+
+    #profile-image {
+        width: 24px;
+        height: 24px;
+        margin-right: 20px;
+    }
+
+    #profile-name {
+        height: 100%;
+        margin-right: -10px;
+    }
+
+    .extra-features {
+        gap: 0;
+    }
+
+    abbr,
+    #settings-features {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #settings-features {
+        scale: 0.75;
+    }
+
+    .supported-languages a,
+    .supported-languages span {
+        font-size: 0.75rem;
+    }
+
+    #language-change:has(.supported-languages a:focus) .supported-languages {
+        left: -200%;
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+@keyframes active-link-changed-mobile {
+    0% {
+        height: 100%;
+    }
+
+    50% {
+        height: 10%;
+        transform: translateY(var(--move-distance, 0));
+    }
+
+    100% {
+        height: 100%;
+    }
+}
+
+@keyframes active-link-changed {
+    0% {
+        width: 100%;
+    }
+
+    50% {
+        width: 10%;
+        transform: translateX(var(--move-distance, 0));
+    }
+
+    100% {
+        width: 100%;
+    }
 }
