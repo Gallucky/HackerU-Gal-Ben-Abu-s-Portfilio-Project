@@ -20,26 +20,36 @@ body {
 }
 
 nav {
+    height: min(3rem, 75px);
+    /* height: 75px; */
     display: grid;
     align-items: center;
     gap: 20px;
     background-color: var(--navbar-color);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 0.5rem 1rem;
+    padding: 0 1rem;
 
     grid-template-areas: "links spacer profile";
+
+    & > * {
+        height: 100%;
+        /* border: 1px solid red; */
+    }
 }
 
 nav ul {
     list-style: none;
     display: flex;
+    align-items: center;
     gap: 10px;
     grid-area: links;
+    position: relative;
 }
 
 nav #rest-of-navbar {
     display: flex;
     flex-direction: row-reverse;
+    align-items: center;
     gap: 0px;
     grid-area: profile;
 }
@@ -76,8 +86,33 @@ nav .active-link a::after {
 
     background: teal;
     border-radius: 8px;
+    transition: width 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+nav ul .dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: red;
+    position: absolute;
+    top: 78%;
+    left: 0;
+    display: none;
+
     transition: transform 0.4s ease-in-out;
-    animation: active-link-changed 0.4s ease-in-out;
+}
+
+nav .active-link.shrink a::after {
+    width: 10%;
+}
+
+nav ul .dot.animate {
+    display: block;
+    /* transform: translateX(var(--move-distance, 0)); */
+}
+
+#links-hamburger-menu {
+    display: none;
 }
 
 /* In rest-of-navbar */
@@ -104,8 +139,8 @@ nav .active-link a::after {
 }
 
 #profile-image {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
 
     border-radius: 50%;
     border: 3px groove black;
