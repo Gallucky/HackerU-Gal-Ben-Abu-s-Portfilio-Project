@@ -97,7 +97,7 @@ nav ul .dot {
     position: absolute;
     top: 78%;
     left: 0;
-    display: none;
+    /* display: none; */
 
     transition: transform 0.4s ease-in-out;
 }

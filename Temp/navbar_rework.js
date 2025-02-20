@@ -23,70 +23,77 @@ closeLinksButton.onclick = (e) => closeLinksLogic(e);
 
 const linksListItems = document.querySelectorAll("ul li");
 
+let currentActiveLink = document.querySelector(".active-link");
+
+// Dot animation.
+const dot = document.querySelector("nav ul .dot");
+
+const moveDot = (duration, callback = null) => {
+    let startTime;
+
+    const animate = (currentTime) => {
+        if (!startTime) {
+            startTime = currentTime;
+        }
+
+        let elapsedTime = currentTime - startTime;
+        // Progress is a value between 0 and 1,
+        // if it is larger than 1 default to 1.
+        const progress = Math.min(elapsedTime / duration, 1);
+
+        // Breaking if there is no element with the
+        // class dot that is child of ul which is a child of nav.
+        if (!dot) return;
+
+        if (elapsedTime < duration) {
+            // Animation logic:
+            const startPos = dot.getBoundingClientRect().left;
+            const endPos = currentActiveLink.getBoundingClientRect().left;
+            const distance = endPos - startPos;
+
+            // Calculating the new position of the dot.
+            const currentPos = startPos + distance * progress;
+
+            // Applying the new position to the dot.
+            dot.style.left = `${currentPos}px`;
+
+            // The animation is still in progress, continue it.
+            requestAnimationFrame(animate);
+        } else {
+            // The animation reached the duration limit.
+            if (callback) {
+                callback();
+            }
+        }
+    };
+
+    requestAnimationFrame(animate);
+};
+
+const shrinkIntoDot = (duration, callback = null) => {
+    let startTime;
+
+    const animate = (currentTime) => {
+        if (!startTime) {
+            startTime = currentTime;
+        }
+
+        let elapsedTime = currentTime - startTime;
+        // Progress is a value between 0 and 1,
+        // if it is larger than 1 default to 1.
+        const progress = Math.min(elapsedTime / duration, 1);
+    };
+};
+
+// Applying the active link class to the clicked link.
 linksListItems.forEach((link) => {
     link.onclick = () => {
-        linksListItems.forEach((l) => l.classList.remove("active-link"));
+        if (currentActiveLink) {
+            currentActiveLink.classList.remove("active-link");
+        }
+
         if (!link.classList.contains("active-link")) {
             link.classList.add("active-link");
         }
     };
-});
-
-// Active link line animation.
-document.addEventListener("DOMContentLoaded", () => {
-    // Getting all the links in the nav's ul.
-    const navLinks = document.querySelectorAll("nav ul a");
-
-    navLinks.forEach((link) => {
-        link.addEventListener("click", (e) => {
-            e.preventDefault();
-
-            const dotElement = document.querySelector(".dot");
-            const activeLink = document.querySelector(".active-link");
-
-            if (activeLink && dotElement) {
-                // Getting the clicked link's position.
-                const activeLinkParentRectArea = activeLink.parentElement.getBoundingClientRect();
-                const linkParentRectArea = link.parentElement.getBoundingClientRect();
-                const moveDistance = linkParentRectArea.left - activeLinkParentRectArea.left;
-
-                console.log("activeLinkParentRectArea:", activeLinkParentRectArea);
-
-                console.log("activeLinkParentRectArea.left:", activeLinkParentRectArea.left);
-                console.log("linkParentRectArea.left:", linkParentRectArea.left);
-                console.log("moveDistance:", moveDistance);
-
-                // Setting the css variable's value.
-                // link.parentElement.style.setProperty("--move-distance", `${moveDistance}px`);
-
-                // Triggering the animation.
-                setTimeout(() => {
-                    activeLink.classList.remove("active-link");
-
-                    // Adding the class to the list item (li),
-                    // parent element of the link that was clicked.
-                    link.parentElement.classList.add("active-link");
-
-                    dotElement.classList.add("animate");
-                    link.parentElement.classList.add("shrink");
-
-                    const changeAmount = moveDistance > 0 ? 1 : -1;
-
-                    if (moveDistance > 0) {
-
-                        for (let i = 0; i <= Math.abs(Math.round(moveDistance)); i++) {
-                            setTimeout(() => {
-                                dotElement.style.left = `${i}px`;
-                                console.log(i);
-                            }, 1000);
-                        }
-                        setTimeout(() => {
-                    }
-                        link.parentElement.classList.remove("shrink");
-                        dotElement.classList.remove("animate");
-                    }, 400);
-                }, 10);
-            }
-        });
-    });
 });
