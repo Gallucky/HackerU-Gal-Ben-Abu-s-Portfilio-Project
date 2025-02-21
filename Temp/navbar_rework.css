@@ -8,6 +8,7 @@
 
 :root {
     --navbar-color: rgb(37, 37, 37);
+    --transition-duration: 0.4s;
 }
 
 body {
@@ -22,13 +23,19 @@ body {
 nav {
     height: min(3rem, 75px);
     /* height: 75px; */
+
     display: grid;
     align-items: center;
+    padding: 0 1rem;
     gap: 20px;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
     background-color: var(--navbar-color);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 0 1rem;
-
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     grid-template-areas: "links spacer profile";
 
     & > * {
@@ -37,13 +44,102 @@ nav {
     }
 }
 
-nav ul {
+.nav-list {
     list-style: none;
     display: flex;
     align-items: center;
     gap: 10px;
+
+    padding: 0;
+    margin: 0;
+
     grid-area: links;
     position: relative;
+}
+
+/* Supports languages like hebrew */
+[dir="rtl"] .nav-list {
+    flex-direction: row-reverse;
+}
+
+.nav-item {
+    position: relative;
+    margin: 0 15px;
+}
+
+.nav-link {
+    display: block;
+    padding: 10px 5px;
+    position: relative;
+
+    color: var(--color-palette-accent);
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: rgb(22, 158, 158);
+}
+
+/* The underline for each link. */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: teal;
+    border-radius: 8px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-duration) ease;
+}
+
+/* Supports languages like hebrew for the underline animation */
+[dir="rtl"] .nav-link::after {
+    transform-origin: right;
+}
+
+/* When the link is hovered or already clicked and activated. */
+.nav-link:hover::after,
+.nav-link:focus::after,
+.nav-item.active .nav-link::after {
+    /* Extending the underline to full length. */
+    transform: scaleX(1);
+}
+
+/* 
+    The :target pseudo-class is used to capture the element
+    that was referenced by the URI's fragment identifier.
+    The URI / URL fragment identifier is the part of a URL that in this case
+    starts with a hash (#) symbol and specifies an internal target location (an ID).
+    It appears after the user clicked an anchor link.
+
+    In this selector we are selecting the rest of the siblings
+    of the section element that was targeted.
+    and going to the all other nav links and making sure
+    there isn't any underline under them if there is then remove it.
+*/
+section:target ~ nav .nav-item .nav-link::after {
+    transform: scaleX(0);
+}
+
+/* section:target ~ nav .nav-item a[href="#home"]:target ~ & .nav-link::after {
+    transform: scaleX(1);
+} */
+
+/* Offset of the sticky navbar */
+section {
+    min-height: 90vh;
+    padding: 0;
+    padding-top: min(3rem, 75px);
+    margin-top: calc(min(3rem, 75px) * -1);
+}
+
+/* Changing the color of the active link to distinguish it from the others */
+.nav-item.active .nav-link {
+    color: var(--color-palette-additional-accent) !important;
 }
 
 nav #rest-of-navbar {
@@ -54,61 +150,23 @@ nav #rest-of-navbar {
     grid-area: profile;
 }
 
-nav a,
 abbr {
     color: white;
     text-decoration: none;
     font-size: 1.1rem;
 }
 
-nav ul li a:hover {
-    color: rgb(22, 158, 158);
-}
-
-nav .active-link {
-    position: relative;
-    font-weight: 500;
-}
-
-nav .active-link a {
-    color: teal;
-    position: relative;
-}
-
-nav .active-link a::after {
-    width: 100%;
-    height: 3px;
-    content: "";
-
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-
-    background: teal;
-    border-radius: 8px;
-    transition: width 0.4s ease-in-out, transform 0.4s ease-in-out;
-}
-
-nav ul .dot {
+nav ul .link-underline {
     width: 3px;
     height: 3px;
-    border-radius: 50%;
-    background: red;
+    border-radius: 8px;
+    background: teal;
     position: absolute;
     top: 78%;
     left: 0;
     /* display: none; */
 
     transition: transform 0.4s ease-in-out;
-}
-
-nav .active-link.shrink a::after {
-    width: 10%;
-}
-
-nav ul .dot.animate {
-    display: block;
-    /* transform: translateX(var(--move-distance, 0)); */
 }
 
 #links-hamburger-menu {
@@ -183,18 +241,6 @@ nav ul .dot.animate {
     pointer-events: none;
 
     text-align: center;
-
-    a {
-        text-decoration: underline;
-        color: var(--color-palette-light-neutral);
-        transition: all 1s ease;
-    }
-
-    span {
-        cursor: url("../../images/cursor_24x24.png"), default;
-        color: var(--color-palette-additional-accent);
-        filter: brightness(2);
-    }
 }
 
 .supported-languages::before {
@@ -209,6 +255,22 @@ nav ul .dot.animate {
     background: transparent;
 }
 
+.supported-languages .change-language-option {
+    text-decoration: underline;
+    color: var(--color-palette-light-neutral);
+    transition: all 1s ease;
+}
+
+.supported-languages .change-language-option:hover {
+    cursor: url("../images/cursor-click_24x24.png"), default;
+}
+
+.supported-languages :not(.change-language-option) {
+    cursor: url("../../images/cursor_24x24.png"), default;
+    color: var(--color-palette-additional-accent);
+    filter: brightness(2);
+}
+
 #language-change:hover .supported-languages,
 .supported-languages:hover {
     bottom: -175%;
@@ -217,7 +279,11 @@ nav ul .dot.animate {
 }
 
 #settings-features {
-    cursor: url("../../images/cursor_24x24.png"), pointer !important;
+    cursor: url("../images/cursor_24x24.png"), pointer !important;
+}
+
+[dir="rtl"] .nav-list {
+    flex-direction: row;
 }
 
 @media (max-width: 768px) {
@@ -383,35 +449,5 @@ nav ul .dot.animate {
         left: -200%;
         opacity: 1;
         pointer-events: auto;
-    }
-}
-
-@keyframes active-link-changed-mobile {
-    0% {
-        height: 100%;
-    }
-
-    50% {
-        height: 10%;
-        transform: translateY(var(--move-distance, 0));
-    }
-
-    100% {
-        height: 100%;
-    }
-}
-
-@keyframes active-link-changed {
-    0% {
-        width: 100%;
-    }
-
-    50% {
-        width: 10%;
-        transform: translateX(var(--move-distance, 0));
-    }
-
-    100% {
-        width: 100%;
     }
 }

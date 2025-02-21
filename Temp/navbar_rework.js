@@ -21,79 +21,74 @@ const closeLinksLogic = (e) => {
 overlay.onclick = (e) => closeLinksLogic(e);
 closeLinksButton.onclick = (e) => closeLinksLogic(e);
 
-const linksListItems = document.querySelectorAll("ul li");
+// Updating the active class.
+document.querySelectorAll(".nav-link").forEach((link) => {
+    link.addEventListener("click", function () {
+        document.querySelector(".active").classList.remove("active");
+        this.parentElement.classList.add("active");
+    });
+});
 
-let currentActiveLink = document.querySelector(".active-link");
+const translations = {
+    en: {
+        navLinkHome: "Home",
+        navLinkAbout: "About",
+        navLinkServices: "Services",
+        navLinkContact: "Contact",
+    },
+    he: {
+        navLinkHome: "ראשי",
+        navLinkAbout: "אודות",
+        navLinkServices: "שירותים",
+        navLinkContact: "צור קשר",
+    },
+};
 
-// Dot animation.
-const dot = document.querySelector("nav ul .dot");
+const swapLanguage = (clickedLanguage) => {
+    const html = document.documentElement;
+    const rtlLangs = ["ar", "he", "fa", "ps", "ur"];
 
-const moveDot = (duration, callback = null) => {
-    let startTime;
+    if (rtlLangs.includes(clickedLanguage)) {
+        html.dir = "rtl";
+    } else {
+        html.dir = "ltr";
+    }
 
-    const animate = (currentTime) => {
-        if (!startTime) {
-            startTime = currentTime;
-        }
+    // Changing the language.
+    const elementsToTranslate = document.querySelectorAll("[data-translate-supported]");
+    const elementsToTranslateArray = Array.from(elementsToTranslate);
 
-        let elapsedTime = currentTime - startTime;
-        // Progress is a value between 0 and 1,
-        // if it is larger than 1 default to 1.
-        const progress = Math.min(elapsedTime / duration, 1);
+    const abbrElementsToTranslate = document.querySelectorAll("[data-translate-supported-abbr]");
+    const abbrElementsToTranslateArray = Array.from(abbrElementsToTranslate);
 
-        // Breaking if there is no element with the
-        // class dot that is child of ul which is a child of nav.
-        if (!dot) return;
+    elementsToTranslateArray.forEach((element) => {
+        const translationKey = element.getAttribute("data-translate-supported");
+        const translation = translations[clickedLanguage][translationKey];
+        element.textContent = translation;
+    });
 
-        if (elapsedTime < duration) {
-            // Animation logic:
-            const startPos = dot.getBoundingClientRect().left;
-            const endPos = currentActiveLink.getBoundingClientRect().left;
-            const distance = endPos - startPos;
+    abbrElementsToTranslateArray.forEach((element) => {
+        const translationKey = element.getAttribute("data-translate-supported-abbr");
+        const translation = translations[clickedLanguage][translationKey];
+        element.title = translation;
+    });
+};
 
-            // Calculating the new position of the dot.
-            const currentPos = startPos + distance * progress;
+const supportedLanguages = document.querySelectorAll(".supported-languages span");
 
-            // Applying the new position to the dot.
-            dot.style.left = `${currentPos}px`;
-
-            // The animation is still in progress, continue it.
-            requestAnimationFrame(animate);
-        } else {
-            // The animation reached the duration limit.
-            if (callback) {
-                callback();
+supportedLanguages.forEach((language) => {
+    language.onclick = () => {
+        // Making sure the rest of the supported languages have the class "change-language-option".
+        supportedLanguages.forEach((lang) => {
+            if (!lang.classList.contains("change-language-option")) {
+                lang.classList.add("change-language-option");
             }
-        }
-    };
+        });
 
-    requestAnimationFrame(animate);
-};
+        // Removing the class "change-language-option" from the clicked language.
+        language.classList.remove("change-language-option");
 
-const shrinkIntoDot = (duration, callback = null) => {
-    let startTime;
-
-    const animate = (currentTime) => {
-        if (!startTime) {
-            startTime = currentTime;
-        }
-
-        let elapsedTime = currentTime - startTime;
-        // Progress is a value between 0 and 1,
-        // if it is larger than 1 default to 1.
-        const progress = Math.min(elapsedTime / duration, 1);
-    };
-};
-
-// Applying the active link class to the clicked link.
-linksListItems.forEach((link) => {
-    link.onclick = () => {
-        if (currentActiveLink) {
-            currentActiveLink.classList.remove("active-link");
-        }
-
-        if (!link.classList.contains("active-link")) {
-            link.classList.add("active-link");
-        }
+        const clickedLanguageCode = language.getAttribute("data-lang");
+        swapLanguage(clickedLanguageCode);
     };
 });
