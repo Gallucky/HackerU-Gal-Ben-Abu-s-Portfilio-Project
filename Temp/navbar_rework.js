@@ -92,3 +92,34 @@ supportedLanguages.forEach((language) => {
         swapLanguage(clickedLanguageCode);
     };
 });
+
+const updateActiveLinkOnScroll = () => {
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    let currentSection = "";
+
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+
+        if (window.scrollY >= sectionTop - sectionHeight / 3) {
+            currentSection = section.getAttribute("id");
+        }
+    });
+
+    navLinks.forEach((link) => {
+        // Removing active class from all links.
+        link.parentElement.classList.remove("active");
+        if (link.getAttribute("href").substring(1) === currentSection) {
+            // Adding the active class to the current section based on the scrollbar position.
+            link.parentElement.classList.add("active");
+        }
+    });
+};
+
+// Listen for scroll events.
+window.addEventListener("scroll", updateActiveLinkOnScroll);
+
+// Running as soon as page loads.
+updateActiveLinkOnScroll();
