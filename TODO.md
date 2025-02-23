@@ -1,10 +1,8 @@
-# Portfolio Overhaul Commit #4:
+# Portfolio Overhaul Commit #5:
 
 ## CHANGES:
 
-→ Removed `Separator.css` file.
-
-→ Organized the `media query` of the `services_and_projects.css` file.
+→ Started to work on the project cards slider.
 
 ## TODO:
 

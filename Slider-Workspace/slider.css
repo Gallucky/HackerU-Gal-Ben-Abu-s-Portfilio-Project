@@ -1,0 +1,93 @@
+body {
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+.slider {
+    /* width: 50%; */
+    background: rgba(0, 0, 0, 4 0.2);
+
+    margin: 25% auto;
+
+    transform: translateY(-50%);
+
+    display: flex;
+    gap: 1rem;
+    overflow: hidden;
+}
+
+.project-card {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1vh;
+
+    background-color: rgb(166, 228, 254);
+    border-radius: 8px;
+
+    /*
+            Shadow help specifically with the values
+            themselves is from conversation with chatgpt.
+        */
+    --box-shadow-color: rgba(18, 222, 222, 0.435);
+
+    /* Regular shadow */
+    box-shadow: 0px 1px 6.25px rgba(0, 0, 0, 0.2), 0px 5px 12.5px rgba(0, 0, 0, 0.4);
+
+    /* Deeper shadow */
+    transform: perspective(1000px);
+
+    border: 3px groove black;
+
+    /* Initial tilt */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+    .project-image {
+        width: 100%;
+        height: 25vh;
+        border-radius: 8px 8px 0 0;
+        object-fit: cover;
+    }
+
+    .short-project-description {
+        width: 90%;
+        margin-top: -1vh;
+        overflow-wrap: break-word;
+    }
+
+    .link-to-landing-page {
+        width: 80%;
+        height: fit-content;
+
+        border-radius: 16px;
+        border: 3px groove red;
+        background-color: var(--color-palette-additional-accent);
+
+        margin-bottom: 10px;
+
+        /* Removing the default link decoration */
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+
+        transition: all 0.5s ease-in-out;
+    }
+
+    /* When the button to go to project page is hovered. */
+    .link-to-landing-page:hover {
+        color: white;
+        text-shadow: 3px 3px 5px gray;
+    }
+
+    .languages-used-in-project-preview img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+.project-card:hover {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(20px);
+    box-shadow: 0px 5px 7.5px rgba(0, 0, 0, 0.2), 0px 10px 15px rgba(0, 0, 0, 0.4);
+}
