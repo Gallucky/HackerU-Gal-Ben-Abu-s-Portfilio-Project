@@ -22,12 +22,11 @@ body {
 
 nav {
     height: min(3rem, 75px);
-    /* height: 75px; */
 
-    display: grid;
+    display: flex;
     align-items: center;
-    padding: 0 1rem;
-    gap: 20px;
+    justify-content: space-between;
+    padding: 0.25rem 1rem;
 
     position: sticky;
     top: 0;
@@ -36,11 +35,9 @@ nav {
     background-color: var(--navbar-color);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    grid-template-areas: "links spacer profile";
 
     & > * {
         height: 100%;
-        /* border: 1px solid red; */
     }
 }
 
@@ -48,17 +45,19 @@ nav {
     list-style: none;
     display: flex;
     align-items: center;
+    margin-right: auto !important;
     gap: 10px;
 
     padding: 0;
     margin: 0;
 
-    grid-area: links;
     position: relative;
 }
 
 /* Supports languages like hebrew */
 [dir="rtl"] .nav-list {
+    margin-right: -10px !important;
+    margin-left: auto;
     flex-direction: row-reverse;
 }
 
@@ -142,18 +141,25 @@ section {
     color: var(--color-palette-additional-accent) !important;
 }
 
-nav #rest-of-navbar {
+#rest-of-navbar {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    justify-content: end;
     gap: 0px;
-    grid-area: profile;
 }
 
 abbr {
+    width: 100%;
+    height: 100%;
+
     color: white;
     text-decoration: none;
     font-size: 1.1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 nav ul .link-underline {
@@ -190,8 +196,8 @@ nav ul .link-underline {
     align-items: center;
 
     img {
-        width: 70%;
-        height: 70%;
+        width: 75%;
+        height: 75%;
         justify-self: center;
     }
 }
@@ -279,6 +285,8 @@ nav ul .link-underline {
 }
 
 #settings-features {
+    width: fit-content;
+    height: fit-content;
     cursor: url("../images/cursor_24x24.png"), pointer !important;
 }
 
@@ -286,45 +294,74 @@ nav ul .link-underline {
     flex-direction: row;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 805px) {
+    [dir="rtl"] nav,
     nav {
-        width: 100vw;
-        height: min(2rem, 75px);
-
         display: flex;
+        flex-direction: row;
         align-items: center;
-        justify-content: center;
-
-        margin: 0;
-        padding: 0;
-
-        position: fixed;
-        top: 0;
-        right: 0;
+        justify-content: end;
     }
 
-    ul {
-        width: 40vw;
+    [dir="rtl"] nav {
+        flex-direction: row-reverse;
+    }
+
+    [dir="rtl"] .nav-list,
+    .nav-list {
+        width: 25vw;
         height: 100vh;
 
-        display: flex;
+        background-color: rgb(59, 59, 59);
+
         flex-direction: column;
-        padding-block: 10px;
+        align-items: start;
 
-        background: var(--navbar-color);
-
-        position: fixed;
+        position: absolute;
         top: 0;
         left: -100%;
 
-        z-index: 10;
-
         border-right: 1px solid rgba(255, 255, 255, 0.1);
-        transition: left 0.4s ease-in-out;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        transition: left 0.8s linear;
     }
 
-    ul.open {
-        left: 0;
+    /* Making adjustments for rtl languages only. */
+    [dir="rtl"] .nav-list {
+        right: -100%;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        transition: right 0.8s linear;
+    }
+
+    [dir="rtl"] #links-hamburger-menu,
+    #links-hamburger-menu {
+        width: 32px;
+        height: 32px;
+
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 10px;
+
+        transform: translateY(-50%);
+
+        mask-image: url("../images/hamburger-menu.png");
+        mask-size: contain;
+        mask-position: center center;
+        mask-repeat: no-repeat;
+
+        background: var(--color-palette-additional-accent);
+    }
+
+    [dir="rtl"] #links-hamburger-menu {
+        left: auto;
+        right: 10px;
+    }
+
+    [dir="rtl"] .nav-list.open,
+    .nav-list.open {
+        z-index: 999;
     }
 
     .overlay {
@@ -336,8 +373,6 @@ nav ul .link-underline {
         position: absolute;
         top: 0;
         left: 0;
-
-        background-color: rgba(255, 0, 0, 0.5);
     }
 
     .overlay.active {
@@ -345,109 +380,80 @@ nav ul .link-underline {
         z-index: 9;
     }
 
-    ul :first-child {
-        margin-top: 30px;
+    .nav-list.open {
+        left: 0;
     }
 
-    ul li {
-        margin-top: 10px;
+    [dir="rtl"] .nav-list.open {
+        right: 0;
     }
 
-    ul a {
-        height: 1fr;
-        padding: 0.5rem 1rem;
-        font-size: 1.3rem;
+    [dir="rtl"] .nav-item:first-of-type,
+    .nav-item:first-of-type {
+        margin-top: 3rem;
     }
 
-    ul .active-link a::after {
-        width: 3px;
-        height: 100%;
-
-        top: 0;
-        left: 5px;
-
-        animation: active-link-changed-mobile 0.4s ease-in-out;
-    }
-
-    #links-hamburger-menu {
-        width: 24px;
-        height: 24px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        margin-left: 10px;
-
-        mask-image: url("../images/hamburger-menu.png");
-        mask-repeat: no-repeat;
-        mask-size: contain;
-        mask-position: center center;
-
-        background-color: var(--color-palette-accent);
-    }
-
+    [dir="rtl"] #links-mobile-close-btn,
     #links-mobile-close-btn {
         width: 24px;
         height: 24px;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
+        display: block;
         position: absolute;
-        top: 10px;
-        right: 10px;
+        top: 2vh;
+        right: 2vh;
 
         mask-image: url("../images/close_24px.png");
-        mask-repeat: no-repeat;
         mask-size: contain;
         mask-position: center center;
+        mask-repeat: no-repeat;
 
-        background-color: var(--color-palette-accent);
+        background-color: var(--color-palette-light-neutral);
+
+        outline: 1px solid white;
+    }
+
+    [dir="rtl"] #links-mobile-close-btn {
+        /* Clearing / resetting to the default value of the right property. */
+        right: auto;
+        left: 2vh;
+    }
+}
+
+@media (max-width: 426px) {
+    .nav-list {
+        width: fit-content;
+    }
+
+    .extra-features img {
+        width: 24px;
+        height: 24px;
+        margin-inline-end: 10px;
+    }
+}
+
+@media (max-width: 375px) {
+    .extra-features {
+        gap: 0;
+        margin-inline: auto;
     }
 
     .profile-area {
-        width: 75vw;
-        height: min(2em, 75px);
-    }
-
-    #profile-image {
-        width: 24px;
-        height: 24px;
-        margin-right: 20px;
-    }
-
-    #profile-name {
-        height: 100%;
-        margin-right: -10px;
-    }
-
-    .extra-features {
-        display: flex;
-        gap: 0;
-    }
-
-    abbr,
-    #settings-features {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #settings-features,
-    #language-change {
         scale: 0.75;
+        margin-right: 0 !important;
     }
 
-    .supported-languages a,
-    .supported-languages span {
-        font-size: 0.75rem;
+    #rest-of-navbar {
+        width: 33%;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: end;
+
+        margin-right: 0 !important;
     }
 
-    #language-change:has(.supported-languages a:focus) .supported-languages {
-        left: -200%;
-        opacity: 1;
-        pointer-events: auto;
+    #rest-of-navbar > * {
+        outline: 1px solid white;
     }
 }
