@@ -1,6 +1,6 @@
 /* ============ About Section ============ */
 
-.about-section {
+#about-section {
     width: 100%;
     height: fit-content;
 
@@ -11,6 +11,13 @@
     background-color: var(--color-palette-light-neutral);
     opacity: 0.75;
     filter: saturate(2);
+
+    margin-top: 0;
+}
+
+.programming-languages-and-more-area:has(.language-card:hover) ~ #about-section {
+    /* transform: translateY(11%); */
+    margin-top: 11%;
 }
 
 .about-content-wrapper {

@@ -1,6 +1,6 @@
 /* ============ Header Area ============ */
 
-.header-area {
+#header-area {
     width: 100vw;
     height: 40vh;
 
@@ -9,14 +9,13 @@
     justify-content: center;
     flex-direction: column;
 
-    margin-block: 11.25vh 0;
     padding: 5%;
 
     background: transparent;
     position: relative;
 }
 
-.header-area::before {
+#header-area::before {
     content: "";
     position: absolute;
     width: 100%;
@@ -78,7 +77,7 @@
     }
 }
 
-.header-area h1 {
+#header-area h1 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,7 +93,7 @@
     }
 }
 
-.header-area p {
+#header-area p {
     width: 50%;
 
     display: flex;

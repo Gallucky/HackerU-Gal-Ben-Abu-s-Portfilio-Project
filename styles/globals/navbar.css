@@ -130,7 +130,7 @@ section:target ~ nav .nav-item .nav-link::after {
 
 /* Offset of the sticky navbar */
 section {
-    min-height: 90vh;
+    min-height: 50vh;
     padding: 0;
     padding-top: min(3rem, 75px);
     margin-top: calc(min(3rem, 75px) * -1);
@@ -170,7 +170,6 @@ nav ul .link-underline {
     position: absolute;
     top: 78%;
     left: 0;
-    /* display: none; */
 
     transition: transform 0.4s ease-in-out;
 }
@@ -209,7 +208,7 @@ nav ul .link-underline {
     border-radius: 50%;
     border: 3px groove black;
 
-    background-image: url("../images/profile.jpg");
+    background-image: url("../../images/profile.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -262,6 +261,24 @@ nav ul .link-underline {
     background: transparent;
 }
 
+.supported-languages.disabled::before {
+    content: "";
+
+    position: absolute;
+    top: -10px;
+    left: 0;
+
+    background: transparent;
+}
+
+#language-change:hover .supported-languages.disabled,
+.supported-languages.disabled:hover {
+    transform: translateY(115%) translateX(-50%);
+    z-index: 1;
+    opacity: 1;
+    pointer-events: auto;
+}
+
 .supported-languages .change-language-option {
     text-decoration: underline;
     color: var(--color-palette-light-neutral);
@@ -269,7 +286,7 @@ nav ul .link-underline {
 }
 
 .supported-languages .change-language-option:hover {
-    cursor: url("../images/cursor-click_24x24.png"), default;
+    cursor: url("../../images/cursor-click_24x24.png"), default;
 }
 
 .supported-languages :not(.change-language-option) {
@@ -289,7 +306,7 @@ nav ul .link-underline {
 #settings-features {
     width: fit-content;
     height: fit-content;
-    cursor: url("../images/cursor_24x24.png"), pointer !important;
+    cursor: url("../../images/cursor_24x24.png"), pointer !important;
 }
 
 [dir="rtl"] .nav-list {
@@ -348,7 +365,7 @@ nav ul .link-underline {
 
         transform: translateY(-50%);
 
-        mask-image: url("../images/hamburger-menu.png");
+        mask-image: url("../../images/hamburger-menu.png");
         mask-size: contain;
         mask-position: center center;
         mask-repeat: no-repeat;
@@ -405,7 +422,7 @@ nav ul .link-underline {
         top: 2vh;
         right: 2vh;
 
-        mask-image: url("../images/close_24px.png");
+        mask-image: url("../../images/close_24px.png");
         mask-size: contain;
         mask-position: center center;
         mask-repeat: no-repeat;
