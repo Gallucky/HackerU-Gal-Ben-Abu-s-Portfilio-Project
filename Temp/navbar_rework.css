@@ -231,6 +231,7 @@ nav ul .link-underline {
 .supported-languages {
     width: fit-content;
     opacity: 0;
+    z-index: -1;
 
     padding: 5px;
 
@@ -240,10 +241,10 @@ nav ul .link-underline {
 
     position: absolute;
     left: 50%;
-    bottom: 0;
+    top: -300%;
 
-    transform: translate(-50%);
-    transition: bottom 0.3s ease, opacity 0.3s ease;
+    transform: translateX(-50%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
     pointer-events: none;
 
     text-align: center;
@@ -279,7 +280,8 @@ nav ul .link-underline {
 
 #language-change:hover .supported-languages,
 .supported-languages:hover {
-    bottom: -175%;
+    transform: translateY(275%) translateX(-50%);
+    z-index: 1;
     opacity: 1;
     pointer-events: auto;
 }
@@ -421,39 +423,67 @@ nav ul .link-underline {
 }
 
 @media (max-width: 426px) {
+    [dir="rtl"] .nav-list,
     .nav-list {
         width: fit-content;
-    }
-
-    .extra-features img {
-        width: 24px;
-        height: 24px;
-        margin-inline-end: 10px;
     }
 }
 
 @media (max-width: 375px) {
+    [dir="rtl"] .extra-features,
     .extra-features {
-        gap: 0;
-        margin-inline: auto;
+        position: absolute;
+        left: -35%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        scale: 0.75;
+
+        & > * {
+            width: fit-content;
+            height: fit-content;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     }
 
+    [dir="rtl"] .extra-features {
+        left: 50%;
+    }
+
+    [dir="rtl"] .profile-area,
     .profile-area {
         scale: 0.75;
-        margin-right: 0 !important;
     }
 
+    [dir="rtl"] .profile-area {
+        margin-right: auto;
+    }
+
+    [dir="rtl"] #rest-of-navbar,
     #rest-of-navbar {
-        width: 33%;
         display: flex;
         flex-direction: row-reverse;
         align-items: center;
-        justify-content: end;
+        justify-content: flex-end;
 
-        margin-right: 0 !important;
+        position: absolute;
+        right: -10px;
     }
 
-    #rest-of-navbar > * {
-        outline: 1px solid white;
+    [dir="rtl"] #rest-of-navbar {
+        flex-direction: row;
+        right: none;
+        left: 0;
+    }
+
+    [dir="rtl"] #links-hamburger-menu {
+        z-index: 998;
+
+        outline: 1px solid red;
     }
 }
