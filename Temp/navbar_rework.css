@@ -420,6 +420,47 @@ nav ul .link-underline {
         right: auto;
         left: 2vh;
     }
+
+    /* The underline for each link. */
+    .nav-link::after {
+        width: 3px;
+        height: 100%;
+        top: 0;
+        left: -10px;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform var(--transition-duration) ease;
+    }
+
+    /* Supports languages like hebrew for the underline animation */
+    [dir="rtl"] .nav-link::after {
+        left: none;
+        right: -2px;
+    }
+
+    /* When the link is hovered or already clicked and activated. */
+    .nav-link:hover::after,
+    .nav-link:focus::after,
+    .nav-item.active .nav-link::after {
+        /* Extending the underline to full length. */
+        transform: scaleY(1);
+    }
+
+    /* 
+    The :target pseudo-class is used to capture the element
+    that was referenced by the URI's fragment identifier.
+    The URI / URL fragment identifier is the part of a URL that in this case
+    starts with a hash (#) symbol and specifies an internal target location (an ID).
+    It appears after the user clicked an anchor link.
+
+    In this selector we are selecting the rest of the siblings
+    of the section element that was targeted.
+    and going to the all other nav links and making sure
+    there isn't any underline under them if there is then remove it.
+*/
+    section:target ~ nav .nav-item .nav-link::after {
+        transform: scaleY(0);
+    }
 }
 
 @media (max-width: 426px) {
@@ -485,5 +526,16 @@ nav ul .link-underline {
         z-index: 998;
 
         outline: 1px solid red;
+    }
+
+    [dir="rtl"] #links-mobile-close-btn,
+    #links-mobile-close-btn {
+        top: 5px;
+        right: 5px;
+    }
+
+    [dir="rtl"] #links-mobile-close-btn {
+        right: auto;
+        left: 5px;
     }
 }
