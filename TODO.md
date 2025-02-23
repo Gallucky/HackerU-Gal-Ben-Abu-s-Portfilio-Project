@@ -1,10 +1,10 @@
-Portfolio Overhaul #3:
+# Portfolio Overhaul Commit #4:
 
-# CHANGES:
+## CHANGES:
 
-→ Fixed the HTML and CSS project cards of being squeezed.
+→ Removed `Separator.css` file. → Organized the `media query` of the `services_and_projects.css` file.
 
-# TODO:
+## TODO:
 
 1. Need to fix the rest of the html and css project's landing pages.
 2. Need to find a way to fix the main portfolio page structure in the mobile support area some specific size in between PC and mobile are broken.

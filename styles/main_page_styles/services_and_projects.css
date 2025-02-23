@@ -30,32 +30,18 @@
 
     background-color: #a9a9a9;
 
-    @media (max-width: 768px) {
-        width: 80%;
-        padding: 5vw;
-    }
-
     h2 {
         width: fit-content;
         height: fit-content;
 
         color: var(--color-palette-accent);
         font-size: 40px;
-
-        @media (max-width: 768px) {
-            font-size: 30px;
-        }
     }
 
     p {
         width: 50%;
         color: var(--color-palette-dark-neutral);
         font-weight: 500;
-
-        @media (max-width: 768px) {
-            width: 100%;
-            font-weight: 400;
-        }
 
         /* English Language Support */
         &.lang-en {
@@ -66,11 +52,6 @@
     .projects-cards-wrapper {
         width: 100%;
 
-        /* display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center; */
-
         display: grid;
 
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -78,10 +59,6 @@
 
         padding: 1vh;
         gap: 20px;
-
-        @media (max-width: 768px) {
-            padding: 0;
-        }
     }
 
     .project-card {
@@ -110,10 +87,6 @@
 
         /* Initial tilt */
         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-
-        @media (max-width: 768px) {
-            width: 100%;
-        }
 
         .project-image {
             width: 100%;
@@ -152,16 +125,39 @@
             text-shadow: 3px 3px 5px gray;
         }
 
-        .languages-used-in-project-preview {
-            img {
-                width: 32px;
-                height: 32px;
-            }
+        .languages-used-in-project-preview img {
+            width: 32px;
+            height: 32px;
         }
     }
 
     .project-card:hover {
         transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(20px);
         box-shadow: 0px 5px 7.5px rgba(0, 0, 0, 0.2), 0px 10px 15px rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* Mobile Support */
+@media (max-width: 768px) {
+    .projects-area-content {
+        width: 100%;
+        padding: 5vw;
+    }
+
+    .projects-area-content h2 {
+        font-size: 30px;
+    }
+
+    .projects-area-content p {
+        width: 100%;
+        font-weight: 400;
+    }
+
+    .projects-area-content .projects-cards-wrapper {
+        padding: 0;
+    }
+
+    .projects-area-content .project-card {
+        width: 100%;
     }
 }
