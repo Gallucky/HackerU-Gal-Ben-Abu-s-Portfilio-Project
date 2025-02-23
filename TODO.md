@@ -2,7 +2,9 @@
 
 ## CHANGES:
 
-→ Removed `Separator.css` file. → Organized the `media query` of the `services_and_projects.css` file.
+→ Removed `Separator.css` file.
+
+→ Organized the `media query` of the `services_and_projects.css` file.
 
 ## TODO:
 
