@@ -16,7 +16,7 @@
 }
 
 .projects-area-content {
-    width: 50%;
+    width: 75%;
     height: fit-content;
 
     display: flex;
@@ -66,9 +66,14 @@
     .projects-cards-wrapper {
         width: 100%;
 
-        display: flex;
+        /* display: flex;
         flex-wrap: wrap;
         align-items: center;
+        justify-content: center; */
+
+        display: grid;
+
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         justify-content: center;
 
         padding: 1vh;
@@ -80,10 +85,6 @@
     }
 
     .project-card {
-        width: 30%;
-        height: 100%;
-        /* border: 1px solid blue; */
-
         display: flex;
         flex-direction: column;
         align-items: center;
