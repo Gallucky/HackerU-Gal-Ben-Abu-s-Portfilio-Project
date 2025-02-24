@@ -2,7 +2,7 @@
 
 ## CHANGES:
 
-→ Started to work on the project cards slider.
+→ Continue on the work of the project cards slider.
 
 ## TODO:
 
