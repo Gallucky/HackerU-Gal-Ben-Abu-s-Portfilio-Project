@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-#header-area {
+.header-area {
     width: 100vw;
     height: fit-content;
 

@@ -6,7 +6,7 @@
         <title>Landing Page - Free Advisement</title>
         <!-- Getting the common styling of a landing page -->
         <link rel="stylesheet" href="../../styles/globals/general.css" />
-        <link rel="stylesheet" href="../../styles/globals/toolbar.css" />
+        <link rel="stylesheet" href="../../styles/globals/navbar.css" />
         <link rel="stylesheet" href="../global_landing_page_style.css" />
         <link rel="stylesheet" href="../../styles/globals/license.css" />
 
@@ -30,47 +30,79 @@
             rel="stylesheet" />
     </head>
     <body>
-        <nav class="tool-bar nav-area">
-            <div class="tool-bar-content-wrapper">
-                <a href="../../index.html" class="profile-area">
-                    <div id="profile-image"></div>
-                    <img
-                        src="../../images/Profile-Name-removebg.png"
-                        id="profile-name"
-                        alt="Gal Ben Abu" />
-                </a>
+        <nav>
+            <ul class="nav-list">
+                <li class="nav-item active">
+                    <a
+                        href="../../index.html#header-area"
+                        class="nav-link"
+                        data-translate-supported="navLinkHome"
+                        >Home</a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a
+                        href="../../index.html#about-section"
+                        class="nav-link"
+                        data-translate-supported="navLinkAbout"
+                        >About</a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a
+                        href="../../index.html#services-projects"
+                        class="nav-link"
+                        data-translate-supported="navLinkServices"
+                        >Services</a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a
+                        href="../../index.html#contact-section"
+                        class="nav-link"
+                        data-translate-supported="navLinkContact"
+                        >Contact</a
+                    >
+                </li>
+                <div id="links-mobile-close-btn"></div>
+            </ul>
 
+            <div id="links-hamburger-menu"></div>
+
+            <div id="rest-of-navbar">
+                <div class="profile-area">
+                    <div id="profile-image"></div>
+                    <img src="../../images/Gal Ben Abu.svg" id="profile-name" alt="Gal Ben Abu" />
+                </div>
                 <div class="extra-features">
                     <!-- Supported Languages -->
-                    <a href="" id="language-change" class="outline-text">
-                        <abbr title="Change Language / החלף שפה">
-                            <img
-                                src="../../images/language_48x48.png"
-                                alt="Language image icon - dropdown for a language change" />
-                        </abbr>
-                    </a>
-
+                    <div id="language-change" class="outline-text">
+                        <img
+                            src="../../images/language_48x48.png"
+                            alt="Language image icon - dropdown for a language change" />
+                        <div class="supported-languages disabled">
+                            <span class="outline-text" data-lang="en">Feature not supported</span>
+                            <span class="outline-text" data-lang="he" data-lang-dir="rtl"
+                                >תרגום לא נתמך בדף זה</span
+                            >
+                        </div>
+                    </div>
                     <!-- Enable Smooth Scrolling -->
                     <!-- chrome://flags/#smooth-scrolling -->
-                    <a href="" id="settings-features" class="outline-text">
-                        <img
-                            src="../../images/settings-gear.png"
-                            alt="Settings gear icon image that is a link to an helping page." />
+                    <a
+                        href="./extra_features_and_settings-he.html"
+                        id="settings-features"
+                        class="outline-text">
+                        <abbr data-translate-supported-abbr="moreOptions" title="אפשרויות נוספות">
+                            <img
+                                src="../../images/settings-gear.png"
+                                alt="Settings gear icon image that is a link to an helping page." />
+                        </abbr>
                     </a>
                 </div>
-
-                <img
-                    id="hamburger-menu-icon"
-                    src="../../images/hamburger-menu.png"
-                    alt="Hamburger menu Icon for the dropdown of links while on mobile" />
-
-                <div class="links outline-text">
-                    <a href="../../index.html#main">ראשי</a>
-                    <a href="../../index.html#about">אודות</a>
-                    <a href="../../index.html#services">שירותים</a>
-                    <a href="../../index.html#contact">צור קשר</a>
-                </div>
             </div>
+
+            <div class="overlay"></div>
         </nav>
 
         <div class="header-area">
