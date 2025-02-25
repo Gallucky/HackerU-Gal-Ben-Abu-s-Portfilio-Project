@@ -1,6 +1,7 @@
 /* ============ Services and Projects Area ============ */
 
-#services-projects {
+#services-projects,
+#js-projects-and-games {
     width: 100%;
     height: fit-content;
 
@@ -29,6 +30,7 @@
     gap: 2vh;
     padding: 1vh;
 
+    border-radius: 8px;
     background-color: #a9a9a9;
 
     h2 {

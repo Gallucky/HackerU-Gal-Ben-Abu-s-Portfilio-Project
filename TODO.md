@@ -1,14 +1,17 @@
-# Portfolio Overhaul Commit #12:
+# Portfolio Overhaul Commit #13:
 
 ## CHANGES:
 
-→ Making the javascript html css projects cards slider's logic support more than one slider element. So more generic / flexible / sliders logic creator function.
+→ Added another section and slider for the js projects and games.
 
 ## TODO:
 
+-   [ ] Change the copied cards to be cards that will represent the js projects and games + link to their landing page...
+-   [ ] Create the js projects and games landing pages...
+
 -   [x] Slider completed.
 -   [x] Need to integrate the slider into the portfolio page.
--   [ ] Need to create another slider for the js projects.
+-   [x] Need to create another slider for the js projects.
 
 -   [x] Need to fix the rest of the html and css project's landing pages.
 -   [ ] Need to find a way to fix the main portfolio page structure in the mobile support area some specific size in between PC and mobile are broken.
