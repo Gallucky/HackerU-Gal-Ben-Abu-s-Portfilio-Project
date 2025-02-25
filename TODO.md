@@ -1,8 +1,8 @@
-# Portfolio Overhaul Commit #9:
+# Portfolio Overhaul Commit #10:
 
 ## CHANGES:
 
-→ Finished the integration of the HTML and CSS Projects cards slider.
+→ HotFix: Changing the language is based on changing the dir and the slider wasn't supported for RTL mode, added RTL support.
 
 ## TODO:
 

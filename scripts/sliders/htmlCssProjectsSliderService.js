@@ -21,6 +21,15 @@ const getGapSize = () => {
     return parseInt(rootStyle.getPropertyValue("--projects-cards-gap").trim());
 };
 
+// Checking if the page is currently in RTL mode.
+const isRTL = () => {
+    return (
+        document.documentElement.dir === "rtl" ||
+        document.body.dir === "rtl" ||
+        getComputedStyle(wrapper).direction === "rtl"
+    );
+};
+
 const setCardsWidths = () => {
     const gapSize = getGapSize();
     const totalGapWidth = gapSize * (visibleCards - 1);
@@ -42,26 +51,62 @@ const updateSlider = () => {
     // Calculating slide distance in percentage.
     const cardWidth = 100 / visibleCards;
     const slidePercentage = cardWidth * currentIndex;
+    const pageDirectionRTL = isRTL();
 
-    wrapper.style.transform = `translateX(-${slidePercentage}%)`;
+    // In RTL mode - using positive values for translateX.
+    // In LTR mode - using negative values for translateX.
+    const translateDirection = pageDirectionRTL ? "" : "-";
+
+    wrapper.style.transform = `translateX(${translateDirection}${slidePercentage}%)`;
 
     // Updating the buttons states.
-    prevButton.classList.toggle("disabled", currentIndex === 0);
-    nextButton.classList.toggle("disabled", currentIndex >= cards.length - visibleCards);
+    if (pageDirectionRTL) {
+        // RTL supported logic.
+        prevButton.classList.toggle("disabled", currentIndex >= cards.length - visibleCards);
+        nextButton.classList.toggle("disabled", currentIndex === 0);
+    } else {
+        // Original LTR logic.
+        prevButton.classList.toggle("disabled", currentIndex === 0);
+        nextButton.classList.toggle("disabled", currentIndex >= cards.length - visibleCards);
+    }
 };
 
 // Listening for slider's navigation buttons click events.
 nextButton.addEventListener("click", () => {
-    if (currentIndex < cards.length - visibleCards) {
-        currentIndex++;
-        updateSlider();
+    if (isRTL()) {
+        // In RTL mode:
+        // Next button moves backwards - index decreases.
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        }
+    } else {
+        // The original behavior.
+        // In LTR mode:
+        // Next button moves forwards - index increases.
+        if (currentIndex < cards.length - visibleCards) {
+            currentIndex++;
+            updateSlider();
+        }
     }
 });
 
 prevButton.addEventListener("click", () => {
-    if (currentIndex > 0) {
-        currentIndex--;
-        updateSlider();
+    if (isRTL()) {
+        // In RTL mode:
+        // Previous button moves forwards - index increases.
+        if (currentIndex < cards.length - visibleCards) {
+            currentIndex++;
+            updateSlider();
+        }
+    } else {
+        // The original behavior.
+        // In LTR mode:
+        // Previous button moves backwards - index decreases.
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        }
     }
 });
 
@@ -82,7 +127,38 @@ window.addEventListener("resize", () => {
     }
 });
 
+const fixRTLButtons = () => {
+    if (isRTL()) {
+        // Swapping the buttons contents.
+        prevButton.innerHTML = "&gt;";
+        nextButton.innerHTML = "&lt;";
+    } else {
+        // Resetting to the original buttons contents.
+        prevButton.innerHTML = "&lt;";
+        nextButton.innerHTML = "&gt;";
+    }
+};
+
 export const initializeHtmlCssSlider = () => {
+    // Checking if the page direction is in RTL,
+    // if it is in RTL mode fixing the buttons,
+    // otherwise defaults to the original layout and logic.
+    fixRTLButtons();
+
     // Initialize the slider
     updateSlider();
+
+    // Adding MutationObserver to detect any dir changes.
+    const directionObserver = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.attributeName === "dir") {
+                fixRTLButtons();
+                updateSlider();
+            }
+        });
+    });
+
+    // Observing both documentElement and body for div changes.
+    directionObserver.observe(document.documentElement, { attributes: true });
+    directionObserver.observe(document.body, { attributes: true });
 };
