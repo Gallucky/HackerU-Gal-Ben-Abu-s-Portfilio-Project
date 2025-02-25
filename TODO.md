@@ -1,14 +1,8 @@
-# Portfolio Overhaul Commit #7:
+# Portfolio Overhaul Commit #8:
 
 ## CHANGES:
 
-→ Fixed slider's projects cards cropping issue.
-
-→ The slider shows at one time:
-
--   In large screens (1024px and larger) - 3 Projects Cards.
--   In medium screens (between 768px [included] and 1024px [excluded]) - 2 Projects Cards.
--   In small screens (below 768px [excluded]) - 1 Project Card.
+→ Started to merge the slider into the portfolio...
 
 ## TODO:
 
