@@ -1,8 +1,8 @@
-# Portfolio Overhaul Commit #11:
+# Portfolio Overhaul Commit #12:
 
 ## CHANGES:
 
-→ Applying the new navbar in the HTML and CSS Projects landing pages.
+→ Making the javascript html css projects cards slider's logic support more than one slider element. So more generic / flexible / sliders logic creator function.
 
 ## TODO:
 

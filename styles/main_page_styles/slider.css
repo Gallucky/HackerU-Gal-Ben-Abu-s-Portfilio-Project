@@ -143,11 +143,11 @@
     transform: translateY(-50%);
 }
 
-#prevBtn {
+.prevBtn {
     left: 10px;
 }
 
-#nextBtn {
+.nextBtn {
     right: 10px;
 }
 

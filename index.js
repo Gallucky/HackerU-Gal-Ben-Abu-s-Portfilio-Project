@@ -1,6 +1,6 @@
 import { initializeLanguageService } from "./scripts/langService.js";
 import { updateActiveLinkOnScroll } from "./scripts/navbarService.js";
-import { initializeHtmlCssSlider } from "./scripts/sliders/htmlCssProjectsSliderService.js";
+import { initializeSlider } from "./scripts/slider.js";
 
 // Loading translations.
 initializeLanguageService();
@@ -8,5 +8,15 @@ initializeLanguageService();
 // Running as soon as page loads.
 updateActiveLinkOnScroll();
 
+const htmlCssProjectsCardsWrapper = document.querySelector(
+    "#services-projects .projects-cards-wrapper"
+);
+const htmlCssProjectsCardsPrevBtn = document.querySelector("#services-projects .prevBtn");
+const htmlCssProjectsCardsNextBtn = document.querySelector("#services-projects .nextBtn");
+
 // Initializing the sliders logic.
-initializeHtmlCssSlider();
+initializeSlider(
+    htmlCssProjectsCardsWrapper,
+    htmlCssProjectsCardsPrevBtn,
+    htmlCssProjectsCardsNextBtn
+);
