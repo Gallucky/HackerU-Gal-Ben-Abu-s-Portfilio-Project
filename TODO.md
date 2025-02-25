@@ -1,13 +1,13 @@
-# Portfolio Overhaul Commit #8:
+# Portfolio Overhaul Commit #9:
 
 ## CHANGES:
 
-→ Started to merge the slider into the portfolio...
+→ Finished the integration of the HTML and CSS Projects cards slider.
 
 ## TODO:
 
 -   [x] Slider completed.
--   [ ] Need to integrate the slider into the portfolio page.
+-   [x] Need to integrate the slider into the portfolio page.
 -   [ ] Need to create another slider for the js projects.
 
 -   [ ] Need to fix the rest of the html and css project's landing pages.

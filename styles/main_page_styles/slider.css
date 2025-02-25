@@ -1,0 +1,175 @@
+:root {
+    --projects-cards-gap: 20px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.slider {
+    width: 80%;
+    position: relative;
+    margin: auto;
+    /* margin-top: 150px; */
+    overflow: hidden;
+}
+
+.projects-cards-wrapper {
+    /* Making sure the wrapper element has the full width size in the section */
+    width: 100%;
+    display: flex;
+    /* Stretch makes every .project-card element be the same height. */
+    align-items: stretch;
+    padding-inline: calc(var(--projects-cards-gap) / 2);
+    gap: var(--projects-cards-gap);
+    transition: transform 0.3s ease-in-out;
+}
+
+.project-card {
+    /* Sizing of the cards are calculated in javascript. */
+    flex-shrink: 0;
+    flex-grow: 0;
+
+    /* Removing any fixed styling that may interfere with js calculations. */
+    width: auto;
+
+    /* Prevent overflow */
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 1vh;
+
+    text-align: center;
+    user-select: none;
+    background-color: rgb(166, 228, 254);
+    border-radius: 8px;
+
+    /*
+        Shadow help specifically with the values
+        themselves is from conversation with chatgpt.
+    */
+    --box-shadow-color: rgba(18, 222, 222, 0.435);
+
+    /* Regular shadow */
+    box-shadow: 0px 1px 6.25px rgba(0, 0, 0, 0.2), 0px 5px 12.5px rgba(0, 0, 0, 0.4);
+
+    border: 3px groove black;
+
+    /* Initial tilt */
+    transition: scale 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+    .project-image {
+        width: 100%;
+        height: 25vh;
+        border-radius: 8px 8px 0 0;
+        object-fit: cover;
+    }
+
+    .project-name {
+        width: 100%;
+        /* Responsive text sizing across different devices. */
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        margin: 8px 0;
+    }
+
+    .short-project-description {
+        width: 90%;
+        margin-top: -1vh;
+        overflow-wrap: break-word;
+        /* Responsive text sizing across different devices. */
+        font-size: clamp(0.85rem, 1.5vw, 1rem);
+    }
+
+    .link-to-landing-page {
+        width: 80%;
+        height: fit-content;
+
+        border-radius: 16px;
+        border: 3px groove red;
+        background-color: var(--color-palette-additional-accent);
+
+        margin-bottom: 10px;
+
+        /* Removing the default link decoration */
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+
+        transition: all 0.5s ease-in-out;
+    }
+
+    /* When the button to go to project page is hovered. */
+    .link-to-landing-page:hover {
+        color: white;
+        text-shadow: 3px 3px 5px gray;
+    }
+
+    /* For consistent languages icons spacing in project cards. */
+    .languages-used-in-project-preview {
+        display: flex;
+        justify-content: center;
+        margin: 5px 0;
+        gap: 8px;
+    }
+
+    .languages-used-in-project-preview img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+.project-card:hover {
+    scale: 0.95;
+    box-shadow: 0px 5px 7.5px rgba(0, 0, 0, 0.2), 0px 10px 15px rgba(0, 0, 0, 0.4);
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    padding: 10px;
+
+    color: white;
+    border: none;
+    background: rgba(0, 0, 0, 0.5);
+
+    z-index: 999;
+    cursor: url("../../images/cursor-click_24x24.png"), pointer;
+    transform: translateY(-50%);
+}
+
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
+
+.disabled {
+    background: rgba(0, 0, 0, 0.2);
+    cursor: url("../../images/unavailable-cursor_24x24.png"), not-allowed;
+}
+
+/* Show 2 cards on medium screens */
+@media (max-width: 1024px) {
+    .project-card {
+        flex: 0 0 calc((100% - var(--projects-cards-gap)) / 2);
+    }
+}
+
+/* Show 1 cards on smaller screens */
+@media (max-width: 768px) {
+    :root {
+        --projects-cards-gap: 10px;
+    }
+
+    .project-card {
+        flex: 0 0 100%;
+    }
+}
