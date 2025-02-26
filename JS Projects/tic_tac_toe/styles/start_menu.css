@@ -10,6 +10,7 @@
     justify-content: start;
 
     margin-top: 40vh;
+    margin-inline: auto;
     padding: 1rem;
     gap: 1.5rem;
     background: white;

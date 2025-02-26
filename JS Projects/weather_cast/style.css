@@ -24,7 +24,7 @@ body {
 
 .container {
     width: 50dvw;
-    height: 75dvh;
+    height: 90dvh;
 
     margin: 0 auto;
     padding: 20px;
@@ -79,7 +79,7 @@ button {
     top: 50%;
     left: 50%;
 
-    margin-top: 10px;
+    margin-top: 0;
 
     transform: translate(-50%, -50%);
 }

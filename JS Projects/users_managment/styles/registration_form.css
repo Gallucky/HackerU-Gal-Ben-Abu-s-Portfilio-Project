@@ -25,4 +25,8 @@
     button {
         margin-block: auto;
     }
+
+    button:hover {
+        cursor: ;
+    }
 }
