@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Landing Page - Tic Tac Toe</title>
+        <!-- Getting the common styling of a landing page -->
+        <link rel="stylesheet" href="../../../styles/globals/general.css" />
+        <link rel="stylesheet" href="../../../styles/globals/navbar.css" />
+        <link rel="stylesheet" href="../../global/global_landing_page_style.css" />
+        <link rel="stylesheet" href="../../../styles/globals/license.css" />
+
+        <!-- Connecting to google's font api -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <!-- Assistant font support -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap"
+            rel="stylesheet" />
+
+        <!-- Heebo font support -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap"
+            rel="stylesheet" />
+
+        <!-- Rubik font support -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+            rel="stylesheet" />
+
+        <script type="module" src="../../global/landing_page_global_support.js" defer></script>
+    </head>
+    <body>
+        <nav>
+            <ul class="nav-list">
+                <li class="nav-item active">
+                    <a
+                        href="../../../index.html#header-area"
+                        class="nav-link"
+                        data-translate-supported="navLinkHome"
+                        >Home</a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a
+                        href="../../../index.html#about-section"
+                        class="nav-link"
+                        data-translate-supported="navLinkAbout"
+                        >About</a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a
+                        href="../../../index.html#services-projects"
+                        class="nav-link"
+                        data-translate-supported="navLinkServices"
+                        >Services</a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a
+                        href="../../../index.html#contact-section"
+                        class="nav-link"
+                        data-translate-supported="navLinkContact"
+                        >Contact</a
+                    >
+                </li>
+                <div id="links-mobile-close-btn"></div>
+            </ul>
+
+            <div id="links-hamburger-menu"></div>
+
+            <div id="rest-of-navbar">
+                <div class="profile-area">
+                    <div id="profile-image"></div>
+                    <img
+                        src="../../../images/Gal Ben Abu.svg"
+                        id="profile-name"
+                        alt="Gal Ben Abu" />
+                </div>
+                <div class="extra-features">
+                    <!-- Supported Languages -->
+                    <div id="language-change" class="outline-text">
+                        <img
+                            src="../../../images/language_48x48.png"
+                            alt="Language image icon - dropdown for a language change" />
+                        <div class="supported-languages disabled">
+                            <span class="outline-text" data-lang="en">Feature not supported</span>
+                            <span class="outline-text" data-lang="he" data-lang-dir="rtl"
+                                >תרגום לא נתמך בדף זה</span
+                            >
+                        </div>
+                    </div>
+                    <!-- Enable Smooth Scrolling -->
+                    <!-- chrome://flags/#smooth-scrolling -->
+                    <a
+                        href="../../../extra_features_and_settings-he.html"
+                        id="settings-features"
+                        class="outline-text">
+                        <abbr data-translate-supported-abbr="moreOptions" title="אפשרויות נוספות">
+                            <img
+                                src="../../../images/settings-gear.png"
+                                alt="Settings gear icon image that is a link to an helping page." />
+                        </abbr>
+                    </a>
+                </div>
+            </div>
+
+            <div class="overlay"></div>
+        </nav>
+
+        <div class="header-area">
+            <!-- Project Name -->
+            <h1>Tic Tac Toe</h1>
+
+            <!-- Project Description -->
+            <p></p>
+
+            <div class="links-wrapper">
+                <a href="./index.html" id="link-to-project">
+                    <!-- Icon -->
+                    <img src="../../../images/git_94x94.png" alt="Link to project icon image" />
+
+                    <!-- Text -->
+                    <span>לצפיית הפרויקט</span>
+                </a>
+                <a href="" id="download-project" download="tic-tac-toe-offline-files.rar">
+                    <!-- Icon -->
+                    <img
+                        src="../../../images/download_64x64.png"
+                        alt="Tic Tac Toe files icon image" />
+
+                    <!-- Text -->
+                    <span>להורדת הפרויקט</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="used-languages">
+            <img src="../../../images/languages_logos/html.png" alt="HTML Logo" />
+            <img src="../../../images/languages_logos/css.png" alt="CSS Logo" />
+            <img src="../../../images/languages_logos/javascript.png" alt="JavaScript Logo" />
+        </div>
+
+        <!-- Project Preview -->
+        <div class="project-preview">
+            <img
+                src="../../../images/JS Projects Previews/tic_tac_toe.png"
+                alt="Download this project's files icon image" />
+        </div>
+
+        <!-- License Footer Bar -->
+        <div class="license-footer-bar outline-text">
+            <p class="name-year">Gal Ben Abu 2024</p>
+            <p class="license-message">כל הזכויות שמורות לגל בן אבו</p>
+        </div>
+    </body>
+</html>

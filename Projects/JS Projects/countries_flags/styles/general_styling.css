@@ -34,7 +34,7 @@ img {
 
 .fa.fa-heart:hover {
     color: red;
-    cursor: pointer;
+    cursor: url("../../../../images/cursor-click_24x24.png"), pointer;
 }
 
 .fa.fa-heart.liked {

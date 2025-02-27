@@ -1,17 +1,13 @@
-# Portfolio Overhaul Commit #14:
+# Portfolio Overhaul Commit #16:
 
 ## CHANGES:
 
-→ Organized the projects in into 1 folder called `Projects` and it contains the html and css projects, js projects and `global` folder which contains anything relevant to all projects. For example the styling of the landing pages etc...
-
-→ Renamed the directory `landing_pages` to `html_and_css_landing_pages`.
-
-→ Fixed path issues from the organization and the rename of the directory as mentioned above.
+→ Created the landing pages for the JS Projects. → Fixed more linking issues that were found...
 
 ## TODO:
 
 -   [x] Change the copied cards to be cards that will represent the js projects and games + link to their landing page...
--   [ ] Create the js projects and games landing pages...
+-   [x] Create the js projects and games landing pages...
 
 -   [x] Slider completed.
 -   [x] Need to integrate the slider into the portfolio page.
