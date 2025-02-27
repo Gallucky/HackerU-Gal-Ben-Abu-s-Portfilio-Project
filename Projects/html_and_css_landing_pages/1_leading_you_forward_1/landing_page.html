@@ -3,12 +3,12 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Landing Page - Discover The World</title>
+        <title>Landing Page - Leading You Forward</title>
         <!-- Getting the common styling of a landing page -->
-        <link rel="stylesheet" href="../../styles/globals/general.css" />
-        <link rel="stylesheet" href="../../styles/globals/navbar.css" />
-        <link rel="stylesheet" href="../global_landing_page_style.css" />
-        <link rel="stylesheet" href="../../styles/globals/license.css" />
+        <link rel="stylesheet" href="../../../styles/globals/general.css" />
+        <link rel="stylesheet" href="../../../styles/globals/navbar.css" />
+        <link rel="stylesheet" href="../../global/global_landing_page_style.css" />
+        <link rel="stylesheet" href="../../../styles/globals/license.css" />
 
         <!-- Connecting to google's font api -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,13 +28,15 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
             rel="stylesheet" />
+
+        <script type="module" src="../../global/landing_page_global_support.js" defer></script>
     </head>
     <body>
         <nav>
             <ul class="nav-list">
                 <li class="nav-item active">
                     <a
-                        href="../../index.html#header-area"
+                        href="../../../index.html#header-area"
                         class="nav-link"
                         data-translate-supported="navLinkHome"
                         >Home</a
@@ -42,7 +44,7 @@
                 </li>
                 <li class="nav-item">
                     <a
-                        href="../../index.html#about-section"
+                        href="../../../index.html#about-section"
                         class="nav-link"
                         data-translate-supported="navLinkAbout"
                         >About</a
@@ -50,7 +52,7 @@
                 </li>
                 <li class="nav-item">
                     <a
-                        href="../../index.html#services-projects"
+                        href="../../../index.html#services-projects"
                         class="nav-link"
                         data-translate-supported="navLinkServices"
                         >Services</a
@@ -58,7 +60,7 @@
                 </li>
                 <li class="nav-item">
                     <a
-                        href="../../index.html#contact-section"
+                        href="../../../index.html#contact-section"
                         class="nav-link"
                         data-translate-supported="navLinkContact"
                         >Contact</a
@@ -72,13 +74,16 @@
             <div id="rest-of-navbar">
                 <div class="profile-area">
                     <div id="profile-image"></div>
-                    <img src="../../images/Gal Ben Abu.svg" id="profile-name" alt="Gal Ben Abu" />
+                    <img
+                        src="../../../images/Gal Ben Abu.svg"
+                        id="profile-name"
+                        alt="Gal Ben Abu" />
                 </div>
                 <div class="extra-features">
                     <!-- Supported Languages -->
                     <div id="language-change" class="outline-text">
                         <img
-                            src="../../images/language_48x48.png"
+                            src="../../../images/language_48x48.png"
                             alt="Language image icon - dropdown for a language change" />
                         <div class="supported-languages disabled">
                             <span class="outline-text" data-lang="en">Feature not supported</span>
@@ -90,12 +95,12 @@
                     <!-- Enable Smooth Scrolling -->
                     <!-- chrome://flags/#smooth-scrolling -->
                     <a
-                        href="./extra_features_and_settings-he.html"
+                        href="../../../extra_features_and_settings-he.html"
                         id="settings-features"
                         class="outline-text">
                         <abbr data-translate-supported-abbr="moreOptions" title="אפשרויות נוספות">
                             <img
-                                src="../../images/settings-gear.png"
+                                src="../../../images/settings-gear.png"
                                 alt="Settings gear icon image that is a link to an helping page." />
                         </abbr>
                     </a>
@@ -107,30 +112,31 @@
 
         <div class="header-area">
             <!-- Project Name -->
-            <h1>Discover The World</h1>
+            <h1>Leading You Forward</h1>
 
             <!-- Project Description -->
             <p>
-                Explore new places, ideas, and perspectives. <br />
-                Begin your journey with rich insights and experiences. <br />
-                Expand your horizons with every step.
+                A platform built to support personal and professional growth. <br />
+                With practical guidance, expert resources, <br />
+                and actionable insights, we help you take confident steps forward. <br />
+                Discover innovative strategies and unlock your potential.
             </p>
 
             <div class="links-wrapper">
                 <a href="./index.html" id="link-to-project">
                     <!-- Icon -->
-                    <img src="../../images/git_94x94.png" alt="Link to project icon image" />
+                    <img src="../../../images/git_94x94.png" alt="Link to project icon image" />
 
                     <!-- Text -->
                     <span>לצפיית הפרויקט</span>
                 </a>
                 <a
-                    href="./5_discover_the_world.rar"
+                    href="./1_leading_you_forward_1.rar"
                     id="download-project"
-                    download="discover-the-world-offline-files.rar">
+                    download="leading-you-forward-offline-files.rar">
                     <!-- Icon -->
                     <img
-                        src="../../images/download_64x64.png"
+                        src="../../../images/download_64x64.png"
                         alt="Download project files icon image" />
 
                     <!-- Text -->
@@ -141,20 +147,18 @@
 
         <div class="used-languages">
             <img
-                src="../../images/languages_logos/html.png"
+                src="../../../images/languages_logos/html.png"
                 alt="Used Language HTML Logo Image Icon" />
             <img
-                src="../../images/languages_logos/css.png"
+                src="../../../images/languages_logos/css.png"
                 alt="Used Language CSS Logo Image Icon" />
         </div>
-
-        <div class="separator"></div>
 
         <!-- Project Preview -->
         <div class="project-preview">
             <img
                 src="./images/project_preview.png"
-                alt="Discover The World project's preview image" />
+                alt="Leading You Forward project's preview image" />
         </div>
 
         <!-- License Footer Bar -->

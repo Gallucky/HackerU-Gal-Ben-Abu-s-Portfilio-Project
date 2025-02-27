@@ -8,7 +8,7 @@ The primary files and structure are as follows:
 
 -   **index.html**: The main landing page containing navigation, sections, and links to subprojects.
 -   **index-en.html**: The English version of the landing page.
--   **landing_pages/**: A directory containing individual project landing pages.
+-   **Projects/html_and_css_landing_pages/**: A directory containing individual project landing pages.
 
 ### Key Sections in index.html and index-en.html
 

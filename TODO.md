@@ -2,9 +2,11 @@
 
 ## CHANGES:
 
-→ Changed the projects cards contents inside the js projects slider to be with the relevant projects...
+→ Organized the projects in into 1 folder called `Projects` and it contains the html and css projects, js projects and `global` folder which contains anything relevant to all projects. For example the styling of the landing pages etc...
 
-→ Fixed some bugs that occurred all of a sudden - do not quite know what caused them, my best guess is the navbar implementations / styling conflicts caused styles issues.
+→ Renamed the directory `landing_pages` to `html_and_css_landing_pages`.
+
+→ Fixed path issues from the organization and the rename of the directory as mentioned above.
 
 ## TODO:
 
