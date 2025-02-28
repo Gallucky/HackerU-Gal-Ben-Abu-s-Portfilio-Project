@@ -15,17 +15,6 @@
     color: var(--color-palette-accent);
     font: normal normal normal 20px/29px Heebo;
 
-    @media (max-width: 768px) {
-        height: 10vh;
-
-        flex-direction: column;
-
-        padding-block: 4vh;
-        gap: 0;
-
-        font-size: 1.1em;
-    }
-
     .name-year {
         justify-self: flex-start;
     }
@@ -36,3 +25,24 @@
 }
 
 /* #endregion */
+
+@media (max-width: 1024px) and (min-width: 768px) {
+    .license-footer-bar {
+        padding-block: 0;
+        height: 5vh;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .license-footer-bar {
+        height: 10vh;
+
+        flex-direction: column;
+
+        padding-block: 4vh;
+        gap: 0;
+
+        font-size: 1.1em;
+    }
+}
