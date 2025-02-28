@@ -1,248 +1,130 @@
 /* ============ Contact Area ============ */
 
 #contact-section {
-    width: 100vw;
-    height: 100vh;
+    width: 90vw;
+    height: 75vh;
 
     display: flex;
+    flex-direction: row-reverse;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-around;
 
-    margin-top: 1%;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-inline: auto;
 
-    position: relative;
+    & > * {
+        outline: 1px solid white;
+    }
+}
 
-    @media (max-width: 768px) {
-        flex-direction: column;
-        margin-top: 100px;
+#contact-section-image {
+    width: 25vw;
+    height: 25vw;
+
+    object-fit: contain;
+    object-position: center center;
+}
+
+#contact-section form {
+    width: 1fr;
+    height: fit-content;
+
+    padding: 1rem;
+}
+
+#form-content {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* All the direct children of form-content */
+#form-content > * {
+    width: 90%;
+    height: 1fr;
+
+    margin-inline: 5%;
+}
+
+#form-content .form-title {
+    h2 {
+        font: normal normal 900 3rem Heebo;
+        color: var(--color-palette-accent);
+
+        --outline-thickness: 3px;
     }
 
-    img {
-        width: 40vw;
-        height: 70vh;
-
-        position: absolute;
-        top: 0;
-        left: 10px;
-
-        object-fit: cover;
-
-        @media (max-width: 768px) {
-            width: 150px;
-            height: 150px;
-
-            top: -10%;
-            left: 8%;
-
-            object-fit: contain;
-            padding: 1%;
-        }
-
-        /* English Support */
-        &.lang-en {
-            left: 55% !important;
-
-            /* Flipping the image horizontally */
-            transform: scaleX(-1);
-
-            @media (max-width: 768px) {
-                left: 50% !important;
-            }
-        }
+    p {
+        font: normal normal normal 1.5rem Heebo;
     }
+}
 
-    form {
+#form-content .areas-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    margin-block: 10px;
+    gap: 10px;
+
+    /* For all areas: */
+    & > * {
+        width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: start;
         justify-content: center;
-        text-align: center;
-
-        margin-right: 10vw;
-
-        @media (max-width: 768px) {
-            width: 100%;
-            height: 100%;
-
-            margin-right: 0;
-        }
-
-        /* English Support */
-        &.lang-en {
-            margin-right: 50%;
-        }
-
-        .form-title {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            h2 {
-                --outline-thickness: 2px;
-                font: normal normal 900 36px/53px Heebo;
-                color: var(--color-palette-additional-accent);
-
-                @media (max-width: 768px) {
-                    align-self: flex-end;
-                    margin-right: 10%;
-                    font: normal normal 900 30px/36px Heebo;
-
-                    /* English Support */
-                    &.lang-en {
-                        align-self: flex-start;
-                        margin-right: 0%;
-                        margin-left: 10%;
-                    }
-                }
-            }
-
-            p {
-                width: 35vw;
-                font: normal normal normal 22px Heebo;
-
-                @media (max-width: 768px) {
-                    width: 80%;
-                    height: 100%;
-
-                    text-align: right;
-
-                    /* English Support */
-                    &.lang-en {
-                        text-align: left;
-                    }
-                }
-            }
-        }
-
-        .areas-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            gap: 2vh;
-
-            label {
-                margin-bottom: 0.5vh;
-
-                color: var(--color-palette-accent);
-                font: normal normal bold 18px/22px Heebo;
-
-                cursor: url("../../images/select-cursor_24x24.png"), text;
-
-                @media (max-width: 768px) {
-                    font: normal normal bold 14px/18px Heebo;
-                }
-
-                /* English Support */
-                &.lang-en {
-                    align-self: flex-start;
-                }
-            }
-
-            input {
-                width: 35vw;
-                height: 5vh;
-                direction: rtl;
-
-                border: 3px ridge black;
-                font: normal normal normal 18px Heebo;
-                background: #f6f6f67f 0% 0% no-repeat padding-box;
-
-                cursor: url("../../images/select-cursor_24x24.png"), text;
-
-                @media (max-width: 768px) {
-                    width: 80vw;
-                }
-
-                /* English Support */
-                &.lang-en {
-                    text-align: left;
-                }
-            }
-
-            .full-name-area {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-end;
-                justify-content: center;
-
-                margin-top: 3vh;
-            }
-
-            .email-area {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-end;
-                justify-content: center;
-            }
-
-            .phone-number-area {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-end;
-                justify-content: center;
-            }
-
-            .message-area {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-end;
-                justify-content: center;
-
-                textarea {
-                    width: 35vw;
-                    height: 20vh;
-
-                    resize: none;
-                    direction: rtl;
-
-                    border: 3px ridge black;
-                    font: normal normal normal 18px Heebo;
-                    background: #f6f6f67f 0% 0% no-repeat padding-box;
-
-                    cursor: url("../../images/select-cursor_24x24.png"), text;
-
-                    @media (max-width: 768px) {
-                        width: 80vw;
-                    }
-
-                    /* English Support */
-                    &.lang-en {
-                        text-align: left;
-                    }
-                }
-            }
-        }
-
-        #submit-btn {
-            width: 35vw;
-            height: 5vh;
-
-            margin-top: 3vh;
-
-            border: 3px groove black;
-            border-radius: 10px;
-            background: var(--programming-languages-background-color) 0% 0% no-repeat padding-box;
-
-            letter-spacing: 0.33px;
-            color: var(--color-palette-complementary);
-            font: normal normal bold 18px/22px Heebo;
-
-            transition: all 1s ease-in-out;
-
-            @media (max-width: 768px) {
-                width: 80vw;
-            }
-        }
-
-        #submit-btn:hover {
-            transform: scale(0.9);
-            color: white;
-            cursor: url("../../images/cursor-click_24x24.png"), pointer;
-        }
     }
+}
+
+#form-content input,
+#form-content textarea {
+    width: 100%;
+    padding: 0.1rem;
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: #e3e3e373;
+    text-align: right;
+    text-indent: 1px;
+
+    &:focus-within,
+    &:focus {
+        outline: none;
+    }
+}
+
+#form-content textarea {
+    max-width: min(30rem, 100vw);
+    min-height: 5rem;
+    max-height: 10rem;
+    resize: none;
+
+    field-sizing: content;
+    overflow-y: auto;
+}
+
+#form-content #submit-btn {
+    width: 90%;
+    font-family: Heebo;
+    font-size: 1rem;
+    color: var(--color-palette-additional-accent);
+    background-color: rgba(118, 116, 116, 0.783);
+    border: 1px groove black;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Medium Screens */
+@media (max-width: 1024px) and (min-width: 768px) {
+    #contact-section {
+        display: grid;
+        grid-template-areas: "image space" "form";
+    }
+}
+
+/* Small Screens */
+@media (max-width: 768px) {
 }

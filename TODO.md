@@ -1,8 +1,8 @@
-# Portfolio Overhaul Commit #16:
+# Portfolio Overhaul Commit #17:
 
 ## CHANGES:
 
-→ Created the landing pages for the JS Projects. → Fixed more linking issues that were found...
+→ Rework on the contact section styling and working on fixing the main page styling.
 
 ## TODO:
 

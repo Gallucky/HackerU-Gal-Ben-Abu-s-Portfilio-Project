@@ -17,6 +17,8 @@ const swapLanguage = (clickedLanguage) => {
     const html = document.documentElement;
     const rtlLangs = ["ar", "he", "fa", "ps", "ur"];
 
+    html.lang = clickedLanguage;
+
     if (rtlLangs.includes(clickedLanguage)) {
         html.dir = "rtl";
     } else {

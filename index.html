@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="he" dir="rtl">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,7 +39,7 @@
             <ul class="nav-list">
                 <li class="nav-item active">
                     <a href="#header-area" class="nav-link" data-translate-supported="navLinkHome"
-                        >Home</a
+                        >ראשי</a
                     >
                 </li>
                 <li class="nav-item">
@@ -47,7 +47,7 @@
                         href="#about-section"
                         class="nav-link"
                         data-translate-supported="navLinkAbout"
-                        >About</a
+                        >אודות</a
                     >
                 </li>
                 <li class="nav-item">
@@ -55,7 +55,7 @@
                         href="#services-projects"
                         class="nav-link"
                         data-translate-supported="navLinkServices"
-                        >Services</a
+                        >שירותים</a
                     >
                 </li>
                 <li class="nav-item">
@@ -63,7 +63,7 @@
                         href="#contact-section"
                         class="nav-link"
                         data-translate-supported="navLinkContact"
-                        >Contact</a
+                        >צרו קשר</a
                     >
                 </li>
                 <div id="links-mobile-close-btn"></div>
@@ -83,11 +83,10 @@
                             src="./images/language_48x48.png"
                             alt="Language image icon - dropdown for a language change" />
                         <div class="supported-languages">
-                            <span class="outline-text" data-lang="en">English</span>
-                            <span
-                                class="outline-text change-language-option"
-                                data-lang="he"
-                                data-lang-dir="rtl"
+                            <span class="outline-text change-language-option" data-lang="en"
+                                >English</span
+                            >
+                            <span class="outline-text" data-lang="he" data-lang-dir="rtl"
                                 >עברית</span
                             >
                         </div>
@@ -744,13 +743,14 @@
         <!-- A form section of 'Contact Us' -->
         <section id="contact-section">
             <img
+                id="contact-section-image"
                 src="./images/envelope.png"
                 alt="The main logo image for the contact section / area" />
             <form action="">
-                <div class="form-title">
+                <div id="form-content">
                     <div class="form-title">
-                        <h2 class="outline-text">צור קשר</h2>
-                        <p dir="rtl">
+                        <h2 class="outline-text">צרו קשר</h2>
+                        <p>
                             צרו איתי קשר באמצעות הטופס הנ"ל. <br />
                             תמלאו את הפרטים ואחזור אליכם בהקדם האפשרי.
                         </p>
