@@ -30,7 +30,7 @@ nav {
 
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 900;
 
     background-color: var(--navbar-color);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -274,7 +274,7 @@ nav ul .link-underline {
 #language-change:hover .supported-languages.disabled,
 .supported-languages.disabled:hover {
     transform: translateY(115%) translateX(-50%);
-    z-index: 1;
+    z-index: 3;
     opacity: 1;
     pointer-events: auto;
 }
@@ -298,7 +298,7 @@ nav ul .link-underline {
 #language-change:hover .supported-languages,
 .supported-languages:hover {
     transform: translateY(275%) translateX(-50%);
-    z-index: 1;
+    z-index: 3;
     opacity: 1;
     pointer-events: auto;
 }
@@ -396,7 +396,7 @@ nav ul .link-underline {
 
     .overlay.active {
         display: block;
-        z-index: 9;
+        z-index: 998;
     }
 
     .nav-list.open {
@@ -540,7 +540,7 @@ nav ul .link-underline {
     }
 
     [dir="rtl"] #links-hamburger-menu {
-        z-index: 998;
+        z-index: 901;
 
         outline: 1px solid red;
     }

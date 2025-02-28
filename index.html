@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="./styles/globals/general.css" />
         <link rel="stylesheet" href="./styles/globals/navbar.css" />
         <link rel="stylesheet" href="./styles/globals/license.css" />
+        <link rel="stylesheet" href="./styles/globals/shiny_button.css" />
         <link rel="stylesheet" href="./styles/main_page_styles/header_area.css" />
         <link rel="stylesheet" href="./styles/main_page_styles/programming_languages.css" />
         <link rel="stylesheet" href="./styles/main_page_styles/about.css" />
@@ -767,11 +768,7 @@
                         </div>
                         <div class="phone-number-area">
                             <label for="user-phone-number" class="outline-text">טלפון</label>
-                            <input
-                                type="tel"
-                                id="user-phone-number"
-                                placeholder="000-0000000"
-                                required />
+                            <input type="tel" id="user-phone-number" required />
                             <!--
                                 This site helped me for the place holder and pattern based on the first example I wrote a pattern and a place holder:
                                 https://www.w3schools.com/tags/att_input_type_tel.asp
@@ -788,7 +785,13 @@
                         </div>
                     </div>
 
-                    <input type="submit" id="submit-btn" class="outline-text" value="שליחה" />
+                    <button
+                        type="submit"
+                        id="submit-btn"
+                        class="outline-text shiny-button"
+                        value="שליחה">
+                        שליחה
+                    </button>
                 </div>
             </form>
         </section>

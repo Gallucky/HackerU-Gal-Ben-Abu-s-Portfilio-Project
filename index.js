@@ -1,3 +1,4 @@
+import { initializeFormValidation } from "./scripts/contactServiceValidation.js";
 import { initializeLanguageService } from "./scripts/langService.js";
 import { updateActiveLinkOnScroll } from "./scripts/navbarService.js";
 import { initializeSlider } from "./scripts/slider.js";
@@ -28,3 +29,5 @@ const jsProjectsCardsPrevBtn = document.querySelector("#js-projects-and-games .p
 const jsProjectsCardsNextBtn = document.querySelector("#js-projects-and-games .nextBtn");
 
 initializeSlider(jsProjectsCardsWrapper, jsProjectsCardsPrevBtn, jsProjectsCardsNextBtn);
+
+initializeFormValidation();

@@ -1,7 +1,10 @@
 /* ============ Contact Area ============ */
 
 #contact-section {
+    /* Default Value */
     width: 90vw;
+    /* If supported use the following value */
+    width: 90dvw;
     height: 75vh;
 
     display: flex;
@@ -10,10 +13,6 @@
     justify-content: space-around;
 
     margin-inline: auto;
-
-    & > * {
-        outline: 1px solid white;
-    }
 }
 
 #contact-section-image {
@@ -159,4 +158,9 @@
             font: normal normal normal 1rem Heebo;
         }
     }
+}
+
+.invalid-form-control {
+    color: red;
+    border: 3px groove red !important;
 }
