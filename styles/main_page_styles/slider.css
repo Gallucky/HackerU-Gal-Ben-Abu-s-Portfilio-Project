@@ -116,6 +116,7 @@
         justify-content: center;
         margin: 5px 0;
         gap: 8px;
+        flex-wrap: wrap;
     }
 
     .languages-used-in-project-preview img {

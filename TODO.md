@@ -1,8 +1,8 @@
-# Portfolio Overhaul Commit #22:
+# Portfolio Overhaul Commit #23:
 
 ## CHANGES:
 
-→ Added descriptions for the js projects in each of their corresponding landing page.
+→ The `index.html` page is almost 100% supported for English and Hebrew.
 
 ## TODO:
 
