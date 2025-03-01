@@ -1,0 +1,6 @@
+section,
+.contact-options {
+    /* Default fallback value. */
+    width: 100vw !important;
+    width: 100dvw !important;
+}

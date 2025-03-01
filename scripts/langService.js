@@ -8,8 +8,8 @@ export const translations = {
         // Contact us form.
         contactUsFormTitle: "Contact Us",
         contactUsFormDescription:
-            "Contact me with the following form\n" +
-            "Fill the details and I reply to you as soon as possible.",
+            "Contact me with the following form.<br>" +
+            "Fill the details and I reply to<br>you as soon as possible.",
         contactUsFullName: "Full Name",
         contactUsEmail: "Email",
         contactUsTelephone: "Phone Number",
@@ -26,7 +26,7 @@ export const translations = {
         // Contact us form.
         contactUsFormTitle: "צרו קשר",
         contactUsFormDescription:
-            'צרו איתי קשר באמצעות הטופס הנ"ל.\n' + "תמלאו את הפרטים ואחזור אליכם בהקדם האפשרי.",
+            'צרו איתי קשר באמצעות הטופס הנ"ל.<br>' + "תמלאו את הפרטים ואחזור אליכם בהקדם האפשרי.",
         contactUsFullName: "שם מלא",
         contactUsEmail: 'דוא"ל',
         contactUsTelephone: "טלפון",
@@ -67,7 +67,7 @@ const swapLanguage = (clickedLanguage) => {
     elementsToTranslateArray.forEach((element) => {
         const translationKey = element.getAttribute("data-translate-supported");
         const translation = translations[clickedLanguage][translationKey];
-        element.textContent = translation;
+        element.innerHTML = translation;
     });
 
     abbrElementsToTranslateArray.forEach((element) => {

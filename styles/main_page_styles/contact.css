@@ -5,7 +5,7 @@
     width: 90vw;
     /* If supported use the following value */
     width: 90dvw;
-    height: 75vh;
+    height: 90dvh;
 
     display: flex;
     flex-direction: row-reverse;
@@ -30,6 +30,7 @@
     padding: 1rem;
 }
 
+[dir="ltr"] #form-content,
 #form-content {
     width: 100%;
     height: 100%;
@@ -41,6 +42,7 @@
 }
 
 /* All the direct children of form-content */
+[dir="ltr"] #form-content > *,
 #form-content > * {
     width: 90%;
     height: 1fr;
@@ -50,13 +52,14 @@
 
 #form-content .form-title {
     h2 {
-        font: normal normal 900 3rem Heebo;
+        font: normal normal 900 2.5rem Heebo;
         color: var(--color-palette-accent);
 
         --outline-thickness: 3px;
     }
 
     p {
+        width: 100%;
         font: normal normal normal 1.5rem Heebo;
     }
 }

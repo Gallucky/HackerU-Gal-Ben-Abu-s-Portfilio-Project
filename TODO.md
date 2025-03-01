@@ -1,16 +1,8 @@
-# Portfolio Overhaul Commit #20:
+# Portfolio Overhaul Commit #21:
 
 ## CHANGES:
 
-→ Added success dialog for form message sent successfully.
-
--   Supports RTL languages.
--   Changes based the supported languages in the translation object.
--   Has transitions.
--   Has auto closing.
--   Has close button.
--   Has a backdrop / overflow that when clicked closes the dialog.
--   Has esc key support for closing when clicking on the escape / 'esc' key.
+→ Fixed issue with the text translation didn't do underline.
 
 ## TODO:
 
