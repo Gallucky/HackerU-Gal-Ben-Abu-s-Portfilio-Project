@@ -1,3 +1,5 @@
+import { translations, getCurrentLang } from "./langService.js";
+
 // Defining regex patterns
 const regexPatterns = {
     fullName: /^[\p{L}\s]{2,}$/u,
@@ -46,6 +48,69 @@ const handleInputValidation = (fieldName, element, regex) => {
     validate();
 };
 
+const showSuccessDialog = (message = "ההודעה נשלחה בהצלחה!") => {
+    // Creating a backdrop that can be clicked to close the dialog.
+    const backdrop = document.createElement("div");
+    backdrop.id = "dialog-backdrop";
+    document.body.appendChild(backdrop);
+
+    // Creating the dialog itself.
+    const dialog = document.createElement("div");
+    dialog.id = "message-sent-dialog";
+
+    // Adding a success icon and message.
+    dialog.innerHTML =
+        '<div class="success-icon"></div>\n' +
+        '<h2 id="success-message" class="outline-text" data-translate-supported="successDialogMessage">' +
+        message +
+        "</h2>\n" +
+        '<button id="dialog-close"></button>';
+
+    document.body.appendChild(dialog);
+
+    // Adding the closing functionality to the button.
+    document.getElementById("dialog-close").addEventListener("click", closeDialog);
+    backdrop.addEventListener("click", closeDialog);
+
+    // Showing the dialog with a slight delay for better visual effect.
+    setTimeout(() => {
+        backdrop.classList.add("show");
+        dialog.classList.add("show");
+    }, 10);
+
+    // Auto-closing after 5 seconds.
+    setTimeout(closeDialog, 5000);
+
+    // Defining the escape key support logic.
+    const escKeyHandler = (e) => {
+        if (e.key === "Escape") {
+            // Before closing removing the event listening because,
+            // there is no longer a need for it after the dialog was closed.
+            document.removeEventListener("keydown", escKeyHandler);
+            closeDialog();
+        }
+    };
+
+    // Adding an escape key support for closing the dialog.
+    document.addEventListener("keydown", escKeyHandler);
+};
+
+const closeDialog = () => {
+    const dialog = document.getElementById("message-sent-dialog");
+    const backdrop = document.getElementById("dialog-backdrop");
+
+    if (dialog && backdrop) {
+        dialog.classList.remove("show");
+        backdrop.classList.remove("show");
+
+        // Removing the elements added after the transition completes.
+        setTimeout(() => {
+            if (dialog.parentNode) dialog.parentNode.removeChild(dialog);
+            if (backdrop.parentNode) backdrop.parentNode.removeChild(backdrop);
+        }, 500);
+    }
+};
+
 export const initializeFormValidation = () => {
     const fullNameInput = document.querySelector("#form-content input#user-full-name");
     const emailInput = document.querySelector("#form-content input#user-email");
@@ -77,11 +142,15 @@ export const initializeFormValidation = () => {
             validationState.telephone &&
             validationState.message
         ) {
+            const currentLang = getCurrentLang();
+            // Getting the success message in the right language with a fallback message.
+            const successDialogMessage =
+                translations[currentLang]["successDialogMessage"] ||
+                translations["he"]["successDialogMessage"];
+
             // Displaying success dialog with message.
-            const dialog = document.createElement("div");
-            dialog.id = "message-sent-dialog";
-            dialog.innerHTML = '<h2 id="success-message">ההודעה נשלחה בהצלחה!</h2>';
-            document.body.appendChild(dialog);
+            showSuccessDialog(successDialogMessage);
+            console.log("Success dialog has been shown.");
 
             // Clearing form control inputs.
             fullNameInput.value = "";

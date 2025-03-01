@@ -1,0 +1,122 @@
+/* Dialog styles */
+#message-sent-dialog {
+    width: 400px;
+    max-width: 90%;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+
+    background-color: rgba(54, 69, 79, 0.95);
+    border-radius: 8px;
+    border-inline-start: 4px solid var(--additional-accent-variation);
+    border-inline-end: 4px solid var(--additional-accent-variation);
+
+    padding: 20px 30px;
+    z-index: 9999;
+    text-align: center;
+
+    visibility: hidden;
+    opacity: 0;
+
+    transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.5s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+#message-sent-dialog.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#success-message {
+    color: green;
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* Close button */
+#dialog-close {
+    width: 24px;
+    height: 24px;
+
+    position: absolute;
+    top: 10px;
+    left: 10px; /* Left position for RTL support */
+
+    mask-image: url("../../images/close_24px.png");
+    mask-repeat: no-repeat;
+    mask-size: cover;
+    mask-position: center center;
+    background-color: white;
+
+    border: none;
+    cursor: url("../../images/cursor-click_24x24.png"), pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+#dialog-close:hover {
+    opacity: 1;
+}
+
+/* Success icon */
+.success-icon {
+    display: block;
+    margin: 0 auto 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-palette-complementary, #008080);
+    position: relative;
+}
+
+.success-icon:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25px;
+    height: 12px;
+    border-left: 3px solid white;
+    border-bottom: 3px solid white;
+    transform: translate(-50%, -60%) rotate(-45deg);
+}
+
+/* Dialog backdrop */
+#dialog-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(44, 62, 80, 0.1); /* Dark neutral with opacity */
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#dialog-backdrop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 480px) {
+    #message-sent-dialog {
+        width: 85%;
+        padding: 15px 20px;
+    }
+
+    #success-message {
+        font-size: 18px;
+    }
+
+    .success-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
+    }
+}

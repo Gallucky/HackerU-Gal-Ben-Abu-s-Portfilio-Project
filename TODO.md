@@ -1,12 +1,20 @@
-# Portfolio Overhaul Commit #19:
+# Portfolio Overhaul Commit #20:
 
 ## CHANGES:
 
-→ Added regex validation and styling to the contact section.
+→ Added success dialog for form message sent successfully.
+
+-   Supports RTL languages.
+-   Changes based the supported languages in the translation object.
+-   Has transitions.
+-   Has auto closing.
+-   Has close button.
+-   Has a backdrop / overflow that when clicked closes the dialog.
+-   Has esc key support for closing when clicking on the escape / 'esc' key.
 
 ## TODO:
 
--   [ ] To add dialog that will show that 'the message has been sent.'.
+-   [x] To add dialog that will show that 'the message has been sent.'.
 -   [ ] Write description in the js projects landing pages.
 -   [ ] Add translation support for the portfolio index.html page and the settings page.
 -   [ ] Fix the settings page.

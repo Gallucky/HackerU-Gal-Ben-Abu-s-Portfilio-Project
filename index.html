@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="./styles/main_page_styles/services_and_projects.css" />
         <link rel="stylesheet" href="./styles/main_page_styles/slider.css" />
         <link rel="stylesheet" href="./styles/main_page_styles/contact.css" />
+        <link rel="stylesheet" href="./styles/main_page_styles/contact_success_dialog.css" />
         <link rel="stylesheet" href="./styles/main_page_styles/contact_options.css" />
 
         <!-- Connecting to google fonts api -->
@@ -750,8 +751,10 @@
             <form action="">
                 <div id="form-content">
                     <div class="form-title">
-                        <h2 class="outline-text">צרו קשר</h2>
-                        <p>
+                        <h2 class="outline-text" data-translate-supported="contactUsFormTitle">
+                            צרו קשר
+                        </h2>
+                        <p data-translate-supported="contactUsFormDescription">
                             צרו איתי קשר באמצעות הטופס הנ"ל. <br />
                             תמלאו את הפרטים ואחזור אליכם בהקדם האפשרי.
                         </p>
@@ -759,23 +762,37 @@
 
                     <div class="areas-wrapper">
                         <div class="full-name-area">
-                            <label for="user-full-name" class="outline-text">שם מלא</label>
+                            <label
+                                for="user-full-name"
+                                class="outline-text"
+                                data-translate-supported="contactUsFullName"
+                                >שם מלא</label
+                            >
                             <input type="text" id="user-full-name" required />
                         </div>
                         <div class="email-area">
-                            <label for="user-email" class="outline-text">דוא״ל</label>
+                            <label
+                                for="user-email"
+                                class="outline-text"
+                                data-translate-supported="contactUsEmail"
+                                >דוא״ל</label
+                            >
                             <input type="email" id="user-email" required />
                         </div>
                         <div class="phone-number-area">
-                            <label for="user-phone-number" class="outline-text">טלפון</label>
+                            <label
+                                for="user-phone-number"
+                                class="outline-text"
+                                data-translate-supported="contactUsTelephone"
+                                >טלפון</label
+                            >
                             <input type="tel" id="user-phone-number" required />
-                            <!--
-                                This site helped me for the place holder and pattern based on the first example I wrote a pattern and a place holder:
-                                https://www.w3schools.com/tags/att_input_type_tel.asp
-                            -->
                         </div>
                         <div class="message-area">
-                            <label for="user-message-contents" class="outline-text"
+                            <label
+                                for="user-message-contents"
+                                class="outline-text"
+                                data-translate-supported="contactUsMessageContents"
                                 >תוכן ההודעה</label
                             >
                             <textarea
@@ -789,7 +806,8 @@
                         type="submit"
                         id="submit-btn"
                         class="outline-text shiny-button"
-                        value="שליחה">
+                        value="שליחה"
+                        data-translate-supported="contactUsSendForm">
                         שליחה
                     </button>
                 </div>

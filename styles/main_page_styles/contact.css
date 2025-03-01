@@ -120,6 +120,11 @@
     text-align: center;
 }
 
+.invalid-form-control {
+    color: red;
+    border: 3px groove red !important;
+}
+
 /* Medium & Small Screens */
 @media (max-width: 1024px) {
     #contact-section {
@@ -158,9 +163,4 @@
             font: normal normal normal 1rem Heebo;
         }
     }
-}
-
-.invalid-form-control {
-    color: red;
-    border: 3px groove red !important;
 }

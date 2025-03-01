@@ -1,16 +1,48 @@
-const translations = {
+export const translations = {
     en: {
         navLinkHome: "Home",
         navLinkAbout: "About",
         navLinkServices: "Services",
         navLinkContact: "Contact",
+
+        // Contact us form.
+        contactUsFormTitle: "Contact Us",
+        contactUsFormDescription:
+            "Contact me with the following form\n" +
+            "Fill the details and I reply to you as soon as possible.",
+        contactUsFullName: "Full Name",
+        contactUsEmail: "Email",
+        contactUsTelephone: "Phone Number",
+        contactUsMessageContents: "Message Content",
+        contactUsSendForm: "Send",
+        successDialogMessage: "Message has been sent successfully.",
     },
     he: {
         navLinkHome: "ראשי",
         navLinkAbout: "אודות",
         navLinkServices: "שירותים",
-        navLinkContact: "צור קשר",
+        navLinkContact: "צרו קשר",
+
+        // Contact us form.
+        contactUsFormTitle: "צרו קשר",
+        contactUsFormDescription:
+            'צרו איתי קשר באמצעות הטופס הנ"ל.\n' + "תמלאו את הפרטים ואחזור אליכם בהקדם האפשרי.",
+        contactUsFullName: "שם מלא",
+        contactUsEmail: 'דוא"ל',
+        contactUsTelephone: "טלפון",
+        contactUsMessageContents: "תוכן ההודעה",
+        contactUsSendForm: "שליחה",
+        successDialogMessage: "ההודעה נשלחה בהצלחה!",
     },
+};
+
+export const getCurrentLang = () => {
+    const html = document.documentElement;
+
+    // Checks if the language is null / undefined or
+    // the lang attribute / property is empty string then return the default language.
+    // Otherwise return the current language code.
+    return !html.lang || html.lang === "" ? "he" : html.lang;
 };
 
 const swapLanguage = (clickedLanguage) => {
