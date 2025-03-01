@@ -1,13 +1,13 @@
-# Portfolio Overhaul Commit #21:
+# Portfolio Overhaul Commit #22:
 
 ## CHANGES:
 
-→ Fixed issue with the text translation didn't do underline.
+→ Added descriptions for the js projects in each of their corresponding landing page.
 
 ## TODO:
 
 -   [x] To add dialog that will show that 'the message has been sent.'.
--   [ ] Write description in the js projects landing pages.
+-   [x] Write description in the js projects landing pages.
 -   [ ] Add translation support for the portfolio index.html page and the settings page.
 -   [ ] Fix the settings page.
 -   [ ] Add extra projects.

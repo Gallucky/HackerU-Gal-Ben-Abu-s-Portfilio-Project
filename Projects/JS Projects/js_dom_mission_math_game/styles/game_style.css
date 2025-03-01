@@ -16,6 +16,11 @@ body {
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
+button:hover,
+select:hover {
+    cursor: url("../../../../images/cursor-click_24x24.png"), pointer !important;
+}
+
 .game-container {
     width: 50vw;
 
