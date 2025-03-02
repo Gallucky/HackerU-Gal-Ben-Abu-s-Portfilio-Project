@@ -1,10 +1,10 @@
-# Portfolio Overhaul Commit #24:
+# Portfolio Overhaul Commit #25:
 
 ## CHANGES:
 
-→ Translated the portfolio `index.page` and the settings `extra_features_and_settings.js` page.
+→ Updated the `HTML and CSS Projects` .rar files.
 
-→ Removed unnecessary / temporary files.
+→ Added the `JS Projects` .rar files.
 
 ## TODO:
 
