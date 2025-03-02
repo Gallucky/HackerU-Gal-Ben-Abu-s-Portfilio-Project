@@ -100,6 +100,40 @@ export const translations = {
         contactUsMessageContents: "Message Content",
         contactUsSendForm: "Send",
         successDialogMessage: "Message has been sent successfully.",
+
+        // Settings Page:
+        settingsPageTitle: "Options, Features, and Settings",
+
+        // Smooth scrolling setting.
+        settingsPageSmoothScrollingTitle: "Smooth Scrolling [Feature] Not Working?",
+        settingsPageSmoothScrollingTextExplanation: `
+            Here is a guide that may help if the smooth scrolling feature is not working. <br />
+            In the browser's search bar at the top, enter the following address: <br />
+            <code>chrome://flags/#smooth-scrolling</code> and press the Enter key. <br /><br />
+            Then, change the highlighted option from <code>Default</code> or
+            <code>Disabled</code> to <code>Enabled</code> and restart the browser.
+            <br />
+            After restarting the browser, the smooth scrolling feature will be enabled, and the browser will support websites that use it.
+        `,
+        settingsPageSmoothScrollingImageTitle: "Explanation with Images:",
+        settingsPageSmoothScrollingImageStep1: `
+            Search for
+            <code class="outline-text">chrome://flags/#smooth-scrolling</code> in the search bar.
+        `,
+        settingsPageSmoothScrollingImageStep2: "The following window will now open:",
+        settingsPageSmoothScrollingImageStep3: `
+            Click on the dropdown next to <code class="outline-text">Smooth Scrolling</code> and select
+            <code class="outline-text">Enabled</code>:
+        `,
+        settingsPageSmoothScrollingImageStep4: `
+            A popup message will appear, informing us that the changes will take effect the next
+            time we restart the browser, <br />
+            with an option to restart the browser immediately. Click the Restart button.
+        `,
+        settingsPageSmoothScrollingImageStep5:
+            "(Make sure to save any important open items beforehand just in case).",
+        settingsPageSmoothScrollingImageStep6:
+            "Now this feature is enabled in our browser, and it should work in any browser that supports it.",
     },
     he: {
         // Navbar links.
@@ -197,10 +231,54 @@ export const translations = {
         contactUsMessageContents: "תוכן ההודעה",
         contactUsSendForm: "שליחה",
         successDialogMessage: "ההודעה נשלחה בהצלחה!",
+
+        // Settings Page:
+        settingsPageTitle: "אפשרויות, פיצ'רים והגדרות",
+
+        // Smooth scrolling setting.
+        settingsPageSmoothScrollingTitle: "גלילה חלקה [פיצ'ר] לא עובד/ת?",
+        settingsPageSmoothScrollingTextExplanation: `
+            להלן מדריך שיכול לעזור במידה והאפשרות / הפיצ'ר גלילה חלקה לא עובד/ת. <br />
+            נחפש בשורת החיפוש בדפדפן למעלה את הכתובת הבאה: <br />
+            <code>chrome://flags/#smooth-scrolling</code> ונלחץ על מקש ה-Enter. <br /><br />
+            שם נשנה את הערך של האפשרות המודגשת מ - <code>Default</code> או
+            <code>Disabled</code> ל - <code>Enabled</code> ונפעיל מחדש את הדפדפן.
+            <br />
+            אחרי הפעלת הדפדפן מחדש האפשרות גלילה חלקה תהיה מופעלת והדפדפן יתמוך באתרים
+            שמשתמשים בה.
+        `,
+        settingsPageSmoothScrollingImageTitle: "הסבר עם תמונות:",
+        settingsPageSmoothScrollingImageStep1: `
+            נחפש
+            <code class="outline-text">chrome://flags/#smooth-scrolling</code> בשורת
+            החיפוש.
+        `,
+        settingsPageSmoothScrollingImageStep2: "כעת יפתח לנו החלון הבא:",
+        settingsPageSmoothScrollingImageStep3: `
+            נלחץ על הרשימה שבצד <code class="outline-text">גלילה חלקה</code> ונבחר
+            באפשרות <code class="outline-text">Enabled</code> :
+        `,
+        settingsPageSmoothScrollingImageStep4: `
+            הודעה קופצת תופיע אשר מודיעה לנו שהשינויים שביצענו יבואו לידי ביטוי בפעם
+            הבאה שנפעיל מחדש את הדפדפן, <br />
+            עם אפשרות להפעיל מחדש את הדפדפן. נלחץ על הכפתור הפעלה מחדש,
+        `,
+        settingsPageSmoothScrollingImageStep5: "(נשמור דברים חשובים פתוחים לפני כן ליתר ביטחון).",
+        settingsPageSmoothScrollingImageStep6:
+            "עכשיו הפיצ'ר הזה פעיל בדפדפן שלנו והוא אמור לעבוד בכל דפדפן אשר משתמש בו.",
     },
 };
 
 export const getCurrentLang = () => {
+    // Checking the last language used in the website.
+    const savedLanguage = localStorage.getItem("preferredLanguage");
+
+    if (savedLanguage) {
+        return savedLanguage;
+    }
+
+    // If there is no data stored in the local storage regarding
+    // the last language displayed checking via the html page's lang attribute / property.
     const html = document.documentElement;
 
     // Checks if the language is null / undefined or
@@ -212,6 +290,9 @@ export const getCurrentLang = () => {
 const swapLanguage = (clickedLanguage) => {
     const html = document.documentElement;
     const rtlLangs = ["ar", "he", "fa", "ps", "ur"];
+
+    // Setting the language in the localStorage.
+    localStorage.setItem("preferredLanguage", clickedLanguage);
 
     html.lang = clickedLanguage;
 
@@ -242,6 +323,33 @@ const swapLanguage = (clickedLanguage) => {
 };
 
 export const initializeLanguageService = () => {
+    // Getting the current language from local storage if possible.
+    const currentLang = getCurrentLang();
+
+    // Applying the saved language on page load.
+    if (currentLang) {
+        // Updating the HTML language attribute to match saved preference.
+        document.documentElement.lang = currentLang;
+
+        // Applying RTL/LTR direction based on the language.
+        const rtlLangs = ["ar", "he", "fa", "ps", "ur"];
+        document.documentElement.dir = rtlLangs.includes(currentLang) ? "rtl" : "ltr";
+
+        // Applying translations based on the saved language
+        swapLanguage(currentLang);
+
+        // Updating the UI to show the current language as selected.
+        const supportedLanguages = document.querySelectorAll(".supported-languages span");
+        supportedLanguages.forEach((lang) => {
+            const langCode = lang.getAttribute("data-lang");
+            if (langCode === currentLang) {
+                lang.classList.remove("change-language-option");
+            } else {
+                lang.classList.add("change-language-option");
+            }
+        });
+    }
+
     const supportedLanguages = document.querySelectorAll(".supported-languages span");
 
     supportedLanguages.forEach((language) => {
@@ -265,3 +373,17 @@ export const initializeLanguageService = () => {
         };
     });
 };
+
+// Creating a function that will be called and load
+// saved language immediately when the script is loaded.
+export const loadSavedLanguage = () => {
+    const savedLanguage = localStorage.getItem("preferredLanguage");
+    if (savedLanguage) {
+        const rtlLangs = ["ar", "he", "fa", "ps", "ur"];
+        document.documentElement.lang = savedLanguage;
+        document.documentElement.dir = rtlLangs.includes(savedLanguage) ? "rtl" : "ltr";
+    }
+};
+
+// Running the method as soon as possible to avoid flashes and page direction problems.
+loadSavedLanguage();

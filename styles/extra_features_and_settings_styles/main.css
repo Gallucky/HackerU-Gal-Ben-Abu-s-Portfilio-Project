@@ -4,132 +4,111 @@ body {
 }
 
 .page-content-wrapper {
-    width: 50vw;
-    height: fit-content;
+    width: 100vw;
 
-    overflow-x: hidden;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    margin-top: 10vh;
+    text-align: center;
+}
 
-    @media (max-width: 768px) {
-        width: 80vw;
-    }
+h1 {
+    font-size: 3rem;
+    margin-top: min(1rem, 50px);
+    position: relative;
+    color: var(--color-palette-accent);
+}
 
-    /* #region Title */
+h1::after,
+h2::after,
+h3::after {
+    width: 100%;
+    height: 2px;
 
-    h1 {
-        color: black;
-        font: normal normal bold 50px/80px Assistant;
+    content: "";
+    position: absolute;
+    top: 87.5%;
+    left: 0;
 
-        @media (max-width: 768px) {
-            width: 100%;
-            margin-top: 1vh;
-            text-align: center;
-            font: normal normal bold 35px/40px Assistant;
-        }
-    }
+    background-color: var(--color-palette-additional-accent);
+    border-radius: 16px;
+}
 
-    h1 + hr {
-        border: 3px groove var(--color-palette-additional-accent);
-        border-radius: 16px;
-        margin-block: -1vh 1vh;
+h2 {
+    width: fit-content;
+    font-size: 2rem;
+    position: relative;
+}
 
-        @media (max-width: 768px) {
-            margin-block: 0 2vh;
-        }
-    }
+h2::after {
+    background-color: var(--color-palette-accent);
+}
 
-    /* #endregion */
+h3 {
+    width: fit-content;
+    font-size: 1.5rem;
+    position: relative;
+}
 
-    .feature-smooth-scrolling {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
+h3::after {
+    background-color: var(--color-palette-accent);
+}
 
-    img {
-        margin-top: 5px;
-        border-radius: 10px;
-        border: 1px solid var(--color-palette-accent);
-        box-shadow: inset 0 0 5px 5px gray;
-        padding: 5px;
+p {
+    width: fit-content;
+    text-align: start;
+}
 
-        @media (max-width: 768px) {
-            width: 100%;
-            height: auto;
-        }
-    }
+.guide-step {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
 
-    .title-header {
-        width: fit-content;
-    }
+.guide-step span {
+    width: fit-content !important;
+    display: block;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    text-align: start;
+    /* outline: 1px solid white; */
+}
 
-    h2 {
-        width: 100%;
-        color: var(--color-palette-accent);
-        font: normal normal bold 30px/50px Assistant;
+.guide-step img {
+    max-width: 80%;
+    height: auto;
+    width: auto;
+    max-height: 400px;
+    object-fit: contain;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-        @media (max-width: 768px) {
-            font: normal normal bold 20px Assistant;
-        }
-    }
+code {
+    background: gray;
+    padding-inline: 4px;
+    border-radius: 4px;
+    font: normal normal normal 15px Heebo;
+}
 
-    h2 + hr {
-        width: 100%;
-        border: 2px groove var(--color-palette-accent);
-        border-radius: 16px;
-        margin-top: -3px;
+h2,
+h3,
+p,
+.page-content-wrapper span,
+.page-content-wrapper img {
+    margin-inline: 10vw;
+}
 
-        @media (max-width: 768px) {
-            margin-top: 0;
-        }
-    }
-
-    h3 {
-        width: 100%;
-        color: var(--color-palette-accent);
-        font: normal normal bold 20px/40px Assistant;
-
-        @media (max-width: 768px) {
-            font: normal normal 600 20px Assistant;
-        }
-    }
-
-    h3 + hr {
-        width: 100%;
-        border: 2px groove var(--color-palette-accent);
-        border-radius: 16px;
-        margin-top: -3px;
-
-        @media (max-width: 768px) {
-            margin-top: 0;
-        }
-    }
-
-    p,
-    span {
-        color: var(--color-palette-light-neutral);
-        font: normal normal normal 20px/30px Heebo;
-
-        @media (max-width: 768px) {
-            font: normal normal normal 15px Heebo;
-        }
-    }
-
-    code {
-        background-color: gray;
-        border-radius: 10px;
-        padding: 0.3% 0.5%;
-        outline: 1px solid black;
-        margin-left: 1px;
-
-        font: normal normal normal 20px Heebo;
-
-        @media (max-width: 768px) {
-            padding: 1%;
-            font: normal normal normal 15px Heebo;
-            display: inline-block;
-        }
-    }
+/* Fixing the supported dialog issue. */
+#language-change:hover .supported-languages,
+.supported-languages:hover {
+    transform: translateY(250%) translateX(-50%);
+    z-index: 3;
+    opacity: 1;
+    pointer-events: auto;
 }

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>אפשרויות, פיצ'רים והגדרות</title>
+
+        <link rel="stylesheet" href="./styles/globals/general.css" />
+        <link rel="stylesheet" href="./styles/globals/navbar.css" />
+        <link rel="stylesheet" href="./styles/globals/license.css" />
+        <link rel="stylesheet" href="./styles/extra_features_and_settings_styles/main.css" />
+
+        <!-- Connecting to google's font api -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <!-- Assistant font support -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap"
+            rel="stylesheet" />
+
+        <!-- Heebo font support -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap"
+            rel="stylesheet" />
+
+        <!-- Rubik font support -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+            rel="stylesheet" />
+
+        <script type="module" src="./scripts/extra_features_and_settings.js" defer></script>
+    </head>
+    <body>
+        <!-- The nav tool bar that contains the profile picture and the anchor links in the website. -->
+        <nav>
+            <ul class="nav-list">
+                <li class="nav-item active">
+                    <a
+                        href="../../../index.html#header-area"
+                        class="nav-link"
+                        data-translate-supported="navLinkHome"
+                        >ראשי</a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a
+                        href="../../../index.html#about-section"
+                        class="nav-link"
+                        data-translate-supported="navLinkAbout"
+                        >אודות</a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a
+                        href="../../../index.html#services-projects"
+                        class="nav-link"
+                        data-translate-supported="navLinkServices"
+                        >שירותים</a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a
+                        href="../../../index.html#contact-section"
+                        class="nav-link"
+                        data-translate-supported="navLinkContact"
+                        >צרו קשר</a
+                    >
+                </li>
+                <div id="links-mobile-close-btn"></div>
+            </ul>
+
+            <div id="links-hamburger-menu"></div>
+
+            <div id="rest-of-navbar">
+                <div class="profile-area">
+                    <div id="profile-image"></div>
+                    <img
+                        src="../../../images/Gal Ben Abu.svg"
+                        id="profile-name"
+                        alt="Gal Ben Abu" />
+                </div>
+                <div class="extra-features">
+                    <!-- Supported Languages -->
+                    <div id="language-change" class="outline-text">
+                        <img
+                            src="./images/language_48x48.png"
+                            alt="Language image icon - dropdown for a language change" />
+                        <div class="supported-languages">
+                            <span class="outline-text change-language-option" data-lang="en"
+                                >English</span
+                            >
+                            <span class="outline-text" data-lang="he" data-lang-dir="rtl"
+                                >עברית</span
+                            >
+                        </div>
+                    </div>
+                    <!-- Enable Smooth Scrolling -->
+                    <!-- chrome://flags/#smooth-scrolling -->
+                    <a
+                        href="../../../extra_features_and_settings.html"
+                        id="settings-features"
+                        class="outline-text">
+                        <abbr data-translate-supported-abbr="moreOptions" title="אפשרויות נוספות">
+                            <img
+                                src="../../../images/settings-gear.png"
+                                alt="Settings gear icon image that is a link to an helping page." />
+                        </abbr>
+                    </a>
+                </div>
+            </div>
+
+            <div class="overlay"></div>
+        </nav>
+
+        <div class="page-content-wrapper">
+            <h1
+                class="outline-text"
+                style="--outline-color: var(--color-palette-additional-accent)"
+                data-translate-supported="settingsPageTitle">
+                אפשרויות, פיצ'רים והגדרות
+            </h1>
+            <div class="feature" id="smooth-scrolling">
+                <h2
+                    class="outline-text"
+                    style="--outline-thickness: 2px"
+                    data-translate-supported="settingsPageSmoothScrollingTitle">
+                    גלילה חלקה [פיצ'ר] לא עובד/ת?
+                </h2>
+                <p
+                    class="outline-text"
+                    data-translate-supported="settingsPageSmoothScrollingTextExplanation">
+                    להלן מדריך שיכול לעזור במידה והאפשרות / הפיצ'ר גלילה חלקה לא עובד/ת. <br />
+                    נחפש בשורת החיפוש בדפדפן למעלה את הכתובת הבאה: <br />
+                    <code>chrome://flags/#smooth-scrolling</code> ונלחץ על מקש ה-Enter. <br /><br />
+                    שם נשנה את הערך של האפשרות המודגשת מ - <code>Default</code> או
+                    <code>Disabled</code> ל - <code>Enabled</code> ונפעיל מחדש את הדפדפן.
+                    <br />
+                    אחרי הפעלת הדפדפן מחדש האפשרות גלילה חלקה תהיה מופעלת והדפדפן יתמוך באתרים
+                    שמשתמשים בה.
+                </p>
+                <br />
+
+                <h3
+                    class="outline-text"
+                    style="--outline-thickness: 2px"
+                    data-translate-supported="settingsPageSmoothScrollingImageTitle">
+                    הסבר עם תמונות:
+                </h3>
+                <br />
+
+                <div class="guide-step">
+                    <span data-translate-supported="settingsPageSmoothScrollingImageStep1">
+                        נחפש
+                        <code class="outline-text">chrome://flags/#smooth-scrolling</code> בשורת
+                        החיפוש.
+                    </span>
+                    <img
+                        src="./images/guides/smooth-scroll/feature-smooth-scroll-enable-guide-part-1.png"
+                        alt="Smooth scroll guide part 1" />
+                </div>
+
+                <div class="guide-step">
+                    <span data-translate-supported="settingsPageSmoothScrollingImageStep2"
+                        >כעת יפתח לנו החלון הבא:</span
+                    >
+                    <img
+                        src="./images/guides/smooth-scroll/feature-smooth-scroll-enable-guide-part-2.png"
+                        alt="Smooth scroll guide part 2" />
+                </div>
+
+                <div class="guide-step">
+                    <span data-translate-supported="settingsPageSmoothScrollingImageStep3">
+                        נלחץ על הרשימה שבצד <code class="outline-text">גלילה חלקה</code> ונבחר
+                        באפשרות <code class="outline-text">Enabled</code> :
+                    </span>
+                    <img
+                        src="./images/guides/smooth-scroll/feature-smooth-scroll-enable-guide-part-3.png"
+                        alt="Smooth scroll guide part 3" />
+                </div>
+
+                <div class="guide-step">
+                    <p data-translate-supported="settingsPageSmoothScrollingImageStep4">
+                        הודעה קופצת תופיע אשר מודיעה לנו שהשינויים שביצענו יבואו לידי ביטוי בפעם
+                        הבאה שנפעיל מחדש את הדפדפן, <br />
+                        עם אפשרות להפעיל מחדש את הדפדפן. נלחץ על הכפתור הפעלה מחדש,
+                    </p>
+                    <span data-translate-supported="settingsPageSmoothScrollingImageStep5"
+                        >(נשמור דברים חשובים פתוחים לפני כן ליתר ביטחון).</span
+                    >
+                    <img
+                        src="./images/guides/smooth-scroll/feature-smooth-scroll-enable-guide-part-4.png"
+                        alt="Smooth scroll guide part 4" />
+                    <br />
+                    <span data-translate-supported="settingsPageSmoothScrollingImageStep6">
+                        עכשיו הפיצ'ר הזה פעיל בדפדפן שלנו והוא אמור לעבוד בכל דפדפן אשר משתמש בו.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- A license information -->
+        <div class="license-footer-bar outline-text">
+            <p class="name-year">Gal Ben Abu 2024</p>
+            <p class="license-message">כל הזכויות שמורות לגל בן אבו</p>
+        </div>
+    </body>
+</html>

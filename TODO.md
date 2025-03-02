@@ -1,15 +1,17 @@
-# Portfolio Overhaul Commit #23:
+# Portfolio Overhaul Commit #24:
 
 ## CHANGES:
 
-→ The `index.html` page is almost 100% supported for English and Hebrew.
+→ Translated the portfolio `index.page` and the settings `extra_features_and_settings.js` page.
+
+→ Removed unnecessary / temporary files.
 
 ## TODO:
 
 -   [x] To add dialog that will show that 'the message has been sent.'.
 -   [x] Write description in the js projects landing pages.
--   [ ] Add translation support for the portfolio index.html page and the settings page.
--   [ ] Fix the settings page.
+-   [x] Add translation support for the portfolio index.html page and the settings page.
+-   [x] Fix the settings page.
 -   [ ] Add extra projects.
 
 -   [x] Change the copied cards to be cards that will represent the js projects and games + link to their landing page...
