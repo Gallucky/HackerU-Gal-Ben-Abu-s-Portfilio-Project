@@ -7,7 +7,6 @@ import {
 import {
     getDraggableElements,
     addDraggableElement,
-    removeDraggableElement,
     saveDraggableElementsToLocalStorage,
 } from "../services/storageService.js";
 

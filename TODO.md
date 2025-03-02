@@ -1,10 +1,10 @@
-# Portfolio Overhaul Commit #25:
+# Portfolio Overhaul Commit #26:
 
 ## CHANGES:
 
-→ Updated the `HTML and CSS Projects` .rar files.
+→ In `users_management` updated styling for better text visibility.
 
-→ Added the `JS Projects` .rar files.
+→ Renamed the file `tool.js` to `Tool.js`.
 
 ## TODO:
 

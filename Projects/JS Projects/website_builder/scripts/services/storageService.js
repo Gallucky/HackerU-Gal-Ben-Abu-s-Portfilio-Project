@@ -1,5 +1,4 @@
 import { dragElement } from "./dragService.js";
-import { createDraggableElement } from "./elementService.js";
 
 let draggableElements = [];
 

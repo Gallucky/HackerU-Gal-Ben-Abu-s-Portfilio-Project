@@ -6,7 +6,6 @@ import { DraggableElement } from "../classes/draggableElements/DraggableElements
 import { Image } from "../classes/draggableElements/Image.js";
 import { A as A } from "../classes/draggableElements/A.js";
 import { H1 } from "../classes/draggableElements/headers/H1.js";
-import { ToolType } from "../classes/ToolType.js";
 import { H2 } from "../classes/draggableElements/headers/H2.js";
 import { H3 } from "../classes/draggableElements/headers/H3.js";
 import { H4 } from "../classes/draggableElements/headers/H4.js";

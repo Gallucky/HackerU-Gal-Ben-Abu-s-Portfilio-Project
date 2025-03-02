@@ -1,6 +1,3 @@
-import { DraggableElement } from "../classes/draggableElements/DraggableElements.js";
-import { Tool } from "../classes/Tool.js";
-import { ToolType } from "../classes/ToolType.js";
 import { ToolBox } from "../classes/ToolBox.js";
 
 import {

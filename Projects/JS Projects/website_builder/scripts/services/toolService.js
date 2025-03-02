@@ -7,7 +7,6 @@ import { Tool } from "../classes/Tool.js";
 import { ToolType } from "../classes/ToolType.js";
 import { DraggableElement } from "../classes/draggableElements/DraggableElements.js";
 import { getSupportedFontsNames } from "./supportedFontsService.js";
-import { ToolBox } from "../classes/ToolBox.js";
 
 export const createElementTypeTool = (toolBox) => {
     const elementType = new Tool(
