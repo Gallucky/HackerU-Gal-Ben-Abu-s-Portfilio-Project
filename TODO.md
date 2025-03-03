@@ -1,10 +1,8 @@
-# Portfolio Overhaul Commit #26:
+# Portfolio Overhaul Commit #27:
 
 ## CHANGES:
 
-→ In `users_management` updated styling for better text visibility.
-
-→ Renamed the file `tool.js` to `Tool.js`.
+→ Hotfix: fixing some styling issues discovered.
 
 ## TODO:
 
