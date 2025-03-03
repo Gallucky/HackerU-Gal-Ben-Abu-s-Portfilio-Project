@@ -100,7 +100,8 @@ The repository is organized as follows:
    Educational math game with interactive elements.
 
 7. **World Clocks** - `/Projects/JS Projects/world_clocks/`  
-   Time zone comparison tool with global time display. _Note: This project is deprecated and currently inaccessible._
+   Time zone comparison tool with global time display.\
+   | _Note: This project is deprecated and currently inaccessible._
 
 ## Features
 
