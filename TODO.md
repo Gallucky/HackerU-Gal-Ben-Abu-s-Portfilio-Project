@@ -2,7 +2,7 @@
 
 ## CHANGES:
 
-→ Hotfix: fixing some styling issues discovered.
+→ Updated the [README.md file](https://github.com/Gallucky/HackerU-Gal-Ben-Abu-s-Portfilio-Project/README.md).
 
 ## TODO:
 

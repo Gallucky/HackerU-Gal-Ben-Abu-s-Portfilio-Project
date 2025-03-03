@@ -1,66 +1,138 @@
 # Gal Ben Abu's Portfolio Project
 
-This portfolio project showcases a collection of landing pages and subprojects, all accessible through a central `index.html` file. The project also includes an English version of the landing page, named `index-en.html`.
+A comprehensive portfolio showcasing front-end development skills, including HTML/CSS landing pages and JavaScript projects.
+
+## Overview
+
+This portfolio features a collection of landing pages and interactive JavaScript projects, all accessible through a central navigation system. The portfolio demonstrates proficiency in HTML, CSS, JavaScript, and various front-end technologies.
 
 ## Project Structure
 
-The primary files and structure are as follows:
+The repository is organized as follows:
 
--   **index.html**: The main landing page containing navigation, sections, and links to subprojects.
--   **index-en.html**: The English version of the landing page.
--   **Projects/html_and_css_landing_pages/**: A directory containing individual project landing pages.
+-   **Main Files**
 
-### Key Sections in index.html and index-en.html
+    -   `index.html`: Main landing page
+    -   `index.js`: Core JavaScript functionality
+    -   `package.json`: Project dependencies
+    -   `extra_features_and_settings.html`: Additional functionality options
 
-1. **Navigation Toolbar**: Contains profile picture and anchor links for easy navigation.
-2. **Header Area**: The first visible section when users enter the website.
-3. **Programming Languages Section**: Displays the languages and technologies used in the projects.
-4. **About Section**: Provides information about the creator and the purpose of the portfolio.
-5. **Projects Section**: A list of showcased projects.
-6. **Contact Us Form**: Enables users to get in touch for inquiries.
-7. **License Information**: Details about the licensing of the project.
+-   **Documentation**
 
-## Projects Included
+    -   `README.md`: Project documentation
+    -   `TODO.md`: Planned enhancements
+    -   `jsdoc.json`: Documentation configuration
+    -   `project-structure.txt`: File system documentation
 
-The following projects are featured in the portfolio, showcasing a variety of skills and technologies:
+-   **Resume**
+    -   `Gal Ben Abu's Programmer Resume.pdf`: Professional resume
 
-1. **Leading You Forward**  
-   A project aimed at providing guidance for success.
+### Key Directories
 
-2. **Here & Now**  
-   A platform for enjoying a variety of gifts instantly.
+-   **Images**: Contains all graphical assets used throughout the portfolio
 
-3. **Good Coffee For Good Day**  
-   Celebrating the joy of having a good cup of coffee in the morning.
+    -   `/images/languages_logos/`: Programming language icons
+    -   `/images/contact-options/`: Social media and contact icons
+    -   `/images/JS Projects Previews/`: Screenshots of JavaScript projects
 
-4. **Let Us Lead You Forward**  
-   A service to handle repetitive tasks efficiently.
+-   **Projects**: Houses all portfolio subprojects
 
-5. **Discover The World**  
-   A resource for essential tips before exploring the world.
+    -   `/Projects/html_and_css_landing_pages/`: Collection of 7 landing page projects
+    -   `/Projects/JS Projects/`: Collection of interactive JavaScript applications
+    -   `/Projects/global/`: Shared resources for project pages
 
-6. **Think Outside The Box**  
-   A creative platform for users to showcase their innovative ideas.
+-   **Scripts**: Core JavaScript modules
 
-7. **Free Advisement**  
-   Professional guidance service connecting users with experts.
+    -   `contactServiceValidation.js`: Form validation
+    -   `navbarService.js`: Navigation functionality
+    -   `slider.js`: Image carousel implementation
+    -   `langService.js`: Language switching functionality
+    -   `extra_features_and_settings.js`: Configurable options
 
-These projects highlight my ability to create engaging and functional web applications.
+-   **Styles**: CSS styling organized by purpose
+    -   `/styles/globals/`: Site-wide styling
+    -   `/styles/main_page_styles/`: Landing page specific styles
+    -   `/styles/extra_features_and_settings_styles/`: Styling for customization options
+
+## Featured Projects
+
+### HTML & CSS Landing Pages
+
+1. **Leading You Forward** - `/Projects/html_and_css_landing_pages/1_leading_you_forward_1/`  
+   A guidance-focused landing page demonstrating clean layout design.
+
+2. **Here & Now** - `/Projects/html_and_css_landing_pages/2_here_and_now/`  
+   A gift-themed landing page showcasing responsive design.
+
+3. **Good Coffee For Good Morning** - `/Projects/html_and_css_landing_pages/3_good_coffee_for_good_morning/`  
+   A coffee-themed landing page with appealing visual design.
+
+4. **Let Us Lead You Forward** - `/Projects/html_and_css_landing_pages/4_let_us_lead_you_forward/`  
+   Service-oriented landing page for task automation.
+
+5. **Discover The World** - `/Projects/html_and_css_landing_pages/5_discover_the_world/`  
+   Travel-themed landing page with advanced image layouts.
+
+6. **Free Advisement** - `/Projects/html_and_css_landing_pages/6_free_advisement/`  
+   Professional advice service landing page with contact integration.
+
+7. **Think Outside The Box** - `/Projects/html_and_css_landing_pages/7_think_outside_the_box/`  
+   Creative platform landing page demonstrating SCSS/SASS implementation.
+
+### JavaScript Projects
+
+1. **Countries Flags** - `/Projects/JS Projects/countries_flags/`  
+   Interactive world flags explorer with filtering and sorting capabilities.
+
+2. **Tic Tac Toe** - `/Projects/JS Projects/tic_tac_toe/`  
+   Classic game implementation demonstrating DOM manipulation and game logic.
+
+3. **Users Management** - `/Projects/JS Projects/users_management/`  
+   User registration and management system with Create, Read, Update, Delete (CRUD) operations.
+
+4. **Weather Cast** - `/Projects/JS Projects/weather_cast/`  
+   Weather forecast application utilizing API integration.
+
+5. **Website Builder** - `/Projects/JS Projects/website_builder/`  
+   Drag-and-drop website creation tool showcasing advanced JavaScript concepts.
+
+6. **Math Game** - `/Projects/JS Projects/js_dom_mission_math_game/`  
+   Educational math game with interactive elements.
+
+7. **World Clocks** - `/Projects/JS Projects/world_clocks/`  
+   Time zone comparison tool with global time display. _Note: This project is deprecated and currently inaccessible._
+
+## Features
+
+-   **Responsive Design**: All pages adapt to various screen sizes
+-   **Multilingual Support**: Language switching capability built into the interface
+-   **Interactive Elements**: Dynamic content using JavaScript
+-   **Custom Settings**: Configurable features via settings panel
+-   **Contact Form**: Direct communication capability
+
+## Technologies Used
+
+-   **HTML5**: Semantic structure and content
+-   **CSS3/SCSS**: Styling, animations, and responsive design
+-   **JavaScript**: Dynamic functionality and interactivity
+-   **SASS/SCSS**: Advanced styling with variables and mixins
+-   **SVG Graphics**: Vector-based visual elements
+-   **Markdown**: Documentation formatting
 
 ## How to Use
 
-### Option 1 - Manually
+### View Online
 
-1. Clone or download the repository.
-2. Open `index.html` or `index-en.html` in a web browser to view the portfolio.
-3. Navigate through the projects using the provided links.
+View the portfolio online at [GalLucky GitHub Pages](https://gallucky.github.io/HackerU-Gal-Ben-Abu-s-Portfilio-Project/)
 
-### Option 2 - Open Via Links
+### Run Locally
 
-| **#** | **File Name** | **Description** | **Link To Page** |
-| :-- | :-- | :-- | :-- |
-| **1** | `index.html` | `For the Hebrew version (Default)` | [Hebrew Page](https://gallucky.github.io/HackerU-Gal-Ben-Abu-s-Portfilio-Project/) |
-| **2** | `index-en.html` | `For the English version` | [English Page](https://gallucky.github.io/HackerU-Gal-Ben-Abu-s-Portfilio-Project/index-en.html) |
+1. Clone the repository
+    ```
+    git clone https://github.com/GalLucky/HackerU-Gal-Ben-Abu-s-Portfilio-Project.git
+    ```
+2. Navigate to the project directory
+3. Open `index.html` in your browser
 
 ## License
 
